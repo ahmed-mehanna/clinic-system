@@ -1,0 +1,95 @@
+nav {
+    background-color: $bg-main-color;
+    font-size: 18px;
+    height: 100px;
+    min-height: 100px;
+    width: 100%;
+    //position: fixed !important;
+    z-index: 100;
+    .navbar-brand {
+        margin-right: 100px;
+        margin-left: 25px;
+        max-width: 50%;
+    }
+    i {
+        color: $f-main-color;
+    }
+    div {
+        background-color: $bg-main-color;
+        margin-left: -16px;
+        margin-right: -16px;
+        padding-top: 30px !important;
+        ul {
+            margin: 0;
+            li {
+                margin-right: 25px;
+                min-width: 100px;
+                text-align: center;
+                font-weight: 300;
+                a {
+                    color: $f-main-color;
+                    transition: color .4s ease-in-out;
+                }
+                span {
+                    display: block;
+                    border-bottom: 2.5px solid $bottom-border-color;
+                    width: 0;
+                    transition: width .4s ease-in-out;
+                }
+                &:hover a {
+                    text-decoration: none;
+                }
+            }
+            li.active {
+                a {
+                    color: $f-hovered-color;
+                    font-weight: bolder;
+                }
+                span {
+                    width: 100%;
+                }
+            }
+            li.not-active {
+                a {
+                    font-weight: 100;
+                }
+                &:hover {
+                    span {
+                        width: 100%;
+                    }
+                    a {
+                        color: $f-hovered-color;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (min-width: 992px) {
+    div.collapse {
+        padding: 0 !important;
+    }
+}
+
+@media (max-width: 991px) {
+    nav {
+        div {
+            ul {
+                li {
+                    span {
+                        margin-left: 25%;
+                    }
+                }
+                li.active span {
+                    width: 50%;
+                }
+                li.not-active {
+                    &:hover span {
+                        width: 50%;
+                    }
+                }
+            }
+        }
+    }
+}

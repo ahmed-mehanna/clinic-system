@@ -1,0 +1,15 @@
+@import "custom-variables";
+@import "components/social-bar";
+@import "components/navbar";
+@import "components/footer";
+@import "pages/index-page/welcome";
+@import "pages/index-page/about-us";
+@import "pages/index-page/our-specialist";
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: #FFF;
+}

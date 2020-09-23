@@ -1,0 +1,127 @@
+div.home-page-style {
+    div.container-fluid.our-specialist-section {
+        margin-top: 100px;
+        background-image: url('../../../../public/imgs/index-page/spclist.png');
+        background-repeat: no-repeat;
+        background-position-x: -50px;
+        div.container {
+            div.section-data {
+                h1 {
+                    font-family: 'Montserrat', sans-serif;
+                    font-weight: bolder;
+                    span {
+                        display: block;
+                        border-bottom: 2.5px $bg-main-color solid;
+                        width: 125px;
+                        margin-top: 5px;
+                        margin-left: auto;
+                        margin-right: auto;
+                    }
+                }
+                p {
+                    max-width: 450px;
+                    margin-top: 25px;
+                    color: #8E8E8E;
+                }
+            }
+            div.row {
+                margin-top: 50px;
+                div.doctor-container {
+                    border: 1px #8E8E8E solid;
+                    position: relative;
+                    margin-bottom: 15px;
+                    margin-top: 15px;
+                    img {
+                        max-width: 100%;
+                    }
+                    div.data-container {
+                        position: absolute;
+                        top: 0;
+                        width: 100%;
+                        height: 100%;
+                        transition: background-color .2s ease-in-out;
+                        div.data {
+                            color: #FFF;
+                            position: relative;
+                            background-color: black;
+                            opacity: 0;
+                            transition: opacity .2s ease-in-out;
+                            h1 {
+                                position: absolute;
+                                width: 100%;
+                                top: 5px;
+                                transition: top .2s ease-in-out;
+                            }
+                            h5 {
+                                position: absolute;
+                                width: 100%;
+                                top: 150px;
+                            }
+                            div.links {
+                                position: absolute;
+                                width: 100%;
+                                top: 200px;
+                                transition: top .2s ease-in-out;
+                                a {
+                                    color: #FFF;
+                                    display: inline-block;
+                                    margin-right: 15px;
+                                    margin-top: 90px;
+                                    font-size: 18px;
+                                    border: 1px #FFF solid;
+                                    width: 35px;
+                                    height: 35px;
+                                    border-radius: 50%;
+                                    transition: background-color .2s ease-in-out;
+                                    i {
+                                        margin-top: 7px;
+                                    }
+                                    &:hover {
+                                        background-color: #65C878;
+                                    }
+                                }
+                            }
+                        }
+                        div.summary {
+                            position: absolute;
+                            left: 0;
+                            bottom: 20px;
+                            background-color: #0274FA;
+                            padding: 15px 0 15px 25px;
+                            clip-path: polygon(0% 0,100% 0%,95% 100%,0% 100%);
+                            width: 240px;
+                            color: #FFF;
+                            min-height: 92px;
+                            transition: all 0.3s;
+                        }
+                    }
+                    &:hover div.data-container {
+                        background-color: rgba(0, 0, 0, 0.75);
+                        div.data {
+                            opacity: 1;
+                            h1 {
+                                top: 75px;
+                            }
+                            div.links {
+                                top: 125px;
+                                z-index: 1;
+                            }
+                        }
+                        div.summary {
+                            //width: 0;
+                            //background-size: 0;
+                            opacity: 0;
+                            z-index: 0;
+                            h4 {
+                                display: none;
+                            }
+                            h5 {
+                                display: none;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

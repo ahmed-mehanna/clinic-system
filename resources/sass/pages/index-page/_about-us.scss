@@ -1,0 +1,107 @@
+div.home-page-style {
+    div.container-fluid.about-us-section {
+        margin-top: 100px;
+        div.container {
+            div.row {
+                div.img {
+                    img {
+                        max-width: 100%;
+                    }
+                }
+                div.data {
+                    margin-left: 60px;
+                    max-width: 61%;
+                    margin-top: 20px;
+                    padding-left: 50px;
+                    h1, h3 {
+                        font-family: 'Montserrat', sans-serif;
+                        font-weight: bolder;
+                        span {
+                            display: block;
+                            border-bottom: 2.5px $bg-main-color solid;
+                            width: 125px;
+                            margin-top: 5px;
+                        }
+                    }
+                    p {
+                        margin-top: 40px;
+                        color: #8E8E8E;
+                    }
+                    h3 {
+                        margin-top: 50px;
+                        span {
+                            display: inline-block;
+                            width: 50px;
+                            margin-bottom: 5px;
+                            margin-left: 5px;
+                        }
+                    }
+                    table {
+                        margin-top: 40px;
+                        font-family: 'Montserrat', sans-serif;
+                        color: #FFF;
+                        max-width: 100%;
+                        width: 100%;
+                        text-align: center;
+                        tr {
+                            th, td {
+                                padding: 10px;
+                                font-size: 18px;
+                            }
+                            th {
+                                background-color: #005FCE;
+                            }
+                            td {
+                                background-color: $bg-main-color;
+                                span {
+                                    color: #7CE637;
+                                    margin-left: 10px;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 1199px) {
+    div.home-page-style {
+        div.container-fluid.about-us-section {
+            div.container {
+                div.row {
+                    div.data {
+                        margin-left: 120px;
+                        max-width: 54%;
+                        margin-top: 50px;
+                        padding-left: 30px !important;
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+
+@media (max-width: 991px) {
+    div.home-page-style {
+        div.container-fluid.about-us-section {
+            div.container {
+                div.row {
+                    div.img {
+                        margin-left: 0 !important;
+                        max-width: 100%;
+                        text-align: center;
+                    }
+                    div.data {
+                        max-width: 100%;
+                        margin-left: 0;
+                        padding-left: 0 !important;
+                    }
+                }
+            }
+        }
+    }
+}

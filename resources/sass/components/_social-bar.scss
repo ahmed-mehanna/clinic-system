@@ -1,0 +1,85 @@
+div.social-bar {
+    background-color: $bg-main-color;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-bottom: 0.5px #E1E1E1 solid;
+    div.container {
+        div.row {
+            div {
+                font-size: 18px;
+                color: $f-main-color;
+                border-right: 1px #FFF solid;
+                i {
+                    background-color: #003A7E;
+                    padding: 7px;
+                    margin-top: 5px;
+                    border-radius: 15px;
+                    transition: color .4s ease-in-out, background-color .4s ease-in-out;
+                    min-width: 40px;
+                    max-width: 40px;
+                }
+                span {
+                    margin-left: 15px;
+                }
+                &:hover i {
+                    background-color: $f-main-color;
+                    color: #003A7E;
+                }
+            }
+            &:last-child {
+                i {
+                    margin-right: 5px;
+                }
+            }
+            div.social-media {
+                a {
+                    color: $f-main-color;
+                    text-decoration: none;
+                    &:hover i {
+                        background-color: $f-main-color;
+                        color: #003A7E;
+                    }
+                }
+                &:hover i {
+                    background-color: #003A7E;
+                    color: $f-main-color;
+                }
+            }
+        }
+    }
+}
+
+
+//div.social-bar {
+//    background-color: $bg-main-color;
+//    padding-top: 10px;
+//    ul.social {
+//        list-style: none;
+//        font-size: 18px;
+//        color: $f-main-color;
+//        display: inline-block;
+//        li {
+//            display: inline-block;
+//            margin-right: 40px;
+//            padding: 0;
+//            i {
+//                background-color: #003A7E;
+//                padding: 7px;
+//                border-radius: 15px;
+//                transition: color .4s ease-in-out, background-color .4s ease-in-out;
+//            }
+//            span {
+//                margin-left: 15px;
+//            }
+//            &:hover i {
+//                background-color: $f-main-color;
+//                color: #003A7E;
+//            }
+//        }
+//    }
+//    ul.social-media {
+//        li {
+//            margin-right: 10px;
+//        }
+//    }
+//}
