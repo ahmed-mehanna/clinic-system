@@ -1,5 +1,8 @@
 @extends('components.app')
 @section('content')
+    <script>
+        document.getElementById('login').className = 'nav-item active';
+    </script>
     <div class="n-designs">
         <div class="container-fluid">
             <div class="form-box ">
