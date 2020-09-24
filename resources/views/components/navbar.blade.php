@@ -29,15 +29,15 @@
                    </li>
                 @else
                     <li class="nav-item not-active" style="padding-top: 8px; padding-bottom: 8px;">
-{{--                        <a href="{{ route('login') }}" class="text-sm text-gray-700">Login</a>--}}
-                        <a href="{{ route('sign-in') }}" class="text-sm text-gray-700">Login</a>
+                        <a href="{{ route('login') }}" class="text-sm text-gray-700">Login</a>
+{{--                        <a href="{{ route('sign-in') }}" class="text-sm text-gray-700">Login</a>--}}
                         <span></span>
                     </li>
 
                     @if (Route::has('register'))
                         <li class="nav-item not-active" style="padding-top: 8px; padding-bottom: 8px;">
-{{--                            <a href="{{ route('register') }}" class="text-sm text-gray-700">Register</a>--}}
-                            <a href="{{ route('sign-up') }}" class="text-sm text-gray-700">Register</a>
+                            <a href="{{ route('register') }}" class="text-sm text-gray-700">Register</a>
+{{--                            <a href="{{ route('sign-up') }}" class="text-sm text-gray-700">Register</a>--}}
                             <span></span>
                         </li>
                     @endif

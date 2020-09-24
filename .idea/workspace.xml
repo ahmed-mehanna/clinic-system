@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="BranchesTreeState">
     <expand>
       <path>
@@ -21,11 +24,26 @@
   <component name="ChangeListManager">
     <list default="true" id="febbe7e3-6479-4aec-a407-343f0bdf0e0a" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/logincss.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/logincss.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/app.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/hello.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/public/imgs/hello.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/logincss.css" beforeDir="false" afterPath="$PROJECT_DIR$/resources/sass/nadien-styles/logincss.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/doctor.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/hello.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/reception.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/reception2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/reception3.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/spclist.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/sass/_custom.scss" beforeDir="false" afterPath="$PROJECT_DIR$/resources/sass/_custom.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/auth/forgot-password.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/forgot-password.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/auth/login.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/login.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/auth/register.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/register.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/components/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/components/app.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/forget-password.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/forget-password.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/sign-in.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/sign-in.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/sign-up.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/sign-up.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/components/navbar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/components/navbar.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/dashboard.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/forget-password.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/sign-in.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/sign-up.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -171,6 +189,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/public/imgs" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -178,6 +197,11 @@
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/public/imgs" />
+    </key>
   </component>
   <component name="RunManager">
     <configuration name="phpunit.xml" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
@@ -194,7 +218,7 @@
       <option name="presentableId" value="Default" />
       <updated>1600886882910</updated>
       <workItem from="1600886884706" duration="33000" />
-      <workItem from="1600942675214" duration="5150000" />
+      <workItem from="1600942675214" duration="8530000" />
     </task>
     <servers />
   </component>
@@ -221,9 +245,9 @@
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
     <state x="624" y="252" key="run.anything.popup/0.27.1920.1053@0.27.1920.1053" timestamp="1600945430235" />
-    <state x="623" y="259" width="672" height="678" key="search.everywhere.popup" timestamp="1600947099331">
+    <state x="623" y="259" width="672" height="678" key="search.everywhere.popup" timestamp="1600948435613">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
-    <state x="623" y="259" width="672" height="678" key="search.everywhere.popup/0.27.1920.1053@0.27.1920.1053" timestamp="1600947099331" />
+    <state x="623" y="259" width="672" height="678" key="search.everywhere.popup/0.27.1920.1053@0.27.1920.1053" timestamp="1600948435613" />
   </component>
 </project>
