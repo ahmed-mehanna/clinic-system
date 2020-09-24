@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg">
-    <a class="navbar-brand" href="#">
+    <a class="navbar-brand" href="/">
         <img src="{{asset('imgs/index-page/logo.png')}}" alt="">
     </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#menu" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -8,15 +8,15 @@
     <div class="collapse navbar-collapse" id="menu" style="padding-top: 25px; padding-left: 50px;">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-                <a class="nav-link" href="">Home</a>
+                <a class="nav-link" href="/">Home</a>
                 <span></span>
             </li>
             <li class="nav-item not-active">
-                <a class="nav-link" href="#about-us">About Us</a>
+                <a class="nav-link" href="/#about-us">About Us</a>
                 <span></span>
             </li>
             <li class="nav-item not-active">
-                <a class="nav-link" href="#our-specialist">Our Specialist</a>
+                <a class="nav-link" href="/#our-specialist">Our Specialist</a>
                 <span></span>
             </li>
         </ul>
@@ -29,13 +29,15 @@
                    </li>
                 @else
                     <li class="nav-item not-active" style="padding-top: 8px; padding-bottom: 8px;">
-                        <a href="{{ route('login') }}" class="text-sm text-gray-700">Login</a>
+{{--                        <a href="{{ route('login') }}" class="text-sm text-gray-700">Login</a>--}}
+                        <a href="{{ route('sign-in') }}" class="text-sm text-gray-700">Login</a>
                         <span></span>
                     </li>
 
                     @if (Route::has('register'))
                         <li class="nav-item not-active" style="padding-top: 8px; padding-bottom: 8px;">
-                            <a href="{{ route('register') }}" class="text-sm text-gray-700">Register</a>
+{{--                            <a href="{{ route('register') }}" class="text-sm text-gray-700">Register</a>--}}
+                            <a href="{{ route('sign-up') }}" class="text-sm text-gray-700">Register</a>
                             <span></span>
                         </li>
                     @endif
