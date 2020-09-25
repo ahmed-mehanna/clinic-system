@@ -43,6 +43,18 @@ class Kernel extends HttpKernel
             'throttle:api',
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
         ],
+        'isDoctor' => [
+            \App\Http\Middleware\Authenticate::class,
+            \App\Http\Middleware\IsDoctor::class,
+        ],
+        'isNurse' => [
+            \App\Http\Middleware\Authenticate::class,
+            \App\Http\Middleware\IsNurse::class,
+        ],
+        'isPatient' => [
+            \App\Http\Middleware\Authenticate::class,
+            \App\Http\Middleware\IsPatient::class,
+        ],
     ];
 
     /**

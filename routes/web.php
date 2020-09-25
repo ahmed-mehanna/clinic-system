@@ -24,14 +24,26 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
    Route::get('/dashboard', [PagesController::class, 'patientDashboard']) ->name('dashboard');
 });
 
-Route::get('/nurse', [PagesController::class, 'nurseDashboard'])->name('nurse-dashboard');
 
-Route::get('/nurse/reserve', [PagesController::class, 'nurseReserve'])->name('nurse-reserve');
-
-Route::get('/nurse/working-hours', [PagesController::class, 'nurseWorkHourException'])->name('working-hours');
 
 //---------------------------------------/
 Route::post("/login/custom",[LoginController::class,"login"]);
-Route::get("/doctor",[DoctorController::class,"index"])->middleware("auth");;
-Route::get("/patient",[PatientController::class,"index"])->middleware("auth");;
+
+Route::group(['middleware' => ['isDoctor']], function() {
+    Route::get("/doctor",[DoctorController::class,"index"]);
+});
+
+Route::group(['middleware' => ['isPatient']], function() {
+    Route::get("/patient",[PatientController::class,"index"]);
+});
+
+Route::group(['middleware' => ['isNurse']], function() {
+    Route::get('/nurse', [PagesController::class, 'nurseDashboard'])->name('nurse-dashboard');
+
+    Route::get('/nurse/reserve', [PagesController::class, 'nurseReserve'])->name('nurse-reserve');
+
+    Route::get('/nurse/working-hours', [PagesController::class, 'nurseWorkHourException'])->name('working-hours');
+});
+
 Route::get("/dashboard/user/",[check::class,"checkRole"]);
+Route::view('/noacess','noacess');

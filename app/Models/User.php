@@ -58,5 +58,28 @@ class User extends Authenticatable
         'profile_photo_url',
     ];
 
+    public function isDoctor(){
+        if($this->Role == 1){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    public function isNurse(){
+        if($this->Role == 2){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    public function isPatient(){
+        if($this->Role == 3){
+            return true;
+        }else{
+            return false;
+        }
+    }
 
 }
