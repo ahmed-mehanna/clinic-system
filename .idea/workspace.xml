@@ -22,10 +22,14 @@
     <select />
   </component>
   <component name="ChangeListManager">
+<<<<<<< HEAD
     <list default="true" id="febbe7e3-6479-4aec-a407-343f0bdf0e0a" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/components/footer.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/components/footer.blade.php" afterDir="false" />
     </list>
+=======
+    <list default="true" id="febbe7e3-6479-4aec-a407-343f0bdf0e0a" name="Default Changelist" comment="" />
+>>>>>>> f078f2ecba4754a851a523511bb4af5aad413fb4
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -170,7 +174,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/public/imgs" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -181,6 +185,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\clinic-system" />
       <recent name="$PROJECT_DIR$/public/imgs" />
     </key>
   </component>
@@ -200,8 +205,16 @@
       <updated>1600886882910</updated>
       <workItem from="1600886884706" duration="33000" />
       <workItem from="1600942675214" duration="12097000" />
+<<<<<<< HEAD
       <workItem from="1600994899414" duration="219000" />
       <workItem from="1601039216488" duration="41000" />
+=======
+<<<<<<< HEAD
+      <workItem from="1600956397105" duration="3291000" />
+=======
+      <workItem from="1600994899414" duration="39000" />
+>>>>>>> 917d6734400657ef53a4cb469cd5c4422bd12e23
+>>>>>>> f078f2ecba4754a851a523511bb4af5aad413fb4
     </task>
     <servers />
   </component>
