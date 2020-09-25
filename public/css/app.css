@@ -13938,7 +13938,7 @@ a.text-dark:focus {
 }
 
 div.social-bar {
-  background-color: #0074FA;
+  background-color: #227DC7;
   padding-top: 10px;
   padding-bottom: 10px;
   border-bottom: 0.5px #E1E1E1 solid;
@@ -13989,7 +13989,7 @@ div.social-bar div.container div.row div.social-media:hover i {
 }
 
 nav {
-  background-color: #0074FA;
+  background-color: #227DC7;
   font-size: 18px;
   height: 100px;
   min-height: 100px;
@@ -14008,10 +14008,11 @@ nav i {
 }
 
 nav div {
-  background-color: #0074FA;
+  background-color: #227DC7;
   margin-left: -16px;
   margin-right: -16px;
   padding-top: 30px !important;
+  padding-left: 0 !important;
 }
 
 nav div ul {
@@ -14019,7 +14020,6 @@ nav div ul {
 }
 
 nav div ul li {
-  margin-right: 25px;
   min-width: 100px;
   text-align: center;
   font-weight: 300;
@@ -14047,7 +14047,8 @@ nav div ul li.active a {
 }
 
 nav div ul li.active span {
-  width: 100%;
+  width: 50%;
+  margin-left: 25%;
 }
 
 nav div ul li.not-active a {
@@ -14062,13 +14063,28 @@ nav div ul li.not-active:hover a {
   color: #ADC8E8;
 }
 
-@media (min-width: 992px) {
-  div.collapse {
-    padding: 0 !important;
+@media (max-width: 1199px) {
+  nav a.navbar-brand {
+    margin-right: 50px;
+  }
+}
+
+@media (max-width: 1034px) {
+  nav a.navbar-brand {
+    margin-right: 25px;
   }
 }
 
 @media (max-width: 991px) {
+  nav div.collapse {
+    padding: 0 !important;
+  }
+
+  nav a.navbar-brand {
+    margin-right: 0;
+    margin-left: 0;
+  }
+
   nav div ul li span {
     margin-left: 25%;
   }
@@ -14083,7 +14099,7 @@ nav div ul li.not-active:hover a {
 }
 
 footer {
-  background-color: #0074FA;
+  background-color: #227DC7;
   padding-top: 25px;
   color: #FFF;
   font-family: "Montserrat", sans-serif;
@@ -14127,7 +14143,7 @@ footer div.container div.row div ul li i a:hover {
 }
 
 footer div.copyright {
-  background-color: #005FCE;
+  background-color: #0871C6;
   height: 60px;
   font-size: 16px;
 }
@@ -14290,7 +14306,7 @@ div.home-page-style div.welcome-section.container-sm div.bg div.container div.da
 div.home-page-style div.welcome-section.container-md div.bg div.container div.data h1,
 div.home-page-style div.welcome-section.container-lg div.bg div.container div.data h1,
 div.home-page-style div.welcome-section.container-xl div.bg div.container div.data h1 {
-  background-color: #0074FA;
+  background-color: #227DC7;
   padding: 10px 10px;
   margin-bottom: 50px;
   color: #FFF;
@@ -14326,7 +14342,7 @@ div.home-page-style div.welcome-section.container-sm div.bg div.container div.da
 div.home-page-style div.welcome-section.container-md div.bg div.container div.data p span.title span,
 div.home-page-style div.welcome-section.container-lg div.bg div.container div.data p span.title span,
 div.home-page-style div.welcome-section.container-xl div.bg div.container div.data p span.title span {
-  color: #0074FA;
+  color: #227DC7;
   font-weight: bolder;
 }
 
@@ -14337,7 +14353,7 @@ div.home-page-style div.welcome-section.container-lg div.bg div.container div.da
 div.home-page-style div.welcome-section.container-xl div.bg div.container div.data a {
   padding: 10px;
   margin-top: 25px;
-  background-color: #0074FA;
+  background-color: #227DC7;
   border: none;
   border-radius: 10px;
   font-size: 18px;
@@ -14434,7 +14450,7 @@ div.home-page-style div.about-us-section.container-md div.container div.row div.
 div.home-page-style div.about-us-section.container-lg div.container div.row div.data h3 span,
 div.home-page-style div.about-us-section.container-xl div.container div.row div.data h3 span {
   display: block;
-  border-bottom: 2.5px #0074FA solid;
+  border-bottom: 2.5px #227DC7 solid;
   width: 125px;
   margin-top: 5px;
 }
@@ -14507,7 +14523,7 @@ div.home-page-style div.about-us-section.container-sm div.container div.row div.
 div.home-page-style div.about-us-section.container-md div.container div.row div.data table tr td,
 div.home-page-style div.about-us-section.container-lg div.container div.row div.data table tr td,
 div.home-page-style div.about-us-section.container-xl div.container div.row div.data table tr td {
-  background-color: #0074FA;
+  background-color: #227DC7;
 }
 
 div.home-page-style div.container-fluid.about-us-section div.container div.row div.data table tr td span,
@@ -14580,7 +14596,7 @@ div.home-page-style div.our-specialist-section.container-md div.container div.se
 div.home-page-style div.our-specialist-section.container-lg div.container div.section-data h1 span,
 div.home-page-style div.our-specialist-section.container-xl div.container div.section-data h1 span {
   display: block;
-  border-bottom: 2.5px #0074FA solid;
+  border-bottom: 2.5px #227DC7 solid;
   width: 125px;
   margin-top: 5px;
   margin-left: auto;
@@ -14721,7 +14737,7 @@ div.home-page-style div.our-specialist-section.container-xl div.container div.ro
   position: absolute;
   left: 0;
   bottom: 20px;
-  background-color: #0274FA;
+  background-color: #227DC7;
   padding: 15px 0 15px 25px;
   -webkit-clip-path: polygon(0% 0, 100% 0%, 95% 100%, 0% 100%);
           clip-path: polygon(0% 0, 100% 0%, 95% 100%, 0% 100%);
@@ -14787,6 +14803,136 @@ div.home-page-style div.our-specialist-section.container-md div.container div.ro
 div.home-page-style div.our-specialist-section.container-lg div.container div.row div.doctor-container:hover div.data-container div.summary h5,
 div.home-page-style div.our-specialist-section.container-xl div.container div.row div.doctor-container:hover div.data-container div.summary h5 {
   display: none;
+}
+
+div.nurse-dashboard-style {
+  padding-bottom: 2.5%;
+}
+
+div.nurse-dashboard-style div.container-fluid,
+div.nurse-dashboard-style div.container-sm,
+div.nurse-dashboard-style div.container-md,
+div.nurse-dashboard-style div.container-lg,
+div.nurse-dashboard-style div.container-xl {
+  padding: 0;
+  font-family: "Montserrat", sans-serif;
+  font-size: 16px;
+}
+
+div.nurse-dashboard-style div.container-fluid table,
+div.nurse-dashboard-style div.container-sm table,
+div.nurse-dashboard-style div.container-md table,
+div.nurse-dashboard-style div.container-lg table,
+div.nurse-dashboard-style div.container-xl table {
+  margin-top: -1px;
+}
+
+div.nurse-dashboard-style div.container-fluid table tr td,
+div.nurse-dashboard-style div.container-sm table tr td,
+div.nurse-dashboard-style div.container-md table tr td,
+div.nurse-dashboard-style div.container-lg table tr td,
+div.nurse-dashboard-style div.container-xl table tr td,
+div.nurse-dashboard-style div.container-fluid table tr th,
+div.nurse-dashboard-style div.container-sm table tr th,
+div.nurse-dashboard-style div.container-md table tr th,
+div.nurse-dashboard-style div.container-lg table tr th,
+div.nurse-dashboard-style div.container-xl table tr th {
+  text-align: center;
+}
+
+div.nurse-dashboard-style div.container-fluid table tr th,
+div.nurse-dashboard-style div.container-sm table tr th,
+div.nurse-dashboard-style div.container-md table tr th,
+div.nurse-dashboard-style div.container-lg table tr th,
+div.nurse-dashboard-style div.container-xl table tr th {
+  font-weight: bolder;
+}
+
+div.nurse-dashboard-style div.container-fluid table tr td button,
+div.nurse-dashboard-style div.container-sm table tr td button,
+div.nurse-dashboard-style div.container-md table tr td button,
+div.nurse-dashboard-style div.container-lg table tr td button,
+div.nurse-dashboard-style div.container-xl table tr td button {
+  border: none;
+  margin-right: 15px;
+  background-color: inherit;
+  transition: color 0.2s ease-in-out;
+  font-size: 18px;
+}
+
+div.nurse-dashboard-style div.container-fluid table tr td button:first-child:hover,
+div.nurse-dashboard-style div.container-sm table tr td button:first-child:hover,
+div.nurse-dashboard-style div.container-md table tr td button:first-child:hover,
+div.nurse-dashboard-style div.container-lg table tr td button:first-child:hover,
+div.nurse-dashboard-style div.container-xl table tr td button:first-child:hover {
+  color: #227DC7;
+}
+
+div.nurse-dashboard-style div.container-fluid table tr td button:last-child:hover,
+div.nurse-dashboard-style div.container-sm table tr td button:last-child:hover,
+div.nurse-dashboard-style div.container-md table tr td button:last-child:hover,
+div.nurse-dashboard-style div.container-lg table tr td button:last-child:hover,
+div.nurse-dashboard-style div.container-xl table tr td button:last-child:hover {
+  color: #FF0000;
+}
+
+div.nurse-reserve-style {
+  padding-bottom: 5%;
+}
+
+div.nurse-reserve-style div.container {
+  margin-top: 5%;
+}
+
+div.nurse-reserve-style div.container form div.form-group div.container div.row input {
+  min-width: 75%;
+  display: inline-block;
+}
+
+@media (max-width: 576px) {
+  div.nurse-reserve-style div.container {
+    margin-top: 5%;
+  }
+
+  div.nurse-reserve-style div.container form div.form-group div.container {
+    margin-top: -3% !important;
+  }
+
+  div.nurse-reserve-style div.container form div.form-group div.container div.row input {
+    margin-top: 15px;
+  }
+}
+
+div.nurse-work-hour-exception {
+  padding-bottom: 5%;
+}
+
+div.nurse-work-hour-exception div.container {
+  margin-top: 5%;
+}
+
+div.nurse-work-hour-exception div.container form {
+  margin-left: 30%;
+}
+
+div.nurse-work-hour-exception div.container form div.form-group input,
+div.nurse-work-hour-exception div.container form div.form-group select {
+  width: 50%;
+}
+
+div.nurse-work-hour-exception div.container form div.form-group select {
+  height: 250px;
+}
+
+div.nurse-work-hour-exception div.container form div.form-group select option {
+  height: 25px;
+  margin-left: -6px;
+  padding-left: 15px;
+  border-top: 0.5px #ADC8E8 solid;
+}
+
+div.nurse-work-hour-exception div.container form div.form-group select option:first-child {
+  border-top: none;
 }
 
 html {

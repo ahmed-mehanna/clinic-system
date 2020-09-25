@@ -1,0 +1,39 @@
+div.nurse-reserve-style {
+    div.container {
+        margin-top: 5%;
+        form {
+            div.form-group {
+                div.container {
+                    div.row {
+                        input {
+                            min-width: 75%;
+                            display: inline-block;
+                        }
+
+                    }
+                }
+            }
+        }
+    }
+    padding-bottom: 5%;
+}
+
+@media (max-width: 576px) {
+    div.nurse-reserve-style {
+        div.container {
+            margin-top: 5%;
+            form {
+                div.form-group {
+                    div.container {
+                        margin-top: -3% !important;
+                        div.row {
+                            input {
+                                margin-top: 15px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

@@ -37331,8 +37331,13 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
+<<<<<<< HEAD
 __webpack_require__(/*! C:\xampp\htdocs\clinic-system\resources\js\app.js */"./resources/js/app.js");
 module.exports = __webpack_require__(/*! C:\xampp\htdocs\clinic-system\resources\sass\app.scss */"./resources/sass/app.scss");
+=======
+__webpack_require__(/*! /opt/lampp/htdocs/git/clinic-system/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /opt/lampp/htdocs/git/clinic-system/resources/sass/app.scss */"./resources/sass/app.scss");
+>>>>>>> 917d6734400657ef53a4cb469cd5c4422bd12e23
 
 
 /***/ })

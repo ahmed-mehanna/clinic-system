@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PagesController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -13,10 +15,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('index');
-})->name('index');
+Route::get('/', [PagesController::class, 'index'])->name('index');
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return view('dashboard');
-})->name('dashboard');
+Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
+   Route::get('/dashboard', [PagesController::class, 'patientDashboard']) ->name('dashboard');
+});
+
+Route::get('/nurse', [PagesController::class, 'nurseDashboard'])->name('nurse-dashboard');
+
+Route::get('/nurse/reserve', [PagesController::class, 'nurseReserve'])->name('nurse-reserve');
+
+Route::get('/nurse/working-hours', [PagesController::class, 'nurseWorkHourException'])->name('working-hours');
