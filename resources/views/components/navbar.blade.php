@@ -26,8 +26,9 @@
         @if (Route::has('login'))
             <ul class="hidden fixed top-0 right-0 sm:block navbar-nav">
                 @auth
+
                    <li class="nav-item not-active" id="dashboard">
-                       <a href="{{ url('/dashboard') }}" class="text-sm text-gray-700 mr-3">Dashboard</a>
+                       <a href="/dashboard/user/" class="text-sm text-gray-700 mr-3">Dashboard</a>
                        <span></span>
                    </li>
                 @else

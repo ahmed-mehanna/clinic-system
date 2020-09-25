@@ -2,7 +2,10 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PagesController;
-
+use App\Http\Controllers\DoctorController;
+use App\Http\Controllers\PatientController;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\check;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,3 +29,9 @@ Route::get('/nurse', [PagesController::class, 'nurseDashboard'])->name('nurse-da
 Route::get('/nurse/reserve', [PagesController::class, 'nurseReserve'])->name('nurse-reserve');
 
 Route::get('/nurse/working-hours', [PagesController::class, 'nurseWorkHourException'])->name('working-hours');
+
+//---------------------------------------/
+Route::post("/login/custom",[LoginController::class,"login"]);
+Route::get("/doctor",[DoctorController::class,"index"])->middleware("auth");;
+Route::get("/patient",[PatientController::class,"index"])->middleware("auth");;
+Route::get("/dashboard/user/",[check::class,"checkRole"]);
