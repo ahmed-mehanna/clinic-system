@@ -1,7 +1,7 @@
 @extends('components.app')
 @section('content')
     <script>
-        document.getElementById('registration').className = 'nav-item active';
+        document.getElementById('login').className = 'nav-item active';
     </script>
     <div class="n-designs">
         <div class="container-fluid">
@@ -15,9 +15,13 @@
                     <br>@error('phoneNumber')<span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>@enderror <br>
                     <input type="password" class="input-field" placeholder="Password" name="password" required autocomplete="new-password" />
                     <br>@error('Password')<span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>@enderror <br>
-                    <div class="flex items-center justify-end mt-2">
+                    <div class="fp w-100 mt-3">
+                        <a href="{{route('password.request')}}" >Forgot password?</a>
                     </div>
-                    <button type="submit" class="submit-btn mt-3">Login</button>
+                    <div class="fp w-100 mt-3">
+                        <a href="{{route('register')}}" >Register Now</a>
+                    </div>
+                    <button type="submit" class="submit-btn mt-4">Login</button>
                 </form>
             </div>
         </div>
