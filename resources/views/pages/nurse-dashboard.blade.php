@@ -154,10 +154,10 @@
                         <td>{{$reservationsData[0]['from']}}</td>
                         <td>{{$reservationsData[0]['to']}}</td>
                         <td>
-                            <button type="button" data-toggle="modal" data-target="#attend-pop-up">
+                            <button name="attend" value="true" form="attend" type="submit" data-toggle="modal" data-target="#attend-pop-up">
                                 <i class="fa fa-check"></i>
                             </button>
-                            <button class="mr-0" type="button" data-toggle="modal" data-target="#did-not-attend-pop-up">
+                            <button name="attend" value="false" form="did-not-attend" class="mr-0" type="submit" data-toggle="modal" data-target="#did-not-attend-pop-up">
                                 <i class="fa fa-times"></i>
                             </button>
                         </td>
@@ -169,10 +169,10 @@
                             <td>{{$reservationsData[$i]['from']}}</td>
                             <td>{{$reservationsData[$i]['to']}}</td>
                             <td>
-                                <button type="button" data-toggle="modal" data-target="#attend-pop-up">
+                                <button name="attend" value="true" form="attend" type="submit" data-toggle="modal" data-target="#attend-pop-up">
                                     <i class="fa fa-check"></i>
                                 </button>
-                                <button class="mr-0" type="button" data-toggle="modal" data-target="#did-not-attend-pop-up">
+                                <button name="attend" value="false" form="did-not-attend" class="mr-0" type="submit" data-toggle="modal" data-target="#did-not-attend-pop-up">
                                     <i class="fa fa-times"></i>
                                 </button>
                             </td>
