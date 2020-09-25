@@ -37,7 +37,7 @@
                 <ul>
                     <li>
                         <i class="fa fa-home">
-                            <span>
+                            <span style="line-height: 1.2;">
                                 143 Gordon Terrace Embarrassing NG33 0ZT United Kingdom
                             </span>
                         </i>
