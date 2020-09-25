@@ -11,7 +11,7 @@
                 </div>
                 <form method="POST" class="input-group" action="{{ route('login') }}">
                     @csrf
-                    <input class="input-field" placeholder="Email" type="email" name="email" :value="old('email')" required autofocus>
+                    <input class="input-field" placeholder="PhoneNumber" type="number" name="PhoneNumber" :value="old('PhoneNumber')" required autofocus>
                     <input class="input-field" placeholder="Password" type="password" name="password" required autocomplete="current-password">
                     <div class="fp w-100 mt-3">
                         <a href="{{route('password.request')}}" >Forgot password?</a>

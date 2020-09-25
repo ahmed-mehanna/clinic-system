@@ -19,10 +19,10 @@ nav {
         margin-left: -16px;
         margin-right: -16px;
         padding-top: 30px !important;
+        padding-left: 0 !important;
         ul {
             margin: 0;
             li {
-                margin-right: 25px;
                 min-width: 100px;
                 text-align: center;
                 font-weight: 300;
@@ -46,7 +46,8 @@ nav {
                     font-weight: bolder;
                 }
                 span {
-                    width: 100%;
+                    width: 50%;
+                    margin-left: 25%;
                 }
             }
             li.not-active {
@@ -66,14 +67,32 @@ nav {
     }
 }
 
-@media (min-width: 992px) {
-    div.collapse {
-        padding: 0 !important;
+
+@media (max-width: 1199px) {
+    nav {
+        a.navbar-brand {
+            margin-right: 50px;
+        }
+    }
+}
+
+@media (max-width: 1034px) {
+    nav {
+        a.navbar-brand {
+            margin-right: 25px;
+        }
     }
 }
 
 @media (max-width: 991px) {
     nav {
+        div.collapse {
+            padding: 0 !important;
+        }
+        a.navbar-brand {
+            margin-right: 0;
+            margin-left: 0;
+        }
         div {
             ul {
                 li {

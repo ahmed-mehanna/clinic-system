@@ -1,0 +1,26 @@
+div.nurse-work-hour-exception {
+    div.container {
+        margin-top: 5%;
+        form {
+            margin-left: 30%;
+            div.form-group {
+                input, select {
+                    width: 50%;
+                }
+                select {
+                    height: 250px;
+                    option {
+                        height: 25px;
+                        margin-left: -6px;
+                        padding-left: 15px;
+                        border-top: 0.5px $f-hovered-color solid;
+                        &:first-child {
+                            border-top: none;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    padding-bottom: 5%;
+}
