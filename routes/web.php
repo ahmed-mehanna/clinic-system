@@ -30,7 +30,7 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
 Route::post("/login/custom",[LoginController::class,"login"]);
 
 Route::group(['middleware' => ['isDoctor']], function() {
-    Route::get("/doctor",[DoctorController::class,"index"]);
+//    Route::get("/doctor",[DoctorController::class,"index"]);
 });
 
 Route::group(['middleware' => ['isPatient']], function() {
@@ -47,3 +47,6 @@ Route::group(['middleware' => ['isNurse']], function() {
 
 Route::get("/dashboard/user/",[check::class,"checkRole"]);
 Route::view('/noacess','noacess');
+
+
+Route::get('/doctor', [PagesController::class, 'doctorDashboard']);

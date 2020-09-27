@@ -30,12 +30,12 @@ div.home-page-style {
                         //width: 460px;
                         max-width: 460px;
                         //height: 63px;
-                        font-family: 'Montserrat', sans-serif;
+                        font-family: $main-font-family;
                         font-weight: bolder;
                         display: inline-block;
                     }
                     p {
-                        font-family: 'Montserrat', sans-serif;
+                        font-family: $main-font-family;
                         font-size: 20px;
                         font-weight: 100;
                         span.title {

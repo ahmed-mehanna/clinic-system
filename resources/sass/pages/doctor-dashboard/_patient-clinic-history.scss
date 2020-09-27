@@ -1,0 +1,54 @@
+div.doctor-dashboard-style {
+    div.container-fluid {
+        div.section {
+            div.patient-clinic-history {
+                overflow-y: scroll;
+                font-size: 18px;
+                max-height: 300px;
+                max-width: 97%;
+                div.data {
+                    margin-left: 3%;
+                    margin-right: 3%;
+                    padding-bottom: 50px;
+                    border-bottom: 1px #000 solid;
+                    span.title {
+                        margin-right: 10px;
+                        font-size: 20px;
+                    }
+                    div.row {
+                        margin-bottom: 15px;
+                        margin-top: 15px;
+                        padding-left: 25px;
+                        padding-right: 25px;
+                        p.illness-diagnose {
+                            padding-left: 25px; // delete for sm screens
+                            margin-top: 10px;
+                        }
+                    }
+                    div.drugs-container {
+                        span.title {
+                            margin-left: 25px;
+                        }
+                        div.drugs {
+                            margin-left: 65px; // delete for sm screens
+                            margin-right: 65px; // delete for sm screens
+                            div.row {
+                                border: 1px solid #ced4da;
+                                background-color: #E9ECEF;
+                                border-radius: 0.25rem;
+                                color: #495057;
+                            }
+                            div {
+                                padding-left: 10px;
+                                padding-top: 7px;
+                            }
+                        }
+                    }
+                    &:last-child {
+                        border-bottom: none;
+                    }
+                }
+            }
+        }
+    }
+}

@@ -14987,6 +14987,498 @@ div.nurse-work-hour-exception div.container form div.form-group select option:fi
   border-top: none;
 }
 
+div.doctor-dashboard-style div.container-fluid,
+div.doctor-dashboard-style div.container-sm,
+div.doctor-dashboard-style div.container-md,
+div.doctor-dashboard-style div.container-lg,
+div.doctor-dashboard-style div.container-xl {
+  font-family: "Montserrat", sans-serif;
+  padding-bottom: 2.5%;
+}
+
+div.doctor-dashboard-style div.container-fluid div.section,
+div.doctor-dashboard-style div.container-sm div.section,
+div.doctor-dashboard-style div.container-md div.section,
+div.doctor-dashboard-style div.container-lg div.section,
+div.doctor-dashboard-style div.container-xl div.section {
+  margin-top: 2.5%;
+  font-size: 22px;
+  box-shadow: rgba(193, 193, 193, 0.5) 0 0 20px;
+  padding-bottom: 15px;
+  padding-top: 25px;
+  border-radius: 15px;
+}
+
+div.doctor-dashboard-style div.container-fluid div.section div.section-icon,
+div.doctor-dashboard-style div.container-sm div.section div.section-icon,
+div.doctor-dashboard-style div.container-md div.section div.section-icon,
+div.doctor-dashboard-style div.container-lg div.section div.section-icon,
+div.doctor-dashboard-style div.container-xl div.section div.section-icon {
+  margin-bottom: 20px;
+  margin-left: 20px;
+}
+
+div.doctor-dashboard-style div.container-fluid div.section div.section-icon i,
+div.doctor-dashboard-style div.container-sm div.section div.section-icon i,
+div.doctor-dashboard-style div.container-md div.section div.section-icon i,
+div.doctor-dashboard-style div.container-lg div.section div.section-icon i,
+div.doctor-dashboard-style div.container-xl div.section div.section-icon i {
+  padding-bottom: 5px;
+}
+
+div.doctor-dashboard-style div.container-fluid div.section div.section-icon span,
+div.doctor-dashboard-style div.container-sm div.section div.section-icon span,
+div.doctor-dashboard-style div.container-md div.section div.section-icon span,
+div.doctor-dashboard-style div.container-lg div.section div.section-icon span,
+div.doctor-dashboard-style div.container-xl div.section div.section-icon span {
+  margin-left: 5px;
+  font-family: "Montserrat", sans-serif;
+  font-weight: bolder;
+}
+
+div.doctor-dashboard-style div.container-fluid div.section div.patient-data div.row,
+div.doctor-dashboard-style div.container-sm div.section div.patient-data div.row,
+div.doctor-dashboard-style div.container-md div.section div.patient-data div.row,
+div.doctor-dashboard-style div.container-lg div.section div.patient-data div.row,
+div.doctor-dashboard-style div.container-xl div.section div.patient-data div.row {
+  border: 1px #000 solid;
+  border-radius: 8px;
+  max-width: 95%;
+  margin-left: 2.5%;
+}
+
+div.doctor-dashboard-style div.container-fluid div.section div.patient-data div.row div.sub-container div.data-container,
+div.doctor-dashboard-style div.container-sm div.section div.patient-data div.row div.sub-container div.data-container,
+div.doctor-dashboard-style div.container-md div.section div.patient-data div.row div.sub-container div.data-container,
+div.doctor-dashboard-style div.container-lg div.section div.patient-data div.row div.sub-container div.data-container,
+div.doctor-dashboard-style div.container-xl div.section div.patient-data div.row div.sub-container div.data-container {
+  display: inline-block;
+  padding-left: 10px;
+  border-left: 1px #000 solid;
+}
+
+div.doctor-dashboard-style div.container-fluid div.section div.patient-data div.row div.sub-container div.data-container span.title,
+div.doctor-dashboard-style div.container-sm div.section div.patient-data div.row div.sub-container div.data-container span.title,
+div.doctor-dashboard-style div.container-md div.section div.patient-data div.row div.sub-container div.data-container span.title,
+div.doctor-dashboard-style div.container-lg div.section div.patient-data div.row div.sub-container div.data-container span.title,
+div.doctor-dashboard-style div.container-xl div.section div.patient-data div.row div.sub-container div.data-container span.title {
+  font-size: 20px;
+}
+
+div.doctor-dashboard-style div.container-fluid div.section div.patient-data div.row div.sub-container div.data-container span.data,
+div.doctor-dashboard-style div.container-sm div.section div.patient-data div.row div.sub-container div.data-container span.data,
+div.doctor-dashboard-style div.container-md div.section div.patient-data div.row div.sub-container div.data-container span.data,
+div.doctor-dashboard-style div.container-lg div.section div.patient-data div.row div.sub-container div.data-container span.data,
+div.doctor-dashboard-style div.container-xl div.section div.patient-data div.row div.sub-container div.data-container span.data {
+  font-size: 18px;
+  margin-left: 5px;
+}
+
+@media (max-width: 767px) {
+  div.doctor-dashboard-style div.container-fluid div.patient-data div.row div.sub-container,
+  div.doctor-dashboard-style div.container-sm div.patient-data div.row div.sub-container,
+  div.doctor-dashboard-style div.container-md div.patient-data div.row div.sub-container,
+  div.doctor-dashboard-style div.container-lg div.patient-data div.row div.sub-container,
+  div.doctor-dashboard-style div.container-xl div.patient-data div.row div.sub-container {
+    border-bottom: 1px #000 solid;
+  }
+
+  div.doctor-dashboard-style div.container-fluid div.patient-data div.row div.sub-container div.data-container,
+  div.doctor-dashboard-style div.container-sm div.patient-data div.row div.sub-container div.data-container,
+  div.doctor-dashboard-style div.container-md div.patient-data div.row div.sub-container div.data-container,
+  div.doctor-dashboard-style div.container-lg div.patient-data div.row div.sub-container div.data-container,
+  div.doctor-dashboard-style div.container-xl div.patient-data div.row div.sub-container div.data-container {
+    border-left: none !important;
+  }
+
+  div.doctor-dashboard-style div.container-fluid div.patient-data div.row div.sub-container:last-child,
+  div.doctor-dashboard-style div.container-sm div.patient-data div.row div.sub-container:last-child,
+  div.doctor-dashboard-style div.container-md div.patient-data div.row div.sub-container:last-child,
+  div.doctor-dashboard-style div.container-lg div.patient-data div.row div.sub-container:last-child,
+  div.doctor-dashboard-style div.container-xl div.patient-data div.row div.sub-container:last-child {
+    border-bottom: none !important;
+  }
+}
+
+div.doctor-dashboard-style div.container-fluid div.section div.medical-history,
+div.doctor-dashboard-style div.container-sm div.section div.medical-history,
+div.doctor-dashboard-style div.container-md div.section div.medical-history,
+div.doctor-dashboard-style div.container-lg div.section div.medical-history,
+div.doctor-dashboard-style div.container-xl div.section div.medical-history {
+  max-width: 97%;
+  max-height: 300px;
+  overflow-y: scroll;
+}
+
+div.doctor-dashboard-style div.container-fluid div.section div.medical-history div.sub-container,
+div.doctor-dashboard-style div.container-sm div.section div.medical-history div.sub-container,
+div.doctor-dashboard-style div.container-md div.section div.medical-history div.sub-container,
+div.doctor-dashboard-style div.container-lg div.section div.medical-history div.sub-container,
+div.doctor-dashboard-style div.container-xl div.section div.medical-history div.sub-container {
+  max-width: 90%;
+  margin-left: 3%;
+}
+
+div.doctor-dashboard-style div.container-fluid div.section div.medical-history div.sub-container i.fa-edit:hover,
+div.doctor-dashboard-style div.container-sm div.section div.medical-history div.sub-container i.fa-edit:hover,
+div.doctor-dashboard-style div.container-md div.section div.medical-history div.sub-container i.fa-edit:hover,
+div.doctor-dashboard-style div.container-lg div.section div.medical-history div.sub-container i.fa-edit:hover,
+div.doctor-dashboard-style div.container-xl div.section div.medical-history div.sub-container i.fa-edit:hover {
+  color: #2a9055;
+}
+
+div.doctor-dashboard-style div.container-fluid div.section div.medical-history div.sub-container i.active,
+div.doctor-dashboard-style div.container-sm div.section div.medical-history div.sub-container i.active,
+div.doctor-dashboard-style div.container-md div.section div.medical-history div.sub-container i.active,
+div.doctor-dashboard-style div.container-lg div.section div.medical-history div.sub-container i.active,
+div.doctor-dashboard-style div.container-xl div.section div.medical-history div.sub-container i.active {
+  color: #2a9055;
+}
+
+div.doctor-dashboard-style div.container-fluid div.section div.medical-history div.sub-container div.data-container,
+div.doctor-dashboard-style div.container-sm div.section div.medical-history div.sub-container div.data-container,
+div.doctor-dashboard-style div.container-md div.section div.medical-history div.sub-container div.data-container,
+div.doctor-dashboard-style div.container-lg div.section div.medical-history div.sub-container div.data-container,
+div.doctor-dashboard-style div.container-xl div.section div.medical-history div.sub-container div.data-container {
+  padding-left: 10px;
+}
+
+div.doctor-dashboard-style div.container-fluid div.section div.medical-history div.sub-container div.data-container label,
+div.doctor-dashboard-style div.container-sm div.section div.medical-history div.sub-container div.data-container label,
+div.doctor-dashboard-style div.container-md div.section div.medical-history div.sub-container div.data-container label,
+div.doctor-dashboard-style div.container-lg div.section div.medical-history div.sub-container div.data-container label,
+div.doctor-dashboard-style div.container-xl div.section div.medical-history div.sub-container div.data-container label {
+  font-size: 20px;
+  width: 100%;
+}
+
+div.doctor-dashboard-style div.container-fluid div.section div.medical-history div.sub-container div.data-container textarea,
+div.doctor-dashboard-style div.container-sm div.section div.medical-history div.sub-container div.data-container textarea,
+div.doctor-dashboard-style div.container-md div.section div.medical-history div.sub-container div.data-container textarea,
+div.doctor-dashboard-style div.container-lg div.section div.medical-history div.sub-container div.data-container textarea,
+div.doctor-dashboard-style div.container-xl div.section div.medical-history div.sub-container div.data-container textarea {
+  font-size: 18px;
+  max-height: 200px;
+  max-width: 75%;
+  overflow-y: paged-y-controls;
+}
+
+div.doctor-dashboard-style div.container-fluid div.section div.medical-history div.sub-container div.analysis-section,
+div.doctor-dashboard-style div.container-sm div.section div.medical-history div.sub-container div.analysis-section,
+div.doctor-dashboard-style div.container-md div.section div.medical-history div.sub-container div.analysis-section,
+div.doctor-dashboard-style div.container-lg div.section div.medical-history div.sub-container div.analysis-section,
+div.doctor-dashboard-style div.container-xl div.section div.medical-history div.sub-container div.analysis-section {
+  margin-top: 80px;
+}
+
+div.doctor-dashboard-style div.container-fluid div.section div.medical-history div.sub-container div.analysis-section div.mobile-responsive,
+div.doctor-dashboard-style div.container-sm div.section div.medical-history div.sub-container div.analysis-section div.mobile-responsive,
+div.doctor-dashboard-style div.container-md div.section div.medical-history div.sub-container div.analysis-section div.mobile-responsive,
+div.doctor-dashboard-style div.container-lg div.section div.medical-history div.sub-container div.analysis-section div.mobile-responsive,
+div.doctor-dashboard-style div.container-xl div.section div.medical-history div.sub-container div.analysis-section div.mobile-responsive {
+  display: none;
+}
+
+div.doctor-dashboard-style div.container-fluid div.section div.medical-history div.sub-container div.analysis-section input,
+div.doctor-dashboard-style div.container-sm div.section div.medical-history div.sub-container div.analysis-section input,
+div.doctor-dashboard-style div.container-md div.section div.medical-history div.sub-container div.analysis-section input,
+div.doctor-dashboard-style div.container-lg div.section div.medical-history div.sub-container div.analysis-section input,
+div.doctor-dashboard-style div.container-xl div.section div.medical-history div.sub-container div.analysis-section input {
+  font-family: "Montserrat", sans-serif;
+  font-size: 16px;
+  width: 85%;
+  margin-bottom: 15px;
+}
+
+div.doctor-dashboard-style div.container-fluid div.section div.medical-history div.sub-container div.analysis-section i,
+div.doctor-dashboard-style div.container-sm div.section div.medical-history div.sub-container div.analysis-section i,
+div.doctor-dashboard-style div.container-md div.section div.medical-history div.sub-container div.analysis-section i,
+div.doctor-dashboard-style div.container-lg div.section div.medical-history div.sub-container div.analysis-section i,
+div.doctor-dashboard-style div.container-xl div.section div.medical-history div.sub-container div.analysis-section i {
+  transition: color 0.2s ease-in-out;
+  padding: 0;
+}
+
+div.doctor-dashboard-style div.container-fluid div.section div.medical-history div.sub-container div.analysis-section i.fa-plus:hover,
+div.doctor-dashboard-style div.container-sm div.section div.medical-history div.sub-container div.analysis-section i.fa-plus:hover,
+div.doctor-dashboard-style div.container-md div.section div.medical-history div.sub-container div.analysis-section i.fa-plus:hover,
+div.doctor-dashboard-style div.container-lg div.section div.medical-history div.sub-container div.analysis-section i.fa-plus:hover,
+div.doctor-dashboard-style div.container-xl div.section div.medical-history div.sub-container div.analysis-section i.fa-plus:hover {
+  color: #227DC7;
+}
+
+div.doctor-dashboard-style div.container-fluid div.section div.medical-history div.sub-container div.analysis-section i.fa-trash,
+div.doctor-dashboard-style div.container-sm div.section div.medical-history div.sub-container div.analysis-section i.fa-trash,
+div.doctor-dashboard-style div.container-md div.section div.medical-history div.sub-container div.analysis-section i.fa-trash,
+div.doctor-dashboard-style div.container-lg div.section div.medical-history div.sub-container div.analysis-section i.fa-trash,
+div.doctor-dashboard-style div.container-xl div.section div.medical-history div.sub-container div.analysis-section i.fa-trash {
+  padding-bottom: 4px;
+}
+
+div.doctor-dashboard-style div.container-fluid div.section div.medical-history div.sub-container div.analysis-section i.fa-trash:hover,
+div.doctor-dashboard-style div.container-sm div.section div.medical-history div.sub-container div.analysis-section i.fa-trash:hover,
+div.doctor-dashboard-style div.container-md div.section div.medical-history div.sub-container div.analysis-section i.fa-trash:hover,
+div.doctor-dashboard-style div.container-lg div.section div.medical-history div.sub-container div.analysis-section i.fa-trash:hover,
+div.doctor-dashboard-style div.container-xl div.section div.medical-history div.sub-container div.analysis-section i.fa-trash:hover {
+  color: red;
+}
+
+div.doctor-dashboard-style div.container-fluid div.section div.medical-history div.sub-container div.analysis-section i.added-icon,
+div.doctor-dashboard-style div.container-sm div.section div.medical-history div.sub-container div.analysis-section i.added-icon,
+div.doctor-dashboard-style div.container-md div.section div.medical-history div.sub-container div.analysis-section i.added-icon,
+div.doctor-dashboard-style div.container-lg div.section div.medical-history div.sub-container div.analysis-section i.added-icon,
+div.doctor-dashboard-style div.container-xl div.section div.medical-history div.sub-container div.analysis-section i.added-icon {
+  margin-left: 6px;
+}
+
+@media (max-width: 767px) {
+  div.doctor-dashboard-style div.container-fluid div.section div.medical-history div.sub-container div.data-container textarea,
+  div.doctor-dashboard-style div.container-sm div.section div.medical-history div.sub-container div.data-container textarea,
+  div.doctor-dashboard-style div.container-md div.section div.medical-history div.sub-container div.data-container textarea,
+  div.doctor-dashboard-style div.container-lg div.section div.medical-history div.sub-container div.data-container textarea,
+  div.doctor-dashboard-style div.container-xl div.section div.medical-history div.sub-container div.data-container textarea {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 991px) {
+  div.doctor-dashboard-style div.container-fluid div.section div.medical-history div.sub-container div.analysis-section div.responsive,
+  div.doctor-dashboard-style div.container-sm div.section div.medical-history div.sub-container div.analysis-section div.responsive,
+  div.doctor-dashboard-style div.container-md div.section div.medical-history div.sub-container div.analysis-section div.responsive,
+  div.doctor-dashboard-style div.container-lg div.section div.medical-history div.sub-container div.analysis-section div.responsive,
+  div.doctor-dashboard-style div.container-xl div.section div.medical-history div.sub-container div.analysis-section div.responsive {
+    display: none;
+  }
+
+  div.doctor-dashboard-style div.container-fluid div.section div.medical-history div.sub-container div.analysis-section div.mobile-responsive,
+  div.doctor-dashboard-style div.container-sm div.section div.medical-history div.sub-container div.analysis-section div.mobile-responsive,
+  div.doctor-dashboard-style div.container-md div.section div.medical-history div.sub-container div.analysis-section div.mobile-responsive,
+  div.doctor-dashboard-style div.container-lg div.section div.medical-history div.sub-container div.analysis-section div.mobile-responsive,
+  div.doctor-dashboard-style div.container-xl div.section div.medical-history div.sub-container div.analysis-section div.mobile-responsive {
+    display: block;
+    margin-top: 25px;
+  }
+
+  div.doctor-dashboard-style div.container-fluid div.section div.medical-history div.sub-container div.analysis-section div.mobile-responsive input,
+  div.doctor-dashboard-style div.container-sm div.section div.medical-history div.sub-container div.analysis-section div.mobile-responsive input,
+  div.doctor-dashboard-style div.container-md div.section div.medical-history div.sub-container div.analysis-section div.mobile-responsive input,
+  div.doctor-dashboard-style div.container-lg div.section div.medical-history div.sub-container div.analysis-section div.mobile-responsive input,
+  div.doctor-dashboard-style div.container-xl div.section div.medical-history div.sub-container div.analysis-section div.mobile-responsive input {
+    max-width: 100%;
+  }
+
+  div.doctor-dashboard-style div.container-fluid div.section div.medical-history div.sub-container div.analysis-section div.mobile-responsive div.operations,
+  div.doctor-dashboard-style div.container-sm div.section div.medical-history div.sub-container div.analysis-section div.mobile-responsive div.operations,
+  div.doctor-dashboard-style div.container-md div.section div.medical-history div.sub-container div.analysis-section div.mobile-responsive div.operations,
+  div.doctor-dashboard-style div.container-lg div.section div.medical-history div.sub-container div.analysis-section div.mobile-responsive div.operations,
+  div.doctor-dashboard-style div.container-xl div.section div.medical-history div.sub-container div.analysis-section div.mobile-responsive div.operations {
+    margin-left: 18%;
+  }
+
+  div.doctor-dashboard-style div.container-fluid div.section div.medical-history div.sub-container div#rumours-section,
+  div.doctor-dashboard-style div.container-sm div.section div.medical-history div.sub-container div#rumours-section,
+  div.doctor-dashboard-style div.container-md div.section div.medical-history div.sub-container div#rumours-section,
+  div.doctor-dashboard-style div.container-lg div.section div.medical-history div.sub-container div#rumours-section,
+  div.doctor-dashboard-style div.container-xl div.section div.medical-history div.sub-container div#rumours-section {
+    border-top: 1px #000 solid;
+    padding-top: 10px;
+  }
+}
+
+@media (max-width: 575px) {
+  div.doctor-dashboard-style div.container-fluid div.section div.medical-history div.sub-container div.analysis-section div.mobile-responsive div.operations,
+  div.doctor-dashboard-style div.container-sm div.section div.medical-history div.sub-container div.analysis-section div.mobile-responsive div.operations,
+  div.doctor-dashboard-style div.container-md div.section div.medical-history div.sub-container div.analysis-section div.mobile-responsive div.operations,
+  div.doctor-dashboard-style div.container-lg div.section div.medical-history div.sub-container div.analysis-section div.mobile-responsive div.operations,
+  div.doctor-dashboard-style div.container-xl div.section div.medical-history div.sub-container div.analysis-section div.mobile-responsive div.operations {
+    margin-left: 10px;
+  }
+}
+
+div.doctor-dashboard-style div.container-fluid div.section div.patient-clinic-history,
+div.doctor-dashboard-style div.container-sm div.section div.patient-clinic-history,
+div.doctor-dashboard-style div.container-md div.section div.patient-clinic-history,
+div.doctor-dashboard-style div.container-lg div.section div.patient-clinic-history,
+div.doctor-dashboard-style div.container-xl div.section div.patient-clinic-history {
+  overflow-y: scroll;
+  font-size: 18px;
+  max-height: 300px;
+  max-width: 97%;
+}
+
+div.doctor-dashboard-style div.container-fluid div.section div.patient-clinic-history div.data,
+div.doctor-dashboard-style div.container-sm div.section div.patient-clinic-history div.data,
+div.doctor-dashboard-style div.container-md div.section div.patient-clinic-history div.data,
+div.doctor-dashboard-style div.container-lg div.section div.patient-clinic-history div.data,
+div.doctor-dashboard-style div.container-xl div.section div.patient-clinic-history div.data {
+  margin-left: 3%;
+  margin-right: 3%;
+  padding-bottom: 50px;
+  border-bottom: 1px #000 solid;
+}
+
+div.doctor-dashboard-style div.container-fluid div.section div.patient-clinic-history div.data span.title,
+div.doctor-dashboard-style div.container-sm div.section div.patient-clinic-history div.data span.title,
+div.doctor-dashboard-style div.container-md div.section div.patient-clinic-history div.data span.title,
+div.doctor-dashboard-style div.container-lg div.section div.patient-clinic-history div.data span.title,
+div.doctor-dashboard-style div.container-xl div.section div.patient-clinic-history div.data span.title {
+  margin-right: 10px;
+  font-size: 20px;
+}
+
+div.doctor-dashboard-style div.container-fluid div.section div.patient-clinic-history div.data div.row,
+div.doctor-dashboard-style div.container-sm div.section div.patient-clinic-history div.data div.row,
+div.doctor-dashboard-style div.container-md div.section div.patient-clinic-history div.data div.row,
+div.doctor-dashboard-style div.container-lg div.section div.patient-clinic-history div.data div.row,
+div.doctor-dashboard-style div.container-xl div.section div.patient-clinic-history div.data div.row {
+  margin-bottom: 15px;
+  margin-top: 15px;
+  padding-left: 25px;
+  padding-right: 25px;
+}
+
+div.doctor-dashboard-style div.container-fluid div.section div.patient-clinic-history div.data div.row p.illness-diagnose,
+div.doctor-dashboard-style div.container-sm div.section div.patient-clinic-history div.data div.row p.illness-diagnose,
+div.doctor-dashboard-style div.container-md div.section div.patient-clinic-history div.data div.row p.illness-diagnose,
+div.doctor-dashboard-style div.container-lg div.section div.patient-clinic-history div.data div.row p.illness-diagnose,
+div.doctor-dashboard-style div.container-xl div.section div.patient-clinic-history div.data div.row p.illness-diagnose {
+  padding-left: 25px;
+  margin-top: 10px;
+}
+
+div.doctor-dashboard-style div.container-fluid div.section div.patient-clinic-history div.data div.drugs-container span.title,
+div.doctor-dashboard-style div.container-sm div.section div.patient-clinic-history div.data div.drugs-container span.title,
+div.doctor-dashboard-style div.container-md div.section div.patient-clinic-history div.data div.drugs-container span.title,
+div.doctor-dashboard-style div.container-lg div.section div.patient-clinic-history div.data div.drugs-container span.title,
+div.doctor-dashboard-style div.container-xl div.section div.patient-clinic-history div.data div.drugs-container span.title {
+  margin-left: 25px;
+}
+
+div.doctor-dashboard-style div.container-fluid div.section div.patient-clinic-history div.data div.drugs-container div.drugs,
+div.doctor-dashboard-style div.container-sm div.section div.patient-clinic-history div.data div.drugs-container div.drugs,
+div.doctor-dashboard-style div.container-md div.section div.patient-clinic-history div.data div.drugs-container div.drugs,
+div.doctor-dashboard-style div.container-lg div.section div.patient-clinic-history div.data div.drugs-container div.drugs,
+div.doctor-dashboard-style div.container-xl div.section div.patient-clinic-history div.data div.drugs-container div.drugs {
+  margin-left: 65px;
+  margin-right: 65px;
+}
+
+div.doctor-dashboard-style div.container-fluid div.section div.patient-clinic-history div.data div.drugs-container div.drugs div.row,
+div.doctor-dashboard-style div.container-sm div.section div.patient-clinic-history div.data div.drugs-container div.drugs div.row,
+div.doctor-dashboard-style div.container-md div.section div.patient-clinic-history div.data div.drugs-container div.drugs div.row,
+div.doctor-dashboard-style div.container-lg div.section div.patient-clinic-history div.data div.drugs-container div.drugs div.row,
+div.doctor-dashboard-style div.container-xl div.section div.patient-clinic-history div.data div.drugs-container div.drugs div.row {
+  border: 1px solid #ced4da;
+  background-color: #E9ECEF;
+  border-radius: 0.25rem;
+  color: #495057;
+}
+
+div.doctor-dashboard-style div.container-fluid div.section div.patient-clinic-history div.data div.drugs-container div.drugs div,
+div.doctor-dashboard-style div.container-sm div.section div.patient-clinic-history div.data div.drugs-container div.drugs div,
+div.doctor-dashboard-style div.container-md div.section div.patient-clinic-history div.data div.drugs-container div.drugs div,
+div.doctor-dashboard-style div.container-lg div.section div.patient-clinic-history div.data div.drugs-container div.drugs div,
+div.doctor-dashboard-style div.container-xl div.section div.patient-clinic-history div.data div.drugs-container div.drugs div {
+  padding-left: 10px;
+  padding-top: 7px;
+}
+
+div.doctor-dashboard-style div.container-fluid div.section div.patient-clinic-history div.data:last-child,
+div.doctor-dashboard-style div.container-sm div.section div.patient-clinic-history div.data:last-child,
+div.doctor-dashboard-style div.container-md div.section div.patient-clinic-history div.data:last-child,
+div.doctor-dashboard-style div.container-lg div.section div.patient-clinic-history div.data:last-child,
+div.doctor-dashboard-style div.container-xl div.section div.patient-clinic-history div.data:last-child {
+  border-bottom: none;
+}
+
+div.doctor-dashboard-style div.container-fluid div.section div.patient-form,
+div.doctor-dashboard-style div.container-sm div.section div.patient-form,
+div.doctor-dashboard-style div.container-md div.section div.patient-form,
+div.doctor-dashboard-style div.container-lg div.section div.patient-form,
+div.doctor-dashboard-style div.container-xl div.section div.patient-form {
+  font-size: 18px;
+  margin-left: 3%;
+  margin-right: 3%;
+}
+
+div.doctor-dashboard-style div.container-fluid div.section div.patient-form div.drugs div.row input,
+div.doctor-dashboard-style div.container-sm div.section div.patient-form div.drugs div.row input,
+div.doctor-dashboard-style div.container-md div.section div.patient-form div.drugs div.row input,
+div.doctor-dashboard-style div.container-lg div.section div.patient-form div.drugs div.row input,
+div.doctor-dashboard-style div.container-xl div.section div.patient-form div.drugs div.row input {
+  margin-top: 15px;
+}
+
+div.doctor-dashboard-style div.container-fluid div.section div.patient-form div.drugs div.row div.col-lg-3,
+div.doctor-dashboard-style div.container-sm div.section div.patient-form div.drugs div.row div.col-lg-3,
+div.doctor-dashboard-style div.container-md div.section div.patient-form div.drugs div.row div.col-lg-3,
+div.doctor-dashboard-style div.container-lg div.section div.patient-form div.drugs div.row div.col-lg-3,
+div.doctor-dashboard-style div.container-xl div.section div.patient-form div.drugs div.row div.col-lg-3 {
+  font-size: 20px;
+}
+
+div.doctor-dashboard-style div.container-fluid div.section div.patient-form div.drugs div.row div.col-lg-3 i,
+div.doctor-dashboard-style div.container-sm div.section div.patient-form div.drugs div.row div.col-lg-3 i,
+div.doctor-dashboard-style div.container-md div.section div.patient-form div.drugs div.row div.col-lg-3 i,
+div.doctor-dashboard-style div.container-lg div.section div.patient-form div.drugs div.row div.col-lg-3 i,
+div.doctor-dashboard-style div.container-xl div.section div.patient-form div.drugs div.row div.col-lg-3 i {
+  margin-top: 15px;
+  padding-right: 0;
+  transition: color 0.2s ease-in-out;
+}
+
+div.doctor-dashboard-style div.container-fluid div.section div.patient-form div.drugs div.row div.col-lg-3 i.fa-plus:hover,
+div.doctor-dashboard-style div.container-sm div.section div.patient-form div.drugs div.row div.col-lg-3 i.fa-plus:hover,
+div.doctor-dashboard-style div.container-md div.section div.patient-form div.drugs div.row div.col-lg-3 i.fa-plus:hover,
+div.doctor-dashboard-style div.container-lg div.section div.patient-form div.drugs div.row div.col-lg-3 i.fa-plus:hover,
+div.doctor-dashboard-style div.container-xl div.section div.patient-form div.drugs div.row div.col-lg-3 i.fa-plus:hover {
+  color: #227DC7;
+}
+
+div.doctor-dashboard-style div.container-fluid div.section div.patient-form div.drugs div.row div.col-lg-3 i.fa-trash,
+div.doctor-dashboard-style div.container-sm div.section div.patient-form div.drugs div.row div.col-lg-3 i.fa-trash,
+div.doctor-dashboard-style div.container-md div.section div.patient-form div.drugs div.row div.col-lg-3 i.fa-trash,
+div.doctor-dashboard-style div.container-lg div.section div.patient-form div.drugs div.row div.col-lg-3 i.fa-trash,
+div.doctor-dashboard-style div.container-xl div.section div.patient-form div.drugs div.row div.col-lg-3 i.fa-trash {
+  padding-bottom: 7px;
+}
+
+div.doctor-dashboard-style div.container-fluid div.section div.patient-form div.drugs div.row div.col-lg-3 i.fa-trash:hover,
+div.doctor-dashboard-style div.container-sm div.section div.patient-form div.drugs div.row div.col-lg-3 i.fa-trash:hover,
+div.doctor-dashboard-style div.container-md div.section div.patient-form div.drugs div.row div.col-lg-3 i.fa-trash:hover,
+div.doctor-dashboard-style div.container-lg div.section div.patient-form div.drugs div.row div.col-lg-3 i.fa-trash:hover,
+div.doctor-dashboard-style div.container-xl div.section div.patient-form div.drugs div.row div.col-lg-3 i.fa-trash:hover {
+  color: red;
+}
+
+@media (max-width: 991px) {
+  div.doctor-dashboard-style div.container-fluid div.section div.patient-form div.form-group input,
+  div.doctor-dashboard-style div.container-sm div.section div.patient-form div.form-group input,
+  div.doctor-dashboard-style div.container-md div.section div.patient-form div.form-group input,
+  div.doctor-dashboard-style div.container-lg div.section div.patient-form div.form-group input,
+  div.doctor-dashboard-style div.container-xl div.section div.patient-form div.form-group input {
+    width: 40% !important;
+  }
+}
+
+@media (max-width: 767px) {
+  div.doctor-dashboard-style div.container-fluid div.section div.patient-form div.form-group input,
+  div.doctor-dashboard-style div.container-sm div.section div.patient-form div.form-group input,
+  div.doctor-dashboard-style div.container-md div.section div.patient-form div.form-group input,
+  div.doctor-dashboard-style div.container-lg div.section div.patient-form div.form-group input,
+  div.doctor-dashboard-style div.container-xl div.section div.patient-form div.form-group input {
+    width: 75% !important;
+  }
+
+  div.doctor-dashboard-style div.container-fluid div.section div.patient-form div.form-group textarea,
+  div.doctor-dashboard-style div.container-sm div.section div.patient-form div.form-group textarea,
+  div.doctor-dashboard-style div.container-md div.section div.patient-form div.form-group textarea,
+  div.doctor-dashboard-style div.container-lg div.section div.patient-form div.form-group textarea,
+  div.doctor-dashboard-style div.container-xl div.section div.patient-form div.form-group textarea {
+    width: 100% !important;
+  }
+}
+
 html {
   scroll-behavior: smooth;
 }

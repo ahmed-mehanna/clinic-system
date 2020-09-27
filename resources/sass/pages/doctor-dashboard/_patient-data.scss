@@ -1,0 +1,48 @@
+div.doctor-dashboard-style {
+    div.container-fluid {
+        div.section {
+            div.patient-data {
+                div.row {
+                    border: 1px #000 solid;
+                    border-radius: 8px;
+                    max-width: 95%;
+                    margin-left: 2.5%;
+                    div.sub-container {
+                        div.data-container {
+                            display: inline-block;
+                            padding-left: 10px;
+                            border-left: 1px #000 solid;
+                            span.title {
+                                font-size: 20px;
+                            }
+                            span.data {
+                                font-size: 18px;
+                                margin-left: 5px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 767px) {
+    div.doctor-dashboard-style {
+        div.container-fluid {
+            div.patient-data {
+                div.row {
+                    div.sub-container {
+                        border-bottom: 1px #000 solid;
+                        div.data-container {
+                            border-left: none !important;
+                        }
+                        &:last-child {
+                            border-bottom: none !important;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

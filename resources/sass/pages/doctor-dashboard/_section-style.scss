@@ -1,0 +1,26 @@
+div.doctor-dashboard-style {
+    div.container-fluid {
+        font-family: $main-font-family;
+        padding-bottom: 2.5%;
+        div.section {
+            margin-top: 2.5%;
+            font-size: 22px;
+            box-shadow: rgba(193, 193, 193, 0.5) 0 0 20px;
+            padding-bottom: 15px;
+            padding-top: 25px;
+            border-radius: 15px;
+            div.section-icon {
+                margin-bottom: 20px;
+                margin-left: 20px;
+                i {
+                    padding-bottom: 5px;
+                }
+                span {
+                    margin-left: 5px;
+                    font-family: $main-font-family;
+                    font-weight: bolder;
+                }
+            }
+        }
+    }
+}

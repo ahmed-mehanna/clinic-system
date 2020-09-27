@@ -1,0 +1,136 @@
+div.doctor-dashboard-style {
+    div.container-fluid {
+        div.section {
+            div.medical-history {
+                max-width: 97%;
+                max-height: 300px;
+                overflow-y: scroll;
+                div.sub-container {
+                    max-width: 90%;
+                    margin-left: 3%;
+                    i.fa-edit {
+                        &:hover {
+                            color: #2a9055;
+                        }
+                    }
+                    i.active {
+                        color: #2a9055;
+                    }
+                    div.data-container {
+                        padding-left: 10px;
+                        label {
+                            font-size: 20px;
+                            width: 100%;
+                        }
+                        textarea {
+                            font-size: 18px;
+                            max-height: 200px;
+                            max-width: 75%;
+                            overflow-y: paged-y-controls;
+                        }
+                    }
+                    div.analysis-section {
+                        margin-top: 80px;
+                        div.mobile-responsive {
+                            display: none;
+                        }
+                        input {
+                            font-family: $main-font-family;
+                            font-size: 16px;
+                            width: 85%;
+                            margin-bottom: 15px;
+                        }
+                        i {
+                            transition: color .2s ease-in-out;
+                            padding: 0;
+                        }
+                        i.fa-plus {
+                            &:hover {
+                                color: $bg-main-color;
+                            }
+                        }
+                        i.fa-trash {
+                            padding-bottom: 4px;
+                            &:hover {
+                                color: red;
+                            }
+                        }
+                        i.added-icon {
+                            margin-left: 6px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 767px) {
+    div.doctor-dashboard-style {
+        div.container-fluid {
+            div.section {
+                div.medical-history {
+                    div.sub-container {
+                        div.data-container {
+                            textarea {
+                                max-width: 100%;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 991px) {
+    div.doctor-dashboard-style {
+        div.container-fluid {
+            div.section {
+                div.medical-history {
+                    div.sub-container {
+                        div.analysis-section {
+                            div.responsive {
+                                display: none;
+                            }
+                            div.mobile-responsive {
+                                display: block;
+                                margin-top: 25px;
+                                input {
+                                    max-width: 100%;
+                                }
+                                div.operations {
+                                    margin-left: 18%;
+                                }
+                            }
+                        }
+                        div#rumours-section {
+                            border-top: 1px #000 solid;
+                            padding-top: 10px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 575px) {
+    div.doctor-dashboard-style {
+        div.container-fluid {
+            div.section {
+                div.medical-history {
+                    div.sub-container {
+                        div.analysis-section {
+                            div.mobile-responsive {
+                                div.operations {
+                                    margin-left: 10px;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
