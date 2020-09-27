@@ -10,11 +10,13 @@
                 <label for="illness" class="col-sm-2 col-form-label">Illness</label>
                 <div class="col-sm-10">
                     <input type="text" class="form-control w-25" id="illness" name="illness-name" form="patient-form" placeholder="Illness">
+                    <small  class="form-text text-muted"><span style="color:red">@error("illness-name"){{$message}}@enderror</span></small>
                 </div>
             </div>
             <div class="form-group">
                 <label for="illness-diagnose">Illness Diagnose</label>
                 <textarea class="form-control w-50" id="illness-diagnose" name="illness-diagnose" form="patient-form" rows="3"></textarea>
+                <small  class="form-text text-muted"><span style="color:red">@error("illness-diagnose"){{$message}}@enderror</span></small>
             </div>
             <div class="drugs" id="drugs">
                 <span class="title">Drugs</span>
@@ -23,10 +25,12 @@
                 </script>
                 <div class="row mt-2" id="drug1">
                     <div class="col-lg-3">
-                        <input type="text" class="form-control" name="drug1-name" form="patient-form" placeholder="Drug Name">
+                        <input type="text" class="form-control" name="drugname[]" form="patient-form" placeholder="Drug Name">
+                        <small  class="form-text text-muted"><span style="color:red">@error("drug1-name"){{$message}}@enderror</span></small>
                     </div>
                     <div class="col-lg-6">
-                        <input type="text" class="form-control" name="drug1-description" form="patient-form" placeholder="Drug Description">
+                        <input type="text" class="form-control" name="drugdescription[]" form="patient-form" placeholder="Drug Description">
+                        <small  class="form-text text-muted"><span style="color:red">@error("drug1-description"){{$message}}@enderror</span></small>
                     </div>
                     <div class="col-lg-3" id="buttons-container1">
                         <i class="btn fa fa-plus" id="new-button" onclick="addDrug()"></i>
@@ -54,10 +58,10 @@
             $('#new-button').remove();
             let newDrug = '<div class="row mt-2" id="drug' + id + '">\n' +
                 '                    <div class="col-lg-3">\n' +
-                '                        <input type="text" class="form-control" name="drug' + id + '-name" form="patient-form" placeholder="Drug Name">\n' +
+                '                        <input type="text" class="form-control" name="drugname[]" form="patient-form" placeholder="Drug Name">\n' +
                 '                    </div>\n' +
                 '                    <div class="col-lg-6">\n' +
-                '                        <input type="text" class="form-control" name="drug' + id + '-description" form="patient-form" placeholder="Drug Description">\n' +
+                '                        <input type="text" class="form-control" name="drugdescription[]" form="patient-form" placeholder="Drug Description">\n' +
                 '                    </div>\n' +
                 '                    <div class="col-lg-3" id="buttons-container' + id + '">\n' +
                 '                        <i class="btn fa fa-plus" id="new-button" onclick="addDrug()"></i>\n' +

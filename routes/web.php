@@ -31,6 +31,9 @@ Route::post("/login/custom",[LoginController::class,"login"]);
 
 Route::group(['middleware' => ['isDoctor']], function() {
   Route::get('/doctor', [DoctorController::class, 'index'])->name('doctor-dashboard');
+  Route::post('/doctor', [DoctorController::class, 'store'])->name('doctor-dashboard');
+  Route::get('/doctor/show/patient',[DoctorController::class, 'showPatient']);
+  Route::post('/doctor/find/patient',[DoctorController::class, 'findPatient']);
 });
 
 Route::group(['middleware' => ['isPatient']], function() {
