@@ -126,7 +126,7 @@
             <x-patient-history :history="$patientData['history']" />
             <x-patient-clinic-history :patient-history="$patientData['clinic-history']" />
             <x-patient-form />
-            <form id="patient-form" action=""></form>
+            <form id="patient-form" action="" method="post"></form>
         </div>
     </div>
 @endsection
