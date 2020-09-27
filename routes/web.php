@@ -30,7 +30,7 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
 Route::post("/login/custom",[LoginController::class,"login"]);
 
 Route::group(['middleware' => ['isDoctor']], function() {
-  Route::get('/doctor', [PagesController::class, 'doctorDashboard'])->name('doctor-dashboard');
+  Route::get('/doctor', [DoctorController::class, 'index'])->name('doctor-dashboard');
 });
 
 Route::group(['middleware' => ['isPatient']], function() {

@@ -12,7 +12,7 @@ class DoctorController extends Controller
     {
         $user = User::find(auth()->user()->id);
 
-        return view('doctor.index',["user"=>$user]);
+        return view('pages.doctor-dashboard',["user"=>$user]);
     }
 
     /**
