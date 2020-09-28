@@ -8,6 +8,7 @@ use App\Models\Patient;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use App\Models\Exception_Days_Doctor;
+use Illuminate\Support\Facades\Hash;
 
 class NurseController extends Controller
 {
@@ -54,7 +55,7 @@ class NurseController extends Controller
             $user["name"] = $request["first-name"] . " " . $request["middle-name"] . " " . $request["last-name"];
             $user["email"] = $request["email"];
             $user["phoneNumber"] = $request["phone-number"];
-            $user["password"] = $request["national-id"];
+            $user["password"] = Hash::make($request["national-id"]);
 
             $user->save();
 

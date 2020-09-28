@@ -11,7 +11,7 @@
                 </div>
                 <form id="signup" class="input-group" method="POST" action="/login/custom" style="margin-top: -20%">
                     @csrf
-                    <input type="number" class="input-field" name= "phoneNumber" placeholder="Phone Number" required />
+                    <input type="text" class="input-field" name= "phoneNumber" placeholder="E-mail / PhoneNumber" required />
                     <br>@error('phoneNumber')<span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>@enderror <br>
                     <input type="password" class="input-field" placeholder="Password" name="password" required autocomplete="new-password" />
                     <br>@error('Password')<span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>@enderror <br>
