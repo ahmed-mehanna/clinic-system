@@ -16,15 +16,17 @@ class LoginController extends Controller
         ])) {
             $user = User::firstWhere("phoneNumber", $request->input("phoneNumber"));
 
-            if($user->Role == 1){
-              return redirect('/doctor');
-            }elseif ($user->Role ==2){
+            if ($user->Role == 1) {
+                return redirect('/doctor');
+            } elseif ($user->Role == 2) {
                 return redirect('/nurse');
-            }elseif($user->Role ==3){
+            } elseif ($user->Role == 3) {
                 return redirect('/patient');
-            }else{
-                return  redirect()->back();
+            } else {
+                return redirect()->back();
             }
+        } else {
+            return redirect()->back();
         }
     }
 }
