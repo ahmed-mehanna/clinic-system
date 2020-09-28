@@ -6,19 +6,19 @@
             </i>
         </div>
         <div class="patient-form">
-            <div class="form-group row">
+            <div class="form-group sub-container row">
                 <label for="illness" class="col-sm-2 col-form-label">Illness</label>
                 <div class="col-sm-10">
                     <input type="text" class="form-control w-25" id="illness" name="illness-name" form="patient-form" placeholder="Illness">
                     <small  class="form-text text-muted"><span style="color:red">@error("illness-name"){{$message}}@enderror</span></small>
                 </div>
             </div>
-            <div class="form-group">
+            <div class="form-group sub-container">
                 <label for="illness-diagnose">Illness Diagnose</label>
                 <textarea class="form-control w-50" id="illness-diagnose" name="illness-diagnose" form="patient-form" rows="3"></textarea>
                 <small  class="form-text text-muted"><span style="color:red">@error("illness-diagnose"){{$message}}@enderror</span></small>
             </div>
-            <div class="drugs" id="drugs">
+            <div class="sub-container" id="drugs">
                 <span class="title">Drugs</span>
                 <script>
                     let numberOfDrugs = [1];
@@ -38,7 +38,6 @@
                     </div>
                 </div>
             </div>
-            <button type="submit" form="patient-form" class="btn btn-primary mt-5">Save</button>
         </div>
     </div>
     <script>

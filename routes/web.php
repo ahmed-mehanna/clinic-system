@@ -50,3 +50,7 @@ Route::group(['middleware' => ['isNurse']], function() {
 
 Route::get("/dashboard/user/",[check::class,"checkRole"]);
 Route::view('/noacess','noacess');
+
+Route::get('/doctor/find-patient', function () {
+    return view('pages.doctor-find-patient');
+});

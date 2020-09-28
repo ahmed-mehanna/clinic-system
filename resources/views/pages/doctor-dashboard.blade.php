@@ -126,9 +126,11 @@
             <x-patient-history :history="$patientData['history']" />
             <x-patient-clinic-history :patient-history="$patientData['clinic-history']" />
             <x-patient-form />
+            <button type="submit" form="patient-form" class="btn btn-primary mt-5 ml-5">Save</button>
             <form id="patient-form" action="doctor" method="post">
               @csrf
             </form>
         </div>
     </div>
 @endsection
+@include('components.doctor-dashboard.find-patient-pop-up')

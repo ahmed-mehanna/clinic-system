@@ -9,16 +9,11 @@
             <div class="sub-container">
                 <div class="form-group data-container border-left-0">
                     <label for="summary">Summary</label>
-                    <textarea class="form-control" form="patient-form" name="summary" id="summary" cols='100' rows="60">{{$history['summary']}}</textarea>
                     @if($history['summary'] != '')
-                        <script>
-                            $('#summary').attr('readonly', 'true');
-                        </script>
+                        <textarea readonly class="form-control" form="patient-form" name="summary" id="summary" cols='100' rows="60">{{$history['summary']}}</textarea>
                         <i class="btn fa fa-edit mt-1" id="edit-summary-button" onclick="editSummary()" style="margin-right: 0.25rem;"></i>
                     @else
-                        <script>
-                            $('#summary').attr('placeholder', 'Write Summary For Patient\'s Medical History')
-                        </script>
+                        <textarea class="form-control" form="patient-form" name="summary" id="summary" cols='100' rows="60">{{$history['summary']}}</textarea>
                         <i class="btn fa fa-edit mt-1 active" id="edit-summary-button" onclick="editSummary()" style="margin-right: 0.25rem;"></i>
                     @endif
                 </div>

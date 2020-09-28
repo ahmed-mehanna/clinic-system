@@ -15399,55 +15399,66 @@ div.doctor-dashboard-style div.container-xl div.section div.patient-form {
   font-size: 18px;
   margin-left: 3%;
   margin-right: 3%;
+  max-height: 390px;
+  overflow-y: auto;
 }
 
-div.doctor-dashboard-style div.container-fluid div.section div.patient-form div.drugs div.row input,
-div.doctor-dashboard-style div.container-sm div.section div.patient-form div.drugs div.row input,
-div.doctor-dashboard-style div.container-md div.section div.patient-form div.drugs div.row input,
-div.doctor-dashboard-style div.container-lg div.section div.patient-form div.drugs div.row input,
-div.doctor-dashboard-style div.container-xl div.section div.patient-form div.drugs div.row input {
+div.doctor-dashboard-style div.container-fluid div.section div.patient-form div.sub-container,
+div.doctor-dashboard-style div.container-sm div.section div.patient-form div.sub-container,
+div.doctor-dashboard-style div.container-md div.section div.patient-form div.sub-container,
+div.doctor-dashboard-style div.container-lg div.section div.patient-form div.sub-container,
+div.doctor-dashboard-style div.container-xl div.section div.patient-form div.sub-container {
+  margin-top: 20px;
+  max-width: 90%;
+}
+
+div.doctor-dashboard-style div.container-fluid div.section div.patient-form div.sub-container div.row input,
+div.doctor-dashboard-style div.container-sm div.section div.patient-form div.sub-container div.row input,
+div.doctor-dashboard-style div.container-md div.section div.patient-form div.sub-container div.row input,
+div.doctor-dashboard-style div.container-lg div.section div.patient-form div.sub-container div.row input,
+div.doctor-dashboard-style div.container-xl div.section div.patient-form div.sub-container div.row input {
   margin-top: 15px;
 }
 
-div.doctor-dashboard-style div.container-fluid div.section div.patient-form div.drugs div.row div.col-lg-3,
-div.doctor-dashboard-style div.container-sm div.section div.patient-form div.drugs div.row div.col-lg-3,
-div.doctor-dashboard-style div.container-md div.section div.patient-form div.drugs div.row div.col-lg-3,
-div.doctor-dashboard-style div.container-lg div.section div.patient-form div.drugs div.row div.col-lg-3,
-div.doctor-dashboard-style div.container-xl div.section div.patient-form div.drugs div.row div.col-lg-3 {
+div.doctor-dashboard-style div.container-fluid div.section div.patient-form div.sub-container div.row div.col-lg-3,
+div.doctor-dashboard-style div.container-sm div.section div.patient-form div.sub-container div.row div.col-lg-3,
+div.doctor-dashboard-style div.container-md div.section div.patient-form div.sub-container div.row div.col-lg-3,
+div.doctor-dashboard-style div.container-lg div.section div.patient-form div.sub-container div.row div.col-lg-3,
+div.doctor-dashboard-style div.container-xl div.section div.patient-form div.sub-container div.row div.col-lg-3 {
   font-size: 20px;
 }
 
-div.doctor-dashboard-style div.container-fluid div.section div.patient-form div.drugs div.row div.col-lg-3 i,
-div.doctor-dashboard-style div.container-sm div.section div.patient-form div.drugs div.row div.col-lg-3 i,
-div.doctor-dashboard-style div.container-md div.section div.patient-form div.drugs div.row div.col-lg-3 i,
-div.doctor-dashboard-style div.container-lg div.section div.patient-form div.drugs div.row div.col-lg-3 i,
-div.doctor-dashboard-style div.container-xl div.section div.patient-form div.drugs div.row div.col-lg-3 i {
+div.doctor-dashboard-style div.container-fluid div.section div.patient-form div.sub-container div.row div.col-lg-3 i,
+div.doctor-dashboard-style div.container-sm div.section div.patient-form div.sub-container div.row div.col-lg-3 i,
+div.doctor-dashboard-style div.container-md div.section div.patient-form div.sub-container div.row div.col-lg-3 i,
+div.doctor-dashboard-style div.container-lg div.section div.patient-form div.sub-container div.row div.col-lg-3 i,
+div.doctor-dashboard-style div.container-xl div.section div.patient-form div.sub-container div.row div.col-lg-3 i {
   margin-top: 15px;
   padding-right: 0;
   transition: color 0.2s ease-in-out;
 }
 
-div.doctor-dashboard-style div.container-fluid div.section div.patient-form div.drugs div.row div.col-lg-3 i.fa-plus:hover,
-div.doctor-dashboard-style div.container-sm div.section div.patient-form div.drugs div.row div.col-lg-3 i.fa-plus:hover,
-div.doctor-dashboard-style div.container-md div.section div.patient-form div.drugs div.row div.col-lg-3 i.fa-plus:hover,
-div.doctor-dashboard-style div.container-lg div.section div.patient-form div.drugs div.row div.col-lg-3 i.fa-plus:hover,
-div.doctor-dashboard-style div.container-xl div.section div.patient-form div.drugs div.row div.col-lg-3 i.fa-plus:hover {
+div.doctor-dashboard-style div.container-fluid div.section div.patient-form div.sub-container div.row div.col-lg-3 i.fa-plus:hover,
+div.doctor-dashboard-style div.container-sm div.section div.patient-form div.sub-container div.row div.col-lg-3 i.fa-plus:hover,
+div.doctor-dashboard-style div.container-md div.section div.patient-form div.sub-container div.row div.col-lg-3 i.fa-plus:hover,
+div.doctor-dashboard-style div.container-lg div.section div.patient-form div.sub-container div.row div.col-lg-3 i.fa-plus:hover,
+div.doctor-dashboard-style div.container-xl div.section div.patient-form div.sub-container div.row div.col-lg-3 i.fa-plus:hover {
   color: #227DC7;
 }
 
-div.doctor-dashboard-style div.container-fluid div.section div.patient-form div.drugs div.row div.col-lg-3 i.fa-trash,
-div.doctor-dashboard-style div.container-sm div.section div.patient-form div.drugs div.row div.col-lg-3 i.fa-trash,
-div.doctor-dashboard-style div.container-md div.section div.patient-form div.drugs div.row div.col-lg-3 i.fa-trash,
-div.doctor-dashboard-style div.container-lg div.section div.patient-form div.drugs div.row div.col-lg-3 i.fa-trash,
-div.doctor-dashboard-style div.container-xl div.section div.patient-form div.drugs div.row div.col-lg-3 i.fa-trash {
+div.doctor-dashboard-style div.container-fluid div.section div.patient-form div.sub-container div.row div.col-lg-3 i.fa-trash,
+div.doctor-dashboard-style div.container-sm div.section div.patient-form div.sub-container div.row div.col-lg-3 i.fa-trash,
+div.doctor-dashboard-style div.container-md div.section div.patient-form div.sub-container div.row div.col-lg-3 i.fa-trash,
+div.doctor-dashboard-style div.container-lg div.section div.patient-form div.sub-container div.row div.col-lg-3 i.fa-trash,
+div.doctor-dashboard-style div.container-xl div.section div.patient-form div.sub-container div.row div.col-lg-3 i.fa-trash {
   padding-bottom: 7px;
 }
 
-div.doctor-dashboard-style div.container-fluid div.section div.patient-form div.drugs div.row div.col-lg-3 i.fa-trash:hover,
-div.doctor-dashboard-style div.container-sm div.section div.patient-form div.drugs div.row div.col-lg-3 i.fa-trash:hover,
-div.doctor-dashboard-style div.container-md div.section div.patient-form div.drugs div.row div.col-lg-3 i.fa-trash:hover,
-div.doctor-dashboard-style div.container-lg div.section div.patient-form div.drugs div.row div.col-lg-3 i.fa-trash:hover,
-div.doctor-dashboard-style div.container-xl div.section div.patient-form div.drugs div.row div.col-lg-3 i.fa-trash:hover {
+div.doctor-dashboard-style div.container-fluid div.section div.patient-form div.sub-container div.row div.col-lg-3 i.fa-trash:hover,
+div.doctor-dashboard-style div.container-sm div.section div.patient-form div.sub-container div.row div.col-lg-3 i.fa-trash:hover,
+div.doctor-dashboard-style div.container-md div.section div.patient-form div.sub-container div.row div.col-lg-3 i.fa-trash:hover,
+div.doctor-dashboard-style div.container-lg div.section div.patient-form div.sub-container div.row div.col-lg-3 i.fa-trash:hover,
+div.doctor-dashboard-style div.container-xl div.section div.patient-form div.sub-container div.row div.col-lg-3 i.fa-trash:hover {
   color: red;
 }
 
