@@ -3,87 +3,25 @@
     @include('components.nurse-dashboard.nurse-navbar')
 @endsection
 @section('content')
+    <?php
+    use Carbon\Carbon;
+    ?>
     <script>
         document.getElementById('nurse-work-exception').className = 'nav-item active'
     </script>
     <div class="nurse-work-hour-exception">
-        <?php
-            $times = [
-                [
-                    'from'  =>  '10:00 AM',
-                    'to'    =>  '10:30 AM'
-                ],
-                [
-                    'from'  =>  '10:00 AM',
-                    'to'    =>  '10:30 AM'
-                ],
-                [
-                    'from'  =>  '10:00 AM',
-                    'to'    =>  '10:30 AM'
-                ],
-                [
-                    'from'  =>  '10:00 AM',
-                    'to'    =>  '10:30 AM'
-                ],
-                [
-                    'from'  =>  '10:00 AM',
-                    'to'    =>  '10:30 AM'
-                ],
-                [
-                    'from'  =>  '10:00 AM',
-                    'to'    =>  '10:30 AM'
-                ],
-                [
-                    'from'  =>  '10:00 AM',
-                    'to'    =>  '10:30 AM'
-                ],
-                [
-                    'from'  =>  '10:00 AM',
-                    'to'    =>  '10:30 AM'
-                ],
-                [
-                    'from'  =>  '10:00 AM',
-                    'to'    =>  '10:30 AM'
-                ],
-                [
-                    'from'  =>  '10:00 AM',
-                    'to'    =>  '10:30 AM'
-                ],
-                [
-                    'from'  =>  '10:00 AM',
-                    'to'    =>  '10:30 AM'
-                ],
-                [
-                    'from'  =>  '10:00 AM',
-                    'to'    =>  '10:30 AM'
-                ],
-                [
-                    'from'  =>  '10:00 AM',
-                    'to'    =>  '10:30 AM'
-                ],
-                [
-                    'from'  =>  '10:00 AM',
-                    'to'    =>  '10:30 AM'
-                ],
-                [
-                    'from'  =>  '10:00 AM',
-                    'to'    =>  '10:30 AM'
-                ]
-            ]
-        ?>
         <div class="container">
-            <form>
+            <form action="/update/schedule" method="get">
+                @csrf
                 <div class="form-group">
-                    <label for="day">Day</label>
-                    <input type="date" class="form-control" id="day" name="day" required>
+                    <label for="day">From</label>
+                    <input type="datetime-local" class="form-control" id="day" name="From_That_dayTime"   min="{{\Carbon\Carbon::tomorrow()->addDay()->toDateTimeLocalString()}}" required>
+                    <small class="form-text text-muted"><span style="color:red">@error("From_That_dayTime"){{$message}}@enderror</span></small>
                 </div>
-                <div class="form-group">
-                    <label for="time">Time</label>
-                    <select multiple class="form-control" id="time" name="time">
-                        @foreach($times as $time)
-                            <option>{{$time['from']}} : {{$time['to']}}</option>
-                        @endforeach
-                    </select>
+                 <div class="form-group">
+                    <label for="day">To</label>
+                    <input type="datetime-local" class="form-control" id="day" name="To_that_Daytime" min="{{\Carbon\Carbon::tomorrow()->addDay()->toDateTimeLocalString()}}"required>
+                     <small class="form-text text-muted"><span style="color:red">@error("To_that_Daytime"){{$message}}@enderror</span></small>
                 </div>
                 <button type="submit" class="btn btn-primary mr-3">Submit</button>
                 <span class="btn btn-danger" id="go-back" onclick="goBack()">Back</span>

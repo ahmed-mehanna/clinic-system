@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class Role extends Migration
+class AddToColumnToReservationTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,8 @@ class Role extends Migration
      */
     public function up()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->integer('Role')->default(3);
+        Schema::table('reservations', function (Blueprint $table) {
+            $table->integer('TO_Expection')->default(0);
         });
     }
 
@@ -25,8 +25,8 @@ class Role extends Migration
      */
     public function down()
     {
-        Schema::table('users', function ($table) {
-            $table->dropColumn('Role');
+        Schema::table('reservations', function (Blueprint $table) {
+            $table->dropColumn('TO_Expection');
         });
     }
 }

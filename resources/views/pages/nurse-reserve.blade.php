@@ -8,13 +8,14 @@
     </script>
     <div class="nurse-reserve-style">
         <div class="container">
-            <form>
+            <form action="/nurse/reserve/store" method="get">
+                @csrf
                 <div class="form-group">
                     <label for="name">Full Name</label>
                     <div class="container mt-0">
                         <div class="row">
                             <div class="col-sm-4 p-0">
-                                <input type="text" class="form-control col-sm-4" id="name" name="first-name" placeholder="First Name" required>
+                                <input type="text" class="form-control col-sm-4" name="first-name" placeholder="First Name" required>
                             </div>
                             <div class="col-sm-4 p-0 text-center">
                                 <input type="text" class="form-control col-sm-4" id="name" name="middle-name" placeholder="Middle Name" required>
@@ -37,6 +38,9 @@
                     <label for="email">Email</label>
                     <input type="email" class="form-control" id="email" name="email" placeholder="Enter Email">
                 </div>
+
+                    <input type="hidden" class="form-control" id="password" name="password" value="pass123">
+
                 <div class="form-group">
                     <label for="address">Address</label>
                     <input type="text" class="form-control" id="address" name="address" placeholder="Enter Address" required>

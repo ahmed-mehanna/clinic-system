@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddUserNumberToTableUser extends Migration
+class AttendanceColumnToPatientsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,8 @@ class AddUserNumberToTableUser extends Migration
      */
     public function up()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->integer('phoneNumber')->unique();
-            $table->integer('Role')->default(3);
+        Schema::table('patients', function (Blueprint $table) {
+            $table->integer('Attend')->default(0);
         });
     }
 
@@ -26,9 +25,8 @@ class AddUserNumberToTableUser extends Migration
      */
     public function down()
     {
-        Schema::table('users', function ($table) {
-            $table->dropColumn('phoneNumber');
-            $table->dropColumn('Role');
+        Schema::table('patients', function (Blueprint $table) {
+            $table->dropColumn('Attend');
         });
     }
 }

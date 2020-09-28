@@ -82,4 +82,11 @@ class User extends Authenticatable
         }
     }
 
+    public function patient(){
+        return $this->belongsTo('App\Models\Patient');
+    }
+    public function reservation(){
+        return $this->hasMany('App\Models\Reservation');
+    }
+
 }

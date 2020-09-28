@@ -11,20 +11,20 @@ class PagesController extends Controller
     }
 
     public function patientDashboard() {
-        return view('dashboard');
+        return redirect("/dashboard/user/");
     }
 
-    public function nurseDashboard() {
-        return view('pages.nurse-dashboard');
-    }
+//    public function nurseDashboard() {
+//        return view('pages.nurse-dashboard');
+//    }
 
-    public function nurseReserve() {
-        return view('pages.nurse-reserve');
-    }
+//    public function nurseReserve() {
+//        return view('pages.nurse-reserve');
+//    }
 
-    public function nurseWorkHourException() {
-        return view('pages.nurse-work-hour-exception');
-    }
+//    public function nurseWorkHourException() {
+//        return view('pages.nurse-work-hour-exception');
+//    }
 
 
 }

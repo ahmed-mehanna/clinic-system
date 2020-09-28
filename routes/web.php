@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PagesController;
 use App\Http\Controllers\DoctorController;
 use App\Http\Controllers\PatientController;
+use App\Http\Controllers\NurseController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\check;
 
@@ -38,11 +39,15 @@ Route::group(['middleware' => ['isPatient']], function() {
 });
 
 Route::group(['middleware' => ['isNurse']], function() {
-    Route::get('/nurse', [PagesController::class, 'nurseDashboard'])->name('nurse-dashboard');
+    Route::get('/nurse', [NurseController::class, 'index'])->name('nurse-dashboard');
 
-    Route::get('/nurse/reserve', [PagesController::class, 'nurseReserve'])->name('nurse-reserve');
+    Route::get('/nurse/reserve', [NurseController::class, 'createReserve'])->name('nurse-reserve');
 
-    Route::get('/nurse/working-hours', [PagesController::class, 'nurseWorkHourException'])->name('working-hours');
+    Route::get('/nurse/working-hours', [NurseController::class, 'createWorkHourException'])->name('working-hours');
+
+    Route::get('/nurse/reserve/store', [NurseController::class,"store"]);
+
+    Route::get('/update/schedule', [NurseController::class,"update"]);
 });
 
 Route::get("/dashboard/user/",[check::class,"checkRole"]);
