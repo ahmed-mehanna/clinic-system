@@ -14576,6 +14576,7 @@ div.home-page-style div.our-specialist-section.container-md,
 div.home-page-style div.our-specialist-section.container-lg,
 div.home-page-style div.our-specialist-section.container-xl {
   margin-top: 100px;
+  padding-bottom: 100px;
   background-image: url(/images/spclist.png?a9f41b12432b5194a56756485ecdbf04);
   background-repeat: no-repeat;
   background-position-x: -50px;
