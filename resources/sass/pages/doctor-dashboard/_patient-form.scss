@@ -1,0 +1,76 @@
+div.doctor-dashboard-style {
+    div.container-fluid {
+        div.section {
+            div.patient-form {
+                font-size: 18px;
+                margin-left: 3%;
+                margin-right: 3%;
+                max-height: 390px;
+                overflow-y: auto;
+                div.sub-container {
+                    margin-top: 20px;
+                    max-width: 90%;
+                    div.row {
+                        input {
+                            margin-top: 15px;
+                        }
+                        div.col-lg-3 {
+                            font-size: 20px;
+                            i {
+                                margin-top: 15px;
+                                padding-right: 0;
+                                transition: color .2s ease-in-out;
+                            }
+                            i.fa-plus {
+                                &:hover {
+                                    color: $bg-main-color;
+                                }
+                            }
+                            i.fa-trash {
+                                padding-bottom: 7px;
+                                &:hover {
+                                    color: red;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 991px) {
+    div.doctor-dashboard-style {
+        div.container-fluid {
+            div.section {
+                div.patient-form {
+                    div.form-group {
+                        input {
+                            width: 40% !important;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 767px) {
+    div.doctor-dashboard-style {
+        div.container-fluid {
+            div.section {
+                div.patient-form {
+                    div.form-group {
+                        input {
+                            width: 75% !important;
+                        }
+                        textarea {
+                            width: 100% !important;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

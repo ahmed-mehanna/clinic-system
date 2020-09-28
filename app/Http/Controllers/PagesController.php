@@ -26,5 +26,9 @@ class PagesController extends Controller
 //        return view('pages.nurse-work-hour-exception');
 //    }
 
+    public function doctorDashboard() {
+        return view('pages.doctor-dashboard');
+    }
+
 
 }

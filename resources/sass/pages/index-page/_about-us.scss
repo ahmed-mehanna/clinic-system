@@ -14,7 +14,7 @@ div.home-page-style {
                     margin-top: 20px;
                     padding-left: 50px;
                     h1, h3 {
-                        font-family: 'Montserrat', sans-serif;
+                        font-family: $main-font-family;
                         font-weight: bolder;
                         span {
                             display: block;
@@ -38,7 +38,7 @@ div.home-page-style {
                     }
                     table {
                         margin-top: 40px;
-                        font-family: 'Montserrat', sans-serif;
+                        font-family: $main-font-family;
                         color: #FFF;
                         max-width: 100%;
                         width: 100%;
