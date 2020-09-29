@@ -8,7 +8,7 @@
     <div class="collapse navbar-collapse" id="menu" style="padding-top: 25px; padding-left: 50px;">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item not-active" id="home">
-                <a class="nav-link" href="{{route('index')}}">Home</a>
+                <a class="nav-link" href="">Home</a>
                 <span></span>
             </li>
             <li class="nav-item not-active">
@@ -26,9 +26,8 @@
         @if (Route::has('login'))
             <ul class="hidden fixed top-0 right-0 sm:block navbar-nav">
                 @auth
-
                    <li class="nav-item not-active" id="dashboard">
-                       <a href="/dashboard/user/" class="text-sm text-gray-700 mr-3">Dashboard</a>
+                       <a href="{{route('logout')}}" class="text-sm text-gray-700 mr-3">logout</a>
                        <span></span>
                    </li>
                 @else
