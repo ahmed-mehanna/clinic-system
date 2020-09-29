@@ -1,5 +1,6 @@
 <?php
 
+use App\Actions\Fortify\UpdateUserPassword;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PagesController;
 use App\Http\Controllers\DoctorController;
@@ -7,7 +8,9 @@ use App\Http\Controllers\PatientController;
 use App\Http\Controllers\NurseController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\check;
-
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Password;
+use \App\Http\Controllers\RestPasswordController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -29,12 +32,16 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
 
 //---------------------------------------/
 Route::post("/login/custom",[LoginController::class,"login"]);
+Route::post("/password/update",[RestPasswordController::class,"update"]);
 
 Route::group(['middleware' => ['isDoctor']], function() {
   Route::get('/doctor', [DoctorController::class, 'index'])->name('doctor-dashboard');
   Route::post('/doctor', [DoctorController::class, 'store'])->name('doctor-dashboard');
   Route::get('/doctor/show/patient',[DoctorController::class, 'showPatient']);
   Route::post('/doctor/find/patient',[DoctorController::class, 'findPatient']);
+  Route::get('/doctor/find-patient', function () {
+        return view('pages.doctor-find-patient');
+    });
 });
 
 Route::group(['middleware' => ['isPatient']], function() {
@@ -53,9 +60,9 @@ Route::group(['middleware' => ['isNurse']], function() {
     Route::get('/update/schedule', [NurseController::class,"update"]);
 });
 
+
 Route::get("/dashboard/user/",[check::class,"checkRole"]);
 Route::view('/noacess','noacess');
 
-Route::get('/doctor/find-patient', function () {
-    return view('pages.doctor-find-patient');
-});
+Route::view("password/request","auth.forgot-password");
+

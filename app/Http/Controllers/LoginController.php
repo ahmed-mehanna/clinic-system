@@ -17,6 +17,7 @@ class LoginController extends Controller
             auth::attempt(['phoneNumber' => $phoneNumber, "password" => $request->input("password")]);
         }
         if (auth::check()) {
+
             $user = User::find(auth()->user()->id);
             if ($user->Role == 1) {
                 return redirect('/doctor');
@@ -26,7 +27,7 @@ class LoginController extends Controller
                 return redirect('/patient');
             }
         } else {
-            return redirect()->back();
+            return redirect()->back()->withErrors(['checkInvaliedLogin' => 'We couldnt verify your credentials']);
         }
     }
 }

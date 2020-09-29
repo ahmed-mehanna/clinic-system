@@ -46,14 +46,17 @@ class Kernel extends HttpKernel
         'isDoctor' => [
             \App\Http\Middleware\Authenticate::class,
             \App\Http\Middleware\IsDoctor::class,
+            \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         ],
         'isNurse' => [
             \App\Http\Middleware\Authenticate::class,
             \App\Http\Middleware\IsNurse::class,
+            \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         ],
         'isPatient' => [
             \App\Http\Middleware\Authenticate::class,
             \App\Http\Middleware\IsPatient::class,
+            \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         ],
     ];
 
