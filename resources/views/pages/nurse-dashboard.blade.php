@@ -11,7 +11,6 @@
     </script>
     <div class="nurse-dashboard-style">
         <div class="container-fluid">
-            @if(count($reservation)>0)
             <table class="table table-striped">
                 <thead>
                     <tr>
@@ -24,18 +23,18 @@
                 </thead>
                 <tbody>
                 <input type="hidden" value="{{$i=1}}">
+                @if(count($reservation)>0)
                         @foreach($reservation as $reservationsData)
                             <tr>
                                 <th scope="row">{{$i++}}</th>
                                 <td>{{$reservationsData->user->name}}</td>
                                 <td>{{Carbon::parse($reservationsData["reservation At"])->format('g:i A')}}</td>
                                 <td>{{Carbon::parse($reservationsData["reservation At"])->addMinutes(30)->format('g:i A')}}</td>
-                                <td>{{$reservationsData['id']}}</td>
                                 <td>
-                                    <button name="attend" value="true" form="attend" type="submit" data-toggle="modal" data-target="#attend-pop-up">
+                                    <button type="button" data-toggle="modal" data-target="#attend-pop-up">
                                         <i class="fa fa-check"></i>
                                     </button>
-                                    <button name="attend" value="false" form="did-not-attend" class="mr-0" type="submit" data-toggle="modal" data-target="#did-not-attend-pop-up">
+                                    <button class="mr-0" type="button" data-toggle="modal" data-target="#did-not-attend-pop-up">
                                         <i class="fa fa-times"></i>
                                     </button>
                                 </td>
