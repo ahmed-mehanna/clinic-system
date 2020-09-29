@@ -24,38 +24,17 @@ use Illuminate\Support\Facades\Auth;
                 <span></span>
             </li>
         </ul>
-        <ul class="navbar-nav mr-auto">
         @if (Route::has('login'))
+            <ul class="navbar-nav mr-auto">
             @if(auth::check())
                 <input type="hidden" value="{{$user = User::find(auth()->user()->id)}}"/>
                 @if( $user->Role == 1)
-                        <li class="nav-item not-active" id="">
-                            <a class="nav-link" href="{{route('doctor-dashboard')}}">My Dashboard </a>
-                            <span></span>
-                        </li>
-                        <li class="nav-item not-active" id="nurse-work-exception">
-                            <a class="nav-link" href="" target="_blank" data-toggle="modal" data-target="#find-patient">Find Patient</a>
-                            <span></span>
-                        </li>
+                    @include('components.doctor-dashboard.doctor-navbar')
                     @elseif( $user->Role == 2)
-                        <li class="nav-item not-active" id="nurse-reserve">
-                            <a class="nav-link" href="{{route('nurse-reserve')}}">Reserve</a>
-                            <span></span>
-                        </li>
-                        <li class="nav-item not-active" id="nurse-work-exception">
-                            <a class="nav-link" href="{{route('working-hours')}}">Working Hours</a>
-                            <span></span>
-                        </li>
-                        <li class="nav-item not-active" id="nurse-reservations">
-                            <a class="nav-link" href="{{route('nurse-dashboard')}}">Reservations</a>
-                            <span></span>
-                        </li>
+                        @include('components.nurse-dashboard.nurse-navbar')
                     @endif
             @endif
-
-        </ul>
-        @else
-
+            </ul>
         @endif
         @if (Route::has('login'))
             <ul class="hidden fixed top-0 right-0 sm:block navbar-nav">

@@ -133,4 +133,3 @@
         </div>
     </div>
 @endsection
-@include('components.doctor-dashboard.find-patient-pop-up')

@@ -16,6 +16,20 @@
         @include('components.navbar')
         <div> {{-- padding top = 100px if navbar is fixed --}}
             @yield('content')
+            <?php
+                use App\Models\User ;
+                use Illuminate\Support\Facades\Auth;
+            ?>
+            @if (Route::has('login'))
+                <ul class="navbar-nav mr-auto">
+                    @if(auth::check())
+                        <input type="hidden" value="{{$user = User::find(auth()->user()->id)}}"/>
+                        @if( $user->Role == 1)
+                            @include('components.doctor-dashboard.find-patient-pop-up')
+                        @endif
+                    @endif
+                </ul>
+            @endif
         </div>
         @include('components.footer')
     </body>
