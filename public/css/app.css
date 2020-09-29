@@ -14175,6 +14175,7 @@ div.n-designs div.container-xl {
 }
 
 div.n-designs h1 {
+  padding-bottom: 50px;
   color: #999;
   text-align: center;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
@@ -14185,10 +14186,7 @@ div.n-designs .fp {
 }
 
 div.n-designs .form-box {
-  height: 100%;
-  width: 10%;
   width: 360px;
-  height: 500px;
   position: relative;
   margin: 6% auto;
   background: #fff;
@@ -14214,9 +14212,6 @@ div.n-designs .toggle-btn {
 }
 
 div.n-designs #btn {
-  top: 0;
-  left: 0;
-  position: absolute;
   width: 110px;
   height: 100%;
   background: linear-gradient(to right, #0026ff, #b200ff);
@@ -14224,9 +14219,7 @@ div.n-designs #btn {
 }
 
 div.n-designs .input-group {
-  top: 180px;
   margin-left: 25px;
-  position: absolute;
   width: 280px;
   transition: 0.5s;
 }
@@ -14245,15 +14238,13 @@ div.n-designs .input-field {
 
 div.n-designs .submit-btn {
   width: 85%;
-  width: 300px;
   padding: 10px 30px;
   cursor: pointer;
   display: block;
-  margin: auto;
+  margin: 0 auto 30px;
   background: linear-gradient(to right, #0026ff, #b200ff);
   border-radius: 100px;
   outline: none;
-  margin-top: 50px;
   top: 100px;
 }
 
