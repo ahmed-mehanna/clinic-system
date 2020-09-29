@@ -8,6 +8,7 @@ use App\Http\Controllers\PatientController;
 use App\Http\Controllers\NurseController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\check;
+use App\Http\Controllers\Logout;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Password;
 use \App\Http\Controllers\RestPasswordController;
@@ -32,6 +33,7 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
 
 //---------------------------------------/
 Route::post("/login/custom",[LoginController::class,"login"]);
+Route::get("/Logout",[Logout::class,"logout"]);
 Route::post("/password/update",[RestPasswordController::class,"update"]);
 
 Route::group(['middleware' => ['isDoctor']], function() {

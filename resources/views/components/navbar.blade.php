@@ -27,7 +27,7 @@
             <ul class="hidden fixed top-0 right-0 sm:block navbar-nav">
                 @auth
                    <li class="nav-item not-active" id="dashboard">
-                       <a href="{{route('logout')}}" class="text-sm text-gray-700 mr-3">logout</a>
+                       <a href="/Logout" class="text-sm text-gray-700 mr-3">Logout</a>
                        <span></span>
                    </li>
                 @else
