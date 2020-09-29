@@ -5,17 +5,10 @@
     list-style: none;
     box-sizing: border-box;
 }
-.hero{
-    height: 100%;
-    width: 100%;
-    background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)),url(hello.jpg);
-    background-position: center;
-    background-size: cover;
-    poition: absolute;
-}
+
 
 .data {
-   
+   width:500px;
     height: 100vh;
     margin-left: 250px;
     background-size: cover;
@@ -42,7 +35,7 @@ h2, h4{
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 .newbutton {
-    background-color: #3490dc;
+    background-color: #2176bd;
     color: white;
     padding: 16px;
     font-size: 16px;
@@ -57,29 +50,28 @@ div.home {
         padding-bottom: 6%;
     }
 .data {
-    background: url(laptop.jpg);
-    height: 100vh;
+    position: relative;
     margin-left: 250px;
-    background-size: cover;
     background-repeat: no-repeat;
+    margin-top: -890px;
+    
 }
 
-nav {
-    background: #1D2951;
-    line-height: 80px;
-    position: fixed;
-    width: 100%;
-}
+
 
 
 .side-menu {
-    position: fixed;
-    background: #3490dc;
+    position: relative;
+    background: #2176bd;
     width: 250px;
-    height: 700px;
-    margin-top: 0px;
+    height: 890px;
+    margin-bottom: 0;
+    
 }
-
+.new{
+    margin-left: 300px;
+    margin-top: -150px;
+}
     .side-menu center img {
         height: 120px;
         width: 120px;
@@ -132,10 +124,18 @@ nav .menu-bar {
     display: none;
 }
 
-
+#newfoot{
+    margin-top: 0px;
+    width:250px;
+   
+    
+}
 
 @media (max-width:850px) {
 
+    .side-menu{
+        margin-bottom: 0px;
+    }
     .side-menu a span {
         display: none;
     }
@@ -154,20 +154,30 @@ nav .menu-bar {
             text-align: center;
             margin-left: 0;
             font-size: 35px;
+            
         }
 
     .data {
+        height:90%;
         margin-left: 100px;
+        
     }
+    #newfoot{
+        background-color:#2176bd;
+        margin-top: 200px;
+        width:800px;
+        height:300px;
+        
+    }
+   
 }
-
-
-@media (max-width:650px) {
-
+@media (max-width:250px) {
+     
     .data {
         display: none;
+       
     }
-
+   
     nav ul {
         display: none;
     }
@@ -175,6 +185,7 @@ nav .menu-bar {
 
     .side-menu {
         width: 100%;
+        height:00px;
         text-align: center;
         left: 100%;
         background-color: #4c516d;
@@ -202,7 +213,3 @@ nav .menu-bar {
 #menu:checked ~ .side-menu {
     left: 0;
 }
-  
-  
-
-
