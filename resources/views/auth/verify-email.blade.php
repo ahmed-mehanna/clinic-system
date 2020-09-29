@@ -22,7 +22,7 @@
                 @csrf
 
                 <div>
-                    <button type="submit" class="btn btn-info">
+                    <button type="submit" class="btn btn-info" onclick="alert('\nA new verification link has been sent to the email address\n\nPlease check your email ');">>
                         {{ __('Resend Verification Email') }}
                     </button>
                 </div>

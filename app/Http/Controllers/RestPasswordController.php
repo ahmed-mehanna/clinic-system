@@ -15,8 +15,12 @@ class RestPasswordController extends Controller
             "password_confirmation"=>"required | same:password",
         ]);
         $user = User::firstWhere("email",$request->input("email"));
-        $user->update(["password"=>Hash::make($request->input("password"))]);
-        //dd("password has been changed successfully");
-        return redirect('/');
+        if($user===null){
+            return redirect()->back()->withErrors(['checkInvaliedEmail' => 'This email not exists ']);
+        }else{
+            $user->update(["password" => Hash::make($request->input("password"))]);
+            //dd("password has been changed successfully");
+            return redirect('/')->with('message','password has been changed successfully');
+        }
     }
 }
