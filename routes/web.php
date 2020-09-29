@@ -35,7 +35,7 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
 Route::post("/login/custom",[LoginController::class,"login"]);
 Route::get("/Logout",[Logout::class,"logout"]);
 Route::post("/password/update",[RestPasswordController::class,"update"]);
-
+Route::view("/Home","index");
 Route::group(['middleware' => ['isDoctor']], function() {
   Route::get('/doctor', [DoctorController::class, 'index'])->name('doctor-dashboard');
   Route::post('/doctor', [DoctorController::class, 'store'])->name('doctor-dashboard');
