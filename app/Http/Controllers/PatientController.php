@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Illness;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -11,8 +12,8 @@ class PatientController extends Controller
     public function index()
     {
         $user = User::find(auth()->user()->id);
-
-        return view('patient.index',["user"=>$user]);
+        $Ilness = Illness::Where("user_id",$user)->orderBy('created_at','asc')->get();;
+        return view('patient.history',["Ilness"=>$Ilness]);
     }
 
     /**
@@ -22,7 +23,9 @@ class PatientController extends Controller
      */
     public function create()
     {
-        //
+
+        $user = User::find(auth()->user()->id);
+
     }
 
     /**
@@ -44,7 +47,8 @@ class PatientController extends Controller
      */
     public function show($id)
     {
-        //
+        $IllnessData = Illness::find($id);
+        return view("patient.details",["details"=>$IllnessData]);
     }
 
     /**

@@ -46,6 +46,8 @@ Route::group(['middleware' => ['isDoctor']], function() {
 
 Route::group(['middleware' => ['isPatient']], function() {
     Route::get("/patient",[PatientController::class,"index"]);
+    Route::get("/patient/Reserve",[PatientController::class,"create"]);
+    Route::get("/show/details/{id}",[PatientController::class,"show"]);
 });
 
 Route::group(['middleware' => ['isNurse']], function() {
