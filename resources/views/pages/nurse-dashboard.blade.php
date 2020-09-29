@@ -9,8 +9,9 @@
     <script>
         document.getElementById('nurse-reservations').className = 'nav-item active'
     </script>
-    <div class="nurse-dashboard-style">
+    <div class="nurse-dashboard-style" style="min-height: 520px; padding-bottom: 0">
         <div class="container-fluid">
+            @if(count($reservation)>0)
             <table class="table table-striped">
                 <thead>
                     <tr>
@@ -23,7 +24,6 @@
                 </thead>
                 <tbody>
                 <input type="hidden" value="{{$i=1}}">
-                @if(count($reservation)>0)
                         @foreach($reservation as $reservationsData)
                             <tr>
                                 <th scope="row">{{$i++}}</th>
