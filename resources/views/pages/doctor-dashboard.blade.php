@@ -1,7 +1,4 @@
 @extends('components.app')
-@section('navbar-additional-buttons')
-    @include('components.doctor-dashboard.doctor-navbar')
-@endsection
 @section('content')
     <div class="doctor-dashboard-style">
         <?php
