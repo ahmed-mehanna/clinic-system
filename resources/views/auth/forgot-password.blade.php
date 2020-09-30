@@ -5,7 +5,7 @@
         <div class="container-fluid">
             <div class="form-box">
                 <div class="button-box">
-                    <h2>Rest Password</h2>
+                    <h2>Reset Password</h2>
                 </div>
 
                 <form id="signup" class="input-group" method="POST" action="{{ route('password.email') }}" style="margin-top: -20%">

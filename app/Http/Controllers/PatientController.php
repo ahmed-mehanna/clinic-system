@@ -84,4 +84,25 @@ class PatientController extends Controller
     {
         //
     }
+
+    public function showContactUs()
+    {
+        return view('patient.contactus');
+    }
+    public function showHistory()
+    {
+        return view('patient.history');
+    }
+    public function showAppointment()
+    {
+        return view('patient.makeappointment');
+    }
+    public function showDeleteAccount()
+    {
+        return view('patient.deleteaccount');
+    }
+    public function showResetPassword()
+    {
+        return view('patient.resetpasswordpatient');
+    }
 }
