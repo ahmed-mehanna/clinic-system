@@ -12,7 +12,7 @@ class PatientController extends Controller
     public function index()
     {
         $user = User::find(auth()->user()->id);
-        $Ilness = Illness::Where("user_id",$user)->orderBy('created_at','asc')->get();;
+        $Ilness = Illness::Where("user_id",$user->id)->orderBy('created_at','asc')->get();;
         return view('patient.history',["Ilness"=>$Ilness]);
     }
 
@@ -24,7 +24,7 @@ class PatientController extends Controller
     public function create()
     {
 
-        $user = User::find(auth()->user()->id);
+        return view("patient.makeappointment");
 
     }
 
