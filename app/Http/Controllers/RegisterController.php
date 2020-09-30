@@ -26,7 +26,7 @@ class RegisterController extends Controller
             $newUser["phoneNumber"] = $request->input("phoneNumber");
             $newUser["password"] = Hash::make($request->input("password"));
             $newUser->save();
-            return redirect('/dashboard/user/');
+            return redirect('/patient');
         } else {
             $user1 = User::firstWhere("email", $request->input("email"));
             $user2 = User::firstWhere("phoneNumber", $request->input("phoneNumber"));
