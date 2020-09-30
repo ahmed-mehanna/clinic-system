@@ -5,6 +5,7 @@
   var txt;
   var r = confirm("Are you sure you want to reset your password");
   if (r == true) {
+    window.location.href = "password/request";
     txt = "You pressed OK!";
   } else {
     txt = "You pressed Cancel!";
