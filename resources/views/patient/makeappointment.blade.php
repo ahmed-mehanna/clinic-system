@@ -32,9 +32,22 @@
                 <h4>Choose New Appointment</h4>
                 <hr color="black" width="320px">
                
-               
-        <input name="country" list="countries" placeholder="Time" />
-        <datalist id="countries">
+        <input name="country" list="day" placeholder="Day" />
+        <datalist id="day">
+            <option value="11">
+            <option value="12">
+            <option value="13">
+            
+        </datalist> 
+        <input name="country" list="month" placeholder="Month" />
+        <datalist id="month">
+            <option value="11">
+            <option value="12">
+            <option value="1">
+            
+        </datalist>      
+        <input name="country" list="time" placeholder="Time" />
+        <datalist id="time">
             <option value="10:30">
             <option value="11:00">
             <option value="11:30">
