@@ -38,6 +38,7 @@ Route::get("/Logout",[Logout::class,"logout"]);
 Route::Post("/Register/Create",[RegisterController::class,"create"]);
 Route::post("/password/update",[RestPasswordController::class,"update"]);
 Route::view("/Home","index");
+
 Route::group(['middleware' => ['isDoctor']], function() {
   Route::get('/doctor', [DoctorController::class, 'index'])->name('doctor-dashboard');
   Route::post('/doctor', [DoctorController::class, 'store'])->name('doctor-dashboard');
@@ -50,6 +51,12 @@ Route::group(['middleware' => ['isDoctor']], function() {
 
 Route::group(['middleware' => ['isPatient']], function() {
     Route::get("/patient",[PatientController::class,"index"]);
+    Route::get("/contactus",[PatientController::class,"showContactUs"]);
+    Route::get("/history",[PatientController::class,"showHistory"]);
+    Route::get("/makeappointment",[PatientController::class,"showAppointment"]);
+    Route::get("/deleteaccount",[PatientController::class,"showDeleteAccount"]);
+    Route::get("/delete/account",[PatientController::class,"DeleteAccount"]);
+    Route::get("/resetpasswordpatient",[PatientController::class,"showResetPassword"]);
     Route::get("/patient/Reserve",[PatientController::class,"create"]);
     Route::get("/show/details/{id}",[PatientController::class,"show"]);
 });
@@ -71,4 +78,3 @@ Route::get("/dashboard/user/",[check::class,"checkRole"]);
 Route::view('/noacess','noacess');
 
 Route::view("password/request","auth.forgot-password");
-

@@ -28,12 +28,21 @@
        </center>
        <br>
 
-      <a href="{{route('index')}}"><i class="fa fa-arrow-left"></i><span>   Home</span></a>
-       <a href="/history.blade.php"><i class="fa fa-user"></i><span>My History</span></a>
-       <a href="/contactus.blade.php"><i class="fa fa-envelope"></i><span>Contact Us</span></a>
-       <a href="/patient/Reserve"><i class="fa fa-sellsy"></i><span>Make an Appointment</span></a>
-       <a href="/deleteaccount.blade.php"><i class="fa fa-ban"></i><span>Delete Account</span></a>
-       <a href="/resetpasswordpatient.blade.php"><i class="fa fa-cog"></i><span>Setting</span></a>
+{{--<<<<<<< HEAD--}}
+{{--      <a href="{{route('index')}}"><i class="fa fa-arrow-left"></i><span>   Home</span></a>--}}
+{{--       <a href="/history.blade.php"><i class="fa fa-user"></i><span>My History</span></a>--}}
+{{--       <a href="/contactus.blade.php"><i class="fa fa-envelope"></i><span>Contact Us</span></a>--}}
+{{--       <a href="/patient/Reserve"><i class="fa fa-sellsy"></i><span>Make an Appointment</span></a>--}}
+{{--       <a href="/deleteaccount.blade.php"><i class="fa fa-ban"></i><span>Delete Account</span></a>--}}
+{{--       <a href="/resetpasswordpatient.blade.php"><i class="fa fa-cog"></i><span>Setting</span></a>--}}
+{{--=======--}}
+
+      <a href="{{route('index')}}"><i class="fa fa-arrow-left"></i><span>Home</span></a>
+       <a href="history"><i class="fa fa-user"></i><span>My History</span></a>
+       <a href="contactus"><i class="fa fa-envelope"></i><span>Contact Us</span></a>
+       <a href="makeappointment"><i class="fa fa-sellsy"></i><span>Make an Appointment</span></a>
+       <a href="deleteaccount"><i class="fa fa-ban"></i><span>Delete Account</span></a>
+       <a href="resetpasswordpatient"><i class="fa fa-cog"></i><span>Setting</span></a>
 
        <a href="#" class="Logout"><span>Logout</span></a>
 
@@ -50,6 +59,3 @@
 
     </body>
 </html>
-
-
-

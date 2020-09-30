@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Carbon\Carbon;
 use App\Models\Exception_Days_Doctor;
 use Illuminate\Support\Facades\Hash;
+use Symfony\Component\Console\Input\Input;
 
 class NurseController extends Controller
 {
@@ -46,6 +47,7 @@ class NurseController extends Controller
             "age"=>"required",
             "gender"=>"required",
         ]);
+
         $patient = new Patient();
         $patient2 = new Patient();
         $reserv = new Reservation();
