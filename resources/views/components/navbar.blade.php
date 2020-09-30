@@ -26,21 +26,28 @@ use Illuminate\Support\Facades\Auth;
         </ul>
         @if (Route::has('login'))
             <ul class="navbar-nav mr-auto">
-            @if(auth::check())
-                <input type="hidden" value="{{$user = User::find(auth()->user()->id)}}"/>
-                @if( $user->Role == 1)
-                    @include('components.doctor-dashboard.doctor-navbar')
+                @if(auth::check())
+                    <input type="hidden" value="{{$user = User::find(auth()->user()->id)}}"/>
+                    @if( $user->Role == 1)
+                        @include('components.doctor-dashboard.doctor-navbar')
                     @elseif( $user->Role == 2)
                         @include('components.nurse-dashboard.nurse-navbar')
                     @endif
-            @endif
+                @endif
             </ul>
-        @endif
-        @if (Route::has('login'))
             <ul class="hidden fixed top-0 right-0 sm:block navbar-nav">
                 @auth
+                    @if(auth::check())
+                        <input type="hidden" value="{{$user = User::find(auth()->user()->id)}}"/>
+                        @if( $user->Role == 3)
+                            <li class="nav-item not-active" id="nurse-reserve">
+                                <a class="nav-link" href="/patient">Dashboard</a>
+                                <span></span>
+                            </li>
+                        @endif
+                    @endif
                    <li class="nav-item not-active" id="dashboard">
-                       <a href="/Logout" class="text-sm text-gray-700 mr-3">Logout</a>
+                       <a href="/Logout" class="nav-link">Logout</a>
                        <span></span>
                    </li>
                 @else
