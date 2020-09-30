@@ -1,7 +1,4 @@
 @extends('components.app')
-@section('navbar-additional-buttons')
-    @include('components.nurse-dashboard.nurse-navbar')
-@endsection
 @section('content')
     <script>
         document.getElementById('nurse-reserve').className = 'nav-item active'
