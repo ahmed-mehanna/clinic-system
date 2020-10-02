@@ -5,7 +5,7 @@
                 <span>Illness Form</span>
             </i>
         </div>
-        <h1>{{$userTurn->user->id}}</h1>
+
         <div class="patient-form">
             <div class="form-group sub-container row">
                 <label for="illness" class="col-sm-2 col-form-label">Illness</label>

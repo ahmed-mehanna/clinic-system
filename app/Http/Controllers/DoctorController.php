@@ -57,9 +57,9 @@ class DoctorController extends Controller
         "drugdescription"=>"required",
         "user_id"=>"required",
 //********************************************************************//
-        "summary"=> "required",
-        "analysis_name"=> "required",
-        "analysis_result"=> "required",
+//        "summary"=> "required",
+//        "analysis_name"=> "required",
+//        "analysis_result"=> "required",
 //        "rumour_name"=> "required",
 //        "rumour_result"=> "required",
       ]);
@@ -82,23 +82,22 @@ class DoctorController extends Controller
 //      $patient_history["Summary"] = $request["summary"];
 //      $patient_history["user_id"] = $request["user_id"];
 //        $user_update_summary = User::find($request->input("user_id"));
-//        $user_update_summary->patientHistory->Summary = $request->input("summary");
-//        $user_update_summary->update();
-
-        $find_analyses = analysis::all();
-        $find_rumour = Rumour::all();
-
+//        $user_update_summary->patientHistory->update(["Summary" => $request->input("summary")]);
+//
+//        $find_analyses = analysis::all();
+//        $find_rumour = Rumour::all();
 
 
-        for ($i=0; $i < count($request['analysis_name']); ++$i){
-            $analyses = new analysis();
-            $analyses->title = $request["analysis_name"][$i];
-            $analyses->result = $request["analysis_result"][$i];
-            $analyses->user_id = $request["user_id"];
-            $analyses->save();
-
-        }
-//        for ($i= 0 ; $i < count($request['rumour_name']); ++$i){
+//
+//        for ($i=count($find_analyses); $i < count($request['analysis_name']); ++$i){
+//            $analyses = new analysis();
+//            $analyses->title = $request["analysis_name"][$i];
+//            $analyses->result = $request["analysis_result"][$i];
+//            $analyses->user_id = $request["user_id"];
+//            $analyses->save();
+//
+//        }
+//        for ($i=count($find_rumour); $i < count($request['rumour_name']); ++$i){
 //            $rumour = new Rumour();
 //            $rumour->title = $request["rumour_name"][$i];
 //            $rumour->result = $request["rumour_result"][$i];
