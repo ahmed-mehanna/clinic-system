@@ -31,8 +31,7 @@ class RegisterController extends Controller
 //            $userhistory = new PatientHistory();
 //            $userhistory['user_id'] = $user->id;
 //            $userhistory->save();
-            Auth::login($newUser);
-            return redirect('/patient');
+            return redirect('/login');
         } else {
             $user1 = User::firstWhere("email", $request->input("email"));
             $user2 = User::firstWhere("phoneNumber", $request->input("phoneNumber"));
