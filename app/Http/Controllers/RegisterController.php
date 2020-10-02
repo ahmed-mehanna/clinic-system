@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\PatientHistory;
 use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
@@ -26,6 +28,10 @@ class RegisterController extends Controller
             $newUser["phoneNumber"] = $request->input("phoneNumber");
             $newUser["password"] = Hash::make($request->input("password"));
             $newUser->save();
+//            $userhistory = new PatientHistory();
+//            $userhistory['user_id'] = $user->id;
+//            $userhistory->save();
+            Auth::login($newUser);
             return redirect('/patient');
         } else {
             $user1 = User::firstWhere("email", $request->input("email"));

@@ -7,18 +7,23 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <div class="modal-body">
-                <form action="">
-                    <div class="form-group">
-                        <label for="exampleInputEmail1">Patient ID / Patient Email / Patient Mobile</label>
-                        <input type="text" class="form-control" id="data" name="data" placeholder="Enter One Of Them To Find Patient">
-                    </div>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button form="find-patient" type="submit" class="btn btn-primary">Find Patient</button>
-            </div>
+            <form action="/search/patient" method="get">
+                @csrf
+                <div class="modal-body">
+
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Patient ID / Patient Email / Patient Mobile</label>
+                            <input type="text" class="form-control" name="data" placeholder="Enter One Of Them To Find Patient">
+                        </div>
+                    @if($errors->has('checkInvaliedPatient'))
+                        <div class="fp w-100 mt-3"><strong style="color:red">{{ $errors->first('checkInvaliedPatient') }}</strong></div>
+                    @endif
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Find Patient</button>
+                </div>
+            </form>
         </div>
     </div>
 </div>

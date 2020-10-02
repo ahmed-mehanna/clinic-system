@@ -42,8 +42,8 @@ Route::view("/Home","index");
 Route::group(['middleware' => ['isDoctor']], function() {
   Route::get('/doctor', [DoctorController::class, 'index'])->name('doctor-dashboard');
   Route::post('/doctor', [DoctorController::class, 'store'])->name('doctor-dashboard');
-  Route::get('/doctor/show/patient',[DoctorController::class, 'showPatient']);
-  Route::post('/doctor/find/patient',[DoctorController::class, 'findPatient']);
+  Route::get('/search/patient', [DoctorController::class, 'findPatient'])->name('doctor-dashboard');
+
   Route::get('/doctor/find-patient', function () {
         return view('pages.doctor-find-patient');
     });
@@ -59,6 +59,7 @@ Route::group(['middleware' => ['isPatient']], function() {
     Route::get("/resetpasswordpatient",[PatientController::class,"showResetPassword"]);
     Route::get("/patient/Reserve",[PatientController::class,"create"]);
     Route::get("/show/details/{id}",[PatientController::class,"show"]);
+
 });
 
 Route::group(['middleware' => ['isNurse']], function() {
@@ -71,6 +72,10 @@ Route::group(['middleware' => ['isNurse']], function() {
     Route::get('/nurse/reserve/store', [NurseController::class,"store"]);
 
     Route::get('/update/schedule', [NurseController::class,"update"]);
+
+    //////---------------------------------------------------------
+    Route::get("/patient/attend/{id}",[NurseController::class,"CheckAttend"]);
+    Route::get("/patient/notattend/{id}",[NurseController::class,"CheckNotAttend"]);
 });
 
 

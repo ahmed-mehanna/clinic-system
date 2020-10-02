@@ -1,3 +1,6 @@
+<?php
+use Carbon\Carbon;
+?>
 <div>
     <div class="section">
         <div class="section-icon">
@@ -6,37 +9,39 @@
             </i>
         </div>
         <div class="patient-clinic-history">
-            @foreach($patientHistory as $history)
+{{--            patientHistory=user--}}
+            @if(count($patientHistory->illness)>0)
+            @foreach($patientHistory->illness as $illness)
                 <div class="data">
                     <div class="row">
                         <div class="col-lg-6">
                             <span class="title">Data:</span>
-                            {{ $history['date'] }}
+                            {{ Carbon::parse($illness["created_at"])->toFormattedDateString()}}
                         </div>
                         <div class="col-lg-6">
                             <span class="title">Illness:</span>
-                            {{ $history['illness'] }}
+                            {{ $illness['illnessName'] }}
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-lg-12">
                             <span class="title">Diagnose:</span>
                             <p class="illness-diagnose lead">
-                                {{ $history['diagnose'] }}
+                                {{ $illness['illnessDiagnose'] }}
                             </p>
                         </div>
                     </div>
                     <div class="drugs-container">
                         <span class="title">Drugs:</span>
                         <div class="drugs">
-                            @foreach($history['drugs'] as $drug)
+                            @foreach($illness->drug as $drug)
                                 <div class="row">
                                     <div class="col-lg-2">
-                                        {{ $drug['name'] }}
+                                        {{ $drug['drugName'] }}
                                     </div>
                                     <div class="col-lg-10">
                                         <p class="lead">
-                                            {{ $drug['description'] }}
+                                            {{ $drug['drugDescription'] }}
                                         </p>
                                     </div>
                                 </div>
@@ -45,6 +50,11 @@
                     </div>
                 </div>
             @endforeach
+            @else
+                <div class="col-lg-12">
+                    <span class="title"><h1> No history </h1></span>
+                </div>
+            @endif
         </div>
     </div>
 </div>

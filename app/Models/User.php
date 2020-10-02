@@ -84,12 +84,24 @@ class User extends Authenticatable implements MustVerifyEmail
     }
 
     public function patient(){
-        return $this->belongsTo('App\Models\Patient');
+        return $this->hasOne('App\Models\Patient');
     }
     public function reservation(){
         return $this->hasMany('App\Models\Reservation');
     }
     public function illness(){
         return $this->hasMany('App\Models\Illness');
+    }
+    public function patientTurn(){
+        return $this->hasOne('App\Models\Patientturn');
+    }
+    public function patientHistory(){
+        return $this->hasOne('App\Models\PatientHistory');
+    }
+    public function analysis(){
+        return $this->hasMany('App\Models\analysis');
+    }
+    public function rumour(){
+        return $this->hasMany('App\Models\Rumour');
     }
 }

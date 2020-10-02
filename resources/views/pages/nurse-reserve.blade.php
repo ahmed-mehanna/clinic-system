@@ -5,6 +5,11 @@
     </script>
     <div class="nurse-reserve-style">
         <div class="container">
+            @if(Session::has('message'))
+                <div class="alert-danger">
+                    <div class="fp w-100" style="text-align:center"><strong >{{Session::get('message')}}</strong></div>
+                </div>
+            @endif
             <form action="/nurse/reserve/store" method="get">
                 @csrf
                 <div class="form-group">

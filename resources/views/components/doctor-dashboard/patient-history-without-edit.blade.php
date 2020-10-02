@@ -20,13 +20,13 @@
                             <label>Result</label>
                         </div>
                     </div>
-                    @if(count($history['analysis']) < 1)
+                    @if(count($history->analysis) < 1)
                         <div class="row responsive" id="analysis-lg-screen1">
                             <div class="col-lg-5" id="analysis-title-lg-screen1">
-                                <input readonly class="form-control d-inline-block" form="patient-form" name="analysis-name1" placeholder="Analysis Name"/>
+                                <input readonly class="form-control d-inline-block" form="patient-form" name="analysis-name[]" placeholder="Analysis Name"/>
                             </div>
                             <div class="col-lg-6">
-                                <input readonly class="form-control d-inline-block" form="patient-form" name="analysis-result1" placeholder="Analysis Result"/>
+                                <input readonly class="form-control d-inline-block" form="patient-form" name="analysis-result[]" placeholder="Analysis Result"/>
                             </div>
                         </div>
                         <div class="mobile-responsive" id="analysis-sm-screen1">
@@ -35,7 +35,7 @@
                                     <span>Analysis</span>
                                 </div>
                                 <div class="col-sm-10">
-                                    <input readonly class="form-control d-inline-block" form="patient-form" name="analysis-name1" id="name1" placeholder="Analysis Name"/>
+                                    <input readonly class="form-control d-inline-block" form="patient-form" name="analysis-name[]" id="name1" placeholder="Analysis Name"/>
                                 </div>
                             </div>
                             <div class="row">
@@ -43,18 +43,18 @@
                                     <span>Result</span>
                                 </div>
                                 <div class="col-sm-10">
-                                    <input readonly class="form-control d-inline-block" form="patient-form" name="analysis-result1" id="result1" placeholder="Analysis Result"/>
+                                    <input readonly class="form-control d-inline-block" form="patient-form" name="analysis-result[]" id="result1" placeholder="Analysis Result"/>
                                 </div>
                             </div>
                         </div>
                     @endif
-                    @for($i = 0; $i < count($history['analysis']); $i++)
+                    @for($i = 0; $i < count($history->analysis); $i++)
                         <div class="row responsive" id="analysis-lg-screen{{ $i + 1 }}">
                             <div class="col-lg-5" id="{{ 'analysis-title-lg-screen'.($i + 1) }}">
-                                <input readonly class="form-control d-inline-block" form="patient-form" id="{{ 'analysis-name-lg-screen'.($i + 1) }}" value="{{$history['analysis'][$i]['title']}}"/>
+                                <input readonly class="form-control d-inline-block" form="patient-form" id="{{ 'analysis-name-lg-screen'.($i + 1) }}" value="{{$history->analysis[$i]['title']}}"/>
                             </div>
                             <div class="col-lg-6">
-                                <input readonly class="form-control d-inline-block" form="patient-form" id="{{ 'analysis-result-lg-screen'.($i + 1) }}" value="{{$history['analysis'][$i]['result']}}"/>
+                                <input readonly class="form-control d-inline-block" form="patient-form" id="{{ 'analysis-result-lg-screen'.($i + 1) }}" value="{{$history->analysis[$i]['result']}}"/>
                             </div>
                         </div>
                         <div class="mobile-responsive" id="analysis-sm-screen{{ $i + 1 }}">
@@ -63,7 +63,7 @@
                                     <span>Analysis</span>
                                 </div>
                                 <div class="col-sm-10">
-                                    <input readonly class="form-control d-inline-block" form="patient-form" id="{{ 'analysis-name-sm-screen'.($i + 1) }}" value="{{$history['analysis'][$i]['title']}}"/>
+                                    <input readonly class="form-control d-inline-block" form="patient-form" id="{{ 'analysis-name-sm-screen'.($i + 1) }}" value="{{$history->analysis[$i]['title']}}"/>
                                 </div>
                             </div>
                             <div class="row">
@@ -71,7 +71,7 @@
                                     <span>Result</span>
                                 </div>
                                 <div class="col-sm-10">
-                                    <input readonly class="form-control d-inline-block" form="patient-form" id="{{ 'analysis-result-sm-screen'.($i + 1) }}" value="{{$history['analysis'][$i]['result']}}"/>
+                                    <input readonly class="form-control d-inline-block" form="patient-form" id="{{ 'analysis-result-sm-screen'.($i + 1) }}" value="{{$history->analysis[$i]['result']}}"/>
                                 </div>
                             </div>
                         </div>
@@ -86,13 +86,13 @@
                             <label>Result</label>
                         </div>
                     </div>
-                    @if(count($history['rumours']) < 1)
+                    @if(count($history->rumour) < 1)
                         <div class="row responsive" id="rumours-lg-screen1">
                             <div class="col-lg-5" id="rumours-title-lg-screen1">
-                                <input readonly class="form-control d-inline-block" form="patient-form" name="rumours-name1" placeholder="Rumours Name"/>
+                                <input readonly class="form-control d-inline-block" form="patient-form" name="rumours-name[]" placeholder="Rumours Name"/>
                             </div>
                             <div class="col-lg-6">
-                                <input readonly class="form-control d-inline-block" form="patient-form" name="rumours-result1" placeholder="Rumours Result"/>
+                                <input readonly class="form-control d-inline-block" form="patient-form" name="rumours-result[]" placeholder="Rumours Result"/>
                             </div>
                         </div>
                         <div class="mobile-responsive" id="rumours-sm-screen1">
@@ -101,7 +101,7 @@
                                     <span>Rumours</span>
                                 </div>
                                 <div class="col-sm-10">
-                                    <input readonly class="form-control d-inline-block" form="patient-form" name="rumours-name1" id="name1" placeholder="Rumours Name"/>
+                                    <input readonly class="form-control d-inline-block" form="patient-form" name="rumours-name[]" id="name1" placeholder="Rumours Name"/>
                                 </div>
                             </div>
                             <div class="row">
@@ -109,18 +109,18 @@
                                     <span>Result</span>
                                 </div>
                                 <div class="col-sm-10">
-                                    <input readonly class="form-control d-inline-block" form="patient-form" name="rumours-result1" id="result1" placeholder="Rumours Result"/>
+                                    <input readonly class="form-control d-inline-block" form="patient-form" name="rumours-result[]" id="result1" placeholder="Rumours Result"/>
                                 </div>
                             </div>
                         </div>
                     @endif
-                    @for($i = 0; $i < count($history['rumours']); $i++)
+                    @for($i = 0; $i < count($history->rumour); $i++)
                         <div class="row responsive" id="rumours-lg-screen{{ $i + 1 }}">
                             <div class="col-lg-5" id="{{ 'rumours-title-lg-screen'.($i + 1) }}">
-                                <input readonly class="form-control d-inline-block" form="patient-form" id="{{ 'rumours-name-lg-screen'.($i + 1) }}" value="{{$history['rumours'][$i]['title']}}"/>
+                                <input readonly class="form-control d-inline-block" form="patient-form" id="{{ 'rumours-name-lg-screen'.($i + 1) }}" value="{{$history->rumour[$i]['title']}}"/>
                             </div>
                             <div class="col-lg-6">
-                                <input readonly class="form-control d-inline-block" form="patient-form" id="{{ 'rumours-result-lg-screen'.($i + 1) }}" value="{{$history['rumours'][$i]['result']}}"/>
+                                <input readonly class="form-control d-inline-block" form="patient-form" id="{{ 'rumours-result-lg-screen'.($i + 1) }}" value="{{$history->rumour[$i]['result']}}"/>
                             </div>
                         </div>
                         <div class="mobile-responsive" id="rumours-sm-screen{{ $i + 1 }}">
@@ -129,7 +129,7 @@
                                     <span>Rumours</span>
                                 </div>
                                 <div class="col-sm-10">
-                                    <input readonly class="form-control d-inline-block" form="patient-form" id="{{ 'rumours-name-sm-screen'.($i + 1) }}" value="{{$history['rumours'][$i]['title']}}"/>
+                                    <input readonly class="form-control d-inline-block" form="patient-form" id="{{ 'rumours-name-sm-screen'.($i + 1) }}" value="{{$history->rumour[$i]['title']}}"/>
                                 </div>
                             </div>
                             <div class="row">
@@ -137,7 +137,7 @@
                                     <span>Result</span>
                                 </div>
                                 <div class="col-sm-10">
-                                    <input readonly class="form-control d-inline-block" form="patient-form" id="{{ 'rumours-result-sm-screen'.($i + 1) }}" value="{{$history['rumours'][$i]['result']}}"/>
+                                    <input readonly class="form-control d-inline-block" form="patient-form" id="{{ 'rumours-result-sm-screen'.($i + 1) }}" value="{{$history->rumour[$i]['result']}}"/>
                                 </div>
                             </div>
                         </div>
