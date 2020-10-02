@@ -12,6 +12,7 @@ class Illness extends Model
     public function user(){
         return $this->belongsTo('App\Models\User');
     }
+
     public function drug(){
         return $this->hasMany('App\Models\Drug');
     }

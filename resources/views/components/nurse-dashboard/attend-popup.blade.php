@@ -1,7 +1,3 @@
-<input type="hidden" value="$user">
-<button type="button" data-toggle="modal" data-target="#attend-pop-up">
-    <i class="fa fa-check"></i>
-</button>
 <div class="modal fade" id="attend-pop-up" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
