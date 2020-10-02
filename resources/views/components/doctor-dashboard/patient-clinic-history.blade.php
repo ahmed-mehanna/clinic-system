@@ -34,6 +34,7 @@ use Carbon\Carbon;
                     <div class="drugs-container">
                         <span class="title">Drugs:</span>
                         <div class="drugs">
+                            {{ $illness->drug }}
                             @foreach($illness->drug as $drug)
                                 <div class="row">
                                     <div class="col-lg-2">
