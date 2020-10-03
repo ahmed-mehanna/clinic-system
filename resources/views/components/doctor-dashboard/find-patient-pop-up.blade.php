@@ -11,10 +11,10 @@
                 @csrf
                 <div class="modal-body">
 
-                        <div class="form-group">
-                            <label for="exampleInputEmail1">Patient ID / Patient Email / Patient Mobile</label>
-                            <input type="text" class="form-control" name="data" placeholder="Enter One Of Them To Find Patient">
-                        </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Patient ID / Patient Email / Patient Mobile</label>
+                        <input type="text" class="form-control" name="data" placeholder="Enter One Of Them To Find Patient">
+                    </div>
                     @if($errors->has('checkInvaliedPatient'))
                         <div class="fp w-100 mt-3"><strong style="color:red">{{ $errors->first('checkInvaliedPatient') }}</strong></div>
                     @endif

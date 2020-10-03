@@ -98,10 +98,4 @@ class User extends Authenticatable implements MustVerifyEmail
     public function patientHistory(){
         return $this->hasOne('App\Models\PatientHistory');
     }
-    public function analysis(){
-        return $this->hasMany('App\Models\analysis');
-    }
-    public function rumour(){
-        return $this->hasMany('App\Models\Rumour');
-    }
 }

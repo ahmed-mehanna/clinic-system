@@ -23,10 +23,10 @@ class DoctorController extends Controller
     {
         $userTurn = Patientturn::all();
         $userTurn = $userTurn->first();
-        if($userTurn===null){
-            return redirect()->back()->with('messageError', 'there are no recently patient has been arrived');
+        if ($userTurn === null) {
+            return redirect()->back()->with('messageError', 'There are no recently patient has been arrived');
 
-        }else {
+        } else {
 
             return view('pages.doctor-dashboard', ["userTurn" => $userTurn]);
         }
@@ -45,39 +45,65 @@ class DoctorController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
-      $request->validate([
-        "illness-name"=>"required",
-        "illness-diagnose"=>"required",
-        "drugname"=>"required",
-        "drugdescription"=>"required",
-        "user_id"=>"required",
+        $request->validate([
+            "illness-name" => "required",
+            "illness-diagnose" => "required",
+            "select_type.*" => "required",
+            "name.*" => "required",
+            "description.*" => "required",
+            "user_id" => "required",
 //********************************************************************//
 //        "summary"=> "required",
 //        "analysis_name"=> "required",
 //        "analysis_result"=> "required",
 //        "rumour_name"=> "required",
 //        "rumour_result"=> "required",
-      ]);
+        ]);
         $illness = new Illness;
         $illness->illnessName = $request["illness-name"];
         $illness->illnessDiagnose = $request["illness-diagnose"];
         $illness->user_id = $request["user_id"];
         $illness->save();
-      for ($i=0; $i < count($request['drugname']); ++$i){
-        $drug = new Drug();
-        $drug->drugName = $request["drugname"][$i];
-        $drug->drugDescription = $request["drugdescription"][$i];
-        $drug->illness_id = $illness->id;
-        $drug->save();
 
-     }
 
-      //if not have summary and analses and rumors
+        for ($i = 0; $i < count($request['select_type']); ++$i) {
+            if ($request["select_type"][$i] == "Drugs") {
+                $drug = new Drug();
+                $drug->drugName = $request["name"][$i];
+                $drug->drugDescription = $request["description"][$i];
+                $drug->illness_id = $illness->id;
+                $drug->save();
+            } elseif ($request["select_type"][$i] == "Analysis") {
+                $analyses = new analysis();
+                $analyses->title = $request["name"][$i];
+                $analyses->result = $request["description"][$i];
+                $analyses->illness_id = $illness->id;
+                $analyses->save();
+
+            } elseif ($request["select_type"][$i] == "Rumours") {
+                $rumour = new Rumour();
+                $rumour->title = $request["name"][$i];
+                $rumour->result = $request["description"][$i];
+                $rumour->illness_id = $illness->id;
+                $rumour->save();
+            }
+        }
+
+
+//      for ($i=0; $i < count($request['name']); ++$i){
+//        $drug = new Drug();
+//        $drug->drugName = $request["name"][$i];
+//        $drug->drugDescription = $request["description"][$i];
+//        $drug->illness_id = $illness->id;
+//        $drug->save();
+//     }
+
+        //if not have summary and analses and rumors
 //      $patient_history = new PatientHistory();
 //      $patient_history["Summary"] = $request["summary"];
 //      $patient_history["user_id"] = $request["user_id"];
@@ -107,13 +133,13 @@ class DoctorController extends Controller
 //        $userSkipturn = User::find($request->input("user_id"));
 //        $userSkipturn->patientTurn->delete();
 
-       return redirect('/doctor');
+        return redirect('/doctor');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -127,32 +153,31 @@ class DoctorController extends Controller
         $data = $request->input("data");
         if (filter_var($data, FILTER_VALIDATE_EMAIL)) {
             $user = User::firstWhere("email", $request->input("data"));
-            if ($user === null || ($user->id ===\auth()->user()->id)||$user->Role == 2) {
-                return redirect('/')->with('searchError' , 'We couldnot find your patient');
+            if ($user === null || ($user->id === \auth()->user()->id) || $user->Role == 2) {
+                return redirect('/')->with('searchError', 'We couldn\'t find your patient');
             } else {
-                return view('pages.doctor-find-patient',["user"=>$user]);
+                return view('pages.doctor-find-patient', ["user" => $user]);
             }
         } else {
             $user1 = User::firstWhere("id", $request->input("data"));
             $user2 = User::firstWhere("phoneNumber", $request->input("data"));
 
             if ($user1 && $user2 === null) {
-                if($user1->id ===\auth()->user()->id || $user1->Role == 2){
-                    return redirect('/')->with('searchError' , 'We couldnot find your patient');
-                }else {
+                if ($user1->id === \auth()->user()->id || $user1->Role == 2) {
+                    return redirect('/')->with('searchError', 'We couldn\'t find your patient');
+                } else {
 
                     return view('pages.doctor-find-patient', ["user" => $user1]);
                 }
             } elseif ($user2 && $user1 === null) {
                 $doctor = User::find(auth()->user()->id);
-                if($doctor->phoneNumber === $user2->phoneNumber || $user2->Role ==2){
-                    return redirect('/')->with('searchError' , 'We couldnot find your patient');
-                }else {
+                if ($doctor->phoneNumber === $user2->phoneNumber || $user2->Role == 2) {
+                    return redirect('/')->with('searchError', 'We couldn\'t find your patient');
+                } else {
                     return view('pages.doctor-find-patient', ["user" => $user2]);
                 }
-            }
-            else{
-                return redirect('/')->with('searchError' , 'We couldn\'t find your patient');
+            } else {
+                return redirect('/')->with('searchError', 'We couldn\'t find your patient');
             }
         }
     }
@@ -160,7 +185,7 @@ class DoctorController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -171,8 +196,8 @@ class DoctorController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -183,7 +208,7 @@ class DoctorController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)

@@ -9,7 +9,7 @@ class Rumour extends Model
 {
     use HasFactory;
 
-    public function user(){
-        return $this->belongsTo('App\Models\User');
+    public function illness(){
+        return $this->belongsTo('App\Models\Illness');
     }
 }
