@@ -19,46 +19,69 @@
                     @endif
                 </div>
             </div>
-            @for($i = 0; $i < count($history->Drug_Medical_History); $i++)
                 <div class="sub-container">
                     <span class="title">Drugs</span>
-                    <div class="row mt-2" id="analysis_x1">
-                        <div class="col-lg-3">
-                            <input readonly type="text" class="form-control"  form="patient-form" placeholder="Title" value="{{$history->Drug_Medical_History[$i]["drugName"]}}">
+                    @if(count($history->Drug_Medical_History)!=0)
+                        @for($i = 0; $i < count($history->Drug_Medical_History); $i++)
+                            <div class="row mt-2" id="analysis_x1">
+                                <div class="col-lg-3">
+                                    <input readonly type="text" class="form-control"  form="patient-form" placeholder="Title" value="{{$history->Drug_Medical_History[$i]["drugName"]}}">
+                                </div>
+                                <div class="col-lg-5 offset-lg-1">
+                                    <input readonly type="text" class="form-control"  form="patient-form" placeholder="Result" value="{{$history->Drug_Medical_History[$i]["drugDescription"]}}">
+                                </div>
+                            </div>
+                        @endfor
+                    @else
+                        <div class="drugs">
+                            <div class="col-lg-12" style="margin-top:30px">
+                                <span style="color: red">Drugs is empty</span>
+                            </div>
                         </div>
-                        <div class="col-lg-5 offset-lg-1">
-                            <input readonly type="text" class="form-control"  form="patient-form" placeholder="Result" value="{{$history->Drug_Medical_History[$i]["drugDescription"]}}">
-                        </div>
-                    </div>
+                    @endif
                 </div>
-            @endfor
-            @for($i = 0; $i < count($history->analysis_medical_history); $i++)
                 <div class="sub-container">
                     <span class="title">Analysis</span>
-                    <div class="row mt-2" id="analysis_x1">
-                        <div class="col-lg-3">
-                            <input readonly type="text" class="form-control"  form="patient-form" value="{{$history->analysis_medical_history[$i]["title"]}}">
+                    @if(count($history->analysis_medical_history)!=0)
+                        @for($i = 0; $i < count($history->analysis_medical_history); $i++)
+                            <div class="row mt-2" id="analysis_x1">
+                                <div class="col-lg-3">
+                                    <input readonly type="text" class="form-control"  form="patient-form" value="{{$history->analysis_medical_history[$i]["title"]}}">
+                                </div>
+                                <div class="col-lg-5 offset-lg-1">
+                                    <input readonly type="text" class="form-control"  form="patient-form" value="{{$history->analysis_medical_history[$i]["result"]}}">
+                                </div>
+                            </div>
+                        @endfor
+                    @else
+                        <div class="drugs">
+                            <div class="col-lg-12" style="margin-top:30px">
+                                <span style="color: red">Analysis is empty</span>
+                            </div>
                         </div>
-                        <div class="col-lg-5 offset-lg-1">
-                            <input readonly type="text" class="form-control"  form="patient-form" value="{{$history->analysis_medical_history[$i]["result"]}}">
-                        </div>
-                    </div>
+                    @endif
                 </div>
-            @endfor
-            @for($i = 0; $i < count($history->rumour_medical_history); $i++)
                 <div class="sub-container">
                     <span class="title">Rumour</span>
-                    <div class="row mt-2" id="analysis_x1">
-                        <div class="col-lg-3">
-                            <input readonly type="text" class="form-control" form="patient-form" value="{{$history->rumour_medical_history[$i]["title"]}}">
+                    @if(count($history->rumour_medical_history)!=0)
+                        @for($i = 0; $i < count($history->rumour_medical_history); $i++)
+                            <div class="row mt-2" id="analysis_x1">
+                                <div class="col-lg-3">
+                                    <input readonly type="text" class="form-control" form="patient-form" value="{{$history->rumour_medical_history[$i]["title"]}}">
+                                </div>
+                                <div class="col-lg-5 offset-lg-1">
+                                    <input readonly type="text" class="form-control" form="patient-form" value="{{$history->rumour_medical_history[$i]["result"]}}">
+                                </div>
+                            </div>
+                        @endfor
+                    @else
+                        <div class="drugs">
+                            <div class="col-lg-12" style="margin-top:30px">
+                                <span style="color: red">Rumour is empty</span>
+                            </div>
                         </div>
-                        <div class="col-lg-5 offset-lg-1">
-                            <input readonly type="text" class="form-control" form="patient-form" value="{{$history->rumour_medical_history[$i]["result"]}}">
-                        </div>
-                    </div>
+                    @endif
                 </div>
-            @endfor
-
             <div class="sub-container" id="analysises">
                 <span class="title">Medical Data</span>
                 <script>
