@@ -20,7 +20,7 @@ class LoginController extends Controller
 
             $user = User::find(auth()->user()->id);
             if ($user->Role == 1) {
-                return redirect('/login/custom');
+                return redirect('/');
             } elseif ($user->Role == 2) {
                 return redirect('/nurse');
             } elseif ($user->Role == 3) {
