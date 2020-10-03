@@ -18,7 +18,9 @@
                             Already registered?
                         </a>
                     </div>
-                    <button type="submit" class="submit-btn mt-3" onclick="alert('\nPassword reset link sent has been sent to your mail\n\nPlease check your mail ');">Rest Password</button>
+                    <button type="submit" class="submit-btn mt-3" onclick="alert('\nPassword reset link sent has been sent to your mail\n\nPlease check your mail ');">
+                        <span>Reset Password</span>
+                    </button>
                 </form>
             </div>
         </div>

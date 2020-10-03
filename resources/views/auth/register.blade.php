@@ -33,7 +33,9 @@
                             Already registered?
                         </a>
                     </div>
-                    <button type="submit" class="submit-btn mt-3">Register</button>
+                    <button type="submit" class="submit-btn mt-3">
+                        <span>Register</span>
+                    </button>
                 </form>
             </div>
         </div>

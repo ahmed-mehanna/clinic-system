@@ -6,11 +6,16 @@ div.n-designs {
         padding-top: 6%;
         padding-bottom: 6%;
     }
-    h1 {
+    h1, h2 {
         padding-bottom: 50px;
-        color:#999;
+        //color:#999;
         text-align: center;
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        font-family: 'Ubuntu', sans-serif;
+        opacity: 0.8;
+
+    }
+    h2 {
+        padding-bottom: 0;
     }
     .fp{
         border-top: 10px;
@@ -23,6 +28,10 @@ div.n-designs {
         padding: 5px;
         overflow:hidden;
         bottom: 0px;
+
+
+        opacity: 0.95;
+        border-radius: 15px;
     }
     .button-box {
         width: 220px;
@@ -66,9 +75,21 @@ div.n-designs {
         cursor: pointer;
         display: block;
         margin: 0 auto 30px;
-        background: linear-gradient(to right,#0026ff,#b200ff);
         border-radius: 100px;
         outline: none;
         top:100px;
+
+
+        background: $bg-main-color;
+        border: none;
+        transition: background-color .3s ease-in-out;
+        span {
+            color: #FFF;
+            font-size: 18px;
+            font-weight: bolder;
+        }
+        &:hover {
+            background-color: #2a9055;
+        }
     }
 }

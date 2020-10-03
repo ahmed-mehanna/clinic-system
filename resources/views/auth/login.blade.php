@@ -24,7 +24,9 @@
                     <div class="fp w-100 mt-3">
                         <a href="{{route('register')}}" >Register Now</a>
                     </div>
-                    <button type="submit" class="submit-btn mt-4">Login</button>
+                    <button type="submit" class="submit-btn mt-4">
+                        <span>Login</span>
+                    </button>
 
                 </form>
             </div>

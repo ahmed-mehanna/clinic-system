@@ -26,7 +26,9 @@
                             Already registered?
                         </a>
                     </div>
-                    <button type="submit" class="submit-btn mt-3" >Update</button>
+                    <button type="submit" class="submit-btn mt-3" >
+                        <span>Update</span>
+                    </button>
                 </form>
             </div>
         </div>
