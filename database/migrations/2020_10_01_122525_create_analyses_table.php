@@ -17,7 +17,7 @@ class CreateAnalysesTable extends Migration
             $table->id();
             $table->string("title");
             $table->string("result");
-            $table->integer("user_id");
+            $table->integer("illness_id");
             $table->timestamps();
         });
     }

@@ -26,19 +26,22 @@
                 </script>
                 <div class="row mt-2" id="drug1">
                     <div class="col-lg-2">
-                        <select form="patient-form" class="form-control" name="select-type[]">
+                        <select form="patient-form" class="form-control" name="select_type[]">
                             <option>Drugs</option>
                             <option>Analysis</option>
                             <option>Rumours</option>
                         </select>
                     </div>
                     <div class="col-lg-3">
-                        <input type="text" class="form-control" name="drugname[]" form="patient-form" placeholder="Drug Name">
-                        <small  class="form-text text-muted"><span style="color:red">@error("drug1-name"){{$message}}@enderror</span></small>
+                        <input type="text" class="form-control" name="name[]" form="patient-form" placeholder="Name">
+                        <small  class="form-text text-muted"><span style="color:red">
+                                @if($errors->any())
+                                    {{ implode('', $errors->all('<div>:message</div>')) }}
+                                @endif</span></small>
                     </div>
                     <div class="col-lg-4">
-                        <input type="text" class="form-control" name="drugdescription[]" form="patient-form" placeholder="Drug Description">
-                        <small  class="form-text text-muted"><span style="color:red">@error("drug1-description"){{$message}}@enderror</span></small>
+                        <input type="text" class="form-control" name="description[]" form="patient-form" placeholder="Description">
+                        <small  class="form-text text-muted"><span style="color:red">@error("description"){{$message}}@enderror</span></small>
                     </div>
                     <div class="col-lg-3" id="buttons-container1">
                         <i class="btn fa fa-plus" id="new-button-patient-form" onclick="addDrug()"></i>
@@ -65,17 +68,17 @@
             $('#new-button-patient-form').remove()
             let newDrug = '<div class="row mt-2" id="drug' + id + '">\n' +
                 '<div class="col-lg-2">\n' +
-                '                        <select form="patient-form" class="form-control" name="select-type[]">\n' +
+                '                        <select form="patient-form" class="form-control" name="select_type[]">\n' +
                 '                            <option>Drugs</option>\n' +
                 '                            <option>Analysis</option>\n' +
                 '                            <option>Rumours</option>\n' +
                 '                        </select>\n' +
                 '                    </div>'+
                 '                    <div class="col-lg-3">\n' +
-                '                        <input type="text" class="form-control" name="drugname[]" form="patient-form" placeholder="Drug Name">\n' +
+                '                        <input type="text" class="form-control" name="name[]" form="patient-form" placeholder="Name">\n' +
                 '                    </div>\n' +
                 '                    <div class="col-lg-4">\n' +
-                '                        <input type="text" class="form-control" name="drugdescription[]" form="patient-form" placeholder="Drug Description">\n' +
+                '                        <input type="text" class="form-control" name="description[]" form="patient-form" placeholder="Description">\n' +
                 '                    </div>\n' +
                 '                    <div class="col-lg-3" id="buttons-container' + id + '">\n' +
                 '                        <i class="btn fa fa-plus" id="new-button-patient-form" onclick="addDrug()"></i>\n' +
