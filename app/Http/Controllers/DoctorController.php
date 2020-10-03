@@ -53,9 +53,9 @@ class DoctorController extends Controller
         $request->validate([
             "illness-name" => "required",
             "illness-diagnose" => "required",
-            "select_type" => "required",
-            "name" => "required",
-            "description" => "required",
+            "select_type.*" => "required",
+            "name.*" => "required",
+            "description.*" => "required",
             "user_id" => "required",
 //********************************************************************//
 //        "summary"=> "required",

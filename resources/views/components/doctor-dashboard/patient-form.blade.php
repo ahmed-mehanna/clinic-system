@@ -34,14 +34,11 @@
                     </div>
                     <div class="col-lg-3">
                         <input type="text" class="form-control" name="name[]" form="patient-form" placeholder="Name">
-                        <small  class="form-text text-muted"><span style="color:red">
-                                @if($errors->any())
-                                    {{ implode('', $errors->all('<div>:message</div>')) }}
-                                @endif</span></small>
+                        <small  class="form-text text-muted"><span style="color:red">@error('name.*'){{ $message }}@enderror</span></small>
                     </div>
                     <div class="col-lg-4">
                         <input type="text" class="form-control" name="description[]" form="patient-form" placeholder="Description">
-                        <small  class="form-text text-muted"><span style="color:red">@error("description"){{$message}}@enderror</span></small>
+                        <small  class="form-text text-muted"><span style="color:red">@error('description.*'){{ $message }}@enderror</span></small>
                     </div>
                     <div class="col-lg-3" id="buttons-container1">
                         <i class="btn fa fa-plus" id="new-button-patient-form" onclick="addDrug()"></i>

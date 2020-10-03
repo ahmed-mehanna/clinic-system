@@ -56,8 +56,6 @@ use Carbon\Carbon;
                             @endif
                         </div>
                     </div>
-
-
                     <div class="drugs-container">
                         <span class="title">Analysis:</span>
                         <div class="drugs">
@@ -83,8 +81,6 @@ use Carbon\Carbon;
                             @endif
                         </div>
                     </div>
-
-
                     <div class="drugs-container">
                         <span class="title">Rumour:</span>
                         <div class="drugs">
