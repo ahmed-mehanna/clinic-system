@@ -16,4 +16,10 @@ class Illness extends Model
     public function drug(){
         return $this->hasMany('App\Models\Drug');
     }
+    public function rumour(){
+        return $this->hasMany('App\Models\Rumour');
+    }
+    public function analysis(){
+        return $this->hasMany('App\Models\analysis');
+    }
 }
