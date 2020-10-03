@@ -152,7 +152,7 @@ class DoctorController extends Controller
         $data = $request->input("data");
         if (filter_var($data, FILTER_VALIDATE_EMAIL)) {
             $user = User::firstWhere("email", $request->input("data"));
-            if ($user === null || ($user->id === \auth()->user()->id) || $user->Role == 2) {
+            if ($user === null || ($user->id === \auth()->user()->id) || $user->Role == 2 ||$user->patient === null) {
                 return redirect('/')->with('searchError', 'We couldn\'t find your patient');
             } else {
                 return view('pages.doctor-find-patient', ["user" => $user]);
@@ -162,7 +162,7 @@ class DoctorController extends Controller
             $user2 = User::firstWhere("phoneNumber", $request->input("data"));
 
             if ($user1 && $user2 === null) {
-                if ($user1->id === \auth()->user()->id || $user1->Role == 2) {
+                if ($user1->id === \auth()->user()->id || $user1->Role == 2||$user1->patient === null) {
                     return redirect('/')->with('searchError', 'We couldn\'t find your patient');
                 } else {
 
@@ -170,7 +170,7 @@ class DoctorController extends Controller
                 }
             } elseif ($user2 && $user1 === null) {
                 $doctor = User::find(auth()->user()->id);
-                if ($doctor->phoneNumber === $user2->phoneNumber || $user2->Role == 2) {
+                if ($doctor->phoneNumber === $user2->phoneNumber || $user2->Role == 2 ||$user2->patient === null) {
                     return redirect('/')->with('searchError', 'We couldn\'t find your patient');
                 } else {
                     return view('pages.doctor-find-patient', ["user" => $user2]);
