@@ -14,3 +14,9 @@ html {
 body {
     background-color: #FFF;
 }
+
+.alert-success, .alert-danger {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-size: 20px;
+}

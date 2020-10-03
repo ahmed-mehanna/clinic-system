@@ -27,7 +27,6 @@
                     <button type="submit" class="submit-btn mt-4">
                         <span>Login</span>
                     </button>
-
                 </form>
             </div>
         </div>
