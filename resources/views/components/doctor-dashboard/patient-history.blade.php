@@ -10,15 +10,55 @@
                 <div class="form-group data-container border-left-0">
                     <label for="summary">Summary</label>
 {{--                    history = history of user--}}
-                    @if($history->patientHistory->Summary != '')
-                        <textarea readonly class="form-control" form="patient-form" name="Summary" id="summary" cols='100' rows="60">{{$history->patientHistory->Summary}}</textarea>
+                    @if($history->patientHistory->summary != '')
+                        <textarea readonly class="form-control" form="patient-form" name="Summary" id="summary" cols='100' rows="60">{{$history->patientHistory->summary}}</textarea>
                         <i class="btn fa fa-edit mt-1" id="edit-summary-button" onclick="editSummary()" style="margin-right: 0.25rem;"></i>
                     @else
-                        <textarea class="form-control" form="patient-form" name="Summary" id="summary" cols='100' rows="60">{{$history->patientHistory->Summary}}</textarea>
+                        <textarea class="form-control" form="patient-form" name="Summary" id="summary" cols='100' rows="60">{{$history->patientHistory->summary}}</textarea>
                         <i class="btn fa fa-edit mt-1 active" id="edit-summary-button" onclick="editSummary()" style="margin-right: 0.25rem;"></i>
                     @endif
                 </div>
             </div>
+            @for($i = 0; $i < count($history->Drug_Medical_History); $i++)
+                <div class="sub-container">
+                    <span class="title">Drugs</span>
+                    <div class="row mt-2" id="analysis_x1">
+                        <div class="col-lg-3">
+                            <input readonly type="text" class="form-control"  form="patient-form" placeholder="Title" value="{{$history->Drug_Medical_History[$i]["drugName"]}}">
+                        </div>
+                        <div class="col-lg-5 offset-lg-1">
+                            <input readonly type="text" class="form-control"  form="patient-form" placeholder="Result" value="{{$history->Drug_Medical_History[$i]["drugDescription"]}}">
+                        </div>
+                    </div>
+                </div>
+            @endfor
+            @for($i = 0; $i < count($history->analysis_medical_history); $i++)
+                <div class="sub-container">
+                    <span class="title">Analysis</span>
+                    <div class="row mt-2" id="analysis_x1">
+                        <div class="col-lg-3">
+                            <input readonly type="text" class="form-control"  form="patient-form" value="{{$history->analysis_medical_history[$i]["title"]}}">
+                        </div>
+                        <div class="col-lg-5 offset-lg-1">
+                            <input readonly type="text" class="form-control"  form="patient-form" value="{{$history->analysis_medical_history[$i]["result"]}}">
+                        </div>
+                    </div>
+                </div>
+            @endfor
+            @for($i = 0; $i < count($history->rumour_medical_history); $i++)
+                <div class="sub-container">
+                    <span class="title">Rumour</span>
+                    <div class="row mt-2" id="analysis_x1">
+                        <div class="col-lg-3">
+                            <input readonly type="text" class="form-control" form="patient-form" value="{{$history->rumour_medical_history[$i]["title"]}}">
+                        </div>
+                        <div class="col-lg-5 offset-lg-1">
+                            <input readonly type="text" class="form-control" form="patient-form" value="{{$history->rumour_medical_history[$i]["result"]}}">
+                        </div>
+                    </div>
+                </div>
+            @endfor
+
             <div class="sub-container" id="analysises">
                 <span class="title">Medical Data</span>
                 <script>
@@ -45,7 +85,9 @@
                         <i class="btn fa fa-trash" onclick="removeAnalysis(1)"></i>
                     </div>
                 </div>
+
             </div>
+
         </div>
     </div>
     <script>
@@ -96,6 +138,10 @@
                     $('<i class="btn fa fa-plus" id="new-button" onclick="addAnalysis()"></i>').prependTo('#buttons-container' + numberOfAnalysis[numberOfAnalysis.length - 1])
                 }
             }
+        }
+        function editSummary() {
+            $('#summary').attr("readonly", false);
+            $('#edit-summary-button').css('color', '#2a9055');
         }
     </script>
 </div>

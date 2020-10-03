@@ -1,17 +1,17 @@
-{{--<div>--}}
-{{--    <div class="section">--}}
-{{--        <div class="section-icon">--}}
-{{--            <i class="fa fa-history">--}}
-{{--                <span>Medical History</span>--}}
-{{--            </i>--}}
-{{--        </div>--}}
-{{--        <div class="medical-history">--}}
-{{--            <div class="sub-container">--}}
-{{--                <div class="form-group data-container border-left-0">--}}
-{{--                    <label for="summary">Summary</label>--}}
-{{--                    <textarea readonly class="form-control" form="patient-form" name="summary" id="summary" cols='100' rows="60">{{$history['summary']}}</textarea>--}}
-{{--                </div>--}}
-{{--            </div>--}}
+<div>
+    <div class="section">
+        <div class="section-icon">
+            <i class="fa fa-history">
+                <span>Medical History</span>
+            </i>
+        </div>
+        <div class="medical-history">
+            <div class="sub-container">
+                <div class="form-group data-container border-left-0">
+                    <label for="summary">Summary</label>
+                    <textarea readonly class="form-control" form="patient-form" name="summary" id="summary" cols='100' rows="60">{{$history['summary']}}</textarea>
+                </div>
+            </div>
 
             @for($i = 0; $i < count($history->drugs); $i++)
                 <div class="sub-container">
@@ -52,6 +52,6 @@
                     </div>
                 </div>
             @endfor
-{{--        </div>--}}
-{{--    </div>--}}
-{{--</div>--}}
+        </div>
+    </div>
+</div>

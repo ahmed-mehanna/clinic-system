@@ -101,8 +101,9 @@ class DoctorController extends Controller
 //      $patient_history = new PatientHistory();
 //      $patient_history["Summary"] = $request["summary"];
 //      $patient_history["user_id"] = $request["user_id"];
-        $user_update_summary = User::find($request->input("user_id"));
-        //$user_update_summary->patientHistory->frist()->update(['Summary'=>$request->input("Summary")]);
+        $user_update_summary = PatientHistory::firstWhere("user_id",$request->input("user_id"));
+
+        $user_update_summary->update(['Summary'=>$request->input("Summary")]);
 //
 
         for ($i = 0; $i < count($request['select-type']); ++$i) {
