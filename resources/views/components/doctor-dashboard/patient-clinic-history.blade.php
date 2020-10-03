@@ -34,6 +34,7 @@ use Carbon\Carbon;
                     <div class="drugs-container">
                         <span class="title">Drugs:</span>
                         <div class="drugs">
+                            @if(count($illness->drug)!=0)
                             @foreach($illness->drug as $drug)
                                 <div class="row">
                                     <div class="col-lg-2">
@@ -46,6 +47,67 @@ use Carbon\Carbon;
                                     </div>
                                 </div>
                             @endforeach
+                            @else
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <span style="color: red">Drugs is empty</span>
+                                    </div>
+                                </div>
+                            @endif
+                        </div>
+                    </div>
+
+
+                    <div class="drugs-container">
+                        <span class="title">Analysis:</span>
+                        <div class="drugs">
+                            @if(count($illness->analysis)!=0)
+                            @foreach($illness->analysis as $analysis)
+                                <div class="row">
+                                    <div class="col-lg-2">
+                                        {{ $analysis['title'] }}
+                                    </div>
+                                    <div class="col-lg-10">
+                                        <p class="lead">
+                                            {{ $analysis['result'] }}
+                                        </p>
+                                    </div>
+                                </div>
+                            @endforeach
+                            @else
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <span style="color: red">Analysis is empty</span>
+                                    </div>
+                                </div>
+                            @endif
+                        </div>
+                    </div>
+
+
+                    <div class="drugs-container">
+                        <span class="title">Rumour:</span>
+                        <div class="drugs">
+                            @if(count($illness->rumour)!=0)
+                            @foreach($illness->rumour as $rumour)
+                                <div class="row">
+                                    <div class="col-lg-2">
+                                        {{ $rumour['title'] }}
+                                    </div>
+                                    <div class="col-lg-10">
+                                        <p class="lead">
+                                            {{ $rumour['result']}}
+                                        </p>
+                                    </div>
+                                </div>
+                            @endforeach
+                            @else
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <span style="color: red">Rumour is empty</span>
+                                    </div>
+                                </div>
+                            @endif
                         </div>
                     </div>
                 </div>
