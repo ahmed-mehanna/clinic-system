@@ -5,8 +5,62 @@
     list-style: none;
     box-sizing: border-box;
 }
+div.section{
+    margin-left: 50px;
+}
+div.patient-clinic-history {
+    overflow-y: scroll;
+    font-size: 18px;
+    max-height: 300px;
+    max-width: 100%;
+    border: 1px solid;
+    border-color: #888888;
+    padding: 10px;
+    box-shadow: 5px 10px 8px 10px #888888;
+}
+div.row2 {
+    margin-bottom: 15px;
+    margin-top: 15px;
+    padding-left: 25px;
+    padding-right: 25px;
+}
+p.illness-diagnose {
+    padding-left: 25px; 
+    margin-top: 10px;
+}
+span.title {
+    margin-left: 25px;
+}
+div.drugs {
+    margin-left: 65px; 
+    margin-right: 65px;
+}
 
+div.row3 {
+    border: 1px solid #ced4da;
+    background-color: #E9ECEF;
+    border-radius: 0.25rem;
+    height:20px;
+    color: #495057;
+    min-width:150px;
+}
 
+div.data2 {
+    margin-left: 3%;
+    margin-right: 3%;
+    padding-bottom: 50px;
+    border-bottom: 1px #000 solid;
+}
+div.scroll {
+    position: relative;
+    margin-left: 40px;
+    padding: 4px;
+    width: 1000px;
+    height: 210px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    text-align: justify;
+}
 
 .form-box {
     height:100%;
@@ -36,21 +90,18 @@ h2, h4{
     border: none;
     
 }
-div.home {
-        background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)),url('user.jpg');
-        /*background-position: center;*/
-        background-size: cover;
-        padding-top: 6%;
-        padding-bottom: 6%;
-    }
+p.lead{
+    width:600px;
+}
 div.data {
     position: relative;
     margin-top:50px;
     margin-bottom: 50px;
     background-repeat: no-repeat;
-   width:600px
+    width:100%;
+    margin-left:20px ;
     
-}
+    }
 
 
 nav {
@@ -114,7 +165,9 @@ a.active, a:hover {
        width:300px;
         
     }
-    
+    p.lead{
+        width:100%;
+    }
     label.logo {
         font-size: 30px;
         padding-left: 50px;
@@ -166,3 +219,4 @@ section {
     background-size: cover;
     height: calc(100vh - 80px);
 }
+

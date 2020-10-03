@@ -1,27 +1,67 @@
 @extends('components.newfile')
 @section('content1')
-<div class="container">
-                <br>
-                <h1>Your History</h1>
-                        @if(count($Ilness)>0)
-                            <table class="table table-striped">
-                                <thead>
-                                <tr>
-                                    <th scope="col">#</th>
-                                    <th scope="col">illnessName</th>
-                                    <th scope="col">created at</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <input type="hidden" value="{{$i=1}}">
 
-                                    @foreach($Ilness as $IlnessData)
-                                        <tr>
-                                            <th scope="row">{{$i++}}</th>
-                                            <td><a href="/show/details/{{$IlnessData->id}}">{{$IlnessData->name}}</a></td>
-                                            <td>{{Carbon::parse($IlnessData["created_at"])->format('g:i A')}}</td>
-                                        </tr>
-                                    @endforeach
+                
+                <h1>Your History</h1>
+                <hr color="black" width="220px">
+                <br>
+                <h2>
+                    From Your Previous Visits:
+                </h2>
+                <hr color="black" width="320px">
+                <br>
+                        @if(count($Ilness)>0)
+                        <div>
+    <div class="section">
+        <div class="section-icon">
+            <i class="fa fa-history">
+                <span>Patient Clinic History</span>
+            </i>
+        </div>
+        <div class="patient-clinic-history">
+            @foreach($patientHistory as $history)
+                <div class="data2">
+                    <div class="row2">
+                        <div class="col-lg-6">
+                            <span class="title">Data:</span>
+                            {{ $history['date'] }}
+                        </div>
+                        <div class="col-lg-6">
+                            <span class="title">Illness:</span>
+                            {{ $history['illness'] }}
+                        </div>
+                    </div>
+                    <div class="row3">
+                        <div class="col-lg-12">
+                            <span class="title">Diagnose:</span>
+                            <p class="illness-diagnose lead">
+                                {{ $history['diagnose'] }}
+                            </p>
+                        </div>
+                    </div>
+                    <div class="drugs-container">
+                        <span class="title">Drugs:</span>
+                        <div class="drugs">
+                            @foreach($history['drugs'] as $drug)
+                                <div class="row">
+                                    <div class="col-lg-2">
+                                        {{ $drug['name'] }}
+                                    </div>
+                                    <div class="col-lg-10">
+                                        <p class="lead">
+                                            {{ $drug['description'] }}
+                                        </p>
+                                    </div>
+                                </div>
+                            @endforeach
+                        </div>
+                    </div>
+                </div>
+            @endforeach
+        </div>
+    </div>
+</div>
+
                         @else
                             <div class="jumbotron jumbotron-fluid">
                                 <div class="container">
@@ -29,20 +69,12 @@
                                 </div>
                             </div>
                         @endif
-                        </tbody>
-                    </table>
-                <hr color="black" width="220px">
-                <br>
-                <h2>
-                    From Your Previous Visit
-                </h2>
-                <hr color="black" width="320px">
-                <br>
-                <p class="lead">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempeor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis norud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat enduis aute irure dolor in reprehenderit in voluptate velit esse.cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                </p>
+                       
+               
 
-            </div>
-        </div>
-    </div>
+          
+   
 @endsection
+
+
+
