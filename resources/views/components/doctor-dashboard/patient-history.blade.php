@@ -9,11 +9,12 @@
             <div class="sub-container">
                 <div class="form-group data-container border-left-0">
                     <label for="summary">Summary</label>
+{{--                    history = history of user--}}
                     @if($history->patientHistory->Summary != '')
-                        <textarea readonly class="form-control" form="patient-form" name="summary" id="summary" cols='100' rows="60">{{$history->patientHistory->Summary}}</textarea>
+                        <textarea readonly class="form-control" form="patient-form" name="Summary" id="summary" cols='100' rows="60">{{$history->patientHistory->Summary}}</textarea>
                         <i class="btn fa fa-edit mt-1" id="edit-summary-button" onclick="editSummary()" style="margin-right: 0.25rem;"></i>
                     @else
-                        <textarea class="form-control" form="patient-form" name="summary" id="summary" cols='100' rows="60">{{$history->patientHistory->Summary}}</textarea>
+                        <textarea class="form-control" form="patient-form" name="Summary" id="summary" cols='100' rows="60">{{$history->patientHistory->Summary}}</textarea>
                         <i class="btn fa fa-edit mt-1 active" id="edit-summary-button" onclick="editSummary()" style="margin-right: 0.25rem;"></i>
                     @endif
                 </div>
@@ -32,12 +33,12 @@
                         </select>
                     </div>
                     <div class="col-lg-3">
-                        <input type="text" class="form-control" name="analysis_name[]" form="patient-form" placeholder="Title">
-                        <small  class="form-text text-muted"><span style="color:red">@error("analysis_name"){{$message}}@enderror</span></small>
+                        <input type="text" class="form-control" name="medicalData_Title[]" form="patient-form" placeholder="Title">
+                        <small  class="form-text text-muted"><span style="color:red">@error('medicalData_Title.*'){{ $message }}@enderror</span></small>
                     </div>
                     <div class="col-lg-4">
-                        <input type="text" class="form-control" name="analysis_result[]" form="patient-form" placeholder="Result">
-                        <small  class="form-text text-muted"><span style="color:red">@error("analysis_result"){{$message}}@enderror</span></small>
+                        <input type="text" class="form-control" name="medicalData_Result[]" form="patient-form" placeholder="Result">
+                        <small  class="form-text text-muted"><span style="color:red">@error('medicalData_Result.*'){{ $message }}@enderror</span></small>
                     </div>
                     <div class="col-lg-3" id="buttons-container1">
                         <i class="btn fa fa-plus" id="new-button" onclick="addAnalysis()"></i>
@@ -71,10 +72,10 @@
                 '                        </select>\n' +
                 '                    </div>' +
                 '                    <div class="col-lg-3">\n' +
-                '                        <input type="text" class="form-control" name="analysis_name[]" form="patient-form" placeholder="Title">\n' +
+                '                        <input type="text" class="form-control" name="medicalData_Title[]" form="patient-form" placeholder="Title">\n' +
                 '                    </div>\n' +
                 '                    <div class="col-lg-4">\n' +
-                '                        <input type="text" class="form-control" name="analysis_result[]" form="patient-form" placeholder="Result">\n' +
+                '                        <input type="text" class="form-control" name="medicalData_Result[]" form="patient-form" placeholder="Result">\n' +
                 '                    </div>\n' +
                 '                    <div class="col-lg-3" id="buttons-container' + id + '">\n' +
                 '                        <i class="btn fa fa-plus" id="new-button" onclick="addAnalysis()"></i>\n' +

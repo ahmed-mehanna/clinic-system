@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePatientHistoriesTable extends Migration
+class CreateRumourMedicalHistoriesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,11 @@ class CreatePatientHistoriesTable extends Migration
      */
     public function up()
     {
-        Schema::create('patient_histories', function (Blueprint $table) {
+        Schema::create('rumour__medical__histories', function (Blueprint $table) {
             $table->id();
-            $table->integer("user_id")->unique();
-            $table->string("summary")->nullable();
+            $table->string("title");
+            $table->string("result");
+            $table->integer('user_id');
             $table->timestamps();
         });
     }
@@ -28,6 +29,6 @@ class CreatePatientHistoriesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('patient_histories');
+        Schema::dropIfExists('rumour__medical__histories');
     }
 }

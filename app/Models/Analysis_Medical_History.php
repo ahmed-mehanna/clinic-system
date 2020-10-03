@@ -5,12 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class analysis extends Model
+class Analysis_Medical_History extends Model
 {
     use HasFactory;
 
-    public function illness()
+    public function user()
     {
-        return $this->belongsTo('App\Models\Illness');
+        return $this->belongsTo('App\Models\User');
     }
 }

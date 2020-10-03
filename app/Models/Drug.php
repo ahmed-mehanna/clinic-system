@@ -9,7 +9,8 @@ class Drug extends Model
 {
     use HasFactory;
 
-    public function illness(){
+    public function illness()
+    {
         return $this->belongsTo('App\Models\Illness');
     }
 }

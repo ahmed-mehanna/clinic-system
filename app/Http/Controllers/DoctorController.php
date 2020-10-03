@@ -10,6 +10,9 @@ use App\Models\PatientHistory;
 use App\Models\Rumour;
 use App\Models\analysis;
 use App\Models\Patientturn;
+use App\Models\Rumour_Medical_History;
+use App\Models\Analysis_Medical_History;
+use App\Models\Drug_Medical_History;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
@@ -58,11 +61,11 @@ class DoctorController extends Controller
             "description.*" => "required",
             "user_id" => "required",
 //********************************************************************//
-//        "summary"=> "required",
-//        "analysis_name"=> "required",
-//        "analysis_result"=> "required",
-//        "rumour_name"=> "required",
-//        "rumour_result"=> "required",
+        "Summary"=> "required",
+        "select-type.*" => "required",
+        "medicalData_Title.*"=> "required",
+        "medicalData_Result.*"=> "required",
+
         ]);
         $illness = new Illness;
         $illness->illnessName = $request["illness-name"];
@@ -94,42 +97,37 @@ class DoctorController extends Controller
             }
         }
 
-
-//      for ($i=0; $i < count($request['name']); ++$i){
-//        $drug = new Drug();
-//        $drug->drugName = $request["name"][$i];
-//        $drug->drugDescription = $request["description"][$i];
-//        $drug->illness_id = $illness->id;
-//        $drug->save();
-//     }
-
         //if not have summary and analses and rumors
 //      $patient_history = new PatientHistory();
 //      $patient_history["Summary"] = $request["summary"];
 //      $patient_history["user_id"] = $request["user_id"];
-//        $user_update_summary = User::find($request->input("user_id"));
-//        $user_update_summary->patientHistory->update(["Summary" => $request->input("summary")]);
+        $user_update_summary = User::find($request->input("user_id"));
+        //$user_update_summary->patientHistory->frist()->update(['Summary'=>$request->input("Summary")]);
 //
-//        $find_analyses = analysis::all();
-//        $find_rumour = Rumour::all();
 
+        for ($i = 0; $i < count($request['select-type']); ++$i) {
+            if ($request["select-type"][$i] == "Drugs") {
+                $medicalDrug = new Drug_Medical_History();
+                $medicalDrug->drugName = $request["medicalData_Title"][$i];
+                $medicalDrug->drugDescription = $request["medicalData_Result"][$i];
+                $medicalDrug->user_id = $request["user_id"];;
+                $medicalDrug->save();
+            } elseif ($request["select-type"][$i] == "Analysis") {
+                $medicalAnalyses = new Analysis_Medical_History();
+                $medicalAnalyses->title = $request["medicalData_Title"][$i];
+                $medicalAnalyses->result = $request["medicalData_Result"][$i];
+                $medicalAnalyses->user_id = $request["user_id"];
+                $medicalAnalyses->save();
 
-//
-//        for ($i=count($find_analyses); $i < count($request['analysis_name']); ++$i){
-//            $analyses = new analysis();
-//            $analyses->title = $request["analysis_name"][$i];
-//            $analyses->result = $request["analysis_result"][$i];
-//            $analyses->user_id = $request["user_id"];
-//            $analyses->save();
-//
-//        }
-//        for ($i=count($find_rumour); $i < count($request['rumour_name']); ++$i){
-//            $rumour = new Rumour();
-//            $rumour->title = $request["rumour_name"][$i];
-//            $rumour->result = $request["rumour_result"][$i];
-//            $rumour->user_id =$request["user_id"];
-//            $rumour->save();
-//        }
+            } elseif ($request["select-type"][$i] == "Rumours") {
+                $medicalRumour = new Rumour_Medical_History();
+                $medicalRumour->title = $request["medicalData_Title"][$i];
+                $medicalRumour->result = $request["medicalData_Result"][$i];
+                $medicalRumour->user_id = $request["user_id"];;
+                $medicalRumour->save();
+            }
+        }
+
 //        $userSkipturn = User::find($request->input("user_id"));
 //        $userSkipturn->patientTurn->delete();
 

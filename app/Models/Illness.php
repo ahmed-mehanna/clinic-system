@@ -9,17 +9,23 @@ class Illness extends Model
 {
     use HasFactory;
 
-    public function user(){
+    public function user()
+    {
         return $this->belongsTo('App\Models\User');
     }
 
-    public function drug(){
+    public function drug()
+    {
         return $this->hasMany('App\Models\Drug');
     }
-    public function rumour(){
+
+    public function rumour()
+    {
         return $this->hasMany('App\Models\Rumour');
     }
-    public function analysis(){
+
+    public function analysis()
+    {
         return $this->hasMany('App\Models\analysis');
     }
 }

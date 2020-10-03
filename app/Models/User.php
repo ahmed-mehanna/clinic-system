@@ -26,7 +26,7 @@ class User extends Authenticatable implements MustVerifyEmail
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password','phoneNumber'
+        'name', 'email', 'password', 'phoneNumber'
     ];
 
     /**
@@ -59,43 +59,69 @@ class User extends Authenticatable implements MustVerifyEmail
         'profile_photo_url',
     ];
 
-    public function isDoctor(){
-        if($this->Role == 1){
+    public function isDoctor()
+    {
+        if ($this->Role == 1) {
             return true;
-        }else{
+        } else {
             return false;
         }
     }
 
-    public function isNurse(){
-        if($this->Role == 2){
+    public function isNurse()
+    {
+        if ($this->Role == 2) {
             return true;
-        }else{
+        } else {
             return false;
         }
     }
 
-    public function isPatient(){
-        if($this->Role == 3){
+    public function isPatient()
+    {
+        if ($this->Role == 3) {
             return true;
-        }else{
+        } else {
             return false;
         }
     }
 
-    public function patient(){
+    public function patient()
+    {
         return $this->hasOne('App\Models\Patient');
     }
-    public function reservation(){
+
+    public function reservation()
+    {
         return $this->hasMany('App\Models\Reservation');
     }
-    public function illness(){
+
+    public function illness()
+    {
         return $this->hasMany('App\Models\Illness');
     }
-    public function patientTurn(){
+
+    public function patientTurn()
+    {
         return $this->hasOne('App\Models\Patientturn');
     }
-    public function patientHistory(){
+
+    public function patientHistory()
+    {
         return $this->hasOne('App\Models\PatientHistory');
+    }
+
+    public function rumour_medical_history()
+    {
+        return $this->hasMany('App\Models\Rumour_Medical_History');
+    }
+
+    public function analysis_medical_history()
+    {
+        return $this->hasMany('App\Models\Analysis_Medical_History');
+    }
+    public function Drug_Medical_History()
+    {
+        return $this->hasMany('App\Models\Drug_Medical_History');
     }
 }
