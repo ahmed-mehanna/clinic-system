@@ -30,7 +30,7 @@
                             <td>
                                 <input type="hidden" value="$user">
                                 <button type="button" data-toggle="modal" data-target="#attend-pop-up">
-                                    <i class="fa fa-check"></i>
+                                    <i class="fa fa-check"></i> {{$reservationsData->user->id}}
                                 </button>
                                 <form class="d-inline" id="attend" method="get" action="/patient/attend/{{$reservationsData->user->id}}">
                                     @csrf
@@ -56,5 +56,5 @@
         </div>
     </div>
 @endsection
-@include('components.nurse-dashboard.attend-popup')
-@include('components.nurse-dashboard.did-notattend-popup')
+@include('components.nurse-dashboard.attend-pop-up')
+@include('components.nurse-dashboard.did-not-attend-pop-up')

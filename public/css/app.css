@@ -15422,6 +15422,191 @@ div.doctor-dashboard-style div.container-xl div.section div.patient-form div.sub
   }
 }
 
+div#calender div.modal-dialog div.modal-body div.container div.row div h3 {
+  font-family: "Ubuntu", sans-serif;
+  opacity: 0.7;
+}
+
+div#calender div.modal-dialog div.modal-body div.container div.row div div.calender-menu {
+  max-height: 200px;
+  overflow-y: auto;
+  max-width: 50%;
+}
+
+div#calender div.modal-dialog div.modal-body div.container div.row div div.calender-menu::-webkit-scrollbar {
+  width: 0;
+  background-color: transparent;
+}
+
+div#calender div.modal-dialog div.modal-body div.container div.row div div.calender-menu ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-size: 16px;
+  font-family: "Ubuntu", sans-serif;
+}
+
+div#calender div.modal-dialog div.modal-body div.container div.row div div.calender-menu ul li {
+  height: 40px;
+  transition: all 0.2s ease-in-out;
+}
+
+div#calender div.modal-dialog div.modal-body div.container div.row div div.calender-menu ul li:hover {
+  cursor: pointer;
+  background-color: #003A7E;
+  color: #FFF;
+}
+
+div#calender div.modal-dialog div.modal-body div.container div.row div div.calender-menu ul li.active {
+  background-color: #003A7E;
+  color: #FFF;
+}
+
+div.patient-dashboard-style div.make-appointment div.container {
+  margin-top: 3%;
+}
+
+div.patient-dashboard-style div.make-appointment div.container div.inputs div.row div.cc {
+  display: none;
+  padding-left: 16px;
+}
+
+div.patient-dashboard-style div.make-appointment div.container div.inputs div.row div.col-lg-3 {
+  padding-top: 3px;
+}
+
+div.patient-dashboard-style div.make-appointment div.container div.inputs div.row div.col-lg-3 span {
+  font-size: 20px;
+  font-weight: bolder;
+  margin-top: 3px;
+}
+
+div.patient-dashboard-style div.make-appointment div.container div.inputs div.row div.col-lg-7 span {
+  font-size: 16px;
+  font-family: "Ubuntu", sans-serif;
+  transition: all 0.2s ease-in-out;
+}
+
+div.patient-dashboard-style div.make-appointment div.container div.inputs div.row div.col-lg-7 span:hover {
+  cursor: pointer;
+  background-color: #003A7E;
+  color: #FFF;
+}
+
+div.patient-dashboard-style div.make-appointment div.container div.inputs div.row div.col-lg-7 button {
+  font-size: 16px;
+  font-family: "Ubuntu", sans-serif;
+  margin-left: 20px;
+}
+
+div.patient-dashboard-style div.make-appointment div.container div.all-appointments div.row div {
+  margin-bottom: 20px;
+  border-right: 1px #dee2e6 solid;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+div.patient-dashboard-style div.make-appointment div.container div.all-appointments div.row div span {
+  font-size: 18px;
+}
+
+div.patient-dashboard-style div.make-appointment div.container div.all-appointments div.row div button {
+  position: absolute;
+  right: 20px;
+  top: 8px;
+  font-size: 16px;
+  font-family: "Ubuntu", sans-serif;
+}
+
+div.patient-dashboard-style div.make-appointment div.container div.all-appointments div.row div button.btn-danger {
+  cursor: inherit;
+}
+
+div.patient-dashboard-style div.make-appointment div.container div.all-appointments div.row div button.btn-danger:hover {
+  background-color: #e3342f;
+}
+
+div.patient-dashboard-style div.make-appointment div.container div.my-appointments {
+  max-height: 490px;
+  overflow-y: auto;
+  box-shadow: rgba(193, 193, 193, 0.8) 10px 10px 50px;
+}
+
+div.patient-dashboard-style div.make-appointment div.container div.my-appointments div.sub-container div.row {
+  border-bottom: 1px #000 solid;
+  margin: 0;
+  padding: 10px 0;
+}
+
+div.patient-dashboard-style div.make-appointment div.container div.my-appointments div.sub-container div.row div {
+  font-size: 17px;
+  text-align: center;
+}
+
+div.patient-dashboard-style div.make-appointment div.container div.my-appointments div.sub-container div.row div span {
+  display: inline-block;
+  margin-top: 8px;
+}
+
+div.patient-dashboard-style div.make-appointment div.container div.my-appointments div.sub-container div.row div button {
+  font-family: "Ubuntu", sans-serif;
+  font-size: 17px;
+}
+
+div.patient-dashboard-style div.make-appointment div.container div.my-appointments div.sub-container div.row div button span {
+  display: inline;
+}
+
+div.patient-dashboard-style div.make-appointment div.container div.my-appointments div.sub-container div.row:last-child {
+  border-bottom: none;
+}
+
+@media (min-width: 992px) {
+  div.patient-dashboard-style div.make-appointment div.container div.all-appointments div.row .br-lg {
+    border-right: none;
+  }
+}
+
+@media (min-width: 767px) and (max-width: 991px) {
+  div.patient-dashboard-style div.make-appointment div.container div.all-appointments div.row .br-lg {
+    border-right: 1px #dee2e6 solid;
+  }
+
+  div.patient-dashboard-style div.make-appointment div.container div.all-appointments div.row .br-md {
+    border: none;
+  }
+}
+
+@media (max-width: 766px) {
+  div.patient-dashboard-style div.make-appointment div.container div.inputs div.row div.col-lg-3 {
+    display: none;
+  }
+
+  div.patient-dashboard-style div.make-appointment div.container div.inputs div.row div.cc {
+    display: block;
+  }
+
+  div.patient-dashboard-style div.make-appointment div.container div.inputs div.row div.col-lg-7 button {
+    margin-left: 0;
+    position: absolute;
+    right: 5%;
+  }
+
+  div.patient-dashboard-style div.make-appointment div.container div.all-appointments {
+    max-height: 400px;
+    overflow-y: scroll;
+  }
+
+  div.patient-dashboard-style div.make-appointment div.container div.all-appointments div.row {
+    max-width: 99%;
+    margin-left: 1%;
+  }
+
+  div.patient-dashboard-style div.make-appointment div.container div.all-appointments div.row .br-sm {
+    border: none;
+  }
+}
+
 html {
   scroll-behavior: smooth;
 }

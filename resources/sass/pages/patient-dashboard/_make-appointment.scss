@@ -1,0 +1,177 @@
+@import "calendar";
+
+div.patient-dashboard-style {
+    div.make-appointment {
+        div.container {
+            margin-top: 3%;
+            div.inputs {
+                div.row {
+                    div.cc {
+                        display: none;
+                        padding-left: 16px;
+                    }
+                    div.col-lg-3 {
+                        padding-top: 3px;
+                        span {
+                            font-size: 20px;
+                            font-weight: bolder;
+                            margin-top: 3px;
+                        }
+                    }
+                    div.col-lg-7 {
+                        span {
+                            font-size: 16px;
+                            font-family: 'Ubuntu', sans-serif;
+                            transition: all .2s ease-in-out;
+                            &:hover {
+                                cursor: pointer;
+                                background-color: #003A7E;
+                                color: #FFF;
+                            }
+                        }
+                        button {
+                            font-size: 16px;
+                            font-family: 'Ubuntu', sans-serif;
+                            margin-left: 20px;
+                        }
+                    }
+                }
+            }
+            div.all-appointments {
+                div.row {
+                    div {
+                        margin-bottom: 20px;
+                        border-right: 1px #dee2e6 solid;
+                        padding-top: 10px;
+                        padding-bottom: 10px;
+                        span {
+                            font-size: 18px;
+                        }
+                        button {
+                            position: absolute;
+                            right: 20px;
+                            top: 8px;
+                            font-size: 16px;
+                            font-family: 'Ubuntu', sans-serif;
+                        }
+                        button.btn-danger {
+                            cursor: inherit;
+                            &:hover {
+                                background-color: #e3342f;
+                            }
+                        }
+                    }
+                }
+            }
+            div.my-appointments {
+                max-height: 490px;
+                overflow-y: auto;
+                box-shadow: rgba(193, 193, 193, 0.8) 10px 10px 50px;
+                div.sub-container {
+                    div.row {
+                        border-bottom: 1px #000 solid;
+                        margin: 0;
+                        padding: 10px 0;
+                        div {
+                            font-size: 17px;
+                            text-align: center;
+                            span {
+                                display: inline-block;
+                                margin-top: 8px;
+                            }
+                            button {
+                                font-family: 'Ubuntu', sans-serif;
+                                font-size: 17px;
+                                span {
+                                    display: inline;
+                                }
+                            }
+                        }
+                        &:first-child {
+                            //border-top-left-radius: 15px;
+                            //border-top-right-radius: 15px;
+                        }
+                        &:last-child {
+                            border-bottom: none;
+                            //border-radius: 15px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+@media (min-width: 992px) {
+    div.patient-dashboard-style {
+        div.make-appointment {
+            div.container {
+                div.all-appointments {
+                    div.row {
+                        .br-lg {
+                            border-right: none;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+@media (min-width: 767px) and (max-width: 991px) {
+    div.patient-dashboard-style {
+        div.make-appointment {
+            div.container {
+                div.all-appointments {
+                    div.row {
+                        .br-lg {
+                            border-right: 1px #dee2e6 solid;
+                        }
+                        .br-md {
+                            border: none;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 766px) {
+    div.patient-dashboard-style {
+        div.make-appointment {
+            div.container {
+                div.inputs {
+                    div.row {
+                        div.col-lg-3 {
+                            display: none;
+                        }
+                        div.cc {
+                            display: block;
+                        }
+                        div.col-lg-7 {
+                            button {
+                                margin-left: 0;
+                                position: absolute;
+                                right: 5%;
+                            }
+                        }
+                    }
+                }
+                div.all-appointments {
+                    max-height: 400px;
+                    overflow-y: scroll;
+                    div.row {
+                        max-width: 99%;
+                        margin-left: 1%;
+                        .br-sm{
+                            border: none;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

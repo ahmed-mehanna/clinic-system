@@ -1,0 +1,45 @@
+div#calender {
+    div.modal-dialog {
+        div.modal-body {
+            div.container {
+                div.row {
+                    div {
+                        h3 {
+                            font-family: 'Ubuntu', sans-serif;
+                            opacity: 0.7;
+                        }
+                        div.calender-menu {
+                            max-height: 200px;
+                            overflow-y: auto;
+                            max-width: 50%;
+                            &::-webkit-scrollbar {
+                                width: 0;
+                                background-color: transparent;
+                            }
+                            ul {
+                                list-style: none;
+                                margin: 0;
+                                padding: 0;
+                                font-size: 16px;
+                                font-family: 'Ubuntu', sans-serif;
+                                li {
+                                    height: 40px;
+                                    transition: all .2s ease-in-out;
+                                    &:hover {
+                                        cursor: pointer;
+                                        background-color: #003A7E;
+                                        color: #FFF;
+                                    }
+                                }
+                                li.active {
+                                    background-color: #003A7E;
+                                    color: #FFF;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
