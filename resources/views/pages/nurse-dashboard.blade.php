@@ -6,9 +6,8 @@
     <script>
         document.getElementById('nurse-reservations').className = 'nav-item active'
     </script>
-    <div class="nurse-dashboard-style" style="min-height: 520px; padding-bottom: 0">
+    <div class="nurse-dashboard-style" style="min-height: 535px; padding-bottom: 0">
         <div class="container-fluid">
-            @if(count($reservation)>0)
             <table class="table table-striped">
                 <thead>
                     <tr>
@@ -20,41 +19,34 @@
                     </tr>
                 </thead>
                 <tbody>
-                <input type="hidden" value="{{$i=1}}">
+                    <input type="hidden" value="{{$i=1}}">
                     @foreach($reservation as $reservationsData)
-                        <tr>
+                        <tr <?php if ($i === 1){ ?> class="active" <?php } ?> >
                             <th scope="row">{{$i++}}</th>
                             <td>{{$reservationsData->user->name}}</td>
                             <td>{{Carbon::parse($reservationsData["reservation At"])->format('g:i A')}}</td>
                             <td>{{Carbon::parse($reservationsData["reservation At"])->addMinutes(30)->format('g:i A')}}</td>
                             <td>
                                 <input type="hidden" value="$user">
-                                <button type="button" data-toggle="modal" data-target="#attend-pop-up">
-                                    <i class="fa fa-check"></i> {{$reservationsData->user->id}}
+                                <button type="button" data-toggle="modal" data-target="{{ '#attend-pop-up-user-'.$reservationsData->user->id }}">
+                                    <i class="fa fa-check"></i>
                                 </button>
-                                <form class="d-inline" id="attend" method="get" action="/patient/attend/{{$reservationsData->user->id}}">
+                                <form class="d-inline" id="{{ 'attend'.$reservationsData->user->id }}" method="get" action="/patient/attend/{{$reservationsData->user->id}}">
                                     @csrf
                                 </form>
-                                <button class="mr-0" type="button" data-toggle="modal" data-target="#did-not-attend-pop-up">
+                                <button class="mr-0" type="button" data-toggle="modal" data-target="{{ '#did-not-attend-pop-up-user-'.$reservationsData->user->id }}">
                                     <i class="fa fa-times"></i>
                                 </button>
-                                <form class="d-inline" id="did-not-attend" method="get" action="/patient/notattend/{{$reservationsData->user->id}}">
+                                <form class="d-inline" id="{{ 'did-not-attend'.$reservationsData->user->id }}" method="get" action="/patient/notattend/{{$reservationsData->user->id}}">
                                     @csrf
                                 </form>
                             </td>
+                            <x-attend-pop-up :id="$reservationsData->user->id" />
+                            <x-did-not-attend-pop-up :id="$reservationsData->user->id" />
                         </tr>
                     @endforeach
-                    @else
-                        <div class="jumbotron jumbotron-fluid">
-                            <div class="container">
-                                <h1>There Are No Patients Today</h1>
-                            </div>
-                        </div>
-                    @endif
                 </tbody>
             </table>
         </div>
     </div>
 @endsection
-@include('components.nurse-dashboard.attend-pop-up')
-@include('components.nurse-dashboard.did-not-attend-pop-up')

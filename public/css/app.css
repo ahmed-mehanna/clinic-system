@@ -14939,6 +14939,14 @@ div.nurse-dashboard-style div.container-xl table tr td button:last-child:hover {
   color: #FF0000;
 }
 
+div.nurse-dashboard-style div.container-fluid table tr.active,
+div.nurse-dashboard-style div.container-sm table tr.active,
+div.nurse-dashboard-style div.container-md table tr.active,
+div.nurse-dashboard-style div.container-lg table tr.active,
+div.nurse-dashboard-style div.container-xl table tr.active {
+  background-color: #7CB97B;
+}
+
 div.nurse-reserve-style {
   padding-bottom: 5%;
 }
