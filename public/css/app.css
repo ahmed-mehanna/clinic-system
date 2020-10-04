@@ -14960,6 +14960,73 @@ div.nurse-reserve-style div.container form div.form-group div.container div.row 
   display: inline-block;
 }
 
+div.nurse-reserve-style div.container form div.inputs div.row div.cc {
+  display: none;
+  padding-left: 16px;
+}
+
+div.nurse-reserve-style div.container form div.inputs div.row div.col-lg-3 {
+  padding-top: 3px;
+}
+
+div.nurse-reserve-style div.container form div.inputs div.row div.col-lg-3 span {
+  font-size: 20px;
+  font-weight: bolder;
+  margin-top: 3px;
+}
+
+div.nurse-reserve-style div.container form div.inputs div.row div.col-lg-7 span {
+  font-size: 16px;
+  font-family: "Ubuntu", sans-serif;
+  transition: all 0.2s ease-in-out;
+}
+
+div.nurse-reserve-style div.container form div.inputs div.row div.col-lg-7 span:hover {
+  cursor: pointer;
+  background-color: #003A7E;
+  color: #FFF;
+}
+
+div.nurse-reserve-style div.container form div.inputs div.row div.col-lg-7 button {
+  font-size: 16px;
+  font-family: "Ubuntu", sans-serif;
+  margin-left: 20px;
+  margin-bottom: 4px;
+}
+
+div.nurse-reserve-style div.container form div.all-appointments div.row div {
+  margin-bottom: 20px;
+  border-right: 1px #dee2e6 solid;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+div.nurse-reserve-style div.container form div.all-appointments div.row div span {
+  font-size: 18px;
+}
+
+div.nurse-reserve-style div.container form div.all-appointments div.row div button {
+  position: absolute;
+  right: 20px;
+  top: 8px;
+  padding: 6px 12px;
+  font-size: 16px;
+  font-family: "Ubuntu", sans-serif;
+}
+
+div.nurse-reserve-style div.container form div.all-appointments div.row div button.btn-danger {
+  cursor: inherit;
+}
+
+div.nurse-reserve-style div.container form div.all-appointments div.row div button.btn-danger:hover {
+  background-color: #e3342f;
+}
+
+div.nurse-reserve-style div.container form div.all-appointments div.row div button.active {
+  background-color: #227DC7;
+  padding: 6px 8px;
+}
+
 @media (max-width: 576px) {
   div.nurse-reserve-style div.container {
     margin-top: 5%;
@@ -14971,6 +15038,73 @@ div.nurse-reserve-style div.container form div.form-group div.container div.row 
 
   div.nurse-reserve-style div.container form div.form-group div.container div.row input {
     margin-top: 15px;
+  }
+}
+
+@media (min-width: 992px) {
+  div.nurse-reserve-style div.container form div.all-appointments div.row .br-lg {
+    border-right: none;
+  }
+}
+
+@media (min-width: 767px) and (max-width: 991px) {
+  div.nurse-reserve-style div.container form div.all-appointments div.row .br-lg {
+    border-right: 1px #dee2e6 solid;
+  }
+
+  div.nurse-reserve-style div.container form div.all-appointments div.row .br-md {
+    border: none;
+  }
+}
+
+@media (max-width: 766px) {
+  div.nurse-reserve-style div.container form div.inputs div.row div.col-lg-3 {
+    display: none;
+  }
+
+  div.nurse-reserve-style div.container form div.inputs div.row div.cc {
+    display: block;
+  }
+
+  div.nurse-reserve-style div.container form div.inputs div.row div.cc button {
+    width: 50%;
+    margin: 15px 0;
+    font-size: 16px;
+    font-family: "Ubuntu", sans-serif;
+  }
+
+  div.nurse-reserve-style div.container form div.inputs div.row div.col-lg-7 button {
+    display: none;
+  }
+
+  div.nurse-reserve-style div.container form div.all-appointments {
+    max-height: 400px;
+    overflow-y: scroll;
+  }
+
+  div.nurse-reserve-style div.container form div.all-appointments div.row {
+    max-width: 99%;
+    margin-left: 1%;
+  }
+
+  div.nurse-reserve-style div.container form div.all-appointments div.row .br-sm {
+    border: none;
+  }
+}
+
+@media (max-width: 766px) {
+  div.nurse-reserve-style div.container form div.all-appointments {
+    max-height: 400px;
+    overflow-y: scroll;
+  }
+
+  div.nurse-reserve-style div.container form div.all-appointments div.row {
+    max-width: 99%;
+    margin-left: 1%;
+  }
+
+  div.nurse-reserve-style div.container form div.all-appointments div.row .br-sm {
+    border: none;
   }
 }
 

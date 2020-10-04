@@ -13,6 +13,71 @@ div.nurse-reserve-style {
                     }
                 }
             }
+            div.inputs {
+                div.row {
+                    div.cc {
+                        display: none;
+                        padding-left: 16px;
+                    }
+                    div.col-lg-3 {
+                        padding-top: 3px;
+                        span {
+                            font-size: 20px;
+                            font-weight: bolder;
+                            margin-top: 3px;
+                        }
+                    }
+                    div.col-lg-7 {
+                        span {
+                            font-size: 16px;
+                            font-family: 'Ubuntu', sans-serif;
+                            transition: all .2s ease-in-out;
+                            &:hover {
+                                cursor: pointer;
+                                background-color: #003A7E;
+                                color: #FFF;
+                            }
+                        }
+                        button {
+                            font-size: 16px;
+                            font-family: 'Ubuntu', sans-serif;
+                            margin-left: 20px;
+                            margin-bottom: 4px;
+                        }
+                    }
+                }
+            }
+            div.all-appointments {
+                div.row {
+                    div {
+                        margin-bottom: 20px;
+                        border-right: 1px #dee2e6 solid;
+                        padding-top: 10px;
+                        padding-bottom: 10px;
+                        span {
+                            font-size: 18px;
+                        }
+                        button {
+                            position: absolute;
+                            right: 20px;
+                            top: 8px;
+                            padding: 6px 12px;
+                            font-size: 16px;
+                            font-family: 'Ubuntu', sans-serif;
+                        }
+                        button.btn-danger {
+                            cursor: inherit;
+                            &:hover {
+                                background-color: #e3342f;
+                            }
+                        }
+                        button.active {
+                            background-color: $bg-main-color;
+                            padding: 6px 8px;
+                        }
+                    }
+                }
+            }
         }
     }
     padding-bottom: 5%;
@@ -30,6 +95,104 @@ div.nurse-reserve-style {
                             input {
                                 margin-top: 15px;
                             }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+@media (min-width: 992px) {
+    div.nurse-reserve-style {
+        div.container {
+            form {
+                div.all-appointments {
+                    div.row {
+                        .br-lg {
+                            border-right: none;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+@media (min-width: 767px) and (max-width: 991px) {
+    div.nurse-reserve-style {
+        div.container {
+            form {
+                div.all-appointments {
+                    div.row {
+                        .br-lg {
+                            border-right: 1px #dee2e6 solid;
+                        }
+                        .br-md {
+                            border: none;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 766px) {
+    div.nurse-reserve-style {
+        div.container {
+            form {
+                div.inputs {
+                    div.row {
+                        div.col-lg-3 {
+                            display: none;
+                        }
+                        div.cc {
+                            display: block;
+                            button {
+                                width: 50%;
+                                margin: 15px 0;
+                                font-size: 16px;
+                                font-family: 'Ubuntu', sans-serif;
+                            }
+                        }
+                        div.col-lg-7 {
+                            button {
+                                display: none;
+                            }
+                        }
+                    }
+                }
+                div.all-appointments {
+                    max-height: 400px;
+                    overflow-y: scroll;
+                    div.row {
+                        max-width: 99%;
+                        margin-left: 1%;
+                        .br-sm{
+                            border: none;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 766px) {
+    div.nurse-reserve-style {
+        div.container {
+            form {
+                div.all-appointments {
+                    max-height: 400px;
+                    overflow-y: scroll;
+                    div.row {
+                        max-width: 99%;
+                        margin-left: 1%;
+                        .br-sm{
+                            border: none;
                         }
                     }
                 }

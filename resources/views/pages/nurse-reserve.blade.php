@@ -10,8 +10,8 @@
                     <div class="fp w-100" style="text-align:center"><strong >{{Session::get('message')}}</strong></div>
                 </div>
             @endif
-            <form action="/nurse/reserve/store" method="get">
-                @csrf
+            <form action="" method="get">
+{{--                @csrf--}}
                 <div class="form-group">
                     <label for="name">Full Name</label>
                     <div class="container mt-0">
@@ -62,14 +62,140 @@
                         <label class="form-check-label" for="inlineRadio2">Female</label>
                     </div>
                 </div>
+                <input id="time" type="text" name="time" style="visibility: hidden" required>
+
+                <h3 class="mb-3">Select Appointments</h3>
+                <div class="inputs border-bottom pb-3">
+                    <div class="row">
+                        <div  class="col-lg-3 col-md-5">
+                            <span id="available-appointments-day">{{ date("F d, Y") }}</span>
+                        </div>
+                        <div class="col-lg-7 col-md-7 col-sm-12">
+                            <span id="xx" class="form-control d-inline-block text-center" style="width: 70%" data-toggle="modal" data-target="#calender">
+                                Select Reveal Day
+                                <i class="fa fa-calendar ml-3"></i>
+                            </span>
+                            <button type="button" class="btn btn-primary btn-large">TODAY</button>
+                        </div>
+                        <div class="col-lg-3 col-md-5 col-sm-12 cc">
+                            <button type="button" class="btn btn-primary">TODAY</button>
+                        </div>
+                        <div class="col-lg-3 col-md-5 col-sm-12 cc">
+                            <span>{{ date("M d, Y") }}</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group all-appointments mb-5 pb-3">
+                    <div class="row mt-3">
+                        <?php $i = 0; $startTime = 800; $endTime = 2200; $revealTime = 30;?>
+                        <?php $reserved = [900, 1130, 1000, 1400, 1500, 1530, 2200, 1800, 1830, 1500, 1530, 1600, 1630] ?>
+                        @for($i = $startTime, $countMd = 1, $countLg = 1; $i <= $endTime; $i += $revealTime, $countMd++, $countLg++)
+                            <?php
+                            if ($i % 100 == 60)
+                                $i += 40;
+                            ?>
+                            @if(($countMd == 3 and $countLg == 4) or ($i == 2200))
+                                <div class="col-lg-3 col-md-4 col-sm-12 br-md br-lg br-sm">
+                                    <?php
+                                    $countMd = 0;
+                                    $countLg = 0;
+                                    ?>
+                                    @include('components.nurse-dashboard.appointments-schedule', ['i' => $i, 'reserved' => $reserved])
+                                </div>
+                            @elseif($countMd == 3)
+                                <div class="col-lg-3 col-md-4 col-sm-12 br-md br-sm">
+                                    <?php
+                                    $countMd = 0;
+                                    ?>
+                                    @include('components.nurse-dashboard.appointments-schedule', ['i' => $i, 'reserved' => $reserved])
+                                </div>
+                            @elseif($countLg == 4)
+                                <div class="col-lg-3 col-md-4 col-sm-12 br-lg br-sm">
+                                    <?php
+                                    $countLg = 0;
+                                    ?>
+                                    @include('components.nurse-dashboard.appointments-schedule', ['i' => $i, 'reserved' => $reserved])
+                                </div>
+                            @else
+                                <div class="col-lg-3 col-md-4 col-sm-12 br-sm">
+                                    @include('components.nurse-dashboard.appointments-schedule', ['i' => $i, 'reserved' => $reserved])
+                                </div>
+                            @endif
+                        @endfor
+                    </div>
+                </div>
                 <button type="submit" class="btn btn-primary mr-3">Submit</button>
                 <span class="btn btn-danger" id="go-back" onclick="goBack()">Back</span>
             </form>
         </div>
     </div>
+    @include('patient.calender')
     <script>
+        let lastActiveAppointment = null;
+        let lastMonthActive = null, lastDayActive = null;
+        let months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
         function goBack () {
             window.history.back();
+        }
+        function selectAppointment(val) {
+            if (lastActiveAppointment !== null) {
+                $('#' + lastActiveAppointment).removeClass('active')
+                $('#' + lastActiveAppointment).html('Book Now <i class="fa fa-hand-pointer-o"></i>')
+            }
+            $('#time').attr('value', val)
+            $('#btn-'+val).addClass('active')
+            $('#btn-'+val).text('Booked For You')
+            lastActiveAppointment = 'btn-'+val
+            console.log($('#time').val())
+        }
+        function selectMonth(monthId) {
+            if (monthId === 2) {
+
+            }
+            else if (monthId <= 7 && monthId % 2 === 0) {
+                if (lastMonthActive !== null)
+                    $('#'+lastMonthActive).removeClass('active')
+                $('#month-'+monthId).addClass('active')
+                lastMonthActive = 'month-'+monthId
+                $('#day-31').remove();
+            }
+            else if (monthId <= 7 && monthId % 2 === 1) {
+                if (lastMonthActive !== null)
+                    $('#'+lastMonthActive).removeClass('active')
+                $('#month-'+monthId).addClass('active')
+                lastMonthActive = 'month-'+monthId
+                if (!$('#days-list').find('#day-31').length)
+                    $('#days-list').append('<li id="day-31" class="border-bottom m-auto pt-2" onclick="selectDay(31)">31</li>');
+            }
+            else if (monthId > 7 && monthId % 2 === 0) {
+                if (lastMonthActive !== null)
+                    $('#'+lastMonthActive).removeClass('active')
+                $('#month-'+monthId).addClass('active')
+                lastMonthActive = 'month-'+monthId
+                if (!$('#days-list').find('#day-31').length)
+                    $('#days-list').append('<li id="day-31" class="border-bottom m-auto pt-2" onclick="selectDay(31)">31</li>');
+            }
+            else if (monthId > 7 && monthId % 2 === 1) {
+                if (lastMonthActive !== null)
+                    $('#'+lastMonthActive).removeClass('active')
+                $('#month-'+monthId).addClass('active')
+                lastMonthActive = 'month-'+monthId
+                $('#day-31').remove();
+            }
+        }
+        function selectDay(dayId) {
+            if (lastDayActive !== null)
+                $('#'+lastDayActive).removeClass('active')
+            $('#day-'+dayId).addClass('active');
+            lastDayActive = 'day-'+dayId
+        }
+        function searchForAppointments() {
+            let date = new Date()
+            let day = parseInt(lastDayActive.split('-')[1])
+            let month = parseInt(lastMonthActive.split('-')[1])
+            if (parseInt(day / 10) === 0)
+                day = '0' + day
+            $('#available-appointments-day').html(months[month - 1] + ' ' + day + ', ' + date.getFullYear())
         }
     </script>
 @endsection
