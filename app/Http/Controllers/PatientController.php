@@ -132,14 +132,7 @@ class PatientController extends Controller
              $first = Carbon::parse($res["reservation At"])->format('Hi');
              array_push($reserved,$first);
         }
-
-
-//        if ($month == "10" && $day == "5")
-//            $reserved = [800, 900, 1000];
-//        else if ($month == 10 && $day == 6)
-//            $reserved = [1400, 1500, 1600];
-//        else
-//            $reserved = [2000, 2100, 2200];
+        $reserved = [900, 1400, 1500, 1600, 1700, 1800, 1900, 2000, 2100];
         echo json_encode($reserved);    // Echo Available Appointments Fro Day/Month
     }
 
@@ -151,5 +144,55 @@ class PatientController extends Controller
         // Add Appointment To DB
     }
 
+    public function showMyAppointments() {
+        $myAppointments = [
+            [
+                'date'  =>  date("F d, Y"),
+                'from'  =>  '900',
+                'to'    =>  '930'
+            ],
+            [
+                'date'  =>  date("F d, Y"),
+                'from'  =>  '1400',
+                'to'    =>  '1430'
+            ],
+            [
+                'date'  =>  date("F d, Y"),
+                'from'  =>  '1500',
+                'to'    =>  '1530'
+            ],
+            [
+                'date'  =>  date("F d, Y"),
+                'from'  =>  '1600',
+                'to'    =>  '1630'
+            ],
+            [
+                'date'  =>  date("F d, Y"),
+                'from'  =>  '1700',
+                'to'    =>  '1730'
+            ],
+            [
+                'date'  =>  date("F d, Y"),
+                'from'  =>  '1800',
+                'to'    =>  '1830'
+            ],
+            [
+                'date'  =>  date("F d, Y"),
+                'from'  =>  '1900',
+                'to'    =>  '1930'
+            ],
+            [
+                'date'  =>  date("F d, Y"),
+                'from'  =>  '2000',
+                'to'    =>  '2030'
+            ],
+            [
+                'date'  =>  date("F d, Y"),
+                'from'  =>  '2100',
+                'to'    =>  '2130'
+            ]
+        ];
+        echo json_encode($myAppointments);
+    }
 
 }

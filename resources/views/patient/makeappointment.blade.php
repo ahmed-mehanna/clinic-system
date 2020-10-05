@@ -9,20 +9,22 @@
                 <div class="inputs border-bottom pb-3">
                     <div class="row">
                         <div  class="col-lg-3 col-md-5">
-                            <span id="date">{{ date("F d, Y") }}</span>
+                            <span id="date-lg"></span>
                         </div>
                         <div class="col-lg-3 col-md-5 col-sm-12 cc mb-3">
-                            <span id="date">{{ date("M d, Y") }}</span>
+                            <span id="date-sm"></span>
                         </div>
                         <div class="col-lg-7 col-md-7 col-sm-12">
-                            <span id="xx" class="form-control d-inline-block text-center" style="width: 70%" data-toggle="modal" data-target="#calender">
+                            <span id="xx" class="form-control d-inline-block text-center" style="width: 50%" data-toggle="modal" data-target="#calender">
                                 Select Reveal Day
                                 <i class="fa fa-calendar ml-3"></i>
                             </span>
-                            <button id="today" type="button" class="btn btn-primary btn-large">TODAY</button>
+                            <button type="button" class="today btn btn-primary btn-large">TODAY</button>
+                            <button type="button" class="btn btn-primary btn-large" onclick="window.location.href = '#appointments-table'">My Appointments</button>
                         </div>
                         <div class="col-lg-3 col-md-5 col-sm-12 cc">
-                            <button id="today" type="button" class="btn btn-primary">TODAY</button>
+                            <button type="button" class="today btn btn-primary" style="width: 40%">TODAY</button>
+                            <button type="button" class="btn btn-primary" style="width: 55%; float: right" onclick="window.location.href = '#appointments-table'">My Appointments</button>
                         </div>
                     </div>
                 </div>
@@ -30,7 +32,6 @@
                     <h3>Available Appointments</h3>
                     <div class="row mt-3">
                         <?php $i = 0; $startTime = 800; $endTime = 2200; $revealTime = 30;?>
-                        <?php $reserved = [900, 1130, 1000, 1400, 1500, 1530, 2200, 1800, 1830, 1500, 1530, 1600, 1630] ?>
                         @for($i = $startTime, $countMd = 1, $countLg = 1; $i <= $endTime; $i += $revealTime, $countMd++, $countLg++)
                             <?php
                             if ($i % 100 == 60)
@@ -42,77 +43,33 @@
                                         $countMd = 0;
                                         $countLg = 0;
                                     ?>
-                                    @include('patient.appointments-schedule', ['i' => $i, 'reserved' => $reserved])
+                                    @include('patient.appointments-schedule', ['i' => $i])
                                 </div>
                             @elseif($countMd == 3)
                                 <div class="col-lg-3 col-md-4 col-sm-12 br-md br-sm">
                                     <?php
                                         $countMd = 0;
                                     ?>
-                                    @include('patient.appointments-schedule', ['i' => $i, 'reserved' => $reserved])
+                                    @include('patient.appointments-schedule', ['i' => $i])
                                 </div>
                             @elseif($countLg == 4)
                                 <div class="col-lg-3 col-md-4 col-sm-12 br-lg br-sm">
                                     <?php
                                         $countLg = 0;
                                     ?>
-                                    @include('patient.appointments-schedule', ['i' => $i, 'reserved' => $reserved])
+                                        @include('patient.appointments-schedule', ['i' => $i])
                                 </div>
                             @else
                                 <div class="col-lg-3 col-md-4 col-sm-12 br-sm">
-                                    @include('patient.appointments-schedule', ['i' => $i, 'reserved' => $reserved])
+                                    @include('patient.appointments-schedule', ['i' => $i])
                                 </div>
                             @endif
                         @endfor
                     </div>
                 </div>
-                <?php
-                    $myAppointments = [
-                    [
-                        'date'  =>  date("F d, Y"),
-                        'from'  =>  '1400',
-                        'to'    =>  '1430'
-                    ],
-                    [
-                        'date'  =>  date("F d, Y"),
-                        'from'  =>  '1500',
-                        'to'    =>  '1530'
-                    ],
-                    [
-                        'date'  =>  date("F d, Y"),
-                        'from'  =>  '1600',
-                        'to'    =>  '1630'
-                    ],
-                    [
-                        'date'  =>  date("F d, Y"),
-                        'from'  =>  '1700',
-                        'to'    =>  '1730'
-                    ],
-                    [
-                        'date'  =>  date("F d, Y"),
-                        'from'  =>  '1800',
-                        'to'    =>  '1830'
-                    ],
-                    [
-                        'date'  =>  date("F d, Y"),
-                        'from'  =>  '1900',
-                        'to'    =>  '1930'
-                    ],
-                    [
-                        'date'  =>  date("F d, Y"),
-                        'from'  =>  '2000',
-                        'to'    =>  '2030'
-                    ],
-                    [
-                        'date'  =>  date("F d, Y"),
-                        'from'  =>  '2100',
-                        'to'    =>  '2130'
-                    ]
-                ]
-                ?>
                 <h3 id="my-appointments" class="mt-5">My Appointments</h3>
                 <div class="my-appointments mb-5 mt-3">
-                    <div class="row" style="background-color: #5D5D5D; color: #FFF; font-weight: bolder; font-size: 18px;">
+                    <div class="row d-none d-sm-flex" style="background-color: #5D5D5D; color: #FFF; font-weight: bolder; font-size: 18px;">
                         <div class="col-sm-1">
                             <span>#</span>
                         </div>
@@ -127,41 +84,7 @@
                         </div>
                     </div>
                     <div id="appointments-table" class="sub-container">
-                        <?php $i = 0; $fromTo = ['from', 'to'] ?>
-                        @foreach($myAppointments as $appointment)
-                            <div id="{{ 'row-'.$i }}" class="row" style="<?php if ($i % 2 == 0){ ?>background-color: #F2F2F2; <?php } ?>">
-                                <div id="{{ 'row-'.$i.'-index' }}" class="col-sm-1">
-                                    <span>{{ $i + 1 }}</span>
-                                </div>
-                                <div class="col-sm-3">
-                                    <span>{{ $appointment['date'] }}</span>
-                                </div>
-                                @foreach($fromTo as $data)
-                                    <div class="col-sm-2">
-                                        @if($appointment[$data] == 1200 or $appointment[$data] == 1230)
-                                            <span>
-                                        {{ intdiv($appointment[$data], 100) }}:<?php if ($appointment[$data] % 100 == 0): ?>00<?php else: ?>{{ $appointment[$data] % 100 }}<?php endif; ?>pm
-                                    </span>
-                                        @elseif($appointment[$data] >= 1300)
-                                            <span>
-                                        {{ intdiv($appointment[$data] - 1200, 100) }}:<?php if ($appointment[$data] % 100 == 0): ?>00<?php else: ?>{{ $appointment[$data] % 100 }}<?php endif; ?>pm
-                                    </span>
-                                        @else
-                                            <span>
-                                        {{ intdiv($appointment[$data], 100) }}:<?php if ($appointment[$data] % 100 == 0): ?>00<?php else: ?>{{ $appointment[$data] % 100 }}<?php endif; ?>am
-                                    </span>
-                                        @endif
-                                    </div>
-                                @endforeach
-                                <div class="col-sm-4">
-                                    <button id="{{ 'row-btn-'.$appointment['from'] }}" class="btn btn-danger" onclick="deleteAppointment('{{ $i }}', '{{ $appointment['from'] }}')">
-                                        <span>Remove</span>
-                                        <i class="fa fa-trash"></i>
-                                    </button>
-                                </div>
-                            </div>
-                            <?php $i++ ?>
-                        @endforeach
+
                     </div>
                 </div>
             </div>
@@ -179,25 +102,19 @@
             }
             return this;
         };
-        Array.prototype.removeFirst = function (target) {
+        Array.prototype.removeByIndex = function (index) {
             let newArr = []
-            let count = 0;
-            for (let i = 0; i < this.length; i++) {
-                if (this[i] === target)
-                    break
+            for (let i = 0; i < index; i++)
                 newArr.push(this[i])
-                count++;
-            }
-            for (let i = count + 1; i < this.length; i++)
+            for (let i = index + 1; i < this.length; i++)
                 newArr.push(this[i])
-            return newArr;
+            return newArr
         }
-        let myAppointments = [];
-        for (let i = 0; i < {{ count($myAppointments) }}; i++)
-            myAppointments.push(i)
+        let myAppointments = []
         let reservedAppointments = []
         let lastMonthActive = {{ date('m') }}, lastDayActive = {{ date('d') }};
         let months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+        let monthsNum = {"January": 1, "February": 2, "March": 3, "April": 4, "May": 5, "June": 6, "July": 7, "August": 8, "September": 9, "October": 10, "November": 11, "December": 12}
         $('#month-'+lastMonthActive).addClass('active')
         $('#day-'+lastDayActive).addClass('active');
         function selectMonth(monthId) {
@@ -247,12 +164,87 @@
             let month = parseInt(lastMonthActive)
             if (parseInt(day / 10) === 0)
                 day = '0' + day
-            $('#date').html(months[month - 1] + ' ' + day + ', ' + date.getFullYear())
+            $('#date-lg').html(months[month - 1] + ' ' + day + ', ' + date.getFullYear())
+            $('#date-sm').html(months[month - 1] + ' ' + day + ', ' + date.getFullYear())
         }
 
-        let todayBtn = $('#today');
+        function updateAppointmentsTable(arr) {
+            if (arr.length === 0)
+                $('#appointments-table').empty()
+            for(let i = 0; i < arr.length; i++) {
+                let bg = null, fromHour = 0, fromMin, toHour = 0, toMin = 0
+                if (i % 2 === 0) bg = '#F2F2F2'; else bg = '#FFF'
+                if (arr[i]['from'] % 100 == 0)
+                    fromMin = '00'
+                else
+                    fromMin = arr[i]['from'] % 100
+                if (arr[i]['from'] === '1200' || arr[i]['from'] === '1230')
+                    fromHour = parseInt(arr[i]['from'] / 100)
+                else
+                    fromHour = parseInt((arr[i]['from']) / 100)
+                if (fromHour > 12) {
+                    fromHour -= 12
+                    fromMin += 'pm'
+                }
+                else
+                    fromMin += 'am'
+
+                if (arr[i]['to'] % 100 == 0)
+                    toMin = '00'
+                else
+                    toMin = arr[i]['to'] % 100
+                if (arr[i]['to'] === '1200' || arr[i]['to'] === '1230')
+                    toHour = parseInt(arr[i]['to'] / 100)
+                else
+                    toHour = parseInt((arr[i]['to']) / 100)
+                if (toHour > 12) {
+                    toHour -= 12
+                    toMin += 'pm'
+                }
+                else
+                    toMin += 'am'
+
+                let row = '<div id="row-'+arr[i]['from']+'" class="row" style="background-color: '+bg+'">' +
+                    '<div id="row-'+arr[i]['from']+'-index" class="col-sm-1 d-none d-sm-block">' +
+                    '<span>'+ (i + 1) + '</span>' +
+                    '</div>' +
+                    '<div class="col-sm-3">' +
+                    '<span>'+ arr[i]['date'] + '</span>' +
+                    '</div>' +
+                    '<div class="col-sm-2">' +
+                    '<span>'+ fromHour + ':' + fromMin + '</span>' +
+                    '</div>' +
+                    '<div class="col-sm-2">' +
+                    '<span>'+ toHour + ':' + toMin + '</span>' +
+                    '</div>' +
+                    '<div class="col-sm-4">' +
+                    '<button id="row-btn-' + arr[i]['from'] + '" class="btn btn-danger" onclick="deleteAppointment(' + arr[i]['from'] + ')">' +
+                    '<span>Remove </span>' +
+                    '<i class="fa fa-trash"></i>' +
+                    '</button>'+
+                    '</div>' +
+                    '</div>'
+                $('#appointments-table').append(row)
+            }
+        }
+
+        function initializeAppointmentsTable() {
+            $.ajax({
+                url: '/show-my-appointments',
+                type: 'get',
+                dataType: 'json',
+                success: function (response) {
+                    myAppointments = response
+                    updateAppointmentsTable(response)
+                }
+            })
+        }
+        initializeAppointmentsTable()
+
+        let todayBtn = $('.today');
         todayBtn.on('click', function () {
-            $('#date').html('{{ date("F d, Y") }}')
+            $('#date-lg').html('{{ date("F d, Y") }}')
+            $('#date-sm').html('{{ date("F d, Y") }}')
            $.ajax({
                url: '/show-appointments/'+ {{ date('d') }} + '/' + {{ date('m') }},
                type: 'get',
@@ -329,29 +321,54 @@
                 'padding-right': '26.8px',
                 'padding-left': '26.8px'
             })
+            btn.attr('onclick', '')
+            let to = from + 30
+            if (to % 100 === 60)
+                to += 40
+            myAppointments.push({'date': $('#date-lg').html(), 'from': from.toString(), 'to': to.toString()})
+            myAppointments.sort(function(x, y) {
+                let xDate = monthsNum[x.date.substr(0, x.date.indexOf(' '))], yDate = monthsNum[y.date.substr(0, y.date.indexOf(' '))]
+                let xFrom = parseInt(x.from), yFrom = parseInt(y.from)
+                if (xDate < yDate) return -1
+                if (xDate > yDate) return 1
+                if (xFrom < yFrom) return -1
+                if (xFrom > yFrom) return 1
+            });
+            $('#appointments-table').empty()
+            let index = null
+            for (let i = 0; i < myAppointments.length; i++)
+                if (myAppointments[i]['from'] == from) {
+                    index = i
+                    break
+                }
+            updateAppointmentsTable(myAppointments)
+            $('#row-' + from).css('background-color', '#BEE1BC')
+            window.location.href = '#appointments-table'
         }
 
-        function deleteAppointment(rowId, from) {
+        function deleteAppointment(from) {
             $.ajax({
                 url: '/delete-appointment/'+ 1 + '/' + from,   // Remove 1 And Write User ID
                 type: 'get'
             });
-            console.log(rowId, myAppointments)
-            rowId = parseInt(rowId)
-            for (let i = rowId + 1; i < myAppointments.length; i++) {
-                let row = $('#row-' + i)
-                let rowIndex = $('#row-' + i + '-index')
-                rowIndex.html(i - 1)
-                row.attr('id', 'row-' + (i - 1))
-                if (row.css('background-color') === 'rgba(0, 0, 0, 0)')
-                    row.css('background-color', 'rgb(242, 242, 242)')
-                else if (row.css('background-color') === 'rgb(242, 242, 242)')
-                    row.css('background-color', 'rgba(0, 0, 0, 0)')
-                myAppointments[i] = i - 1;
-            }
-            $('#row-' + rowId).remove()
-            myAppointments = myAppointments.removeFirst(rowId);
+            let btn = $('#btn-'+from);
+            btn.removeClass('btn-danger');
+            btn.addClass('btn-success');
+            btn.html('Book Now <i class="fa fa-hand-pointer-o"></i>');
+            btn.css({
+                'padding-right': '12px',
+                'padding-left': '12px'
+            })
+            btn.attr('onclick', 'bookNow(' + from + ')')
+            let index = null
+            for (let i = 0; i < myAppointments.length; i++)
+                if (myAppointments[i]['from'] == from) {
+                    index = i
+                    break
+                }
+            myAppointments = myAppointments.removeByIndex(index)
+            $('#appointments-table').empty()
+            updateAppointmentsTable(myAppointments)
         }
-
     </script>
 @endsection

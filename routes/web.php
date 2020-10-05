@@ -64,7 +64,7 @@ Route::group(['middleware' => ['isPatient']], function() {
     Route::get('/show-appointments/{day}/{month}', [PatientController::class, 'showAvailableAppointments']);
     Route::get('/delete-appointment/{id}/{from}', [PatientController::class, 'removeAppointment']);
     Route::get('/create-appointment/{id}/{from}', [PatientController::class, 'createAppointment']);
-
+    Route::get('/show-my-appointments', [PatientController::class, 'showMyAppointments']);
 });
 
 Route::group(['middleware' => ['isNurse']], function() {

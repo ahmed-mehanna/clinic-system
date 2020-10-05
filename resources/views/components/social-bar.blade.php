@@ -1,4 +1,4 @@
-<div class="social-bar" id="social-bar">
+<div class="social-bar d-none d-lg-block" id="social-bar">
     <div class="container">
         <div class="row">
             <div class="col-lg-4 col-sm-6 text-center">
