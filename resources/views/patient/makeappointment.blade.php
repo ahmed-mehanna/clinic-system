@@ -83,9 +83,7 @@
                             <span>To</span>
                         </div>
                     </div>
-                    <div id="appointments-table" class="sub-container">
-
-                    </div>
+                    <div id="appointments-table" class="sub-container"></div>
                 </div>
             </div>
         </div>
@@ -310,7 +308,7 @@
 
         function bookNow(from) {
             $.ajax({
-                url: '/create-appointment/'+ 1 + '/' + from,   // Remove 1 And Write User ID
+                url: '/create-appointment/'+ {{ date('d') }} + '/' + {{ date('m') }} + '/' + from,   // Remove 1 And Write User ID
                 type: 'get'
             });
             let btn = $('#btn-'+from);
@@ -348,7 +346,7 @@
 
         function deleteAppointment(from) {
             $.ajax({
-                url: '/delete-appointment/'+ 1 + '/' + from,   // Remove 1 And Write User ID
+                url: '/delete-appointment/'+ {{ date('d') }} + '/' + {{ date('m') }} + '/' + from,   // Remove 1 And Write User ID
                 type: 'get'
             });
             let btn = $('#btn-'+from);
