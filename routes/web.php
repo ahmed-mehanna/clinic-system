@@ -60,6 +60,11 @@ Route::group(['middleware' => ['isPatient']], function() {
     Route::get("/patient/Reserve",[PatientController::class,"create"]);
     Route::get("/show/details/{id}",[PatientController::class,"show"]);
 
+
+    Route::get('/show-appointments/{day}/{month}', [PatientController::class, 'showAvailableAppointments']);
+    Route::get('/delete-appointment/{id}/{from}', [PatientController::class, 'removeAppointment']);
+    Route::get('/create-appointment/{id}/{from}', [PatientController::class, 'createAppointment']);
+
 });
 
 Route::group(['middleware' => ['isNurse']], function() {

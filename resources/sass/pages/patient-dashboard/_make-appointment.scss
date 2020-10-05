@@ -33,6 +33,7 @@ div.patient-dashboard-style {
                             font-size: 16px;
                             font-family: 'Ubuntu', sans-serif;
                             margin-left: 20px;
+                            margin-bottom: 4px;
                         }
                     }
                 }
@@ -51,6 +52,7 @@ div.patient-dashboard-style {
                             position: absolute;
                             right: 20px;
                             top: 8px;
+                            padding: 6px 12px;
                             font-size: 16px;
                             font-family: 'Ubuntu', sans-serif;
                         }
@@ -60,48 +62,46 @@ div.patient-dashboard-style {
                                 background-color: #e3342f;
                             }
                         }
+                        button.active {
+                            background-color: $bg-main-color;
+                            padding: 6px 8px;
+                        }
                     }
                 }
             }
             div.my-appointments {
-                max-height: 490px;
-                overflow-y: auto;
                 box-shadow: rgba(193, 193, 193, 0.8) 10px 10px 50px;
                 div.sub-container {
-                    div.row {
-                        border-bottom: 1px #000 solid;
-                        margin: 0;
-                        padding: 10px 0;
-                        div {
+                    max-height: 490px;
+                    overflow-y: auto;
+                }
+                div.row {
+                    border-bottom: 1px #000 solid;
+                    margin: 0;
+                    padding: 10px 0;
+                    div {
+                        font-size: 17px;
+                        text-align: center;
+                        span {
+                            display: inline-block;
+                            margin-top: 8px;
+                        }
+                        button {
+                            font-family: 'Ubuntu', sans-serif;
                             font-size: 17px;
-                            text-align: center;
                             span {
-                                display: inline-block;
-                                margin-top: 8px;
-                            }
-                            button {
-                                font-family: 'Ubuntu', sans-serif;
-                                font-size: 17px;
-                                span {
-                                    display: inline;
-                                }
+                                display: inline;
                             }
                         }
-                        &:first-child {
-                            //border-top-left-radius: 15px;
-                            //border-top-right-radius: 15px;
-                        }
-                        &:last-child {
-                            border-bottom: none;
-                            //border-radius: 15px;
-                        }
+                    }
+                    &:last-child {
+                        border-bottom: none;
                     }
                 }
             }
         }
     }
 }
-
 
 @media (min-width: 992px) {
     div.patient-dashboard-style {
@@ -150,16 +150,43 @@ div.patient-dashboard-style {
                         }
                         div.cc {
                             display: block;
+                            button {
+                                width: 50%;
+                                margin: 15px 0;
+                                font-size: 16px;
+                                font-family: 'Ubuntu', sans-serif;
+                            }
                         }
                         div.col-lg-7 {
+                            span {
+                                width: 100% !important;
+                            }
                             button {
-                                margin-left: 0;
-                                position: absolute;
-                                right: 5%;
+                                display: none;
                             }
                         }
                     }
                 }
+                div.all-appointments {
+                    max-height: 400px;
+                    overflow-y: scroll;
+                    div.row {
+                        max-width: 99%;
+                        margin-left: 1%;
+                        .br-sm{
+                            border: none;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 766px) {
+    div.patient-dashboard-style {
+        div.make-appointment {
+            div.container {
                 div.all-appointments {
                     max-height: 400px;
                     overflow-y: scroll;

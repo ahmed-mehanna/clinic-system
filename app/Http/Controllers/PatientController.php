@@ -111,4 +111,27 @@ class PatientController extends Controller
     {
         return view('patient.resetpasswordpatient');
     }
+
+
+
+
+    public function showAvailableAppointments($day, $month) {
+        if ($month == 10 && $day == 5)
+            $reserved = [800, 900, 1000];
+        else if ($month == 10 && $day == 6)
+            $reserved = [1400, 1500, 1600];
+        else
+            $reserved = [2000, 2100, 2200];
+        echo json_encode($reserved);    // Echo Available Appointments Fro Day/Month
+    }
+
+    public function removeAppointment($id, $from) {
+        // Delete Appointment From DB
+    }
+
+    public function createAppointment($id, $from) {
+        // Add Appointment To DB
+    }
+
+
 }
