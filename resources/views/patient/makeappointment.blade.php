@@ -1,5 +1,8 @@
 @extends('components.app')
 @section('content')
+    <?php
+    use Carbon\Carbon;
+    ?>
     <div class="patient-dashboard-style">
         <div class="make-appointment">
             <div class="container">

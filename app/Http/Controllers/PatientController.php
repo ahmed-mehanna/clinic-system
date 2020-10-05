@@ -3,9 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Illness;
+use App\Models\Reservation;
 use App\Models\User;
 use Illuminate\Http\Request;
-
+use Carbon\Carbon;
 class PatientController extends Controller
 {
 
@@ -116,12 +117,29 @@ class PatientController extends Controller
 
 
     public function showAvailableAppointments($day, $month) {
-        if ($month == 10 && $day == 5)
-            $reserved = [800, 900, 1000];
-        else if ($month == 10 && $day == 6)
-            $reserved = [1400, 1500, 1600];
-        else
-            $reserved = [2000, 2100, 2200];
+        $dateTimeFrom =  Carbon::today(); //year / month/ day
+        $dateTimeFrom->month = $month;
+        $dateTimeFrom->day = $day;
+        $dateTimeFrom->addHours(8);
+
+        $dateTimeTo = clone $dateTimeFrom;
+        $dateTimeTo->addHours(14);
+
+        $reservedobj = Reservation::whereBetween('reservation At',[$dateTimeFrom->toDateTime(),$dateTimeTo->toDateTime()])->get();
+
+        $reserved = array();
+        foreach ($reservedobj as $res){
+             $first = Carbon::parse($res["reservation At"])->format('Hi');
+             array_push($reserved,$first);
+        }
+
+
+//        if ($month == "10" && $day == "5")
+//            $reserved = [800, 900, 1000];
+//        else if ($month == 10 && $day == 6)
+//            $reserved = [1400, 1500, 1600];
+//        else
+//            $reserved = [2000, 2100, 2200];
         echo json_encode($reserved);    // Echo Available Appointments Fro Day/Month
     }
 
