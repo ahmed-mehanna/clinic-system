@@ -15015,7 +15015,7 @@ div.nurse-reserve-style div.container form div.all-appointments div.row div butt
 }
 
 div.nurse-reserve-style div.container form div.all-appointments div.row div button.btn-danger {
-  cursor: inherit;
+  cursor: not-allowed;
 }
 
 div.nurse-reserve-style div.container form div.all-appointments div.row div button.btn-danger:hover {
@@ -15692,7 +15692,7 @@ div.patient-dashboard-style div.make-appointment div.container div.all-appointme
 }
 
 div.patient-dashboard-style div.make-appointment div.container div.all-appointments div.row div button.btn-danger {
-  cursor: inherit;
+  cursor: not-allowed;
 }
 
 div.patient-dashboard-style div.make-appointment div.container div.all-appointments div.row div button.btn-danger:hover {

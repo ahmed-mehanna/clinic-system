@@ -238,11 +238,11 @@
             $('#date-lg').html('{{ date("F d, Y") }}')
             $('#date-sm').html('{{ date("F d, Y") }}')
             $.ajax({
-                url: '/show-appointments/'+ {{ date('d') }} + '/' + {{ date('m') }},
+                url: '/patient/show-appointments/'+ {{ date('d') }} + '/' + {{ date('m') }},
                 type: 'get',
                 dataType: 'json',
                 success: function (response) {
-                    console.log("lol")
+                    console.log(response)
                     for (let i = 0; i < reservedAppointments.length; i++) {
                         let btn = $('#btn-'+reservedAppointments[i]);
                         btn.removeClass('btn-danger');
@@ -252,6 +252,7 @@
                             'padding-right': '12px',
                             'padding-left': '12px'
                         })
+                        btn.attr('onclick', 'bookNow(' + reservedAppointments[i] + ')')
                     }
                     for (let i = 0; i < response.length; i++) {
                         let btn = $('#btn-'+response[i]);
@@ -262,6 +263,7 @@
                             'padding-right': '26.8px',
                             'padding-left': '26.8px'
                         })
+                        btn.attr('onclick', '')
                     }
                     reservedAppointments = response;
                 }
@@ -271,7 +273,7 @@
         let searchBtn = $('#search');
         searchBtn.on('click', function () {
             $.ajax({
-                url: '/show-appointments/'+ lastDayActive + '/' + lastMonthActive,
+                url: '/patient/show-appointments/'+ lastDayActive + '/' + lastMonthActive,
                 type: 'get',
                 dataType: 'json',
                 success: function (response) {
@@ -284,6 +286,7 @@
                             'padding-right': '12px',
                             'padding-left': '12px'
                         })
+                        btn.attr('onclick', 'bookNow(' + reservedAppointments[i] + ')')
                     }
                     for (let i = 0; i < response.length; i++) {
                         let btn = $('#btn-'+response[i]);
@@ -294,6 +297,7 @@
                             'padding-right': '1.675rem',
                             'padding-left': '1.675rem'
                         })
+                        btn.attr('onclick', '')
                     }
                     reservedAppointments = response;
                 }
@@ -301,7 +305,7 @@
         });
         function bookNow(from) {
             $.ajax({
-                url: '/create-appointment/'+ {{ date('d') }} + '/' + {{ date('m') }} + '/' + from,   // Remove 1 And Write User ID
+                url: '/create-appointment/'+ lastDayActive + '/' + lastMonthActive + '/' + from,   // Remove 1 And Write User ID
                 type: 'get'
             });
             let btn = $('#btn-'+from);

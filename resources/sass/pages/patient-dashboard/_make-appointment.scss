@@ -57,7 +57,7 @@ div.patient-dashboard-style {
                             font-family: 'Ubuntu', sans-serif;
                         }
                         button.btn-danger {
-                            cursor: inherit;
+                            cursor: not-allowed;
                             &:hover {
                                 background-color: #e3342f;
                             }

@@ -162,7 +162,6 @@ class PatientController extends Controller
             $first = (int)$first;
             array_push($reserved,$first);
         }
-        $reserved = [1300,1400];
         echo json_encode($reserved);    // Echo Available Appointments Fro Day/Month
     }
 

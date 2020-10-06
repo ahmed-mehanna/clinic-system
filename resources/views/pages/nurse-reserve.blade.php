@@ -142,6 +142,7 @@
             window.history.back();
         }
         function selectAppointment(val) {
+            console.log('hello')
             if (lastActiveAppointment !== null) {
                 $('#' + lastActiveAppointment).removeClass('active')
                 $('#' + lastActiveAppointment).html('Book Now <i class="fa fa-hand-pointer-o"></i>')
@@ -212,7 +213,7 @@
             $('#date-lg').html('{{ date("F d, Y") }}')
             $('#date-sm').html('{{ date("F d, Y") }}')
             $.ajax({
-                url: '/show-appointments/'+ {{ date('d') }} + '/' + {{ date('m') }},
+                url: '/nurse/show-appointments/'+ {{ date('d') }} + '/' + {{ date('m') }},
                 type: 'get',
                 dataType: 'json',
                 success: function (response) {
@@ -226,6 +227,7 @@
                             'padding-right': '12px',
                             'padding-left': '12px'
                         })
+                        btn.attr('onclick', 'selectAppointment(' + reservedAppointments[i] +')')
                     }
                     for (let i = 0; i < response.length; i++) {
                         let btn = $('#btn-'+response[i]);
@@ -234,8 +236,10 @@
                         btn.html('Booked <i class="fa fa-exclamation"></i>');
                         btn.css({
                             'padding-right': '26.8px',
-                            'padding-left': '26.8px'
+                            'padding-left': '26.8px',
+                            'box-shadow': 'none',
                         })
+                        btn.attr('onclick', '')
                     }
                     reservedAppointments = response;
                 }
@@ -246,7 +250,7 @@
         let searchBtn = $('#search');
         searchBtn.on('click', function () {
             $.ajax({
-                url: '/show-appointments/'+ lastDayActive + '/' + lastMonthActive,
+                url: '/nurse/show-appointments/'+ lastDayActive + '/' + lastMonthActive,
                 type: 'get',
                 dataType: 'json',
                 success: function (response) {
@@ -259,6 +263,7 @@
                             'padding-right': '12px',
                             'padding-left': '12px'
                         })
+                        btn.attr('onclick', 'selectAppointment(' + reservedAppointments[i] +')')
                     }
                     for (let i = 0; i < response.length; i++) {
                         let btn = $('#btn-'+response[i]);
@@ -269,6 +274,7 @@
                             'padding-right': '1.675rem',
                             'padding-left': '1.675rem'
                         })
+                        btn.attr('onclick', '')
                     }
                     reservedAppointments = response;
                 }

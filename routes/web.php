@@ -61,7 +61,7 @@ Route::group(['middleware' => ['isPatient']], function() {
     Route::get("/show/details/{id}",[PatientController::class,"show"]);
 
 
-    Route::get('/show-appointments/{day}/{month}', [NurseController::class, 'showAvailableAppointments']);
+    Route::get('/patient/show-appointments/{day}/{month}', [PatientController::class, 'showAvailableAppointments']);
     Route::get('/delete-appointment/{day}/{month}/{from}', [PatientController::class, 'removeAppointment']);
     Route::get('/create-appointment/{day}/{month}/{from}', [PatientController::class, 'createAppointment']);
     Route::get('/show-my-appointments', [PatientController::class, 'showMyAppointments']);
@@ -82,7 +82,7 @@ Route::group(['middleware' => ['isNurse']], function() {
     Route::get("/patient/attend/{id}",[NurseController::class,"CheckAttend"]);
     Route::get("/patient/notattend/{id}",[NurseController::class,"CheckNotAttend"]);
     //-------------------------------------------------------------
-    Route::get('/show-appointments/{day}/{month}', [NurseController::class, 'showAvailableAppointments']);
+    Route::get('/nurse/show-appointments/{day}/{month}', [NurseController::class, 'showAvailableAppointments']);
 });
 
 
