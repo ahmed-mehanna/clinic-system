@@ -63,6 +63,8 @@
                     </div>
                 </div>
                 <input id="time" type="text" name="time" style="visibility: hidden" required>
+                <input id="day" type="text" name="day" style="visibility: hidden" required>
+                <input id="month" type="text" name="month" style="visibility: hidden" required>
 
                 <h3 class="mb-3">Select Appointments</h3>
                 <div class="inputs border-bottom pb-3">
@@ -145,10 +147,11 @@
                 $('#' + lastActiveAppointment).html('Book Now <i class="fa fa-hand-pointer-o"></i>')
             }
             $('#time').attr('value', val)
+            $('#day').attr('value', {{ date('d') }})
+            $('#month').attr('value', {{ date('m') }})
             $('#btn-'+val).addClass('active')
             $('#btn-'+val).text('Booked For You')
             lastActiveAppointment = 'btn-'+val
-            console.log($('#time').val())
         }
         function selectMonth(monthId) {
             if (monthId === 2) {
