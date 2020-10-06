@@ -40,24 +40,24 @@
                             @if(($countMd == 3 and $countLg == 4) or ($i == 2200))
                                 <div class="col-lg-3 col-md-4 col-sm-12 br-md br-lg br-sm">
                                     <?php
-                                        $countMd = 0;
-                                        $countLg = 0;
+                                    $countMd = 0;
+                                    $countLg = 0;
                                     ?>
                                     @include('patient.appointments-schedule', ['i' => $i])
                                 </div>
                             @elseif($countMd == 3)
                                 <div class="col-lg-3 col-md-4 col-sm-12 br-md br-sm">
                                     <?php
-                                        $countMd = 0;
+                                    $countMd = 0;
                                     ?>
                                     @include('patient.appointments-schedule', ['i' => $i])
                                 </div>
                             @elseif($countLg == 4)
                                 <div class="col-lg-3 col-md-4 col-sm-12 br-lg br-sm">
                                     <?php
-                                        $countLg = 0;
+                                    $countLg = 0;
                                     ?>
-                                        @include('patient.appointments-schedule', ['i' => $i])
+                                    @include('patient.appointments-schedule', ['i' => $i])
                                 </div>
                             @else
                                 <div class="col-lg-3 col-md-4 col-sm-12 br-sm">
@@ -117,7 +117,6 @@
         $('#day-'+lastDayActive).addClass('active');
         function selectMonth(monthId) {
             if (monthId === 2) {
-
             }
             else if (monthId <= 7 && monthId % 2 === 0) {
                 if (lastMonthActive !== null)
@@ -165,7 +164,6 @@
             $('#date-lg').html(months[month - 1] + ' ' + day + ', ' + date.getFullYear())
             $('#date-sm').html(months[month - 1] + ' ' + day + ', ' + date.getFullYear())
         }
-
         function updateAppointmentsTable(arr) {
             if (arr.length === 0)
                 $('#appointments-table').empty()
@@ -186,7 +184,6 @@
                 }
                 else
                     fromMin += 'am'
-
                 if (arr[i]['to'] % 100 == 0)
                     toMin = '00'
                 else
@@ -201,7 +198,6 @@
                 }
                 else
                     toMin += 'am'
-
                 let row = '<div id="row-'+arr[i]['from']+'" class="row" style="background-color: '+bg+'">' +
                     '<div id="row-'+arr[i]['from']+'-index" class="col-sm-1 d-none d-sm-block">' +
                     '<span>'+ (i + 1) + '</span>' +
@@ -225,7 +221,6 @@
                 $('#appointments-table').append(row)
             }
         }
-
         function initializeAppointmentsTable() {
             $.ajax({
                 url: '/show-my-appointments',
@@ -238,27 +233,26 @@
             })
         }
         initializeAppointmentsTable()
-
         let todayBtn = $('.today');
         todayBtn.on('click', function () {
             $('#date-lg').html('{{ date("F d, Y") }}')
             $('#date-sm').html('{{ date("F d, Y") }}')
-           $.ajax({
-               url: '/show-appointments/'+ {{ date('d') }} + '/' + {{ date('m') }},
-               type: 'get',
-               dataType: 'json',
-               success: function (response) {
-                   console.log(response)
-                   for (let i = 0; i < reservedAppointments.length; i++) {
-                       let btn = $('#btn-'+reservedAppointments[i]);
-                       btn.removeClass('btn-danger');
-                       btn.addClass('btn-success');
-                       btn.html('Book Now <i class="fa fa-hand-pointer-o"></i>')
-                       btn.css({
-                           'padding-right': '12px',
-                           'padding-left': '12px'
-                       })
-                   }
+            $.ajax({
+                url: '/show-appointments/'+ {{ date('d') }} + '/' + {{ date('m') }},
+                type: 'get',
+                dataType: 'json',
+                success: function (response) {
+                    console.log("lol")
+                    for (let i = 0; i < reservedAppointments.length; i++) {
+                        let btn = $('#btn-'+reservedAppointments[i]);
+                        btn.removeClass('btn-danger');
+                        btn.addClass('btn-success');
+                        btn.html('Book Now <i class="fa fa-hand-pointer-o"></i>')
+                        btn.css({
+                            'padding-right': '12px',
+                            'padding-left': '12px'
+                        })
+                    }
                     for (let i = 0; i < response.length; i++) {
                         let btn = $('#btn-'+response[i]);
                         btn.removeClass('btn-success');
@@ -270,11 +264,10 @@
                         })
                     }
                     reservedAppointments = response;
-               }
-           });
+                }
+            });
         });
         todayBtn.click();
-
         let searchBtn = $('#search');
         searchBtn.on('click', function () {
             $.ajax({
@@ -306,7 +299,6 @@
                 }
             });
         });
-
         function bookNow(from) {
             $.ajax({
                 url: '/create-appointment/'+ {{ date('d') }} + '/' + {{ date('m') }} + '/' + from,   // Remove 1 And Write User ID
@@ -344,7 +336,6 @@
             $('#row-' + from).css('background-color', '#BEE1BC')
             window.location.href = '#appointments-table'
         }
-
         function deleteAppointment(from) {
             $.ajax({
                 url: '/delete-appointment/'+ {{ date('d') }} + '/' + {{ date('m') }} + '/' + from,   // Remove 1 And Write User ID

@@ -1,12 +1,16 @@
 <?php
 
 namespace App\Http\Controllers;
-
-use App\Models\Illness;
 use App\Models\Reservation;
 use App\Models\User;
+use App\Models\Patient;
+use App\Models\PatientHistory;
+use App\Models\Patientturn;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
+use App\Models\Exception_Days_Doctor;
+use Illuminate\Support\Facades\Hash;
+use App\Models\Illness;
 class PatientController extends Controller
 {
 
@@ -124,15 +128,41 @@ class PatientController extends Controller
         $dateTimeTo = clone $dateTimeFrom;
         $dateTimeTo->addHours(14);
 
+        $datenow = Carbon::now();
+        $res_check_for_duplicate= Reservation::firstWhere("Reserved_by_Doctor",1);
+        $res_check2_for_duplicate= Reservation::whereBetween('reservation At',[Carbon::today()->toDateTime(),Carbon::today()->addHours(22)->toDateTime()])->where('Reserved_by_Doctor',1)->orderBy('reservation At','DESC')->get();
+
+        if($res_check_for_duplicate) {
+            $start = clone Carbon::parse($res_check2_for_duplicate[0]["reservation At"]);
+            for($date = clone $start;$date->diffInMinutes($datenow)>="30";$date->addMinutes(30)){
+                $date->addMinutes(30);
+                $res = new Reservation();
+                $res["reservation At"] = $date;
+                $res["user_id"] = 0;
+                $res["Reserved_by_Doctor"] = 1 ;
+                $res->save();
+            }
+        }elseif(!$res_check_for_duplicate){
+            $start = clone Carbon::today();
+            $start->addHours(8);
+
+            for($date = clone $start;$date->diffInMinutes($datenow)>"30";$date->addMinutes(30)){
+                $res = new Reservation();
+                $res["reservation At"] = $date;
+                $res["user_id"] = 0;
+                $res["Reserved_by_Doctor"] = 1 ;
+                $res->save();
+            }
+        }
         $reservedobj = Reservation::whereBetween('reservation At',[$dateTimeFrom->toDateTime(),$dateTimeTo->toDateTime()])->get();
 
         $reserved = array();
         foreach ($reservedobj as $res){
-             $first = Carbon::parse($res["reservation At"])->format('Hi');
-             $first = (int)$first;
-             array_push($reserved,$first);
+            $first = Carbon::parse($res["reservation At"])->format('Hi');
+            $first = (int)$first;
+            array_push($reserved,$first);
         }
-
+        $reserved = [1300,1400];
         echo json_encode($reserved);    // Echo Available Appointments Fro Day/Month
     }
 

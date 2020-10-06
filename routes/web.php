@@ -47,10 +47,6 @@ Route::group(['middleware' => ['isDoctor']], function() {
   Route::get('/doctor/find-patient', function () {
         return view('pages.doctor-find-patient');
     });
-
-
-  Route::get('/next-patient/{emptyTable}', [DoctorController::class, 'nextPatient']);
-
 });
 
 Route::group(['middleware' => ['isPatient']], function() {
@@ -65,7 +61,7 @@ Route::group(['middleware' => ['isPatient']], function() {
     Route::get("/show/details/{id}",[PatientController::class,"show"]);
 
 
-    Route::get('/show-appointments/{day}/{month}', [PatientController::class, 'showAvailableAppointments']);
+    Route::get('/show-appointments/{day}/{month}', [NurseController::class, 'showAvailableAppointments']);
     Route::get('/delete-appointment/{day}/{month}/{from}', [PatientController::class, 'removeAppointment']);
     Route::get('/create-appointment/{day}/{month}/{from}', [PatientController::class, 'createAppointment']);
     Route::get('/show-my-appointments', [PatientController::class, 'showMyAppointments']);
@@ -85,10 +81,8 @@ Route::group(['middleware' => ['isNurse']], function() {
     //////---------------------------------------------------------
     Route::get("/patient/attend/{id}",[NurseController::class,"CheckAttend"]);
     Route::get("/patient/notattend/{id}",[NurseController::class,"CheckNotAttend"]);
-
     //-------------------------------------------------------------
     Route::get('/show-appointments/{day}/{month}', [NurseController::class, 'showAvailableAppointments']);
-    Route::get('/notification', [NurseController::class, 'notification']);
 });
 
 

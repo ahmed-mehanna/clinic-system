@@ -1,7 +1,7 @@
 @extends('components.newfile')
 @section('content1')
 
-                
+
                 <h1>Your History</h1>
                 <hr color="black" width="220px">
                 <br>
@@ -69,11 +69,11 @@
                                 </div>
                             </div>
                         @endif
-                       
-               
 
-          
-   
+
+
+
+
 @endsection
 
 
