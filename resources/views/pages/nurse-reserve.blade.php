@@ -10,8 +10,8 @@
                     <div class="fp w-100" style="text-align:center"><strong >{{Session::get('message')}}</strong></div>
                 </div>
             @endif
-            <form action="" method="get">
-                {{--                @csrf--}}
+            <form action="/nurse/reserve/store" method="get">
+                                @csrf
                 <div class="form-group">
                     <label for="name">Full Name</label>
                     <div class="container mt-0">
@@ -62,9 +62,9 @@
                         <label class="form-check-label" for="inlineRadio2">Female</label>
                     </div>
                 </div>
-                <input id="time" type="text" name="time" style="visibility: hidden" required>
-                <input id="day" type="text" name="day" style="visibility: hidden" required>
-                <input id="month" type="text" name="month" style="visibility: hidden" required>
+                <input id="time" type="number" name="time" style="visibility: hidden" readonly required>
+                <input id="day" type="number" name="day" style="visibility: hidden" readonly required>
+                <input id="month" type="number" name="month" style="visibility: hidden" readonly required>
 
                 <h3 class="mb-3">Select Appointments</h3>
                 <div class="inputs border-bottom pb-3">
@@ -147,8 +147,9 @@
                 $('#' + lastActiveAppointment).html('Book Now <i class="fa fa-hand-pointer-o"></i>')
             }
             $('#time').attr('value', val)
-            $('#day').attr('value', {{ date('d') }})
-            $('#month').attr('value', {{ date('m') }})
+            $('#day').attr('value', lastDayActive)
+            $('#month').attr('value', lastMonthActive)
+            console.log($('#time').attr('value'),$('#day').attr('value'),$('#month').attr('value'))
             $('#btn-'+val).addClass('active')
             $('#btn-'+val).text('Booked For You')
             lastActiveAppointment = 'btn-'+val
