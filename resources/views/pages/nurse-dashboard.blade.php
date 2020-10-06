@@ -49,4 +49,23 @@
             </table>
         </div>
     </div>
+    <button id="ajax-btn" class="d-none" data-toggle="modal" data-target="#notification"></button>
+    @include('components.nurse-dashboard.notification')
+    <script>
+        function notify() {
+            $.ajax({
+                url: '/notification',
+                type: 'get',
+                dataType: 'json',
+                success: function (response) {
+                    console.log(response)
+                    if (response === true) {
+                        clearInterval(notificationCheck)
+                        $('#ajax-btn').click()
+                    }
+                }
+            })
+        }
+        let notificationCheck = setInterval(notify, 500);
+    </script>
 @endsection

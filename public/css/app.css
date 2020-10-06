@@ -15144,6 +15144,31 @@ div.nurse-work-hour-exception div.container form div.form-group select option:fi
   border-top: none;
 }
 
+div.nurse-notification {
+  font-family: "Ubuntu", sans-serif;
+}
+
+div.nurse-notification div.modal-header h5 {
+  font-size: 28px !important;
+}
+
+div.nurse-notification div.modal-header h5 i {
+  color: #F2B30B;
+}
+
+div.nurse-notification div.modal-body img {
+  max-width: 25%;
+}
+
+div.nurse-notification div.modal-body p {
+  display: inline-block;
+  font-size: 18px;
+  margin-left: 25px;
+  max-width: 50%;
+  position: absolute;
+  top: 23px;
+}
+
 div.doctor-dashboard-style div.container-fluid,
 div.doctor-dashboard-style div.container-sm,
 div.doctor-dashboard-style div.container-md,

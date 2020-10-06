@@ -214,4 +214,15 @@ class DoctorController extends Controller
     {
         //
     }
+
+
+    public function nextPatient($emptyTable) {
+        if ($emptyTable == 'false')
+                Patientturn::truncate();
+        if (count(Patientturn::all()) == 0)
+            echo json_encode(false);
+        else
+            echo json_encode(true);
+    }
+
 }

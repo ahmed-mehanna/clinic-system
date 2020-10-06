@@ -181,7 +181,13 @@ class NurseController extends Controller
         echo json_encode($reserved);    // Echo Available Appointments Fro Day/Month
     }
 
-
+    public function notification() {
+//        echo count(Patientturn::all());
+        if (count(Patientturn::all()) == 0)
+            echo json_encode(true);
+        else
+            echo json_encode(false);
+    }
 
 
 

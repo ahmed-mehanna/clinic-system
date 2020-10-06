@@ -1,0 +1,24 @@
+div.nurse-notification {
+    font-family: 'Ubuntu', sans-serif;
+    div.modal-header {
+        h5 {
+            font-size: 28px !important;
+            i {
+                color: #F2B30B;
+            }
+        }
+    }
+    div.modal-body {
+        img {
+            max-width: 25%;
+        }
+        p {
+            display: inline-block;
+            font-size: 18px;
+            margin-left: 25px;
+            max-width: 50%;
+            position: absolute;
+            top: 23px;
+        }
+    }
+}

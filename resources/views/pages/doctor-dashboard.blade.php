@@ -10,7 +10,33 @@
                 @csrf
                 <input type="hidden" name="user_id" value="{{ $userTurn->user->id }}">
             </form>
-            <button type="submit" form="patient-form" class="btn btn-primary mt-5 ml-5">Save</button>
+            <button id="ajax-btn" type="button" class="btn btn-primary mt-5 ml-5" data-toggle="modal" data-target="#notification">Save</button>
+            <button id="submit-btn" type="submit" form="patient-form" class="d-none"></button>
         </div>
     </div>
+    @include('components.doctor-dashboard.notification')
+    <script>
+        let askForNextPatient = null, emptyTable = false;
+        function getNextPatient() {
+            $.ajax({
+                url: '/next-patient/' + emptyTable,
+                type: 'get',
+                dataType: 'json',
+                success: function (response) {
+                    console.log(response)
+                    emptyTable = true;
+                    if (response === true) {
+                        clearInterval(askForNextPatient)
+                        $('#submit-btn').click()
+                    }
+                }
+            })
+        }
+
+        $('#ajax-btn').on('click', function () {
+            askForNextPatient = setInterval(getNextPatient, 500)
+        })
+
+
+    </script>
 @endsection
