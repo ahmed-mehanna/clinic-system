@@ -61,81 +61,52 @@ class NurseController extends Controller
         $userhistory = new PatientHistory();
         $patient2 = Patient::firstWhere("national-id", $request->input("national-id"));
         if($patient2 === null) {
-                $user["name"] = $request["first-name"] . " " . $request["middle-name"] . " " . $request["last-name"];
-                $user["email"] = $request["email"];
-                $user["phoneNumber"] = $request["phone-number"];
-                $user["password"] = Hash::make($request["national-id"]);
+            $user["name"] = $request["first-name"] . " " . $request["middle-name"] . " " . $request["last-name"];
+            $user["email"] = $request["email"];
+            $user["phoneNumber"] = $request["phone-number"];
+            $user["password"] = Hash::make($request["national-id"]);
 
-                $user->save();
+            $user->save();
 
-                $patient["national-id"] = $request->input("national-id");
-                $patient["address"] = $request->input("address");
-                $patient["age"] = $request->input("age");
+            $patient["national-id"] = $request->input("national-id");
+            $patient["address"] = $request->input("address");
+            $patient["age"] = $request->input("age");
 
-                $patient["gender"] = $request->input("gender");
-                $patient["user_id"] = $user->id;
+            $patient["gender"] = $request->input("gender");
+            $patient["user_id"] = $user->id;
+            $patient->save();
 
-                $patient->save();
-             }
-                $reserv["user_id"]= 1;
-                $reserv["Reserved_by_Doctor"] = 0 ;
+            $res = Carbon::today();
+            $res->day = $request->input("day");
+            $res->month = $request->input("month");
+            $hour = (int)$request->input("time") / 100;
+            $min = (int)$request->input("time") % 100;
+            $res->addHours($hour);
+            $res->addMinutes($min);
 
-                $res = Carbon::today(); // year // 10 // 6 // 00 00 00
+            $reserv["reservation At"] = $res;
+            $reserv["user_id"] = $user->id;
+            $reserv["Reserved_by_Doctor"] = 0;
+            $reserv->save();
 
+            $userhistory['user_id'] = $user->id;
+            $userhistory->save();
+        }else{
 
-                $res->day = $request->input("day");
-                $res->month = $request->input("month");
+            $res = Carbon::today();
+            $res->day = $request->input("day");
+            $res->month = $request->input("month");
+            $hour = (int)$request->input("time") / 100;
+            $min = (int)$request->input("time") % 100;
+            $res->addHours($hour);
+            $res->addMinutes($min);
 
-                $hour = (int)$request->input("time")/100;
-                $min = (int)$request->input("time")%100;
+            $reserv["reservation At"] = $res;
+            $reserv["user_id"] = $patient2->user_id;
+            $reserv["Reserved_by_Doctor"] = 0;
+            $reserv->save();
+        }
 
-                $res->addHours($hour);
-                $res->addMinutes($min);
-
-                $reserv["reservation At"] = $res ;
-                $reserv->save();
-
-//                $userhistory['user_id'] = 1;
-//                $userhistory->save();
-
-
-
-                $x = Reservation::whereBetween('reservation At',[Carbon::tomorrow()->toDateTime(),Carbon::tomorrow()->addHours(16)->toDateTime()])->orderBy('reservation At','asc')->get();
-
-
-//                if(count($x)==0){
-//                    $free = Carbon::tomorrow()->addHours(10);
-//                    $reserv["reservation At"] = $free;
-//                    $reserv->save();
-//                }else {
-//                    foreach ($x as $key => $val) {
-//                        if (isset($x[$key+1])) {
-//                            $frist  = clone Carbon::parse($x[$key]["reservation At"]);
-//                            $second = clone Carbon::parse($x[$key+1]["reservation At"]);
-//
-//                           if($second->diffInMinutes($frist)!="30"){
-//                                $frist->addMinutes(30);
-//                                $reserv["reservation At"] = $frist;
-//                                $reserv->save();
-//                                break;
-//                            }
-//                        } else {
-//                            if (($x[$key]["Reserved_by_Doctor"] == 0) || ($x[$key]["Reserved_by_Doctor"] == 1 && $x[$key]["TO_Expection"] == 1)) {
-//                                $last = clone Carbon::parse($x[$key]["reservation At"]);
-//                                $last = $last->addMinutes(30);
-//                                $from = Carbon::tomorrow()->addHours(10);
-//                                $to = Carbon::tomorrow()->addHours(16);
-//                                if ($last->betweenIncluded($from, $to)) {
-//                                    $reserv["reservation At"] = $last;
-//                                    $reserv->save();
-//                                } else {
-//                                    return redirect()->back()->with('message', 'Tomorrow schedule is Reserved  patient can select best day from his account');
-//                                }
-//                            }
-//
-//                        }
-//                    }
-//                }
         return  redirect("/nurse");
     }
 
