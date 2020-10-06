@@ -11,7 +11,7 @@
                 </div>
             @endif
             <form action="" method="get">
-{{--                @csrf--}}
+                {{--                @csrf--}}
                 <div class="form-group">
                     <label for="name">Full Name</label>
                     <div class="container mt-0">
@@ -41,7 +41,7 @@
                     <input type="email" class="form-control" id="email" name="email" placeholder="Enter Email">
                 </div>
 
-                    <input type="hidden" class="form-control" id="password" name="password" value="pass123">
+                <input type="hidden" class="form-control" id="password" name="password" value="pass123">
 
                 <div class="form-group">
                     <label for="address">Address</label>
@@ -68,27 +68,28 @@
                 <div class="inputs border-bottom pb-3">
                     <div class="row">
                         <div  class="col-lg-3 col-md-5">
-                            <span id="available-appointments-day">{{ date("F d, Y") }}</span>
+                            <span id="date-lg"></span>
+                        </div>
+                        <div class="col-lg-3 col-md-5 col-sm-12 cc mb-3">
+                            <span id="date-sm"></span>
                         </div>
                         <div class="col-lg-7 col-md-7 col-sm-12">
-                            <span id="xx" class="form-control d-inline-block text-center" style="width: 70%" data-toggle="modal" data-target="#calender">
+                            <span id="xx" class="form-control d-inline-block text-center" style="width: 50%" data-toggle="modal" data-target="#calender">
                                 Select Reveal Day
                                 <i class="fa fa-calendar ml-3"></i>
                             </span>
-                            <button type="button" class="btn btn-primary btn-large">TODAY</button>
+                            <button type="button" class="today btn btn-primary btn-large">TODAY</button>
+                            <button type="button" class="btn btn-primary btn-large" onclick="window.location.href = '#appointments-table'">My Appointments</button>
                         </div>
                         <div class="col-lg-3 col-md-5 col-sm-12 cc">
-                            <button type="button" class="btn btn-primary">TODAY</button>
-                        </div>
-                        <div class="col-lg-3 col-md-5 col-sm-12 cc">
-                            <span>{{ date("M d, Y") }}</span>
+                            <button type="button" class="today btn btn-primary" style="width: 40%">TODAY</button>
+                            <button type="button" class="btn btn-primary" style="width: 55%; float: right" onclick="window.location.href = '#appointments-table'">My Appointments</button>
                         </div>
                     </div>
                 </div>
                 <div class="form-group all-appointments mb-5 pb-3">
                     <div class="row mt-3">
                         <?php $i = 0; $startTime = 800; $endTime = 2200; $revealTime = 30;?>
-                        <?php $reserved = [900, 1130, 1000, 1400, 1500, 1530, 2200, 1800, 1830, 1500, 1530, 1600, 1630] ?>
                         @for($i = $startTime, $countMd = 1, $countLg = 1; $i <= $endTime; $i += $revealTime, $countMd++, $countLg++)
                             <?php
                             if ($i % 100 == 60)
@@ -100,25 +101,25 @@
                                     $countMd = 0;
                                     $countLg = 0;
                                     ?>
-                                    @include('components.nurse-dashboard.appointments-schedule', ['i' => $i, 'reserved' => $reserved])
+                                    @include('patient.appointments-schedule', ['i' => $i])
                                 </div>
                             @elseif($countMd == 3)
                                 <div class="col-lg-3 col-md-4 col-sm-12 br-md br-sm">
                                     <?php
                                     $countMd = 0;
                                     ?>
-                                    @include('components.nurse-dashboard.appointments-schedule', ['i' => $i, 'reserved' => $reserved])
+                                    @include('patient.appointments-schedule', ['i' => $i])
                                 </div>
                             @elseif($countLg == 4)
                                 <div class="col-lg-3 col-md-4 col-sm-12 br-lg br-sm">
                                     <?php
                                     $countLg = 0;
                                     ?>
-                                    @include('components.nurse-dashboard.appointments-schedule', ['i' => $i, 'reserved' => $reserved])
+                                    @include('patient.appointments-schedule', ['i' => $i])
                                 </div>
                             @else
                                 <div class="col-lg-3 col-md-4 col-sm-12 br-sm">
-                                    @include('components.nurse-dashboard.appointments-schedule', ['i' => $i, 'reserved' => $reserved])
+                                    @include('patient.appointments-schedule', ['i' => $i])
                                 </div>
                             @endif
                         @endfor
@@ -150,7 +151,6 @@
         }
         function selectMonth(monthId) {
             if (monthId === 2) {
-
             }
             else if (monthId <= 7 && monthId % 2 === 0) {
                 if (lastMonthActive !== null)
@@ -197,5 +197,75 @@
                 day = '0' + day
             $('#available-appointments-day').html(months[month - 1] + ' ' + day + ', ' + date.getFullYear())
         }
+
+        let reservedAppointments = []
+        let todayBtn = $('.today');
+        todayBtn.on('click', function () {
+            $('#date-lg').html('{{ date("F d, Y") }}')
+            $('#date-sm').html('{{ date("F d, Y") }}')
+            $.ajax({
+                url: '/show-appointments/'+ {{ date('d') }} + '/' + {{ date('m') }},
+                type: 'get',
+                dataType: 'json',
+                success: function (response) {
+                    console.log(response)
+                    for (let i = 0; i < reservedAppointments.length; i++) {
+                        let btn = $('#btn-'+reservedAppointments[i]);
+                        btn.removeClass('btn-danger');
+                        btn.addClass('btn-success');
+                        btn.html('Book Now <i class="fa fa-hand-pointer-o"></i>')
+                        btn.css({
+                            'padding-right': '12px',
+                            'padding-left': '12px'
+                        })
+                    }
+                    for (let i = 0; i < response.length; i++) {
+                        let btn = $('#btn-'+response[i]);
+                        btn.removeClass('btn-success');
+                        btn.addClass('btn-danger');
+                        btn.html('Booked <i class="fa fa-exclamation"></i>');
+                        btn.css({
+                            'padding-right': '26.8px',
+                            'padding-left': '26.8px'
+                        })
+                    }
+                    reservedAppointments = response;
+                }
+            });
+        });
+        todayBtn.click();
+
+        let searchBtn = $('#search');
+        searchBtn.on('click', function () {
+            $.ajax({
+                url: '/show-appointments/'+ lastDayActive + '/' + lastMonthActive,
+                type: 'get',
+                dataType: 'json',
+                success: function (response) {
+                    for (let i = 0; i < reservedAppointments.length; i++) {
+                        let btn = $('#btn-'+reservedAppointments[i]);
+                        btn.removeClass('btn-danger');
+                        btn.addClass('btn-success');
+                        btn.html('Book Now <i class="fa fa-hand-pointer-o"></i>')
+                        btn.css({
+                            'padding-right': '12px',
+                            'padding-left': '12px'
+                        })
+                    }
+                    for (let i = 0; i < response.length; i++) {
+                        let btn = $('#btn-'+response[i]);
+                        btn.removeClass('btn-success');
+                        btn.addClass('btn-danger');
+                        btn.html('Booked <i class="fa fa-exclamation"></i>');
+                        btn.css({
+                            'padding-right': '1.675rem',
+                            'padding-left': '1.675rem'
+                        })
+                    }
+                    reservedAppointments = response;
+                }
+            });
+        });
+
     </script>
 @endsection
