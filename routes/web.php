@@ -47,6 +47,8 @@ Route::group(['middleware' => ['isDoctor']], function() {
   Route::get('/doctor/find-patient', function () {
         return view('pages.doctor-find-patient');
     });
+
+    Route::get('/next-patient/{emptyTable}', [DoctorController::class, 'nextPatient']);
 });
 
 Route::group(['middleware' => ['isPatient']], function() {
@@ -83,6 +85,7 @@ Route::group(['middleware' => ['isNurse']], function() {
     Route::get("/patient/notattend/{id}",[NurseController::class,"CheckNotAttend"]);
     //-------------------------------------------------------------
     Route::get('/nurse/show-appointments/{day}/{month}', [NurseController::class, 'showAvailableAppointments']);
+    Route::get('/notification', [NurseController::class, 'notification']);
 });
 
 
