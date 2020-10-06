@@ -248,6 +248,7 @@
                type: 'get',
                dataType: 'json',
                success: function (response) {
+                   console.log(response)
                    for (let i = 0; i < reservedAppointments.length; i++) {
                        let btn = $('#btn-'+reservedAppointments[i]);
                        btn.removeClass('btn-danger');

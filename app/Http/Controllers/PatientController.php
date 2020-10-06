@@ -121,7 +121,6 @@ class PatientController extends Controller
         $dateTimeFrom->month = $month;
         $dateTimeFrom->day = $day;
         $dateTimeFrom->addHours(8);
-
         $dateTimeTo = clone $dateTimeFrom;
         $dateTimeTo->addHours(14);
 
@@ -130,20 +129,62 @@ class PatientController extends Controller
         $reserved = array();
         foreach ($reservedobj as $res){
              $first = Carbon::parse($res["reservation At"])->format('Hi');
+             $first = (int)$first;
              array_push($reserved,$first);
         }
+
         echo json_encode($reserved);    // Echo Available Appointments Fro Day/Month
     }
 
     public function removeAppointment($day, $month, $from) {
         // Delete Appointment From DB
+
+        $user = User::find(auth()->user()->id);
+        $dateTimeFrom =  Carbon::today(); // min //hour// day // month // year
+        $hourMin = $from;
+        $hour = $from /100 ;
+        $min = $from%100;
+
+        $dateTimeFrom->addMinutes($min);
+        $dateTimeFrom->addHours($hour);
+        $dateTimeFrom->day = $day;
+        $dateTimeFrom->month = $month;
+
+        $reserveCheck= Reservation::where("user_id",$user["id"])->where("reservation At", $dateTimeFrom->toDateTime())->get();
+        if($reserveCheck)
+        {
+            $reserveCheck[0]->delete();
+        }
     }
 
     public function createAppointment($day, $month, $from) {
         // Add Appointment To DB
+            // 930
+        $user = User::find(auth()->user()->id);
+        $dateTimeFrom =  Carbon::today(); // min //hour// day // month // year
+        $hourMin = $from;
+        $hour = $from /100 ;
+        $min = $from%100;
+
+        $dateTimeFrom->addMinutes($min);
+        $dateTimeFrom->addHours($hour);
+        $dateTimeFrom->day = $day;
+        $dateTimeFrom->month = $month;
+
+        echo $dateTimeFrom ;
+        $reserve = new Reservation();
+        $reserve["reservation At"] = $dateTimeFrom ;
+        $reserve["user_id"] = $user->id;
+        $reserve->save();
     }
 
     public function showMyAppointments() {
+        $reserve = Reservation::all();
+        foreach ($reserve as $res){
+            $resvation = Carbon::parse($res["reservation At"]);
+            //echo $resvation->toFormattedDateString();
+            echo $resvation->hour;
+        }
         $myAppointments = [
             [
                 'date'  =>  date("F d, Y"),

@@ -81,6 +81,8 @@ Route::group(['middleware' => ['isNurse']], function() {
     //////---------------------------------------------------------
     Route::get("/patient/attend/{id}",[NurseController::class,"CheckAttend"]);
     Route::get("/patient/notattend/{id}",[NurseController::class,"CheckNotAttend"]);
+    //-------------------------------------------------------------
+    Route::get('/show-appointments/{day}/{month}', [PatientController::class, 'showAvailableAppointments']);
 });
 
 

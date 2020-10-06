@@ -169,4 +169,32 @@ class NurseController extends Controller
         $reservation[0]->delete();
         return redirect('/nurse');
     }
+
+    public function showAvailableAppointments($day, $month) {
+        $dateTimeFrom =  Carbon::today(); //year / month/ day
+        $dateTimeFrom->month = $month;
+        $dateTimeFrom->day = $day;
+        $dateTimeFrom->addHours(8);
+        $dateTimeTo = clone $dateTimeFrom;
+        $dateTimeTo->addHours(14);
+
+        $reservedobj = Reservation::whereBetween('reservation At',[$dateTimeFrom->toDateTime(),$dateTimeTo->toDateTime()])->get();
+
+        $reserved = array();
+        foreach ($reservedobj as $res){
+            $first = Carbon::parse($res["reservation At"])->format('Hi');
+            $first = (int)$first;
+            array_push($reserved,$first);
+        }
+
+        echo json_encode($reserved);    // Echo Available Appointments Fro Day/Month
+    }
+
+
+
+
+
+
+
 }
+
