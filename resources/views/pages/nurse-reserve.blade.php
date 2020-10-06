@@ -79,7 +79,6 @@
                                 <i class="fa fa-calendar ml-3"></i>
                             </span>
                             <button type="button" class="today btn btn-primary btn-large">TODAY</button>
-                            <button type="button" class="btn btn-primary btn-large" onclick="window.location.href = '#appointments-table'">My Appointments</button>
                         </div>
                         <div class="col-lg-3 col-md-5 col-sm-12 cc">
                             <button type="button" class="today btn btn-primary" style="width: 40%">TODAY</button>
@@ -101,25 +100,25 @@
                                     $countMd = 0;
                                     $countLg = 0;
                                     ?>
-                                    @include('patient.appointments-schedule', ['i' => $i])
+                                    @include('components.nurse-dashboard.appointments-schedule', ['i' => $i])
                                 </div>
                             @elseif($countMd == 3)
                                 <div class="col-lg-3 col-md-4 col-sm-12 br-md br-sm">
                                     <?php
                                     $countMd = 0;
                                     ?>
-                                    @include('patient.appointments-schedule', ['i' => $i])
+                                    @include('components.nurse-dashboard.appointments-schedule', ['i' => $i])
                                 </div>
                             @elseif($countLg == 4)
                                 <div class="col-lg-3 col-md-4 col-sm-12 br-lg br-sm">
                                     <?php
                                     $countLg = 0;
                                     ?>
-                                    @include('patient.appointments-schedule', ['i' => $i])
+                                    @include('components.nurse-dashboard.appointments-schedule', ['i' => $i])
                                 </div>
                             @else
                                 <div class="col-lg-3 col-md-4 col-sm-12 br-sm">
-                                    @include('patient.appointments-schedule', ['i' => $i])
+                                    @include('components.nurse-dashboard.appointments-schedule', ['i' => $i])
                                 </div>
                             @endif
                         @endfor
@@ -133,8 +132,10 @@
     @include('patient.calender')
     <script>
         let lastActiveAppointment = null;
-        let lastMonthActive = null, lastDayActive = null;
+        let lastMonthActive = {{ date('m') }}, lastDayActive = {{ date('d') }};
         let months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+        $('#month-'+lastMonthActive).addClass('active')
+        $('#day-'+lastDayActive).addClass('active');
         function goBack () {
             window.history.back();
         }
@@ -151,51 +152,54 @@
         }
         function selectMonth(monthId) {
             if (monthId === 2) {
+
             }
             else if (monthId <= 7 && monthId % 2 === 0) {
                 if (lastMonthActive !== null)
-                    $('#'+lastMonthActive).removeClass('active')
+                    $('#month-'+lastMonthActive).removeClass('active')
                 $('#month-'+monthId).addClass('active')
-                lastMonthActive = 'month-'+monthId
+                lastMonthActive = monthId
                 $('#day-31').remove();
             }
             else if (monthId <= 7 && monthId % 2 === 1) {
                 if (lastMonthActive !== null)
-                    $('#'+lastMonthActive).removeClass('active')
+                    $('#month-'+lastMonthActive).removeClass('active')
                 $('#month-'+monthId).addClass('active')
-                lastMonthActive = 'month-'+monthId
+                lastMonthActive = monthId
                 if (!$('#days-list').find('#day-31').length)
                     $('#days-list').append('<li id="day-31" class="border-bottom m-auto pt-2" onclick="selectDay(31)">31</li>');
             }
             else if (monthId > 7 && monthId % 2 === 0) {
                 if (lastMonthActive !== null)
-                    $('#'+lastMonthActive).removeClass('active')
+                    $('#month-'+lastMonthActive).removeClass('active')
                 $('#month-'+monthId).addClass('active')
-                lastMonthActive = 'month-'+monthId
+                lastMonthActive = monthId
                 if (!$('#days-list').find('#day-31').length)
                     $('#days-list').append('<li id="day-31" class="border-bottom m-auto pt-2" onclick="selectDay(31)">31</li>');
             }
             else if (monthId > 7 && monthId % 2 === 1) {
                 if (lastMonthActive !== null)
-                    $('#'+lastMonthActive).removeClass('active')
+                    $('#month-'+lastMonthActive).removeClass('active')
                 $('#month-'+monthId).addClass('active')
-                lastMonthActive = 'month-'+monthId
+                lastMonthActive = monthId
                 $('#day-31').remove();
             }
         }
         function selectDay(dayId) {
             if (lastDayActive !== null)
-                $('#'+lastDayActive).removeClass('active')
+                $('#day-'+lastDayActive).removeClass('active')
             $('#day-'+dayId).addClass('active');
-            lastDayActive = 'day-'+dayId
+            lastDayActive = dayId
         }
+
         function searchForAppointments() {
             let date = new Date()
-            let day = parseInt(lastDayActive.split('-')[1])
-            let month = parseInt(lastMonthActive.split('-')[1])
+            let day = parseInt(lastDayActive)
+            let month = parseInt(lastMonthActive)
             if (parseInt(day / 10) === 0)
                 day = '0' + day
-            $('#available-appointments-day').html(months[month - 1] + ' ' + day + ', ' + date.getFullYear())
+            $('#date-lg').html(months[month - 1] + ' ' + day + ', ' + date.getFullYear())
+            $('#date-sm').html(months[month - 1] + ' ' + day + ', ' + date.getFullYear())
         }
 
         let reservedAppointments = []

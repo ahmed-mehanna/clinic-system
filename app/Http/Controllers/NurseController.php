@@ -186,7 +186,6 @@ class NurseController extends Controller
             $first = (int)$first;
             array_push($reserved,$first);
         }
-
         echo json_encode($reserved);    // Echo Available Appointments Fro Day/Month
     }
 
