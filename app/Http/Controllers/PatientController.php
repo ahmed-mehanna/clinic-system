@@ -59,6 +59,10 @@ class PatientController extends Controller
         $user["PatientForum"] = 1;
         $user->save();
 
+        $userhistory = new PatientHistory();
+        $userhistory["user_id"]=$user->id;
+        $userhistory->save();
+
         return redirect('/makeappointment');
     }
 
