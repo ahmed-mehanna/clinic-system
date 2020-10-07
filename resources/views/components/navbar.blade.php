@@ -32,6 +32,8 @@ use Illuminate\Support\Facades\Auth;
                         @include('components.doctor-dashboard.doctor-navbar')
                     @elseif( $user->Role == 2)
                         @include('components.nurse-dashboard.nurse-navbar')
+                    @elseif($user->Role == 3)
+                        @include('patient.patient-navbar')
                     @endif
                 @endif
             </ul>

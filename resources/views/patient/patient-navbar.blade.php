@@ -1,4 +1,12 @@
-<li class="nav-item not-active" id="profile">
-    <a class="nav-link" href="/patient">Profile</a>
+<li class="nav-item not-active" id="">
+    <a class="nav-link" href="{{route('index')}}">Home</a>
+    <span></span>
+</li>
+<li class="nav-item not-active" id="">
+    <a class="nav-link" href="/makeappointment">Make an Appointment</a>
+    <span></span>
+</li>
+<li class="nav-item not-active" id="">
+    <a class="nav-link" href="/history">My History</a>
     <span></span>
 </li>
