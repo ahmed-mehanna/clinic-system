@@ -156,7 +156,6 @@ class NurseController extends Controller
                     }
                 }
             }
-            return "";
 //        $reserv["reservation At"] = $from_That_dayTime ;
 //        $reserv["user_id"] = 0 ;
 //        $reserv["TO_Expection"] = 0 ;
