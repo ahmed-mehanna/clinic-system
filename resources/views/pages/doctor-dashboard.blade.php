@@ -104,11 +104,12 @@
             return valid
         }
         $('#ajax-btn').on('click', function () {
-            // validate()
-            console.log(validate())
-            if (validate())
-                $('#submit-btn').click()
-            // askForNextPatient = setInterval(getNextPatient, 500)
+            validate()  //  To Fix Validate Issue
+            if (validate() === true) {
+                console.log('cc')
+                $('#notification-btn').click()
+                askForNextPatient = setInterval(getNextPatient, 500)
+            }
         })
 
 
