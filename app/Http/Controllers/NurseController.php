@@ -184,7 +184,7 @@ class NurseController extends Controller
         $patient_turn = new Patientturn();
         $patient_turn['user_id'] = $user->id;
         $patient_turn->save();
-        $reservation = Reservation::where("user_id",$user["id"])->whereBetween('reservation At',[Carbon::today()->toDateTime(),Carbon::today()->addHours(16)->toDateTime()])->get();
+        $reservation = Reservation::where("user_id",$user["id"])->whereBetween('reservation At',[Carbon::today()->toDateTime(),Carbon::today()->addHours(22)->toDateTime()])->get();
         $reservation[0]->delete();
         return redirect('/nurse');
     }
@@ -193,7 +193,7 @@ class NurseController extends Controller
         if($user->patient->Attend != 0) {
             $user->patient->Attend = $user->patient->Attend - 1;
         }
-        $reservation = Reservation::where("user_id",$user["id"])->whereBetween('reservation At',[Carbon::today()->toDateTime(),Carbon::today()->addHours(16)->toDateTime()])->get();
+        $reservation = Reservation::where("user_id",$user["id"])->whereBetween('reservation At',[Carbon::today()->toDateTime(),Carbon::today()->addHours(22)->toDateTime()])->get();
         $reservation[0]->delete();
         return redirect('/nurse');
     }
@@ -248,7 +248,9 @@ class NurseController extends Controller
 
     public function notification() {
 //        echo count(Patientturn::all());
-        if (count(Patientturn::all()) == 0)
+        $checkToday_patients = Reservation::whereBetween('reservation At',[Carbon::today()->toDateTime(),Carbon::today()->addHours(22)->toDateTime()])->where('Reserved_by_Doctor',0)->orderBy('reservation At','asc')->get();
+
+        if (count(Patientturn::all()) == 0 && (count($checkToday_patients)!=0))
             echo json_encode(true);
         else
             echo json_encode(false);

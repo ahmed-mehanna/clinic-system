@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Patient;
+use App\Models\Reservation;
 use App\Models\User;
 use App\Models\Illness;
 use App\Models\Drug;
@@ -221,6 +222,8 @@ class DoctorController extends Controller
 
 
     public function nextPatient($emptyTable) {
+        $checkToday_patients = Reservation::whereBetween('reservation At',[Carbon::today()->toDateTime(),Carbon::today()->addHours(22)->toDateTime()])->where('Reserved_by_Doctor',0)->orderBy('reservation At','asc')->get();
+
         if ($emptyTable == 'false')
                 Patientturn::truncate();
         if (count(Patientturn::all()) == 0)
