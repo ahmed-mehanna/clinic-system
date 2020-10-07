@@ -11,13 +11,13 @@
                 <label for="illness" class="col-sm-2 col-form-label">Illness</label>
                 <div class="col-sm-10">
                     <input type="text" class="form-control w-25" id="illness" name="illness-name" form="patient-form" placeholder="Illness">
-                    <small  class="form-text text-muted"><span style="color:red">@error("illness-name"){{$message}}@enderror</span></small>
+                    <small id="illness-validate"  class="form-text text-muted"><span style="color:red">Required Illness Name</span></small>
                 </div>
             </div>
             <div class="form-group sub-container">
                 <label for="illness-diagnose">Illness Diagnose</label>
                 <textarea class="form-control w-50" id="illness-diagnose" name="illness-diagnose" form="patient-form" rows="3"></textarea>
-                <small  class="form-text text-muted"><span style="color:red">@error("illness-diagnose"){{$message}}@enderror</span></small>
+                <small id="illness-diagnose-validate"  class="form-text text-muted"><span style="color:red">Required Illness Diagnose</span></small>
             </div>
             <div class="sub-container" id="drugs">
                 <span class="title">Medical Data</span>

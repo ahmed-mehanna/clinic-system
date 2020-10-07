@@ -53,20 +53,20 @@ class DoctorController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            "illness-name" => "required",
-            "illness-diagnose" => "required",
-            "select_type.*" => "required",
-            "name.*" => "required",
-            "description.*" => "required",
-            "user_id" => "required",
-//********************************************************************//
-        "Summary"=> "required",
-        "select-type.*" => "required",
-        "medicalData_Title.*"=> "required",
-        "medicalData_Result.*"=> "required",
-
-        ]);
+//        $request->validate([
+//            "illness-name" => "required",
+//            "illness-diagnose" => "required",
+//            "select_type.*" => "required",
+//            "name.*" => "required",
+//            "description.*" => "required",
+//            "user_id" => "required",
+////********************************************************************//
+//        "Summary"=> "required",
+//        "select-type.*" => "required",
+//        "medicalData_Title.*"=> "required",
+//        "medicalData_Result.*"=> "required",
+//
+//        ]);
         $illness = new Illness;
         $illness->illnessName = $request["illness-name"];
         $illness->illnessDiagnose = $request["illness-diagnose"];
@@ -106,26 +106,28 @@ class DoctorController extends Controller
         $user_update_summary->update(['Summary'=>$request->input("Summary")]);
 //
 
-        for ($i = 0; $i < count($request['select-type']); ++$i) {
-            if ($request["select-type"][$i] == "Drugs") {
-                $medicalDrug = new Drug_Medical_History();
-                $medicalDrug->drugName = $request["medicalData_Title"][$i];
-                $medicalDrug->drugDescription = $request["medicalData_Result"][$i];
-                $medicalDrug->user_id = $request["user_id"];;
-                $medicalDrug->save();
-            } elseif ($request["select-type"][$i] == "Analysis") {
-                $medicalAnalyses = new Analysis_Medical_History();
-                $medicalAnalyses->title = $request["medicalData_Title"][$i];
-                $medicalAnalyses->result = $request["medicalData_Result"][$i];
-                $medicalAnalyses->user_id = $request["user_id"];
-                $medicalAnalyses->save();
+        if ($request['select-type-no-data'] != 'true') {
+            for ($i = 0; $i < count($request['select-type2']); ++$i) {
+                if ($request["select-type2"][$i] == "Drugs") {
+                    $medicalDrug = new Drug_Medical_History();
+                    $medicalDrug->drugName = $request["medicalData_Title"][$i];
+                    $medicalDrug->drugDescription = $request["medicalData_Result"][$i];
+                    $medicalDrug->user_id = $request["user_id"];;
+                    $medicalDrug->save();
+                } elseif ($request["select-type2"][$i] == "Analysis") {
+                    $medicalAnalyses = new Analysis_Medical_History();
+                    $medicalAnalyses->title = $request["medicalData_Title"][$i];
+                    $medicalAnalyses->result = $request["medicalData_Result"][$i];
+                    $medicalAnalyses->user_id = $request["user_id"];
+                    $medicalAnalyses->save();
 
-            } elseif ($request["select-type"][$i] == "Rumours") {
-                $medicalRumour = new Rumour_Medical_History();
-                $medicalRumour->title = $request["medicalData_Title"][$i];
-                $medicalRumour->result = $request["medicalData_Result"][$i];
-                $medicalRumour->user_id = $request["user_id"];;
-                $medicalRumour->save();
+                } elseif ($request["select-type2"][$i] == "Rumours") {
+                    $medicalRumour = new Rumour_Medical_History();
+                    $medicalRumour->title = $request["medicalData_Title"][$i];
+                    $medicalRumour->result = $request["medicalData_Result"][$i];
+                    $medicalRumour->user_id = $request["user_id"];;
+                    $medicalRumour->save();
+                }
             }
         }
 
