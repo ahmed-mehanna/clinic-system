@@ -11,13 +11,13 @@
                 <label for="illness" class="col-sm-2 col-form-label">Illness</label>
                 <div class="col-sm-10">
                     <input type="text" class="form-control w-25" id="illness" name="illness-name" form="patient-form" placeholder="Illness">
-                    <small id="illness-validate"  class="form-text text-muted"><span style="color:red">Required Illness Name</span></small>
+                    <small id="illness-validate"  class="form-text text-muted" style="visibility: hidden"><span style="color:red">Required Illness Name</span></small>
                 </div>
             </div>
             <div class="form-group sub-container">
                 <label for="illness-diagnose">Illness Diagnose</label>
                 <textarea class="form-control w-50" id="illness-diagnose" name="illness-diagnose" form="patient-form" rows="3"></textarea>
-                <small id="illness-diagnose-validate"  class="form-text text-muted"><span style="color:red">Required Illness Diagnose</span></small>
+                <small id="illness-diagnose-validate"  class="form-text text-muted" style="visibility: hidden"><span style="color:red">Required Illness Diagnose</span></small>
             </div>
             <div class="sub-container" id="drugs">
                 <span class="title">Medical Data</span>
@@ -33,12 +33,10 @@
                         </select>
                     </div>
                     <div class="col-lg-3">
-                        <input type="text" class="form-control" name="name[]" form="patient-form" placeholder="Name">
-                        <small  class="form-text text-muted"><span style="color:red">@error('name.*'){{ $message }}@enderror</span></small>
+                        <input id="data-name-1" type="text" class="form-control" name="name[]" form="patient-form" placeholder="Name">
                     </div>
                     <div class="col-lg-4">
-                        <input type="text" class="form-control" name="description[]" form="patient-form" placeholder="Description">
-                        <small  class="form-text text-muted"><span style="color:red">@error('description.*'){{ $message }}@enderror</span></small>
+                        <input id="data-result-1" type="text" class="form-control" name="description[]" form="patient-form" placeholder="Description">
                     </div>
                     <div class="col-lg-3" id="buttons-container1">
                         <i class="btn fa fa-plus" id="new-button-patient-form" onclick="addDrug()"></i>
@@ -60,6 +58,9 @@
             return this;
         };
         function addDrug() {
+            if ($('#data-name-' + numberOfAnalysis[numberOfAnalysis.length - 1]).val() === ''
+                && $('#data-result-' + numberOfAnalysis[numberOfAnalysis.length - 1]).val() === '' )
+                return null;
             let id = numberOfDrugs[numberOfDrugs.length - 1] + 1;
             numberOfDrugs.push(id);
             $('#new-button-patient-form').remove()
@@ -72,10 +73,10 @@
                 '                        </select>\n' +
                 '                    </div>'+
                 '                    <div class="col-lg-3">\n' +
-                '                        <input type="text" class="form-control" name="name[]" form="patient-form" placeholder="Name">\n' +
+                '                        <input id="data-name-'+id+'" type="text" class="form-control" name="name[]" form="patient-form" placeholder="Name">\n' +
                 '                    </div>\n' +
                 '                    <div class="col-lg-4">\n' +
-                '                        <input type="text" class="form-control" name="description[]" form="patient-form" placeholder="Description">\n' +
+                '                        <input id="data-result-'+id+'" type="text" class="form-control" name="description[]" form="patient-form" placeholder="Description">\n' +
                 '                    </div>\n' +
                 '                    <div class="col-lg-3" id="buttons-container' + id + '">\n' +
                 '                        <i class="btn fa fa-plus" id="new-button-patient-form" onclick="addDrug()"></i>\n' +
@@ -94,7 +95,6 @@
                     $('#drug' + id).remove();
                     numberOfDrugs.remove(id);
                     $('<i class="btn fa fa-plus" id="new-button" onclick="addDrug()"></i>').prependTo('#buttons-container' + numberOfDrugs[numberOfDrugs.length - 1])
-
                 }
             }
         }

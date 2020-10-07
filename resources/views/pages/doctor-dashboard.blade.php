@@ -69,33 +69,43 @@
                     }
                     else if (dataName.val() === '' && dataResult.val() === '') {
                         $('#analysises').remove()
+                        $('#patient-form').append('<input type="hidden" value="true" name="select-type2-no-data" readonly>')
+                    }
+                }
+            }
+            for (let i = 0; i < numberOfDrugs.length; i++) {
+                let dataName = $('#data-name-' + numberOfDrugs[i])
+                let dataResult = $('#data-result-' + numberOfDrugs[i])
+                dataName.addClass('input-place-holder')
+                dataResult.addClass('input-place-holder')
+                if (dataName.val() === '') {
+                    dataName.attr('placeholder', 'Required Or Remove Row')
+                    valid = false
+                }
+                if (dataResult.val() === '') {
+                    dataResult.attr('placeholder', 'Required Or Remove Row')
+                    valid = false
+                }
+                if (numberOfDrugs.length === 1) {
+                    if (dataName.val() === '' && dataResult.val() !== '') {
+                        dataName.attr('placeholder', 'Required')
+                        valid = false
+                    }
+                    else if (dataResult.val() === '' && dataName.val() !== '') {
+                        dataResult.attr('placeholder', 'Required')
+                        valid = false
+                    }
+                    else if (dataName.val() === '' && dataResult.val() === '') {
+                        $('#drugs').remove()
                         $('#patient-form').append('<input type="hidden" value="true" name="select-type-no-data" readonly>')
                     }
                 }
             }
-            //
-            // for (let i = 0; i < numberOfDrugs.length; i++) {
-            //     let dataName = $('#illness-data-name-' + numberOfDrugs[i])
-            //     let dataResult = $('#illness-data-result-' + numberOfDrugs[i])
-            //     dataName.addClass('input-place-holder')
-            //     dataResult.addClass('input-place-holder')
-            //     if (numberOfDrugs.length === 1) {
-            //         if (dataName.val() === '' && dataResult.val() !== '')
-            //             dataName.attr('placeholder', 'Required Or Remove Row')
-            //         else if (dataResult.val() === '' && dataName.val() !== '')
-            //             dataResult.attr('placeholder', 'Required Or Remove Row')
-            //         // else
-            //         //     $('#drugs').remove()
-            //     }
-            //     if (dataName.val() === '')
-            //         dataName.attr('placeholder', 'Required Or Remove Row')
-            //     if (dataResult.val() === '')
-            //         dataResult.attr('placeholder', 'Required Or Remove Row')
-            // }
             return valid
         }
         $('#ajax-btn').on('click', function () {
             // validate()
+            console.log(validate())
             if (validate())
                 $('#submit-btn').click()
             // askForNextPatient = setInterval(getNextPatient, 500)

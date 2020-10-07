@@ -74,26 +74,28 @@ class DoctorController extends Controller
         $illness->save();
 
 
-        for ($i = 0; $i < count($request['select_type']); ++$i) {
-            if ($request["select_type"][$i] == "Drugs") {
-                $drug = new Drug();
-                $drug->drugName = $request["name"][$i];
-                $drug->drugDescription = $request["description"][$i];
-                $drug->illness_id = $illness->id;
-                $drug->save();
-            } elseif ($request["select_type"][$i] == "Analysis") {
-                $analyses = new analysis();
-                $analyses->title = $request["name"][$i];
-                $analyses->result = $request["description"][$i];
-                $analyses->illness_id = $illness->id;
-                $analyses->save();
+        if ($request['select-type-no-data'] != 'true') {
+            for ($i = 0; $i < count($request['select_type']); ++$i) {
+                if ($request["select_type"][$i] == "Drugs") {
+                    $drug = new Drug();
+                    $drug->drugName = $request["name"][$i];
+                    $drug->drugDescription = $request["description"][$i];
+                    $drug->illness_id = $illness->id;
+                    $drug->save();
+                } elseif ($request["select_type"][$i] == "Analysis") {
+                    $analyses = new analysis();
+                    $analyses->title = $request["name"][$i];
+                    $analyses->result = $request["description"][$i];
+                    $analyses->illness_id = $illness->id;
+                    $analyses->save();
 
-            } elseif ($request["select_type"][$i] == "Rumours") {
-                $rumour = new Rumour();
-                $rumour->title = $request["name"][$i];
-                $rumour->result = $request["description"][$i];
-                $rumour->illness_id = $illness->id;
-                $rumour->save();
+                } elseif ($request["select_type"][$i] == "Rumours") {
+                    $rumour = new Rumour();
+                    $rumour->title = $request["name"][$i];
+                    $rumour->result = $request["description"][$i];
+                    $rumour->illness_id = $illness->id;
+                    $rumour->save();
+                }
             }
         }
 
@@ -106,7 +108,7 @@ class DoctorController extends Controller
         $user_update_summary->update(['Summary'=>$request->input("Summary")]);
 //
 
-        if ($request['select-type-no-data'] != 'true') {
+        if ($request['select-type2-no-data'] != 'true') {
             for ($i = 0; $i < count($request['select-type2']); ++$i) {
                 if ($request["select-type2"][$i] == "Drugs") {
                     $medicalDrug = new Drug_Medical_History();
