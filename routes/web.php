@@ -52,6 +52,14 @@ Route::group(['middleware' => ['isDoctor']], function() {
 });
 
 Route::group(['middleware' => ['isPatient']], function() {
+    Route::get('/patient/home', function () {
+       return view('patient.home');
+    });
+    Route::get('/patient/edit', function () {
+       return view('patient.edit-profile');
+    });
+
+
     Route::get("/patient",[PatientController::class,"index"]);
     Route::get("/contactus",[PatientController::class,"showContactUs"]);
     Route::get("/history",[PatientController::class,"showHistory"]);

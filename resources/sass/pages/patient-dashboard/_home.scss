@@ -1,0 +1,186 @@
+div.patient-dashboard-style {
+    div.patient-home-style {
+        div.container-fluid {
+            background-color: #CCD4E1;
+            div.row {
+                div {
+                    max-height: 362px;
+                    div.section {
+                        font-family: 'Courgette', cursive;
+                        background-color: #FFF;
+                        padding: 25px;
+                        margin-top: 30px;
+                        border-radius: 5px;
+                        transition: all .2s ease-in-out;
+                        max-width: 100%;
+                        max-height: 100%;
+                        overflow: auto;
+                        h2 {
+                            font-family: 'Righteous', cursive;
+                            color: #63829F;
+                            position: relative;
+                            i {
+                                transition: all .8s ease-in-out;
+                                font-size: 1.8em;
+                            }
+                        }
+                        i {
+                            position: absolute;
+                            right: 0;
+                            top: -8px;
+                        }
+                        p {
+                            font-weight: 400;
+                            font-size: 22px;
+                            margin-top: 30px;
+                            span {
+                                display: block;
+                            }
+                            a {
+                                text-decoration: none;
+                                transition: all .4s ease-in-out;
+                                width: auto;
+                                &:hover {
+                                    color: #2a9055;
+                                }
+                            }
+                        }
+                        ul {
+                            list-style: none;
+                            padding: 0;
+                            margin: 30px 0 0;
+                            font-size: 22px;
+                            font-weight: 400;
+                            li {
+                                margin-top: 5px;
+                            }
+                        }
+                        a.edit-btn {
+                            text-decoration: none;
+                            transition: all .4s ease-in-out;
+                            font-size: 20px;
+                            width: 8%;
+                            i {
+                                font-size: 24px;
+                                right: -55px;
+                                top: -45px
+                            }
+                            &:hover {
+                                color: #2a9055;
+                            }
+                        }
+                        ul li span, p span {
+                            color: #A00303;
+                        }
+                        &:hover {
+                            box-shadow: #FFF 0 0 50px;
+                        }
+                    }
+                    div.rotate {
+                        &:hover {
+                            h2 {
+                                i {
+                                    transform: rotate(-360deg);
+                                }
+                            }
+                        }
+                    }
+                    div.rotate-x {
+                        &:hover {
+                            h2 {
+                                i {
+                                    transform: rotateX(-360deg);
+                                }
+                            }
+                        }
+                    }
+                    div.rotate-y {
+                        &:hover {
+                            h2 {
+                                i {
+                                    transform: rotateY(-180deg);
+                                }
+                            }
+                        }
+                    }
+                    div.click {
+                        cursor: pointer;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 1544px) {
+    div.patient-dashboard-style {
+        div.patient-home-style {
+            div.container-fluid {
+                div.row {
+                    div {
+                        div.section {
+                            h2 {
+                                font-size: 1.4em;
+                            }
+                            i {
+                                top: 0;
+                                font-size: 1.2em;
+                            }
+                            p {
+                                font-size: 1.2em;
+                            }
+                            ul {
+                                font-size: 1.2em;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 296px) {
+    div.patient-dashboard-style {
+        div.patient-home-style {
+            div.container-fluid {
+                div.row {
+                    div {
+                        div.section {
+                            i {
+                                display: none;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 410px) {
+    div.patient-dashboard-style {
+        div.patient-home-style {
+            div.container-fluid {
+                div.row {
+                    div {
+                        div.section {
+                            p {
+                                font-size: 18px;
+                            }
+                            ul {
+                                font-size: 18px;
+                            }
+                            p {
+                                font-size: 1em;
+                            }
+                            ul {
+                                font-size: 1em;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

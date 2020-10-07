@@ -1,11 +1,13 @@
 @extends('components.app')
-@section('navbar-additional-buttons')
-    @include('components.nurse-dashboard.nurse-navbar')
-@endsection
 @section('content')
-    <script>
-        document.getElementById('nurse-reserve').className = 'nav-item active'
-    </script>
+    <ul>
+        <li><a href="{{route('index')}}">Home</a></li>
+        <li><a href="makeappointment">Make an Appointment</a></li>
+        <li><a href="history">My History</a></li>
+        <li><a href="resetpasswordpatient">Reset Password</a></li>
+        <li><a href="deleteaccount">Delete Account</a></li>
+        <li><a href="contactus">Contact US</a></li>
+    </ul>
     <div class="nurse-reserve-style">
         <div class="container">
             <form action="/patient/fourm/store" method="get">

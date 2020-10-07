@@ -6,9 +6,12 @@ nav {
     width: 100%;
     //position: fixed !important;
     z-index: 100;
-    .navbar-brand {
+    a.navbar-brand {
         margin-right: 100px;
         margin-left: 25px;
+        max-width: 50%;
+    }
+    button {
         max-width: 50%;
     }
     i {

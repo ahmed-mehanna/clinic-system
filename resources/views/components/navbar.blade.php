@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Auth;
 ?>
 <nav class="navbar navbar-expand-lg">
     <a class="navbar-brand" href="{{route('index')}}">
-        <img src="{{asset('imgs/index-page/logo.png')}}" alt="">
+        <img src="{{asset('imgs/index-page/logo.png')}}" alt="" style="max-width: 100%">
     </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#menu" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <i class="fa fa-align-justify fa-2x"></i>

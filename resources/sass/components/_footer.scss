@@ -6,6 +6,9 @@ footer {
     div.container {
         div.row {
             div {
+                img {
+                    max-width: 100%;
+                }
                 p {
                     margin-top: 25px;
                 }
@@ -45,6 +48,7 @@ footer {
         background-color: #0871C6;
         height: 60px;
         font-size: 16px;
+        max-width: 100%;
         i {
             margin-top: 25px;
             span {
