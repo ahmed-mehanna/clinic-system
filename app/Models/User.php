@@ -86,6 +86,15 @@ class User extends Authenticatable implements MustVerifyEmail
         }
     }
 
+    public function PatientFourm()
+    {
+        if ($this->PatientForum != 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     public function patient()
     {
         return $this->hasOne('App\Models\Patient');

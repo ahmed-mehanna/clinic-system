@@ -55,18 +55,21 @@ Route::group(['middleware' => ['isPatient']], function() {
     Route::get("/patient",[PatientController::class,"index"]);
     Route::get("/contactus",[PatientController::class,"showContactUs"]);
     Route::get("/history",[PatientController::class,"showHistory"]);
-    Route::get("/makeappointment",[PatientController::class,"showAppointment"]);
+    Route::get("/makeappointment",[PatientController::class,"showAppointment"])->middleware('Patient.fourm');
     Route::get("/deleteaccount",[PatientController::class,"showDeleteAccount"]);
     Route::get("/delete/account",[PatientController::class,"DeleteAccount"]);
     Route::get("/resetpasswordpatient",[PatientController::class,"showResetPassword"]);
     Route::get("/patient/Reserve",[PatientController::class,"create"]);
     Route::get("/show/details/{id}",[PatientController::class,"show"]);
+    Route::get("/patient/fourm/store",[PatientController::class,"store"]);
 
 
     Route::get('/patient/show-appointments/{day}/{month}', [PatientController::class, 'showAvailableAppointments']);
     Route::get('/delete-appointment/{day}/{month}/{from}', [PatientController::class, 'removeAppointment']);
     Route::get('/create-appointment/{day}/{month}/{from}', [PatientController::class, 'createAppointment']);
     Route::get('/show-my-appointments', [PatientController::class, 'showMyAppointments']);
+
+    Route::view('/patient-fourm','patient.patient_fourm');
 });
 
 Route::group(['middleware' => ['isNurse']], function() {

@@ -41,7 +41,25 @@ class PatientController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            "national-id"=>"required",
+            "address"=>"required",
+            "age"=>"required",
+            "gender"=>"required",
+        ]);
+        $user =User::find(auth()->user()->id);
+        $patient = new Patient();
+        $patient["national-id"]= $request->input("national-id");
+        $patient["address"]= $request->input("address");
+        $patient["age"]= $request->input("age");
+        $patient["gender"]= $request->input("gender");
+        $patient["user_id"]= $user->id;
+        $patient->save();
+
+        $user["PatientForum"] = 1;
+        $user->save();
+
+        return redirect('/makeappointment');
     }
 
     /**
