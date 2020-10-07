@@ -132,7 +132,7 @@ class PatientController extends Controller
         $res_check_for_duplicate= Reservation::firstWhere("Reserved_by_Doctor",1);
         $res_check2_for_duplicate= Reservation::whereBetween('reservation At',[Carbon::today()->toDateTime(),Carbon::today()->addHours(22)->toDateTime()])->where('Reserved_by_Doctor',1)->orderBy('reservation At','DESC')->get();
 
-        if($res_check_for_duplicate) {
+        if(count($res_check2_for_duplicate)!=0) {
             $start = clone Carbon::parse($res_check2_for_duplicate[0]["reservation At"]);
             if($start->isPast()) {
                 for ($date = clone $start; $date->diffInMinutes($datenow) >= "30"; $date->addMinutes(30)) {
@@ -144,7 +144,7 @@ class PatientController extends Controller
                     $res->save();
                 }
             }
-        }elseif(!$res_check_for_duplicate){
+        }elseif(count($res_check2_for_duplicate)==0){
             $start = clone Carbon::today();
             $start->addHours(8);
             if($start->isPast()) {
