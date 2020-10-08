@@ -14,7 +14,7 @@
                                 @else
                                     {{\Illuminate\Support\Carbon::parse($reservation["reservation At"])->toFormattedDateString()}}
                                 @endif
-                                <a href="" class="my-appointments d-block">my appointments</a>
+                                <a href="/makeappointment#appointments-table" class="my-appointments d-block">my appointments</a>
                             </p>
                         </div>
                     </div>

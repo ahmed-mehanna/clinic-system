@@ -9,6 +9,7 @@
             <form id="patient-form" action="doctor" method="post">
                 @csrf
                 <input type="hidden" name="user_id" value="{{ $userTurn->user->id }}">
+                <input id="no-patients" type="hidden" value="false" name="no-patients" readonly>
             </form>
             <button id="ajax-btn" type="button" class="btn btn-primary mt-5 ml-5">Save</button>
             <button id="submit-btn" type="submit" form="patient-form" class="d-none"></button>
@@ -24,9 +25,16 @@
                 type: 'get',
                 dataType: 'json',
                 success: function (response) {
-                    console.log(response)
+                    if (response !== 'no-patients' && emptyTable === false)
+                        $('#notification-btn').click()
                     emptyTable = true;
-                    if (response === true) {
+                    if (response === 'no-patients') {
+                        console.log('ddd')
+                        clearInterval(askForNextPatient)
+                        $('#no-patients').attr('value', 'true')
+                        $('#submit-btn').click()
+                    }
+                    else if (response === true) {
                         clearInterval(askForNextPatient)
                         $('#submit-btn').click()
                     }
@@ -105,11 +113,8 @@
         }
         $('#ajax-btn').on('click', function () {
             validate()  //  To Fix Validate Issue
-            if (validate() === true) {
-                console.log('cc')
-                $('#notification-btn').click()
+            if (validate() === true)
                 askForNextPatient = setInterval(getNextPatient, 500)
-            }
         })
 
 

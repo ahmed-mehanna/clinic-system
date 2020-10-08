@@ -108,6 +108,14 @@
                 newArr.push(this[i])
             return newArr
         }
+        Array.prototype.isEqualTo = function (arr = []) {
+            if (this.length !== arr.length)
+                return false
+            for (let i = 0; i < this.length; i++)
+                if (this[i] !== arr[i])
+                    return false
+            return true
+        }
         let myAppointments = []
         let reservedAppointments = []
         let lastMonthActive = {{ date('m') }}, lastDayActive = {{ date('d') }};
@@ -242,7 +250,6 @@
                 type: 'get',
                 dataType: 'json',
                 success: function (response) {
-                    console.log(response)
                     for (let i = 0; i < reservedAppointments.length; i++) {
                         let btn = $('#btn-'+reservedAppointments[i]);
                         btn.removeClass('btn-danger');
@@ -277,6 +284,8 @@
                 type: 'get',
                 dataType: 'json',
                 success: function (response) {
+                    if (reservedAppointments.isEqualTo(response))
+                        return null
                     for (let i = 0; i < reservedAppointments.length; i++) {
                         let btn = $('#btn-'+reservedAppointments[i]);
                         btn.removeClass('btn-danger');
@@ -303,6 +312,9 @@
                 }
             });
         });
+        setInterval(function () {
+            searchBtn.click()
+        }, 500)
         function bookNow(from) {
             $.ajax({
                 url: '/create-appointment/'+ lastDayActive + '/' + lastMonthActive + '/' + from,   // Remove 1 And Write User ID

@@ -133,6 +133,14 @@
     </div>
     @include('patient.calender')
     <script>
+        Array.prototype.isEqualTo = function (arr = []) {
+            if (this.length !== arr.length)
+                return false
+            for (let i = 0; i < this.length; i++)
+                if (this[i] !== arr[i])
+                    return false
+            return true
+        }
         let lastActiveAppointment = null;
         let lastMonthActive = {{ date('m') }}, lastDayActive = {{ date('d') }};
         let months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
@@ -254,6 +262,8 @@
                 type: 'get',
                 dataType: 'json',
                 success: function (response) {
+                    if (reservedAppointments.isEqualTo(response))
+                        return null
                     for (let i = 0; i < reservedAppointments.length; i++) {
                         let btn = $('#btn-'+reservedAppointments[i]);
                         btn.removeClass('btn-danger');
@@ -280,6 +290,9 @@
                 }
             });
         });
+        setInterval(function () {
+            searchBtn.click()
+        }, 500)
 
     </script>
 @endsection

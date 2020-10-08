@@ -137,7 +137,10 @@ class DoctorController extends Controller
 //        $userSkipturn = User::find($request->input("user_id"));
 //        $userSkipturn->patientTurn->delete();
 
-        return redirect('/doctor');
+        if ($request['no-patients'] == 'true')
+            return redirect('/');
+        else
+            return redirect('/doctor');
     }
 
     /**
@@ -223,10 +226,11 @@ class DoctorController extends Controller
 
     public function nextPatient($emptyTable) {
         $checkToday_patients = Reservation::whereBetween('reservation At',[Carbon::today()->toDateTime(),Carbon::today()->addHours(22)->toDateTime()])->where('Reserved_by_Doctor',0)->orderBy('reservation At','asc')->get();
-
         if ($emptyTable == 'false')
-                Patientturn::truncate();
-        if (count(Patientturn::all()) == 0)
+            Patientturn::truncate();
+        if ($emptyTable == 'false' && count($checkToday_patients) == 0)
+            echo json_encode('no-patients');
+        else if (count(Patientturn::all()) == 0)
             echo json_encode(false);
         else
             echo json_encode(true);
