@@ -52,27 +52,26 @@ Route::group(['middleware' => ['isDoctor']], function() {
 });
 
 Route::group(['middleware' => ['isPatient']], function() {
-    Route::get('/patient/home', function () {
-       return view('patient.home');
-    });
-    Route::get('/patient/edit', function () {
-       return view('patient.edit-profile');
-    });
+
     Route::get('/patient/history', function () {
         return view('patient.my-history');
     });
 
 
     Route::get("/patient",[PatientController::class,"index"]);
-    Route::get("/contactus",[PatientController::class,"showContactUs"]);
-    Route::get("/history",[PatientController::class,"showHistory"]);
+    //Route::get("/contactus",[PatientController::class,"showContactUs"]);
+
     Route::get("/makeappointment",[PatientController::class,"showAppointment"])->middleware('Patient.fourm');
-    Route::get("/deleteaccount",[PatientController::class,"showDeleteAccount"]);
-    Route::get("/delete/account",[PatientController::class,"DeleteAccount"]);
-    Route::get("/resetpasswordpatient",[PatientController::class,"showResetPassword"]);
-    Route::get("/patient/Reserve",[PatientController::class,"create"]);
-    Route::get("/show/details/{id}",[PatientController::class,"show"]);
+    //Route::get("/deleteaccount",[PatientController::class,"showDeleteAccount"])->middleware('Patient.fourm');;
+    //Route::get("/delete/account",[PatientController::class,"DeleteAccount"]);
+   //Route::get("/resetpasswordpatient",[PatientController::class,"showResetPassword"]);
+    //Route::get("/patient/Reserve",[PatientController::class,"create"]);
     Route::get("/patient/fourm/store",[PatientController::class,"store"]);
+    Route::get("/patient/fourm/edit",[PatientController::class,"edit"]);
+    Route::get("/patient/fourm/update",[PatientController::class,"update"]);
+    Route::get("/history",[PatientController::class,"showHistory"])->middleware('Patient.fourm');
+    Route::get("/history/details/{id}",[PatientController::class,"showHistoryDetails"])->middleware('Patient.fourm');
+
 
 
     Route::get('/patient/show-appointments/{day}/{month}', [PatientController::class, 'showAvailableAppointments']);

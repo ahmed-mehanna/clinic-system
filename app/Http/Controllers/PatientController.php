@@ -17,8 +17,11 @@ class PatientController extends Controller
     public function index()
     {
         $user = User::find(auth()->user()->id);
-        $Ilness = Illness::Where("user_id",$user->id)->orderBy('created_at','asc')->get();;
-        return view('patient.history',["Ilness"=>$Ilness]);
+        $Ilness = Illness::Where("user_id",$user->id)->orderBy('created_at','DESC')->first();
+        $reservation = Reservation::whereBetween('reservation At',[Carbon::today()->toDateTime(),Carbon::today()->addHours(22)->addMonths(4)->toDateTime()])->where('user_id',$user->id)->orderBy('reservation At','asc')->first();
+//        return view('patient.history',["Ilness"=>$Ilness]);
+
+        return view('patient.home',["user"=>$user,"illness"=>$Ilness,"reservation"=>$reservation]);
     }
 
     /**
@@ -29,7 +32,7 @@ class PatientController extends Controller
     public function create()
     {
 
-        return view("patient.makeappointment");
+        //return view("patient.makeappointment");
 
     }
 
@@ -37,7 +40,7 @@ class PatientController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Http\Response|\Illuminate\Routing\Redirector
      */
     public function store(Request $request)
     {
@@ -74,19 +77,13 @@ class PatientController extends Controller
      */
     public function show($id)
     {
-        $IllnessData = Illness::find($id);
-        return view("patient.details",["details"=>$IllnessData]);
+
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
+
+    public function edit()
+    {   $user = User::find(auth()->user()->id);
+        return view("patient.edit-profile",["user"=>$user]);
     }
 
     /**
@@ -94,11 +91,35 @@ class PatientController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Http\Response|\Illuminate\Routing\Redirector
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        $request->validate([
+            "name"=>"required",
+            "address"=>"required",
+            "age"=>"required",
+            "email"=>"required",
+            "phone"=>"required",
+            "national-id"=>"required",
+            "gender"=>"required",
+        ]);
+        $user = User::find(auth()->user()->id);
+        $patient = Patient::firstWhere("user_id",$user->id);
+
+        $user["name"] = $request->input("name");
+        $user["email"] = $request->input("email");
+        $user["phoneNumber"] = $request->input("phone");
+        $user->update();
+
+
+        $patient["national-id"] = $request->input("national-id");
+        $patient["address"] = $request->input("address");
+        $patient["age"] = $request->input("age");
+        $patient["gender"] = $request->input("gender");
+        $patient->update();
+
+        return redirect("/patient");
     }
 
     /**
@@ -122,9 +143,16 @@ class PatientController extends Controller
     {
         return view('patient.contactus');
     }
-    public function showHistory()
+    public function showHistory() //
     {
-        return view('patient.history');
+        $user = User::find(auth()->user()->id);
+        return view('patient.history',["user"=>$user]);
+    }
+    public function showHistoryDetails($id) //
+    {
+        $user = User::find(auth()->user()->id);
+
+        return view("patient.my-history",["user"=>$user]);
     }
     public function showAppointment()
     {

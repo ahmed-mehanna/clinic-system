@@ -8,17 +8,24 @@
                     <th scope="col">#</th>
                     <th scope="col">Illness Name</th>
                     <th scope="col">Created At</th>
-                    <th scope="col">Button</th>
+                    <th scope="col">Details</th>
                 </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td>1</td>
-                        <td>Name</td>
-                        <td>Created</td>
-                        <td>
-                            <a class="btn btn-primary">Button</a>
-                        </td>
+                        @if(count($user->illness)!=0)
+                            <input type="hidden" value="{{$i=1}}">
+                            @foreach($user->illness as $Illness)
+                                <td>{{$i++}}</td>
+                                <td>{{$Illness["illnessName"]}}</td>
+                                <td>{{\Carbon\Carbon::parse($Illness["created_at"])->toFormattedDateString()}}</td>
+                                <td>
+                                    <a href="/history/details/{{$Illness->id}}" class="btn btn-primary">Show</a>
+                                </td>
+                            @endforeach
+                        @else
+                            <td colspan="4"><h2 style="color: #005FCE">No History Is Available Until Now</h2></td>
+                        @endif
                     </tr>
                 </tbody>
             </table>

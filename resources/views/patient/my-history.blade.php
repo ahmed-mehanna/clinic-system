@@ -1,13 +1,13 @@
 <link rel="stylesheet" href="{{asset('css/app.css')}}">
 <div class="doctor-dashboard-style">
     <div class="container-fluid">
-        <?php
-            $user = [
-                'Drug_Medical_History' => [],
-                'analysis_medical_history'  =>  [],
-                'rumour_medical_history'    =>  []
-            ]
-        ?>
+
+{{--//            $user = [--}}
+{{--//                'Drug_Medical_History' => [],--}}
+{{--//                'analysis_medical_history'  =>  [],--}}
+{{--//                'rumour_medical_history'    =>  []--}}
+{{--//            ]--}}
+//
         <x-patient-clinic-history :patient-history="$user" />
     </div>
     <script>

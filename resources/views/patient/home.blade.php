@@ -8,7 +8,12 @@
                         <div class="section rotate-x">
                             <h2>Next Appointment <i class="fa fa-clock-o" style="color: #BDE7A8"></i></h2>
                             <p class="lead">
-                                <span>Date: </span>October 08, 2020
+                                <span>Date: </span>
+                                @if($reservation === null)
+                                    No Next Appointment
+                                @else
+                                    {{\Illuminate\Support\Carbon::parse($reservation["reservation At"])->toFormattedDateString()}}
+                                @endif
                                 <a href="" class="my-appointments d-block">my appointments</a>
                             </p>
                         </div>
@@ -18,9 +23,17 @@
                             <h2>Last Reveal <i class="fa fa-history" style="color: #4FC3CD"></i></h2>
                             <p class="lead">
                                 <span class="mb-3">Illness Name</span>
-                                Stomach Pain
+                                @if($illness === null)
+                                    No previous visit
+                                @else
+                                    {{$illness["illnessName"]}}
+                                @endif
                                 <span class="mb-3 mt-5">Illness Diagnose</span>
-                                Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla
+                                @if($illness=== null)
+                                    No previous visit
+                                @else
+                                    {{$illness["illnessDiagnose"]}}
+                                @endif
                             </p>
                         </div>
                     </div>
@@ -29,22 +42,22 @@
                             <h2>Profile Data <i class="fa fa-user" style="color: #F2825F"></i></h2>
                             <ul class="list-group mb-3">
                                 <li>
-                                    <span>Name: </span>Ahmed Mehanna
+                                    <span>Name: </span>{{$user->name}}
                                 </li>
                                 <li>
-                                    <span>Gender: </span>Male
+                                    <span>Gender: </span>{{$user->patient->gender}}
                                 </li>
                                 <li>
-                                    <span>Age: </span>20
+                                    <span>Age: </span>{{$user->patient->age}}
                                 </li>
                                 <li>
-                                    <span>Email: </span>ahmadabobakr1@gmail.com
+                                    <span>Email: </span>{{$user->email}}
                                 </li>
                                 <li>
-                                    <span>Phone: </span>01010915791
+                                    <span>Phone: </span>{{$user->phoneNumber}}
                                 </li>
                             </ul>
-                            <a href="" class="edit-btn position-relative d-block">
+                            <a href="/patient/fourm/edit" class="edit-btn position-relative d-block">
                                 Edit <i class="fa fa-edit mt-5"></i>
                             </a>
                         </div>
@@ -52,17 +65,17 @@
                 </div>
                 <div class="row pb-5">
                     <div class="col-xl-3 col-md-6 offset-xl-1">
-                        <div class="section rotate-x click" onclick="goTo('')">
+                        <div class="section rotate-x click" onclick="goTo('/makeappointment')">
                             <h2>New Appointment <i class="fa fa-calendar" style="color: #BE4363"></i></h2>
                         </div>
                     </div>
                     <div class="col-xl-3 col-md-6">
-                        <div class="section rotate click" onclick="goTo('')">
+                        <div class="section rotate click" onclick="goTo('/history')">
                             <h2>Medical History <i class="fa fa-history" style="color: #605FB5"></i></h2>
                         </div>
                     </div>
                     <div class="col-xl-4 col-md-6">
-                        <div class="section rotate-y click" onclick="goTo('')">
+                        <div class="section rotate-y click" onclick="goTo('/patient/fourm/edit')">
                             <h2>Edit Profile <i class="fa fa-user" style="color: #59B887"></i></h2>
                         </div>
                     </div>

@@ -66,7 +66,7 @@ class NurseController extends Controller
             $user["email"] = $request["email"];
             $user["phoneNumber"] = $request["phone-number"];
             $user["password"] = Hash::make($request["national-id"]);
-
+            $user["PatientForum"]=1;
             $user->save();
 
             $patient["national-id"] = $request->input("national-id");

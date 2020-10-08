@@ -1,5 +1,5 @@
 <li class="nav-item not-active" id="">
-    <a class="nav-link" href="{{route('index')}}">Home</a>
+    <a class="nav-link" href="/patient">Home</a>
     <span></span>
 </li>
 <li class="nav-item not-active" id="">
