@@ -7,7 +7,7 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form action="/search/patient" method="get">
+            <form action="/search/patient" method="get" target="_blank">
                 @csrf
                 <div class="modal-body">
                     <div class="form-group">

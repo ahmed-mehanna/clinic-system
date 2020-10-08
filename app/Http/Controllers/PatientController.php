@@ -150,9 +150,8 @@ class PatientController extends Controller
     }
     public function showHistoryDetails($id) //
     {
-        $user = User::find(auth()->user()->id);
-
-        return view("patient.my-history",["user"=>$user]);
+        $illness = Illness::find($id);
+        return view("patient.my-history",["illness"=>$illness]);
     }
     public function showAppointment()
     {

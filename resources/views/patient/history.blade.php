@@ -20,7 +20,7 @@
                                 <td>{{$Illness["illnessName"]}}</td>
                                 <td>{{\Carbon\Carbon::parse($Illness["created_at"])->toFormattedDateString()}}</td>
                                 <td>
-                                    <a href="/history/details/{{$Illness->id}}" class="btn btn-primary">Show</a>
+                                    <a href="/history/details/{{$Illness->id}}" class="btn btn-primary" target="_blank" >Show</a>
                                 </td>
                             @endforeach
                         @else
