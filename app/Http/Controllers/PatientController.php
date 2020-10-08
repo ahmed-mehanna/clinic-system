@@ -229,7 +229,6 @@ class PatientController extends Controller
 
     public function removeAppointment($day, $month, $from) {
         // Delete Appointment From DB
-
         $user = User::find(auth()->user()->id);
         $dateTimeFrom =  Carbon::today(); // min //hour// day // month // year
         $hourMin = $from;
@@ -275,7 +274,7 @@ class PatientController extends Controller
         $myAppointments = array();
 
         foreach ($reserve as $res){
-            $date = Carbon::parse($res["reservation At"])->toFormattedDateString();
+            $date = Carbon::parse($res["reservation At"])->format('F d, Y');
             $from = Carbon::parse($res["reservation At"])->format('Hi');
             $from = (int)$from; //930
             $to = $from + 30;

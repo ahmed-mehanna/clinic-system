@@ -313,40 +313,6 @@
                 }
             });
         });
-        setInterval(function () {
-            $.ajax({
-                url: '/patient/show-appointments/'+ lastDayActive + '/' + lastMonthActive,
-                type: 'get',
-                dataType: 'json',
-                success: function (response) {
-                    if (reservedAppointments.isEqualTo(response))
-                        return null
-                    for (let i = 0; i < reservedAppointments.length; i++) {
-                        let btn = $('#btn-'+reservedAppointments[i]);
-                        btn.removeClass('btn-danger');
-                        btn.addClass('btn-success');
-                        btn.html('Book Now <i class="fa fa-hand-pointer-o"></i>')
-                        btn.css({
-                            'padding-right': '12px',
-                            'padding-left': '12px'
-                        })
-                        btn.attr('onclick', 'bookNow(' + reservedAppointments[i] + ')')
-                    }
-                    for (let i = 0; i < response.length; i++) {
-                        let btn = $('#btn-'+response[i]);
-                        btn.removeClass('btn-success');
-                        btn.addClass('btn-danger');
-                        btn.html('Booked <i class="fa fa-exclamation"></i>');
-                        btn.css({
-                            'padding-right': '1.675rem',
-                            'padding-left': '1.675rem'
-                        })
-                        btn.attr('onclick', '')
-                    }
-                    reservedAppointments = response;
-                }
-            });
-        }, 500)
         function bookNow(from) {
             $.ajax({
                 url: '/create-appointment/'+ lastDayActive + '/' + lastMonthActive + '/' + from,   // Remove 1 And Write User ID
@@ -385,8 +351,16 @@
             window.location.href = '#appointments-table'
         }
         function deleteAppointment(from) {
+            let index = null
+            for (let i = 0; i < myAppointments.length; i++)
+                if (myAppointments[i]['from'] == from) {
+                    index = i
+                    break
+                }
+            let day = myAppointments[index]['date'].substring(myAppointments[index]['date'].indexOf(' '), myAppointments[index]['date'].lastIndexOf(','))
+            let month = monthsNum[myAppointments[index]['date'].substring(0, myAppointments[index]['date'].indexOf(' '))]
             $.ajax({
-                url: '/delete-appointment/'+ {{ date('d') }} + '/' + {{ date('m') }} + '/' + from,   // Remove 1 And Write User ID
+                url: '/delete-appointment/'+ day + '/' + month + '/' + from,   // Remove 1 And Write User ID
                 type: 'get'
             });
             let btn = $('#btn-'+from);
@@ -398,13 +372,8 @@
                 'padding-left': '12px'
             })
             btn.attr('onclick', 'bookNow(' + from + ')')
-            let index = null
-            for (let i = 0; i < myAppointments.length; i++)
-                if (myAppointments[i]['from'] == from) {
-                    index = i
-                    break
-                }
             myAppointments = myAppointments.removeByIndex(index)
+
             $('#appointments-table').empty()
             updateAppointmentsTable(myAppointments)
         }
