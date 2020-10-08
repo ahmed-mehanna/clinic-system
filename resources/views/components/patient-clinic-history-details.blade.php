@@ -87,5 +87,6 @@ use Carbon\Carbon;
                 </div>
             </div>
         </div>
+        <div class="container"><a href="/pdf/generate/{{$illness->id}}" class="btn btn-primary btn-lg btn-block">Generate PDF</a></div>
     </div>
 </div>

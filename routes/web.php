@@ -58,7 +58,7 @@ Route::group(['middleware' => ['isPatient']], function() {
     });
 
 
-    Route::get("/patient",[PatientController::class,"index"]);
+    Route::get("/patient",[PatientController::class,"index"])->middleware('Patient.fourm');;
     //Route::get("/contactus",[PatientController::class,"showContactUs"]);
 
     Route::get("/makeappointment",[PatientController::class,"showAppointment"])->middleware('Patient.fourm');
@@ -71,7 +71,7 @@ Route::group(['middleware' => ['isPatient']], function() {
     Route::get("/patient/fourm/update",[PatientController::class,"update"]);
     Route::get("/history",[PatientController::class,"showHistory"])->middleware('Patient.fourm');
     Route::get("/history/details/{id}",[PatientController::class,"showHistoryDetails"])->middleware('Patient.fourm');
-
+    Route::get('/pdf/generate/{id}', [PatientController::class, 'generatePDF']);
 
 
     Route::get('/patient/show-appointments/{day}/{month}', [PatientController::class, 'showAvailableAppointments']);

@@ -13,6 +13,7 @@
                                     No Next Appointment
                                 @else
                                     {{\Illuminate\Support\Carbon::parse($reservation["reservation At"])->toFormattedDateString()}}
+                                    {{\Illuminate\Support\Carbon::parse($reservation["reservation At"])->format("g:i A")}}
                                 @endif
                                 <a href="" class="my-appointments d-block">my appointments</a>
                             </p>
