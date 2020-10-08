@@ -270,7 +270,7 @@ class PatientController extends Controller
 
     public function showMyAppointments() {
         $user = User::find(auth()->user()->id);
-        $reserve = Reservation::where("user_id",$user["id"])->whereBetween('reservation At',[Carbon::today()->toDateTime(),Carbon::today()->addHours(22)->addMonths(4)->toDateTime()])->get();
+        $reserve = Reservation::where("user_id",$user["id"])->whereBetween('reservation At',[Carbon::today()->toDateTime(),Carbon::today()->addHours(22)->addMonths(4)->toDateTime()])->orderBy("reservation At","asc")->get();
         $myAppointments = array();
 
         foreach ($reserve as $res){
