@@ -11,8 +11,11 @@ use Carbon\Carbon;
 use App\Models\Exception_Days_Doctor;
 use Illuminate\Support\Facades\Hash;
 use App\Models\Illness;
+use PDF;
+
 class PatientController extends Controller
 {
+
 
     public function index()
     {
@@ -166,6 +169,12 @@ class PatientController extends Controller
         return view('patient.resetpasswordpatient');
     }
 
+    public function generatePDF($id){
+        set_time_limit(300);
+       $illness = Illness::find($id);
+        $pdf = PDF::loadView('patient.my-history',["illness"=>$illness]);
+        return $pdf->download('demo.pdf');
+    }
 
 
 
