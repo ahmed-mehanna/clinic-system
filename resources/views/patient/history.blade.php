@@ -12,21 +12,21 @@
                 </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        @if(count($user->illness)!=0)
-                            <input type="hidden" value="{{$i=1}}">
-                            @foreach($user->illness as $Illness)
-                                <td>{{$i++}}</td>
-                                <td>{{$Illness["illnessName"]}}</td>
-                                <td>{{\Carbon\Carbon::parse($Illness["created_at"])->toFormattedDateString()}}</td>
-                                <td>
-                                    <a href="/history/details/{{$Illness->id}}" class="btn btn-primary" target="_blank" >Show</a>
-                                </td>
-                            @endforeach
-                        @else
-                            <td colspan="4"><h2 style="color: #005FCE">No History Is Available Until Now</h2></td>
-                        @endif
-                    </tr>
+                @if(count($user->illness)!=0)
+                    <input type="hidden" value="{{$i=1}}">
+                    @foreach($user->illness as $Illness)
+                        <tr>
+                            <td>{{$i++}}</td>
+                            <td>{{$Illness["illnessName"]}}</td>
+                            <td>{{\Carbon\Carbon::parse($Illness["created_at"])->toFormattedDateString()}}</td>
+                            <td>
+                                <a href="/history/details/{{$Illness->id}}" class="btn btn-primary" target="_blank" >Show</a>
+                            </td>
+                        </tr>
+                    @endforeach
+                @else
+                    <td colspan="4"><h2 style="color: #005FCE; font-family: 'Righteous', cursive;">No History Is Available Until Now</h2></td>
+                @endif
                 </tbody>
             </table>
         </div>

@@ -62,8 +62,8 @@ Route::group(['middleware' => ['isPatient']], function() {
     //Route::get("/contactus",[PatientController::class,"showContactUs"]);
 
     Route::get("/makeappointment",[PatientController::class,"showAppointment"])->middleware('Patient.fourm');
-    //Route::get("/deleteaccount",[PatientController::class,"showDeleteAccount"])->middleware('Patient.fourm');;
-    //Route::get("/delete/account",[PatientController::class,"DeleteAccount"]);
+//    Route::get("/deleteaccount",[PatientController::class,"showDeleteAccount"])->middleware('Patient.fourm');;
+    Route::get("/delete/account",[PatientController::class,"DeleteAccount"]);
    //Route::get("/resetpasswordpatient",[PatientController::class,"showResetPassword"]);
     //Route::get("/patient/Reserve",[PatientController::class,"create"]);
     Route::get("/patient/fourm/store",[PatientController::class,"store"]);

@@ -159,7 +159,11 @@
             $('#day').attr('value', lastDayActive)
             $('#month').attr('value', lastMonthActive)
             console.log($('#time').attr('value'),$('#day').attr('value'),$('#month').attr('value'))
-            $('#btn-'+val).addClass('active')
+            // $('#btn-'+val).addClass('active')
+            $('#btn-' + val).css({
+                'background-color': '#227dc7',
+                'padding': '6px 8px'
+            })
             $('#btn-'+val).text('Booked For You')
             lastActiveAppointment = 'btn-'+val
         }
@@ -262,8 +266,9 @@
                 type: 'get',
                 dataType: 'json',
                 success: function (response) {
-                    if (reservedAppointments.isEqualTo(response))
+                    if (reservedAppointments.isEqualTo(response)) {
                         return null
+                    }
                     for (let i = 0; i < reservedAppointments.length; i++) {
                         let btn = $('#btn-'+reservedAppointments[i]);
                         btn.removeClass('btn-danger');

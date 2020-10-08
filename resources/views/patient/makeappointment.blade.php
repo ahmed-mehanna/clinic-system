@@ -173,6 +173,7 @@
             $('#date-sm').html(months[month - 1] + ' ' + day + ', ' + date.getFullYear())
         }
         function updateAppointmentsTable(arr) {
+            console.log(arr)
             if (arr.length === 0)
                 $('#appointments-table').empty()
             for(let i = 0; i < arr.length; i++) {
@@ -313,7 +314,38 @@
             });
         });
         setInterval(function () {
-            searchBtn.click()
+            $.ajax({
+                url: '/patient/show-appointments/'+ lastDayActive + '/' + lastMonthActive,
+                type: 'get',
+                dataType: 'json',
+                success: function (response) {
+                    if (reservedAppointments.isEqualTo(response))
+                        return null
+                    for (let i = 0; i < reservedAppointments.length; i++) {
+                        let btn = $('#btn-'+reservedAppointments[i]);
+                        btn.removeClass('btn-danger');
+                        btn.addClass('btn-success');
+                        btn.html('Book Now <i class="fa fa-hand-pointer-o"></i>')
+                        btn.css({
+                            'padding-right': '12px',
+                            'padding-left': '12px'
+                        })
+                        btn.attr('onclick', 'bookNow(' + reservedAppointments[i] + ')')
+                    }
+                    for (let i = 0; i < response.length; i++) {
+                        let btn = $('#btn-'+response[i]);
+                        btn.removeClass('btn-success');
+                        btn.addClass('btn-danger');
+                        btn.html('Booked <i class="fa fa-exclamation"></i>');
+                        btn.css({
+                            'padding-right': '1.675rem',
+                            'padding-left': '1.675rem'
+                        })
+                        btn.attr('onclick', '')
+                    }
+                    reservedAppointments = response;
+                }
+            });
         }, 500)
         function bookNow(from) {
             $.ajax({

@@ -5,7 +5,7 @@
             <div class="container-fluid">
                 <div class="row pt-3 pb-5">
                     <div class="col-xl-3 col-md-6 offset-xl-1">
-                        <div class="section rotate-x">
+                        <div class="section rotate-x" style="padding-bottom: 4px">
                             <h2>Next Appointment <i class="fa fa-clock-o" style="color: #BDE7A8"></i></h2>
                             <p class="lead">
                                 <span>Date: </span>
@@ -18,9 +18,12 @@
                                 <a href="/makeappointment#appointments-table" class="my-appointments d-block">my appointments</a>
                             </p>
                         </div>
+                        <div class="section rotate-x click" style="margin-top: 26px;" onclick="goTo('/makeappointment')">
+                            <h2>New Appointment <i class="fa fa-calendar" style="color: #BE4363"></i></h2>
+                        </div>
                     </div>
                     <div class="col-xl-3 col-md-6 mb-4">
-                        <div class="section rotate">
+                        <div class="section rotate" style="padding-bottom: 32px">
                             <h2>Last Reveal <i class="fa fa-history" style="color: #4FC3CD"></i></h2>
                             <p class="lead">
                                 <span class="mb-3">Illness Name</span>
@@ -29,7 +32,7 @@
                                 @else
                                     {{$illness["illnessName"]}}
                                 @endif
-                                <span class="mb-3 mt-5">Illness Diagnose</span>
+                                <span class="mb-3 mt-4">Illness Diagnose</span>
                                 @if($illness=== null)
                                     No previous visit
                                 @else
@@ -58,21 +61,18 @@
                                     <span>Phone: </span>{{$user->phoneNumber}}
                                 </li>
                             </ul>
-                            <a href="/patient/fourm/edit" class="edit-btn position-relative d-block">
-                                Edit <i class="fa fa-edit mt-5"></i>
-                            </a>
                         </div>
                     </div>
                 </div>
                 <div class="row pb-5">
                     <div class="col-xl-3 col-md-6 offset-xl-1">
-                        <div class="section rotate-x click" onclick="goTo('/makeappointment')">
-                            <h2>New Appointment <i class="fa fa-calendar" style="color: #BE4363"></i></h2>
+                        <div class="section rotate click" onclick="goTo('/history')">
+                            <h2>Medical History <i class="fa fa-history" style="color: #605FB5"></i></h2>
                         </div>
                     </div>
                     <div class="col-xl-3 col-md-6">
-                        <div class="section rotate click" onclick="goTo('/history')">
-                            <h2>Medical History <i class="fa fa-history" style="color: #605FB5"></i></h2>
+                        <div class="section rotate-y click" onclick="goTo('/delete/account')">
+                            <h2>Delete Account <i class="fa fa-trash" style="color: #BE4363"></i></h2>
                         </div>
                     </div>
                     <div class="col-xl-4 col-md-6">
