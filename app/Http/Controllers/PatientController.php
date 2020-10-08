@@ -233,7 +233,7 @@ class PatientController extends Controller
         $dateTimeFrom->month = $month;
 
         $reserveCheck= Reservation::where("user_id",$user["id"])->where("reservation At", $dateTimeFrom->toDateTime())->get();
-        if($reserveCheck)
+        if(count($reserveCheck)!=0)
         {
             $reserveCheck[0]->delete();
         }
@@ -261,19 +261,28 @@ class PatientController extends Controller
     }
 
     public function showMyAppointments() {
-        $reserve = Reservation::all();
+        $user = User::find(auth()->user()->id);
+        $reserve = Reservation::where("user_id",$user["id"])->whereBetween('reservation At',[Carbon::today()->toDateTime(),Carbon::today()->addHours(22)->addMonths(4)->toDateTime()])->get();
+        $myAppointments = array();
+
         foreach ($reserve as $res){
-            $resvation = Carbon::parse($res["reservation At"]);
+            $date = Carbon::parse($res["reservation At"])->toFormattedDateString();
+            $from = Carbon::parse($res["reservation At"])->format('Hi');
+            $from = (int)$from; //930
+            $to = $from + 30;
+            $Appointment = array("date"=>$date,"from"=>$from,"to"=>$to);
+            array_push($myAppointments,$Appointment);
             //echo $resvation->toFormattedDateString();
-            echo $resvation->hour;
+            //echo $resvation->hour;
         }
-        $myAppointments = [
-            [
-                'date'  =>  date("F d, Y"),
-                'from'  =>  '900',
-                'to'    =>  '930'
-            ]
-        ];
+
+//        $myAppointments = [
+//            [
+//                'date'  =>  date("F d, Y"),
+//                'from'  =>  '900',
+//                'to'    =>  '930'
+//            ]
+//        ];
         echo json_encode($myAppointments);
     }
 
