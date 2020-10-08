@@ -8,7 +8,7 @@ use Carbon\Carbon;
                 <span>Patient Clinic History</span>
             </i>
         </div>
-        <div class="patient-clinic-history">
+        <div id="patient-clinic-history" class="patient-clinic-history">
             @foreach($patientHistory->illness as $illness)
                 <div class="data">
                     <div class="row">

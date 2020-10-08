@@ -4,7 +4,7 @@ div.doctor-dashboard-style {
             div.medical-history {
                 max-width: 97%;
                 max-height: 300px;
-                overflow-y: scroll;
+                overflow-y: auto;
                 div.sub-container {
                     max-width: 90%;
                     margin-left: 3%;

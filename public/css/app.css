@@ -15298,7 +15298,7 @@ div.doctor-dashboard-style div.container-lg div.section div.medical-history,
 div.doctor-dashboard-style div.container-xl div.section div.medical-history {
   max-width: 97%;
   max-height: 300px;
-  overflow-y: scroll;
+  overflow-y: auto;
 }
 
 div.doctor-dashboard-style div.container-fluid div.section div.medical-history div.sub-container,
@@ -15407,7 +15407,7 @@ div.doctor-dashboard-style div.container-sm div.section div.patient-clinic-histo
 div.doctor-dashboard-style div.container-md div.section div.patient-clinic-history,
 div.doctor-dashboard-style div.container-lg div.section div.patient-clinic-history,
 div.doctor-dashboard-style div.container-xl div.section div.patient-clinic-history {
-  overflow-y: scroll;
+  overflow-y: auto;
   font-size: 18px;
   max-height: 300px;
   max-width: 97%;

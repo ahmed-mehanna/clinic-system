@@ -2,7 +2,7 @@ div.doctor-dashboard-style {
     div.container-fluid {
         div.section {
             div.patient-clinic-history {
-                overflow-y: scroll;
+                overflow-y: auto;
                 font-size: 18px;
                 max-height: 300px;
                 max-width: 97%;
