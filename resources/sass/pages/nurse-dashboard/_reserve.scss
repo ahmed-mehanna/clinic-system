@@ -67,13 +67,18 @@ div.nurse-reserve-style {
                         }
                         button.btn-danger {
                             cursor: not-allowed;
-                            &:hover {
+                            &:hover, &:focus {
                                 background-color: #e3342f;
                             }
                         }
                         button.active {
                             background-color: $bg-main-color;
-                            padding: 6px 8px;
+                            border-color: $bg-main-color !important;
+                            padding-right: 26.8px;
+                            padding-left: 26.8px;
+                            &:focus {
+                                box-shadow: none;
+                            }
                         }
                     }
                 }

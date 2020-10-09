@@ -18,5 +18,4 @@
         {{ intdiv($i, 100) }}:<?php if ($i % 100 == 0): ?>00<?php else: ?>{{ $i % 100 }}<?php endif; ?>am
     </span>
 @endif
-<button type="button" class="btn btn-danger" style="padding-right: 1.675rem; padding-left: 1.675rem;">Booked <i class="fa fa-exclamation"></i></button>
 <button id="{{ 'btn-'.$val }}" type="button" class="btn btn-success" onclick="selectAppointment({{ $val }})">Book Now <i class="fa fa-hand-pointer-o"></i></button>

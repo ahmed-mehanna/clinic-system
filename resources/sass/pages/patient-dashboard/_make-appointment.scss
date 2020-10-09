@@ -58,8 +58,9 @@ div.patient-dashboard-style {
                         }
                         button.btn-danger {
                             cursor: not-allowed;
-                            &:hover {
+                            &:hover, &:focus {
                                 background-color: #e3342f;
+                                box-shadow: none;
                             }
                         }
                         button.active {

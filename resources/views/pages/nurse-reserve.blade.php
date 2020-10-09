@@ -10,8 +10,11 @@
                     <div class="fp w-100" style="text-align:center"><strong >{{Session::get('message')}}</strong></div>
                 </div>
             @endif
+            <div id="alert" class="alert-danger d-none">
+                <div class="fp w-100" style="text-align:center"><strong >You Did Not Choose An Appointment</strong></div>
+            </div>
             <form action="/nurse/reserve/store" method="get">
-                                @csrf
+                @csrf
                 <div class="form-group">
                     <label for="name">Full Name</label>
                     <div class="container mt-0">
@@ -126,7 +129,8 @@
                         @endfor
                     </div>
                 </div>
-                <button type="submit" class="btn btn-primary mr-3">Submit</button>
+                <button id="validate-btn" type="button" class="btn btn-primary mr-3">Submit</button>
+                <button id="submit-btn" type="submit" class="d-none"></button>
                 <span class="btn btn-danger" id="go-back" onclick="goBack()">Back</span>
             </form>
         </div>
@@ -142,6 +146,7 @@
             return true
         }
         let lastActiveAppointment = null;
+        let lastActiveAppointmentTime = null;
         let lastMonthActive = {{ date('m') }}, lastDayActive = {{ date('d') }};
         let months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
         $('#month-'+lastMonthActive).addClass('active')
@@ -150,7 +155,6 @@
             window.history.back();
         }
         function selectAppointment(val) {
-            console.log('hello')
             if (lastActiveAppointment !== null) {
                 $('#' + lastActiveAppointment).removeClass('active')
                 $('#' + lastActiveAppointment).html('Book Now <i class="fa fa-hand-pointer-o"></i>')
@@ -158,14 +162,10 @@
             $('#time').attr('value', val)
             $('#day').attr('value', lastDayActive)
             $('#month').attr('value', lastMonthActive)
-            console.log($('#time').attr('value'),$('#day').attr('value'),$('#month').attr('value'))
-            // $('#btn-'+val).addClass('active')
-            $('#btn-' + val).css({
-                'background-color': '#227dc7',
-                'padding': '6px 8px'
-            })
-            $('#btn-'+val).text('Booked For You')
+            $('#btn-'+val).addClass('active')
+            $('#btn-'+val).html('Booked <i class="fa fa-exclamation"></i>')
             lastActiveAppointment = 'btn-'+val
+            lastActiveAppointmentTime = val
         }
         function selectMonth(monthId) {
             if (monthId === 2) {
@@ -201,12 +201,14 @@
                 lastMonthActive = monthId
                 $('#day-31').remove();
             }
+            searchForAppointments()
         }
         function selectDay(dayId) {
             if (lastDayActive !== null)
                 $('#day-'+lastDayActive).removeClass('active')
             $('#day-'+dayId).addClass('active');
             lastDayActive = dayId
+            searchForAppointments()
         }
 
         function searchForAppointments() {
@@ -226,16 +228,21 @@
                 type: 'get',
                 dataType: 'json',
                 success: function (response) {
+                    if (reservedAppointments.isEqualTo(response))
+                        return null
+                    console.log(reservedAppointments)
                     for (let i = 0; i < reservedAppointments.length; i++) {
+                        console.log(reservedAppointments[i], lastActiveAppointmentTime)
                         let btn = $('#btn-'+reservedAppointments[i]);
                         btn.removeClass('btn-danger');
+                        btn.removeClass('active')
                         btn.addClass('btn-success');
                         btn.html('Book Now <i class="fa fa-hand-pointer-o"></i>')
                         btn.css({
                             'padding-right': '12px',
                             'padding-left': '12px'
                         })
-                        btn.attr('onclick', 'bookNow(' + reservedAppointments[i] + ')')
+                        btn.attr('onclick', 'selectAppointment(' + reservedAppointments[i] + ')')
                     }
                     for (let i = 0; i < response.length; i++) {
                         let btn = $('#btn-'+response[i]);
@@ -244,9 +251,18 @@
                         btn.html('Booked <i class="fa fa-exclamation"></i>');
                         btn.css({
                             'padding-right': '26.8px',
-                            'padding-left': '26.8px'
+                            'padding-left': '26.8px',
+                            'box-shadow': 'none'
                         })
                         btn.attr('onclick', '')
+                        if (lastActiveAppointmentTime !== null && lastActiveAppointmentTime === response[i]) {
+                            lastActiveAppointment = null
+                            btn.removeClass('active')
+                            $('#time').attr('value', '')
+                            $('#day').attr('value', '')
+                            $('#month').attr('value', '')
+                        }
+
                     }
                     reservedAppointments = response;
                 }
@@ -266,6 +282,14 @@
         let updateAvailableAppointments = setInterval(function () {
             searchAjax()
         }, 500)
-
+        $('#validate-btn').on('click', function () {
+            console.log($('#time').val())
+            if ($('#time').val() !== '')
+                $('#submit-btn').click()
+            else {
+                $('#alert').removeClass('d-none')
+                window.location.href = '/nurse/reserve#alert'
+            }
+        })
     </script>
 @endsection

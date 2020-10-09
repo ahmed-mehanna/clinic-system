@@ -15027,13 +15027,20 @@ div.nurse-reserve-style div.container form div.all-appointments div.row div butt
   cursor: not-allowed;
 }
 
-div.nurse-reserve-style div.container form div.all-appointments div.row div button.btn-danger:hover {
+div.nurse-reserve-style div.container form div.all-appointments div.row div button.btn-danger:hover,
+div.nurse-reserve-style div.container form div.all-appointments div.row div button.btn-danger:focus {
   background-color: #e3342f;
 }
 
 div.nurse-reserve-style div.container form div.all-appointments div.row div button.active {
   background-color: #227DC7;
-  padding: 6px 8px;
+  border-color: #227DC7 !important;
+  padding-right: 26.8px;
+  padding-left: 26.8px;
+}
+
+div.nurse-reserve-style div.container form div.all-appointments div.row div button.active:focus {
+  box-shadow: none;
 }
 
 @media (max-width: 576px) {
@@ -15704,8 +15711,10 @@ div.patient-dashboard-style div.make-appointment div.container div.all-appointme
   cursor: not-allowed;
 }
 
-div.patient-dashboard-style div.make-appointment div.container div.all-appointments div.row div button.btn-danger:hover {
+div.patient-dashboard-style div.make-appointment div.container div.all-appointments div.row div button.btn-danger:hover,
+div.patient-dashboard-style div.make-appointment div.container div.all-appointments div.row div button.btn-danger:focus {
   background-color: #e3342f;
+  box-shadow: none;
 }
 
 div.patient-dashboard-style div.make-appointment div.container div.all-appointments div.row div button.active {

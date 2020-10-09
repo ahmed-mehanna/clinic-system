@@ -58,7 +58,6 @@
                 type: 'get',
                 dataType: 'json',
                 success: function (response) {
-                    console.log(response)
                     if (response === true) {
                         clearInterval(notificationCheck)
                         $('#ajax-btn').click()

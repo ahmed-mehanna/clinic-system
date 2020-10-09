@@ -20,11 +20,9 @@
                                 <i class="fa fa-calendar ml-3"></i>
                             </span>
                             <button type="button" class="today btn btn-primary btn-large">TODAY</button>
-                            <button type="button" class="btn btn-primary btn-large" onclick="window.location.href = '#appointments-table'">My Appointments</button>
                         </div>
                         <div class="col-lg-3 col-md-5 col-sm-12 cc">
                             <button type="button" class="today btn btn-primary" style="width: 40%">TODAY</button>
-                            <button type="button" class="btn btn-primary" style="width: 55%; float: right" onclick="window.location.href = '#appointments-table'">My Appointments</button>
                         </div>
                     </div>
                 </div>
@@ -179,6 +177,8 @@
                 $('#appointments-table').empty()
             for(let i = 0; i < arr.length; i++) {
                 let bg = null, fromHour = 0, fromMin, toHour = 0, toMin = 0
+                let day = myAppointments[i]['date'].substring(myAppointments[i]['date'].indexOf(' ') + 1, myAppointments[i]['date'].lastIndexOf(','))
+                let month = monthsNum[myAppointments[i]['date'].substring(0, myAppointments[i]['date'].indexOf(' '))]
                 if (i % 2 === 0) bg = '#F2F2F2'; else bg = '#FFF'
                 if (arr[i]['from'] % 100 == 0)
                     fromMin = '00'
@@ -208,7 +208,7 @@
                 }
                 else
                     toMin += 'am'
-                let row = '<div id="row-'+arr[i]['from']+'" class="row" style="background-color: '+bg+'">' +
+                let row = '<div id="row-'+day + '-' + month + '-' +arr[i]['from']+'" class="row" style="background-color: '+bg+'">' +
                     '<div id="row-'+arr[i]['from']+'-index" class="col-sm-1 d-none d-sm-block">' +
                     '<span>'+ (i + 1) + '</span>' +
                     '</div>' +
@@ -309,22 +309,28 @@
                 to += 40
             myAppointments.push({'date': $('#date-lg').html(), 'from': from.toString(), 'to': to.toString()})
             myAppointments.sort(function(x, y) {
-                let xDate = monthsNum[x.date.substr(0, x.date.indexOf(' '))], yDate = monthsNum[y.date.substr(0, y.date.indexOf(' '))]
+                let xMonth = monthsNum[x.date.substr(0, x.date.indexOf(' '))], yMonth = monthsNum[y.date.substr(0, y.date.indexOf(' '))]
+                let xDay = x.date.substring(x.date.indexOf(' '), x.date.indexOf(','))
+                let yDay = y.date.substring(y.date.indexOf(' '), y.date.indexOf(','))
                 let xFrom = parseInt(x.from), yFrom = parseInt(y.from)
-                if (xDate < yDate) return -1
-                if (xDate > yDate) return 1
+                if (xMonth < yMonth) return -1
+                if (xMonth > yMonth) return 1
+                if (xDay < yDay) return -1
+                if (xDay > yDay) return 1
                 if (xFrom < yFrom) return -1
                 if (xFrom > yFrom) return 1
             });
             $('#appointments-table').empty()
             let index = null
             for (let i = 0; i < myAppointments.length; i++)
-                if (myAppointments[i]['from'] == from) {
+                if (myAppointments[i]['date'] == $('#date-lg').html() && myAppointments[i]['from'] == from && myAppointments[i]['to'] == to) {
                     index = i
                     break
                 }
             updateAppointmentsTable(myAppointments)
-            // $('#row-' + from).css('background-color', '#BEE1BC')
+            let day = myAppointments[index]['date'].substring(myAppointments[index]['date'].indexOf(' ')+1, myAppointments[index]['date'].lastIndexOf(','))
+            let month = monthsNum[myAppointments[index]['date'].substring(0, myAppointments[index]['date'].indexOf(' '))]
+            $('#row-'+day + '-' + month + '-' + from).css('background-color', '#BEE1BC')
             window.location.href = '#appointments-table'
         }
         function deleteAppointment(from) {
