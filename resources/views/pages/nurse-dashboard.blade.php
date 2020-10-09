@@ -19,7 +19,7 @@
                     </tr>
                 </thead>
                 <tbody id="table-body">
-                    <input type="hidden" value="{{$i=1}}">
+{{--                    <input type="hidden" value="{{$i=1}}">--}}
 {{--                    @foreach($reservation as $reservationsData)--}}
 {{--                        <tr <?php if ($i === 1){ ?> class="active" <?php } ?> >--}}
 {{--                            <th scope="row">{{$i++}}</th>--}}
@@ -75,7 +75,7 @@
                     for (let i = 0; i < response.length; i++) {
                         console.log(response[0][i])
                         let row = '<tr>' +
-                                        '<th scope="row">' + i + '</th>' +
+                                        '<th scope="row">' + (i+1) + '</th>' +
                                         '<td>'+ response[1][i]['name'] +'</td>' +
                                         '<td>'+ response[1][i]['from'] +'</td>' +
                                         '<td>'+ response[1][i]['to'] +'</td>' +

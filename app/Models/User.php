@@ -95,6 +95,24 @@ class User extends Authenticatable implements MustVerifyEmail
         }
     }
 
+    public function Emailverify()
+    {
+        if ($this->email_verified_at != NULL) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function Emailcheck()
+    {
+        if ($this->email === "mail@gmail.com") {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     public function patient()
     {
         return $this->hasOne('App\Models\Patient');

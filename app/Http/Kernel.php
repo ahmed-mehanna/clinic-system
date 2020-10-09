@@ -57,7 +57,8 @@ class Kernel extends HttpKernel
         'isPatient' => [
             \App\Http\Middleware\Authenticate::class,
             \App\Http\Middleware\IsPatient::class,
-            \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
+            \App\Http\Middleware\EmailVerify::class,
+//            \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         ],
     ];
 

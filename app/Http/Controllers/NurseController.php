@@ -52,7 +52,6 @@ class NurseController extends Controller
             "first-name"=>"required",
             "middle-name"=>"required",
             "last-name"=>"required",
-            "email"=>"required",
             "password"=>"required",
             "phone-number"=>"required",
 
@@ -74,7 +73,7 @@ class NurseController extends Controller
         $patient2 = Patient::firstWhere("national-id", $request->input("national-id"));
         if($patient2 === null) {
             $user["name"] = $request["first-name"] . " " . $request["middle-name"] . " " . $request["last-name"];
-            $user["email"] = $request["email"];
+            $user["email"] = null;
             $user["phoneNumber"] = $request["phone-number"];
             $user["password"] = Hash::make($request["national-id"]);
             $user["PatientForum"]=1;
@@ -221,31 +220,31 @@ class NurseController extends Controller
         $res_check_for_duplicate= Reservation::firstWhere("Reserved_by_Doctor",1);
         $res_check2_for_duplicate= Reservation::whereBetween('reservation At',[Carbon::today()->toDateTime(),Carbon::today()->addHours(22)->toDateTime()])->where('Reserved_by_Doctor',1)->orderBy('reservation At','DESC')->get();
 
-//        if(count($res_check2_for_duplicate)!=0) {
-//            $start = clone Carbon::parse($res_check2_for_duplicate[0]["reservation At"]);
-//            if($start->isPast()) {
-//                for ($date = clone $start; $date->diffInMinutes($datenow) >= "30"; $date->addMinutes(30)) {
-//                    $date->addMinutes(30);
-//                    $res = new Reservation();
-//                    $res["reservation At"] = $date;
-//                    $res["user_id"] = 0;
-//                    $res["Reserved_by_Doctor"] = 1;
-//                    $res->save();
-//                }
-//            }
-//        }elseif(count($res_check2_for_duplicate)==0){
-//            $start = clone Carbon::today();
-//            $start->addHours(8);
-//            if($start->isPast()) {
-//                for ($date = clone $start; $date->diffInMinutes($datenow) > "30"; $date->addMinutes(30)) {
-//                    $res = new Reservation();
-//                    $res["reservation At"] = $date;
-//                    $res["user_id"] = 0;
-//                    $res["Reserved_by_Doctor"] = 1;
-//                    $res->save();
-//                }
-//            }
-//        }
+        if(count($res_check2_for_duplicate)!=0) {
+            $start = clone Carbon::parse($res_check2_for_duplicate[0]["reservation At"]);
+            if($start->isPast()) {
+                for ($date = clone $start; $date->diffInMinutes($datenow) >= "30"; $date->addMinutes(30)) {
+                    $date->addMinutes(30);
+                    $res = new Reservation();
+                    $res["reservation At"] = $date;
+                    $res["user_id"] = 0;
+                    $res["Reserved_by_Doctor"] = 1;
+                    $res->save();
+                }
+            }
+        }elseif(count($res_check2_for_duplicate)==0){
+            $start = clone Carbon::today();
+            $start->addHours(8);
+            if($start->isPast()) {
+                for ($date = clone $start; $date->diffInMinutes($datenow) > "30"; $date->addMinutes(30)) {
+                    $res = new Reservation();
+                    $res["reservation At"] = $date;
+                    $res["user_id"] = 0;
+                    $res["Reserved_by_Doctor"] = 1;
+                    $res->save();
+                }
+            }
+        }
         $reservedobj = Reservation::whereBetween('reservation At',[$dateTimeFrom->toDateTime(),$dateTimeTo->toDateTime()])->get();
 
         $reserved = array();
