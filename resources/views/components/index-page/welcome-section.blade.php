@@ -27,7 +27,7 @@
                                     RESERVE NOW
                                 </a>
                             @endif
-                        @endif
+                        @endi
                     @endif
                 </div>
             </div>
