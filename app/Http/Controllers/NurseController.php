@@ -17,8 +17,12 @@ use Symfony\Component\Console\Input\Input;
 class NurseController extends Controller
 {
 
-    public static function index() {
-        return view('pages.nurse-dashboard');
+    public static function index()
+    {
+        $reservation = Reservation::whereBetween('reservation At',[Carbon::today()->toDateTime(),Carbon::today()->addHours(22)->toDateTime()])->where('Reserved_by_Doctor',0)->orderBy('reservation At','asc')->get();
+
+
+        return view('pages.nurse-dashboard',["reservation" => $reservation,]);
     }
 
     public function reservations() {
@@ -73,7 +77,11 @@ class NurseController extends Controller
         $patient2 = Patient::firstWhere("national-id", $request->input("national-id"));
         if($patient2 === null) {
             $user["name"] = $request["first-name"] . " " . $request["middle-name"] . " " . $request["last-name"];
-            $user["email"] = null;
+            if($request->input("email") === null){
+                $user["email"] = null;
+            }else{
+                $user["email"] = $request->input("email");
+            }
             $user["phoneNumber"] = $request["phone-number"];
             $user["password"] = Hash::make($request["national-id"]);
             $user["PatientForum"]=1;
@@ -109,21 +117,31 @@ class NurseController extends Controller
             }
         }else{
 
-            $res = Carbon::today();
-            $res->day = $request->input("day");
-            $res->month = $request->input("month");
+            $dateTimeFrom1 = Carbon::today();
+            $dateTimeFrom1->day = $request->input("day");
+            $dateTimeFrom1->month = $request->input("month");
+            $From= clone $dateTimeFrom1;
+            $To = clone $dateTimeFrom1;
+
             $hour = (int)$request->input("time") / 100;
             $min = (int)$request->input("time") % 100;
-            $res->addHours($hour);
-            $res->addMinutes($min);
-            $resveCheck = Reservation::firstWhere("reservation At",$res->toDateTimeString());
-            if(!$resveCheck){
-                $reserv["reservation At"] = $res;
-                $reserv["user_id"] = $patient2->user_id;
-                $reserv["Reserved_by_Doctor"] = 0;
-                $reserv->save();
+            $dateTimeFrom1->addHours($hour);
+            $dateTimeFrom1->addMinutes($min);
+
+            $isreserved = Reservation::where("user_id",$patient2["user_id"])->whereBetween('reservation At',[$From->toDateTime(),$To->addHours(22)->toDateTime()])->get();
+            $resveCheck = Reservation::firstWhere("reservation At",$dateTimeFrom1->toDateTimeString());
+            // check
+            if(count($isreserved)===0) {
+                if (!$resveCheck) {
+                    $reserv["reservation At"] = $dateTimeFrom1;
+                    $reserv["user_id"] = $patient2->user_id;
+                    $reserv["Reserved_by_Doctor"] = 0;
+                    $reserv->save();
+                } else {
+                    return redirect()->back()->with('message', 'This Appointments is Aleardy reserved');
+                }
             }else{
-                return redirect()->back()->with('message', 'This Appointments is Aleardy reserved');
+                return redirect()->back()->with('message', 'You Are Aleardy Reserved an Appointment At This Day');
             }
 
         }

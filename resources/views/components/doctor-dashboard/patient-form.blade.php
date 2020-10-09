@@ -94,7 +94,7 @@
                 else {
                     $('#drug' + id).remove();
                     numberOfDrugs.remove(id);
-                    $('<i class="btn fa fa-plus" id="new-button" onclick="addDrug()"></i>').prependTo('#buttons-container' + numberOfDrugs[numberOfDrugs.length - 1])
+                    $('<i class="btn fa fa-plus" id="#new-button-patient-form" onclick="addDrug()"></i>').prependTo('#buttons-container' + numberOfDrugs[numberOfDrugs.length - 1])
                 }
             }
         }
