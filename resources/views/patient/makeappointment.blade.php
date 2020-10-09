@@ -331,7 +331,7 @@
             let day = myAppointments[index]['date'].substring(myAppointments[index]['date'].indexOf(' ')+1, myAppointments[index]['date'].lastIndexOf(','))
             let month = monthsNum[myAppointments[index]['date'].substring(0, myAppointments[index]['date'].indexOf(' '))]
             $('#row-'+day + '-' + month + '-' + from).css('background-color', '#BEE1BC')
-            window.location.href = '#appointments-table'
+            window.location.href = '#row-'+day + '-' + month + '-' + from
         }
         function deleteAppointment(from) {
             let index = null
