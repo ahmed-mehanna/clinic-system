@@ -70,7 +70,7 @@ class PatientController extends Controller
         $userhistory["user_id"]=$user->id;
         $userhistory->save();
 
-        return redirect('/makeappointment');
+        return redirect('/patient');
     }
 
     /**
@@ -171,10 +171,11 @@ class PatientController extends Controller
     }
 
     public function generatePDF($id){
-        set_time_limit(300);
+//        set_time_limit(300);
        $illness = Illness::find($id);
-        $pdf = PDF::loadView('patient.my-history',["illness"=>$illness]);
-        return $pdf->download('demo.pdf');
+       $doctor = User::firstWhere("Role",1);
+        $pdf = PDF::loadView('patient.pdf',["illness"=>$illness,"doctor"=>$doctor]);
+        return $pdf->download('Prescription.pdf');
     }
 
 

@@ -13,7 +13,7 @@ class LoginController extends Controller
     public function login(Request $request)
     {
         $phoneNumber = $request->input("phoneNumber");
-        
+
         if (filter_var($phoneNumber, FILTER_VALIDATE_EMAIL)) {
             auth::attempt(['email' => $phoneNumber, "password" => $request->input("password")]);
         } else {
@@ -21,12 +21,13 @@ class LoginController extends Controller
         }
         if (auth::check()) {
             $user = User::find(auth()->user()->id);
+
             if ($user->Role == 1) {
                 return PagesController::index();
             } elseif ($user->Role == 2) {
-                return NurseController::index();
+                return redirect("/nurse");
             } elseif ($user->Role == 3) {
-                return PatientController::index();
+                return redirect("/patient");
             }
         } else {
             return redirect()->back()->withErrors(['checkInvaliedLogin' => 'We couldnt verify your credentials']);
