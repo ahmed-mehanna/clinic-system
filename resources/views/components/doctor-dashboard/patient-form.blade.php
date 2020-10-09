@@ -72,20 +72,7 @@
                 '                            <option>Analysis</option>\n' +
                 '                            <option>Rumours</option>\n' +
                 '                        </select>\n' +
-                '                    </div>'+
-                '                    <div class="col-lg-3">\n' +
-                '                        <input id="data-name-'+id+'" type="text" class="form-control" name="name[]" form="patient-form" placeholder="Name">\n' +
-                '                    </div>\n' +
-                '                    <div class="col-lg-4">\n' +
-                '                        <input id="data-result-'+id+'" type="text" class="form-control" name="description[]" form="patient-form" placeholder="Description">\n' +
-                '                    </div>\n' +
-                '                    <div class="col-lg-3" id="buttons-container' + id + '">\n' +
-                '                        <i class="btn fa fa-plus" id="new-button-patient-form" onclick="addDrug()"></i>\n' +
-                '                        <i class="btn fa fa-trash" onclick="removeDrug(' + id + ')"></i>\n' +
-                '                    </div>\n' +
-                '                </div>'
-            $('#drugs').append(newDrug)
-        }
+    }
         function removeDrug(id) {
             if (numberOfDrugs.length > 1) {
                 if (id !== numberOfDrugs[numberOfDrugs.length - 1]) {

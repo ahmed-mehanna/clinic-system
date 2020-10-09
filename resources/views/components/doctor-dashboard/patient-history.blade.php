@@ -134,7 +134,6 @@
         function removeAnalysis(id) {
             if (numberOfAnalysis.length > 1) {
                 if (id !== numberOfAnalysis[numberOfAnalysis.length - 1]) {
-                    console.log($('#box' + id))
                     $('#box' + id).remove();
                     numberOfAnalysis.remove(id);
                 }
