@@ -6,12 +6,14 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Routing\Route;
 use Illuminate\Support\Facades\Auth;
+use MongoDB\Driver\Session;
 
 class LoginController extends Controller
 {
     public function login(Request $request)
     {
         $phoneNumber = $request->input("phoneNumber");
+        
         if (filter_var($phoneNumber, FILTER_VALIDATE_EMAIL)) {
             auth::attempt(['email' => $phoneNumber, "password" => $request->input("password")]);
         } else {

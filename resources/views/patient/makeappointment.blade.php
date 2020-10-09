@@ -286,14 +286,18 @@
         searchBtn.on('click', function () {
             searchAjax()
         });
-        let updateAvailableAppointments = setInterval(function () {
-            searchAjax()
-        }, 500)
+        // let updateAvailableAppointments = setInterval(function () {
+        //     searchAjax()
+        // }, 500)
         function bookNow(from) {
             reservedAppointments.push(from)
             $.ajax({
                 url: '/create-appointment/'+ lastDayActive + '/' + lastMonthActive + '/' + from,   // Remove 1 And Write User ID
-                type: 'get'
+                type: 'get',
+                dataType:"json",
+                success:function (response){
+                    console.log(response)
+                }
             });
             let btn = $('#btn-'+from);
             btn.removeClass('btn-success');

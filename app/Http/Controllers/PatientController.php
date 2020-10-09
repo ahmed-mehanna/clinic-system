@@ -219,11 +219,19 @@ class PatientController extends Controller
         $reservedobj = Reservation::whereBetween('reservation At',[$dateTimeFrom->toDateTime(),$dateTimeTo->toDateTime()])->get();
 
         $reserved = array();
+        $isreserved = true;
+
         foreach ($reservedobj as $res){
             $first = Carbon::parse($res["reservation At"])->format('Hi');
             $first = (int)$first;
             array_push($reserved,$first);
+
+            if($res["user_id"] === auth()->user()->id){
+                $isreserved= false;
+            }
         }
+
+        array_push($reserved,$isreserved);
         echo json_encode($reserved);    // Echo Available Appointments Fro Day/Month
     }
 
@@ -249,23 +257,29 @@ class PatientController extends Controller
 
     public function createAppointment($day, $month, $from) {
         // Add Appointment To DB
-            // 930
+        // 930
         $user = User::find(auth()->user()->id);
         $dateTimeFrom =  Carbon::today(); // min //hour// day // month // year
         $hourMin = $from;
         $hour = $from /100 ;
         $min = $from%100;
 
-        $dateTimeFrom->addMinutes($min);
-        $dateTimeFrom->addHours($hour);
         $dateTimeFrom->day = $day;
         $dateTimeFrom->month = $month;
+        $dateTimeFrom1 = clone $dateTimeFrom;
+        $dateTimeFrom->addMinutes($min);
+        $dateTimeFrom->addHours($hour);
 
-        echo $dateTimeFrom ;
-        $reserve = new Reservation();
-        $reserve["reservation At"] = $dateTimeFrom ;
-        $reserve["user_id"] = $user->id;
-        $reserve->save();
+
+//        echo $dateTimeFrom ;
+       $isreserved = Reservation::where("user_id",$user["id"])->whereBetween('reservation At',[$dateTimeFrom1->toDateTime(),$dateTimeFrom1->addHours(22)->toDateTime()])->get();
+
+        if(count($isreserved)===0) {
+            $reserve = new Reservation();
+            $reserve["reservation At"] = $dateTimeFrom;
+            $reserve["user_id"] = $user->id;
+            $reserve->save();
+        }
     }
 
     public function showMyAppointments() {
