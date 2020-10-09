@@ -1,3 +1,7 @@
+<?php
+    use Illuminate\Support\Facades\Auth;
+    use App\Models\User;
+?>
 <div class="container-fluid welcome-section">
     <div class="bg">
         <div class="container">
@@ -15,9 +19,16 @@
                             </span>
                         We at Medicare are always fully focused on helping your to overcame any surgeon procedure with great commitment and easy recovery.
                     </p>
-                    <a href="" class="btn btn-primary">
-                        RESERVE NOW
-                    </a>
+                    @if (Route::has('login'))
+                        @if(auth::check())
+                            <input type="hidden" value="{{$user = User::find(auth()->user()->id)}}"/>
+                            @if($user->Role == 3)
+                                <a href="" class="btn btn-primary">
+                                    RESERVE NOW
+                                </a>
+                            @endif
+                        @endif
+                    @endif
                 </div>
             </div>
         </div>
