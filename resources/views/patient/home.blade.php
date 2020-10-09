@@ -75,7 +75,7 @@
                             <h2>Delete Account <i class="fa fa-trash" style="color: #BE4363"></i></h2>
                         </div>
                     </div>
-                    <div class="col-xl-4 col-md-6 offset-md-3">
+                    <div class="col-xl-4 col-md-6 offset-xl-0 offset-md-3">
                         <div class="section rotate-y click" onclick="goTo('/patient/fourm/edit')">
                             <h2>Edit Profile <i class="fa fa-user" style="color: #59B887"></i></h2>
                         </div>

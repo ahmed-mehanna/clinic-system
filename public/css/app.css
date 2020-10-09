@@ -14925,6 +14925,7 @@ div.nurse-dashboard-style div.container-sm table tr td button,
 div.nurse-dashboard-style div.container-md table tr td button,
 div.nurse-dashboard-style div.container-lg table tr td button,
 div.nurse-dashboard-style div.container-xl table tr td button {
+  cursor: pointer !important;
   border: none;
   margin-right: 15px;
   background-color: inherit;

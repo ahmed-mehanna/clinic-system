@@ -17,8 +17,12 @@ use Symfony\Component\Console\Input\Input;
 class NurseController extends Controller
 {
 
-    public static function index() {
-        return view('pages.nurse-dashboard');
+    public static function index()
+    {
+        $reservation = Reservation::whereBetween('reservation At',[Carbon::today()->toDateTime(),Carbon::today()->addHours(22)->toDateTime()])->where('Reserved_by_Doctor',0)->orderBy('reservation At','asc')->get();
+
+
+        return view('pages.nurse-dashboard',["reservation" => $reservation,]);
     }
 
     public function reservations() {
