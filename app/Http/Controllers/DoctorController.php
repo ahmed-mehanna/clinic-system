@@ -23,7 +23,7 @@ use mysql_xdevapi\Result;
 class DoctorController extends Controller
 {
 
-    public function index()
+    public static function index()
     {
         $userTurn = Patientturn::all();
         $userTurn = $userTurn->first();

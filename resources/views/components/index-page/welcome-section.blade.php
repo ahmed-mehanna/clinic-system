@@ -19,16 +19,21 @@
                             </span>
                         We at Medicare are always fully focused on helping your to overcame any surgeon procedure with great commitment and easy recovery.
                     </p>
-                    @if (Route::has('login'))
+                    @auth
                         @if(auth::check())
                             <input type="hidden" value="{{$user = User::find(auth()->user()->id)}}"/>
                             @if($user->Role == 3)
-                                <a href="" class="btn btn-primary">
+                                <a href="/makeappointment" class="btn btn-primary">
                                     RESERVE NOW
                                 </a>
                             @endif
-                        @endi
-                    @endif
+                        @endif
+                    @endauth
+                    @guest
+                        <a href="/makeappointment" class="btn btn-primary">
+                            RESERVE NOW
+                        </a>
+                    @endguest
                 </div>
             </div>
         </div>

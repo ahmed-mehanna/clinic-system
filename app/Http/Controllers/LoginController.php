@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Routing\Route;
 use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
@@ -17,14 +18,13 @@ class LoginController extends Controller
             auth::attempt(['phoneNumber' => $phoneNumber, "password" => $request->input("password")]);
         }
         if (auth::check()) {
-
             $user = User::find(auth()->user()->id);
             if ($user->Role == 1) {
-                return redirect('/');
+                return PagesController::index();
             } elseif ($user->Role == 2) {
-                return redirect('/nurse');
+                return NurseController::index();
             } elseif ($user->Role == 3) {
-                return redirect('/patient');
+                return PatientController::index();
             }
         } else {
             return redirect()->back()->withErrors(['checkInvaliedLogin' => 'We couldnt verify your credentials']);

@@ -18,7 +18,7 @@ class PatientController extends Controller
 {
 
 
-    public function index()
+    public static function index()
     {
         $user = User::find(auth()->user()->id);
         $Ilness = Illness::Where("user_id",$user->id)->orderBy('created_at','DESC')->first();

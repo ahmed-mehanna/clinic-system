@@ -6,13 +6,13 @@ use Illuminate\Http\Request;
 
 class PagesController extends Controller
 {
-    public function index() {
+    public static function index() {
         return view('index');
     }
 
-    public function patientDashboard() {
-        return redirect("/dashboard/user/");
-    }
+//    public function patientDashboard() {
+//        return redirect("/dashboard/user/");
+//    }
 
 //    public function nurseDashboard() {
 //        return view('pages.nurse-dashboard');
@@ -26,9 +26,9 @@ class PagesController extends Controller
 //        return view('pages.nurse-work-hour-exception');
 //    }
 
-    public function doctorDashboard() {
-        return view('pages.doctor-dashboard');
-    }
+//    public function doctorDashboard() {
+//        return view('pages.doctor-dashboard');
+//    }
 
 
 }

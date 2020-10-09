@@ -37,7 +37,7 @@ Route::post("/login/custom",[LoginController::class,"login"]);
 Route::get("/Logout",[Logout::class,"logout"]);
 Route::Post("/Register/Create",[RegisterController::class,"create"]);
 Route::post("/password/update",[RestPasswordController::class,"update"]);
-Route::view("/Home","index");
+Route::view("/Home","index")->name("index");
 
 Route::group(['middleware' => ['isDoctor']], function() {
   Route::get('/doctor', [DoctorController::class, 'index'])->name('doctor-dashboard');
