@@ -63,6 +63,15 @@ div.patient-dashboard-style {
                                 box-shadow: none;
                             }
                         }
+                        button.not-available {
+                            cursor: not-allowed;
+                            background-color: #E38B1B;
+                            border-color: #E38B1B;
+                            &:hover, &:focus {
+                                background-color: #E38B1B;
+                                box-shadow: none;
+                            }
+                        }
                         button.active {
                             background-color: $bg-main-color;
                             padding: 6px 8px;

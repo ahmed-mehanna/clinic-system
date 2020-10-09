@@ -15717,6 +15717,18 @@ div.patient-dashboard-style div.make-appointment div.container div.all-appointme
   box-shadow: none;
 }
 
+div.patient-dashboard-style div.make-appointment div.container div.all-appointments div.row div button.not-available {
+  cursor: not-allowed;
+  background-color: #E38B1B;
+  border-color: #E38B1B;
+}
+
+div.patient-dashboard-style div.make-appointment div.container div.all-appointments div.row div button.not-available:hover,
+div.patient-dashboard-style div.make-appointment div.container div.all-appointments div.row div button.not-available:focus {
+  background-color: #E38B1B;
+  box-shadow: none;
+}
+
 div.patient-dashboard-style div.make-appointment div.container div.all-appointments div.row div button.active {
   background-color: #227DC7;
   padding: 6px 8px;

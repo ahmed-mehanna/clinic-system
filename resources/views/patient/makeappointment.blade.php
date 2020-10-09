@@ -249,6 +249,21 @@
                 type: 'get',
                 dataType: 'json',
                 success: function (response) {
+                    let canReserve = response[response.length - 1]
+                    for (let i = 800; i < 2200; i += 30) {
+                        if (i % 100 === 60)
+                            i += 40
+                        let btn = $('#btn-' + i)
+                        if (canReserve == true) {
+                            btn.attr('onclick', 'bookNow(' + i + ')')
+                            btn.removeClass('not-available')
+                        }
+                        else {
+                            btn.attr('onclick', '')
+                            if (response.indexOf(i) === -1)
+                                btn.addClass('not-available')
+                        }
+                    }
                     for (let i = 0; i < reservedAppointments.length; i++) {
                         let btn = $('#btn-'+reservedAppointments[i]);
                         btn.removeClass('btn-danger');
@@ -286,9 +301,9 @@
         searchBtn.on('click', function () {
             searchAjax()
         });
-        // let updateAvailableAppointments = setInterval(function () {
-        //     searchAjax()
-        // }, 500)
+        let updateAvailableAppointments = setInterval(function () {
+            searchAjax()
+        }, 500)
         function bookNow(from) {
             reservedAppointments.push(from)
             $.ajax({
