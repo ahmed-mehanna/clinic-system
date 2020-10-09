@@ -17,12 +17,23 @@ use Symfony\Component\Console\Input\Input;
 class NurseController extends Controller
 {
 
-    public static function index()
-    {
+    public static function index() {
+        return view('pages.nurse-dashboard');
+    }
+
+    public function reservations() {
         $reservation = Reservation::whereBetween('reservation At',[Carbon::today()->toDateTime(),Carbon::today()->addHours(22)->toDateTime()])->where('Reserved_by_Doctor',0)->orderBy('reservation At','asc')->get();
-
-
-        return view('pages.nurse-dashboard',["reservation" => $reservation,]);
+        $arr = [];
+        foreach ($reservation as $reserve) {
+            $smallArr = [
+                'name' => $reserve->user->name,
+                'from' => Carbon::parse($reserve["reservation At"])->format('g:i A'),
+                'to' => Carbon::parse($reserve["reservation At"])->addMinutes(30)->format('g:i A')
+            ];
+            array_push($arr, $smallArr);
+        }
+        $bigArr = [$reservation, $arr];
+        echo json_encode($bigArr);
     }
 
     public function createReserve()                                    // nurseReserve

@@ -236,4 +236,64 @@ class DoctorController extends Controller
             echo json_encode(true);
     }
 
+    public function manageAppointments() {
+        return view('pages.doctor-show-appointments');
+    }
+
+    public function showAvailableAppointments($day, $month) {
+        $dateTimeFrom =  Carbon::today(); //year / month/ day
+        $dateTimeFrom->month = $month;
+        $dateTimeFrom->day = $day;
+        $dateTimeFrom->addHours(8);
+        $dateTimeTo = clone $dateTimeFrom;
+        $dateTimeTo->addHours(14);
+
+        $datenow = Carbon::now();
+        $res_check_for_duplicate= Reservation::firstWhere("Reserved_by_Doctor",1);
+        $res_check2_for_duplicate= Reservation::whereBetween('reservation At',[Carbon::today()->toDateTime(),Carbon::today()->addHours(22)->toDateTime()])->where('Reserved_by_Doctor',1)->orderBy('reservation At','DESC')->get();
+
+        if(count($res_check2_for_duplicate)!=0) {
+            $start = clone Carbon::parse($res_check2_for_duplicate[0]["reservation At"]);
+            if($start->isPast()) {
+                for ($date = clone $start; $date->diffInMinutes($datenow) >= "30"; $date->addMinutes(30)) {
+                    $date->addMinutes(30);
+                    $res = new Reservation();
+                    $res["reservation At"] = $date;
+                    $res["user_id"] = 0;
+                    $res["Reserved_by_Doctor"] = 1;
+                    $res->save();
+                }
+            }
+        }elseif(count($res_check2_for_duplicate)==0){
+            $start = clone Carbon::today();
+            $start->addHours(8);
+            if($start->isPast()) {
+                for ($date = clone $start; $date->diffInMinutes($datenow) > "30"; $date->addMinutes(30)) {
+                    $res = new Reservation();
+                    $res["reservation At"] = $date;
+                    $res["user_id"] = 0;
+                    $res["Reserved_by_Doctor"] = 1;
+                    $res->save();
+                }
+            }
+        }
+        $reservedobj = Reservation::whereBetween('reservation At',[$dateTimeFrom->toDateTime(),$dateTimeTo->toDateTime()])->get();
+
+        $reserved = array();
+        $isreserved = true;
+
+        foreach ($reservedobj as $res){
+            $first = Carbon::parse($res["reservation At"])->format('Hi');
+            $first = (int)$first;
+            array_push($reserved,$first);
+
+            if($res["user_id"] === auth()->user()->id){
+                $isreserved= false;
+            }
+        }
+
+        array_push($reserved,$isreserved);
+        echo json_encode($reserved);    // Echo Available Appointments Fro Day/Month
+    }
+
 }

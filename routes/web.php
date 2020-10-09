@@ -40,15 +40,18 @@ Route::post("/password/update",[RestPasswordController::class,"update"]);
 Route::view("/Home","index")->name("index");
 
 Route::group(['middleware' => ['isDoctor']], function() {
-  Route::get('/doctor', [DoctorController::class, 'index'])->name('doctor-dashboard');
-  Route::post('/doctor', [DoctorController::class, 'store'])->name('doctor-dashboard');
-  Route::get('/search/patient', [DoctorController::class, 'findPatient'])->name('doctor-dashboard');
+    Route::get('/doctor', [DoctorController::class, 'index'])->name('doctor-dashboard');
+    Route::post('/doctor', [DoctorController::class, 'store'])->name('doctor-dashboard');
+    Route::get('/search/patient', [DoctorController::class, 'findPatient'])->name('doctor-dashboard');
 
-  Route::get('/doctor/find-patient', function () {
+    Route::get('/doctor/find-patient', function () {
         return view('pages.doctor-find-patient');
     });
 
     Route::get('/next-patient/{emptyTable}', [DoctorController::class, 'nextPatient']);
+    Route::get('/doctor/show-appointments/{day}/{month}', [DoctorController::class, 'showAvailableAppointments']);
+    Route::get('/manage-appointments', [DoctorController::class, 'manageAppointments']);
+
 });
 
 Route::group(['middleware' => ['isPatient']], function() {
@@ -84,6 +87,8 @@ Route::group(['middleware' => ['isPatient']], function() {
 
 Route::group(['middleware' => ['isNurse']], function() {
     Route::get('/nurse', [NurseController::class, 'index'])->name('nurse-dashboard');
+
+    Route::get('/nurse/reservations', [NurseController::class, 'reservations']);
 
     Route::get('/nurse/reserve', [NurseController::class, 'createReserve'])->name('nurse-reserve');
 

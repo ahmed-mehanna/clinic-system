@@ -41,7 +41,7 @@
                             </p>
                         </div>
                     </div>
-                    <div class="col-xl-4 col-md-6 offset-xl-0 offset-md-6 mt-1">
+                    <div class="col-xl-4 col-md-6 offset-xl-0 offset-md-3 mt-1">
                         <div class="section rotate-y">
                             <h2>Profile Data <i class="fa fa-user" style="color: #F2825F"></i></h2>
                             <ul class="list-group mb-3">
@@ -75,7 +75,7 @@
                             <h2>Delete Account <i class="fa fa-trash" style="color: #BE4363"></i></h2>
                         </div>
                     </div>
-                    <div class="col-xl-4 col-md-6">
+                    <div class="col-xl-4 col-md-6 offset-md-3">
                         <div class="section rotate-y click" onclick="goTo('/patient/fourm/edit')">
                             <h2>Edit Profile <i class="fa fa-user" style="color: #59B887"></i></h2>
                         </div>
