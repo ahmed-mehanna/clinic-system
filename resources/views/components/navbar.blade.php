@@ -48,10 +48,10 @@ use Illuminate\Support\Facades\Auth;
                             </li>
                         @endif
                     @endif
-                   <li class="nav-item not-active" id="dashboard">
-                       <a href="/Logout" class="nav-link">Logout</a>
-                       <span></span>
-                   </li>
+                    <li class="nav-item not-active" id="dashboard">
+                        <a href="/Logout" class="nav-link">Logout</a>
+                        <span></span>
+                    </li>
                 @else
                     <li class="nav-item not-active" id="login" style="padding-top: 8px; padding-bottom: 8px;">
                         <a href="{{ route('login') }}" class="text-sm text-gray-700">Login</a>
