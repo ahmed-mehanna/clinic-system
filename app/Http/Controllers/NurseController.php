@@ -189,21 +189,30 @@ class NurseController extends Controller
                     }
                 }else{
                     for($date = clone $x ; $date->diffInMinutes($to_That_dayTime) >"30";$date->addMinutes(30)){
-                        $check = Reservation::firstWhere("reservation At", $date->toDateTimeString());
-                        if ($check === null) {
-                            $res = new Reservation();
-                            $res["reservation At"] = $date;
-                            $res["user_id"] = 0;
-                            $res["Reserved_by_Doctor"] = 1;
-                            $res->save();
-                        }else{
-                            $check->delete();
-                            $res = new Reservation();
-                            $res["reservation At"] = $date;
-                            $res["user_id"] = 0;
-                            $res["Reserved_by_Doctor"] = 1;
-                            $res->save();
+                        $dateTimeFrom = clone $date;
+                        $dateTimeFrom->hour = 8;
+                        $dateTimeFrom->minute =0 ;
+                        $dateTimeTo = clone $dateTimeFrom;
+                        $dateTimeTo->addHours(22);
+
+                        if($date->between($dateTimeFrom, $dateTimeTo)) {
+                            $check = Reservation::firstWhere("reservation At", $date->toDateTimeString());
+                            if ($check === null) {
+                                $res = new Reservation();
+                                $res["reservation At"] = $date;
+                                $res["user_id"] = 0;
+                                $res["Reserved_by_Doctor"] = 1;
+                                $res->save();
+                            } else {
+                                $check->delete();
+                                $res = new Reservation();
+                                $res["reservation At"] = $date;
+                                $res["user_id"] = 0;
+                                $res["Reserved_by_Doctor"] = 1;
+                                $res->save();
+                            }
                         }
+                        else {continue;}
                     }
                 }
             }
