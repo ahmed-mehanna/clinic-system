@@ -3,6 +3,11 @@
     <?php
     use Carbon\Carbon;
     ?>
+    @if(Session::has('messageError'))
+        <div class="alert-danger">
+            <div class="fp w-100" style="text-align:center"><strong >{{Session::get('messageError')}}</strong></div>
+        </div>
+    @endif
     <div class="patient-dashboard-style">
         <div class="make-appointment">
             <div class="container">

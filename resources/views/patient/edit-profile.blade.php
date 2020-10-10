@@ -2,7 +2,11 @@
 @section('content')
     <div class="nurse-reserve-style">
         <div class="container">
-
+            @if(Session::has('messageError'))
+                <div class="alert-danger">
+                    <div class="fp w-100" style="text-align:center"><strong >{{Session::get('messageError')}}</strong></div>
+                </div>
+            @endif
             <form action="/patient/fourm/update" method="get">
                 @csrf
                 <div class="form-group">
