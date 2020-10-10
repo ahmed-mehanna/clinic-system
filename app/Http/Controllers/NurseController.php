@@ -56,7 +56,6 @@ class NurseController extends Controller
             "first-name"=>"required",
             "middle-name"=>"required",
             "last-name"=>"required",
-            "email"=>"required",
             "password"=>"required",
             "phone-number"=>"required",
 
@@ -78,7 +77,11 @@ class NurseController extends Controller
         $patient2 = Patient::firstWhere("national-id", $request->input("national-id"));
         if($patient2 === null) {
             $user["name"] = $request["first-name"] . " " . $request["middle-name"] . " " . $request["last-name"];
-            $user["email"] = $request["email"];
+            if($request->input("email") === null){
+                $user["email"] = "example@gmail.com";
+            }else{
+                $user["email"] = $request->input("email");
+            }
             $user["phoneNumber"] = $request["phone-number"];
             $user["password"] = Hash::make($request["national-id"]);
             $user["PatientForum"]=1;
@@ -114,21 +117,31 @@ class NurseController extends Controller
             }
         }else{
 
-            $res = Carbon::today();
-            $res->day = $request->input("day");
-            $res->month = $request->input("month");
+            $dateTimeFrom1 = Carbon::today();
+            $dateTimeFrom1->day = $request->input("day");
+            $dateTimeFrom1->month = $request->input("month");
+            $From= clone $dateTimeFrom1;
+            $To = clone $dateTimeFrom1;
+
             $hour = (int)$request->input("time") / 100;
             $min = (int)$request->input("time") % 100;
-            $res->addHours($hour);
-            $res->addMinutes($min);
-            $resveCheck = Reservation::firstWhere("reservation At",$res->toDateTimeString());
-            if(!$resveCheck){
-                $reserv["reservation At"] = $res;
-                $reserv["user_id"] = $patient2->user_id;
-                $reserv["Reserved_by_Doctor"] = 0;
-                $reserv->save();
+            $dateTimeFrom1->addHours($hour);
+            $dateTimeFrom1->addMinutes($min);
+
+            $isreserved = Reservation::where("user_id",$patient2["user_id"])->whereBetween('reservation At',[$From->toDateTime(),$To->addHours(22)->toDateTime()])->get();
+            $resveCheck = Reservation::firstWhere("reservation At",$dateTimeFrom1->toDateTimeString());
+            // check
+            if(count($isreserved)===0) {
+                if (!$resveCheck) {
+                    $reserv["reservation At"] = $dateTimeFrom1;
+                    $reserv["user_id"] = $patient2->user_id;
+                    $reserv["Reserved_by_Doctor"] = 0;
+                    $reserv->save();
+                } else {
+                    return redirect()->back()->with('message', 'This Appointments is Aleardy reserved');
+                }
             }else{
-                return redirect()->back()->with('message', 'This Appointments is Aleardy reserved');
+                return redirect()->back()->with('message', 'You Are Aleardy Reserved an Appointment At This Day');
             }
 
         }
@@ -155,19 +168,41 @@ class NurseController extends Controller
             {
                 if($from_That_dayTime->diffInDays($to_That_dayTime) == "0"){
                     for($date = clone $from_That_dayTime ; $date->diffInMinutes($to_That_dayTime) >"30";$date->addMinutes(30)){
-                        $res = new Reservation();
-                        $res["reservation At"] = $date;
-                        $res["user_id"] = 0;
-                        $res["Reserved_by_Doctor"] = 1;
-                        $res->save();
+
+                        $check = Reservation::firstWhere("reservation At", $date->toDateTimeString());
+                        if ($check === null) {
+                            $res = new Reservation();
+                            $res["reservation At"] = $date;
+                            $res["user_id"] = 0;
+                            $res["Reserved_by_Doctor"] = 1;
+                            $res->save();
+                        }else{
+                            $check->delete();
+                            $res = new Reservation();
+                            $res["reservation At"] = $date;
+                            $res["user_id"] = 0;
+                            $res["Reserved_by_Doctor"] = 1;
+                            $res->save();
+
+                        }
                     }
                 }else{
                     for($date = clone $x ; $date->diffInMinutes($to_That_dayTime) >"30";$date->addMinutes(30)){
-                        $res = new Reservation();
-                        $res["reservation At"] = $date;
-                        $res["user_id"] = 0;
-                        $res["Reserved_by_Doctor"] = 1;
-                        $res->save();
+                        $check = Reservation::firstWhere("reservation At", $date->toDateTimeString());
+                        if ($check === null) {
+                            $res = new Reservation();
+                            $res["reservation At"] = $date;
+                            $res["user_id"] = 0;
+                            $res["Reserved_by_Doctor"] = 1;
+                            $res->save();
+                        }else{
+                            $check->delete();
+                            $res = new Reservation();
+                            $res["reservation At"] = $date;
+                            $res["user_id"] = 0;
+                            $res["Reserved_by_Doctor"] = 1;
+                            $res->save();
+                        }
                     }
                 }
             }
@@ -200,7 +235,9 @@ class NurseController extends Controller
         $patient_turn['user_id'] = $user->id;
         $patient_turn->save();
         $reservation = Reservation::where("user_id",$user["id"])->whereBetween('reservation At',[Carbon::today()->toDateTime(),Carbon::today()->addHours(22)->toDateTime()])->get();
-        $reservation[0]->delete();
+        if(count($reservation)!=0) {
+            $reservation[0]->delete();
+        }
         return redirect('/nurse');
     }
     public function CheckNotAttend($id){
@@ -209,7 +246,9 @@ class NurseController extends Controller
             $user->patient->Attend = $user->patient->Attend - 1;
         }
         $reservation = Reservation::where("user_id",$user["id"])->whereBetween('reservation At',[Carbon::today()->toDateTime(),Carbon::today()->addHours(22)->toDateTime()])->get();
-        $reservation[0]->delete();
+        if(count($reservation)!=0) {
+            $reservation[0]->delete();
+        }
         return redirect('/nurse');
     }
 
@@ -221,43 +260,49 @@ class NurseController extends Controller
         $dateTimeTo = clone $dateTimeFrom;
         $dateTimeTo->addHours(14);
 
-        $datenow = Carbon::now();
-        $res_check_for_duplicate= Reservation::firstWhere("Reserved_by_Doctor",1);
-        $res_check2_for_duplicate= Reservation::whereBetween('reservation At',[Carbon::today()->toDateTime(),Carbon::today()->addHours(22)->toDateTime()])->where('Reserved_by_Doctor',1)->orderBy('reservation At','DESC')->get();
 
-//        if(count($res_check2_for_duplicate)!=0) {
-//            $start = clone Carbon::parse($res_check2_for_duplicate[0]["reservation At"]);
-//            if($start->isPast()) {
-//                for ($date = clone $start; $date->diffInMinutes($datenow) >= "30"; $date->addMinutes(30)) {
-//                    $date->addMinutes(30);
-//                    $res = new Reservation();
-//                    $res["reservation At"] = $date;
-//                    $res["user_id"] = 0;
-//                    $res["Reserved_by_Doctor"] = 1;
-//                    $res->save();
-//                }
-//            }
-//        }elseif(count($res_check2_for_duplicate)==0){
-//            $start = clone Carbon::today();
-//            $start->addHours(8);
-//            if($start->isPast()) {
-//                for ($date = clone $start; $date->diffInMinutes($datenow) > "30"; $date->addMinutes(30)) {
-//                    $res = new Reservation();
-//                    $res["reservation At"] = $date;
-//                    $res["user_id"] = 0;
-//                    $res["Reserved_by_Doctor"] = 1;
-//                    $res->save();
-//                }
-//            }
-//        }
+        $datenow = Carbon::now();
+        $start = clone Carbon::today();
+        $start->addHours(8);
+        $today = clone $start;
+        if($start->isPast()) {
+            for ($date = clone $start; $date->diffInMinutes($datenow) > "30"; $date->addMinutes(30)) {
+                $check = Reservation::firstWhere("reservation At", $date->toDateTimeString());
+                if ($check === null) {
+                    $res = new Reservation();
+                    $res["reservation At"] = $date;
+                    $res["user_id"] = 0;
+                    $res["Reserved_by_Doctor"] = 1;
+                    $res->save();
+                }
+                $today = $date;
+            }
+            $end = clone $today;
+            $check2 = Reservation::firstWhere("reservation At", $end->toDateTimeString());
+            if($check2 === null ){
+                $res = new Reservation();
+                $res["reservation At"] = $end;
+                $res["user_id"] = 0;
+                $res["Reserved_by_Doctor"] = 1;
+                $res->save();
+            }
+        }
         $reservedobj = Reservation::whereBetween('reservation At',[$dateTimeFrom->toDateTime(),$dateTimeTo->toDateTime()])->get();
 
         $reserved = array();
+        $isreserved = true;
+
         foreach ($reservedobj as $res){
             $first = Carbon::parse($res["reservation At"])->format('Hi');
             $first = (int)$first;
             array_push($reserved,$first);
+
+            if($res["user_id"] === auth()->user()->id){
+                $isreserved= false;
+            }
         }
+
+        array_push($reserved,$isreserved);
         echo json_encode($reserved);    // Echo Available Appointments Fro Day/Month
     }
 

@@ -12,9 +12,9 @@
                 </tr>
                 </thead>
                 <tbody>
-                @if(count($user->illness)!=0)
+                @if(count($illness)!=0)
                     <input type="hidden" value="{{$i=1}}">
-                    @foreach($user->illness as $Illness)
+                    @foreach($illness as $Illness)
                         <tr>
                             <td>{{$i++}}</td>
                             <td>{{$Illness["illnessName"]}}</td>

@@ -129,7 +129,7 @@
                         @endfor
                     </div>
                 </div>
-                <button id="validate-btn" type="button" class="btn btn-primary mr-3">Submit</button>
+                <button id="validate-btn" type="submit" class="btn btn-primary mr-3">Submit</button>
                 <button id="submit-btn" type="submit" class="d-none"></button>
                 <span class="btn btn-danger" id="go-back" onclick="goBack()">Back</span>
             </form>

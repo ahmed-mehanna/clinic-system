@@ -20,7 +20,7 @@
                 use App\Models\User ;
                 use Illuminate\Support\Facades\Auth;
             ?>
-            @if (Route::has('login'))
+            @auth
                 <ul class="navbar-nav mr-auto">
                     @if(auth::check())
                         <input type="hidden" value="{{$user = User::find(auth()->user()->id)}}"/>
@@ -29,7 +29,7 @@
                         @endif
                     @endif
                 </ul>
-            @endif
+            @endauth
         </div>
         @include('components.footer')
     </body>

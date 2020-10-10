@@ -1,13 +1,5 @@
 @extends('components.app')
 @section('content')
-    <ul>
-        <li><a href="/patient">Home</a></li>
-        <li><a href="makeappointment">Make an Appointment</a></li>
-        <li><a href="history">My History</a></li>
-        <li><a href="resetpasswordpatient">Reset Password</a></li>
-        <li><a href="deleteaccount">Delete Account</a></li>
-        <li><a href="contactus">Contact US</a></li>
-    </ul>
     <div class="nurse-reserve-style">
         <div class="container">
 
@@ -16,26 +8,43 @@
                 <div class="form-group">
                     <label for="name">Name</label>
                     <input type="text" class="form-control" id="name" name="name" value="{{$user->name}}" required>
+                    @error('name')<span class="fp w-100 mt-3" role="alert"><strong style="color:red">{{ $message }}</strong></span>@enderror
                 </div>
                 <div class="form-group">
                     <label for="address">Address</label>
                     <input type="text" class="form-control" id="address" name="address" value="{{$user->patient->address}}" required>
+                    @error('address')<span class="fp w-100 mt-3" role="alert"><strong style="color:red">{{ $message }}</strong></span>@enderror
                 </div>
                 <div class="form-group">
                     <label for="age">Age</label>
                     <input type="number" class="form-control" id="age" name="age" value="{{$user->patient->age}}" required>
+                    @error('age')<span class="fp w-100 mt-3" role="alert"><strong style="color:red">{{ $message }}</strong></span>@enderror
                 </div>
                 <div class="form-group">
                     <label for="email">Email</label>
-                    <input type="text" class="form-control" id="email" name="email" value="{{$user->email}}" required>
+                    <input type="email" class="form-control" id="email" name="email" placeholder="example@gmail.com" value="{{$user->email}}" required>
+                    @error('email')<span class="fp w-100 mt-3" role="alert"><strong style="color:red">{{ $message }}</strong></span>@enderror
                 </div>
                 <div class="form-group">
+                    <label for="password">Password</label>
+                    <input  class="form-control" placeholder="Password" id = "password" type="password" name="password" required />
+                    @error('password')<span class="fp w-100 mt-3" role="alert"><strong style="color:red">{{ $message }}</strong></span>@enderror
+                </div>
+                <div class="form-group">
+                    <label for="password_confirmation">Confirm Password</label>
+                    <input  class="form-control" placeholder="Confirm Password" id="password_confirmation" type="password" name="password_confirmation" required />
+                    @error('password_confirmation')<span class="fp w-100 mt-3" role="alert"><strong style="color:red">{{ $message }}</strong></span>@enderror
+                </div>
+
+                <div class="form-group">
                     <label for="phone">Phone</label>
-                    <input type="text" class="form-control" id="phone" name="phone" value="{{ $user->phoneNumber }}" required>
+                    <input type="number" class="form-control" id="phone" name="phone" value="{{ $user->phoneNumber }}" required>
+                    @error('phone')<span class="fp w-100 mt-3" role="alert"><strong style="color:red">{{ $message }}</strong></span>@enderror
                 </div>
                 <div class="form-group">
                     <label for="national-id">National-Id</label>
                     <input type="number" class="form-control" id="national-id" name="national-id" value="{{$user->patient["national-id"]}}" required>
+                    @error('national-id')<span class="fp w-100 mt-3" role="alert"><strong style="color:red">{{ $message }}</strong></span>@enderror
                 </div>
                 <div class="form-group">
                     <span class="d-block mb-2">Gender</span>
