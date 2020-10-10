@@ -15,7 +15,7 @@
                 @csrf
                 <div>
                     <button type="submit" class="btn btn-primary" style="font-size: 18px;">
-                        Resend Verification Email
+                        Send Verification Email
                     </button>
                 </div>
             </form>

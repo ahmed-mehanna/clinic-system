@@ -107,6 +107,8 @@ class PatientController extends Controller
             "phone"=>"required",
             "national-id"=>"required",
             "gender"=>"required",
+            "password"=>"required",
+            "password_confirmation"=>"required | same:password",
         ]);
         $user = User::find(auth()->user()->id);
         $patient = Patient::firstWhere("user_id",$user->id);
@@ -114,6 +116,7 @@ class PatientController extends Controller
         $user["name"] = $request->input("name");
         $user["email"] = $request->input("email");
         $user["phoneNumber"] = $request->input("phone");
+        $user->update(["password" => Hash::make($request->input("password"))]);
         $user->update();
 
 

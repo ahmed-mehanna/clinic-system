@@ -61,6 +61,7 @@
             if ($('#data-name-' + numberOfAnalysis[numberOfAnalysis.length - 1]).val() === ''
                 && $('#data-result-' + numberOfAnalysis[numberOfAnalysis.length - 1]).val() === '' )
                 return null;
+            console.log(numberOfDrugs)
             let id = numberOfDrugs[numberOfDrugs.length - 1] + 1;
             numberOfDrugs.push(id);
             $('#new-button-patient-form').remove()
@@ -94,7 +95,7 @@
                 else {
                     $('#drug' + id).remove();
                     numberOfDrugs.remove(id);
-                    $('<i class="btn fa fa-plus" id="#new-button-patient-form" onclick="addDrug()"></i>').prependTo('#buttons-container' + numberOfDrugs[numberOfDrugs.length - 1])
+                    $('<i class="btn fa fa-plus" id="new-button-patient-form" onclick="addDrug()"></i>').prependTo('#buttons-container' + numberOfDrugs[numberOfDrugs.length - 1])
                 }
             }
         }
