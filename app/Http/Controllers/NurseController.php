@@ -19,25 +19,17 @@ class NurseController extends Controller
 
     public static function index()
     {
-        $reservation = Reservation::whereBetween('reservation At',[Carbon::today()->toDateTime(),Carbon::today()->addHours(22)->toDateTime()])->where('Reserved_by_Doctor',0)->orderBy('reservation At','asc')->get();
-
-
-        return view('pages.nurse-dashboard',["reservation" => $reservation,]);
+        return view('pages.nurse-dashboard');
     }
 
     public function reservations() {
-        $reservation = Reservation::whereBetween('reservation At',[Carbon::today()->toDateTime(),Carbon::today()->addHours(22)->toDateTime()])->where('Reserved_by_Doctor',0)->orderBy('reservation At','asc')->get();
-        $arr = [];
-        foreach ($reservation as $reserve) {
-            $smallArr = [
-                'name' => $reserve->user->name,
-                'from' => Carbon::parse($reserve["reservation At"])->format('g:i A'),
-                'to' => Carbon::parse($reserve["reservation At"])->addMinutes(30)->format('g:i A')
-            ];
-            array_push($arr, $smallArr);
+        $reservations = Reservation::whereBetween('reservation At',[Carbon::today()->toDateTime(),Carbon::today()->addHours(22)->toDateTime()])->where('Reserved_by_Doctor',0)->orderBy('reservation At','asc')->get();
+        foreach ($reservations as $reservation) {
+            $reservation['name'] = $reservation->user->name;
+            $reservation['from'] = Carbon::parse($reservation["reservation At"])->format('g:i A');
+            $reservation['to'] = Carbon::parse($reservation["reservation At"])->addMinutes(30)->format('g:i A');
         }
-        $bigArr = [$reservation, $arr];
-        echo json_encode($bigArr);
+        echo json_encode($reservations);
     }
 
     public function createReserve()                                    // nurseReserve
@@ -267,28 +259,28 @@ class NurseController extends Controller
         $start = clone Carbon::today();
         $start->addHours(8);
         $today = clone $start;
-        if($start->isPast()) {
-            for ($date = clone $start; $date->diffInMinutes($datenow) >= "30"; $date->addMinutes(30)) {
-                $check = Reservation::firstWhere("reservation At", $date->toDateTimeString());
-                if ($check === null) {
-                    $res = new Reservation();
-                    $res["reservation At"] = $date;
-                    $res["user_id"] = 0;
-                    $res["Reserved_by_Doctor"] = 1;
-                    $res->save();
-                }
-                $today = $date;
-            }
-            $end = clone $today;
-            $check2 = Reservation::firstWhere("reservation At", $end->toDateTimeString());
-            if($check2 === null ){
-                $res = new Reservation();
-                $res["reservation At"] = $end;
-                $res["user_id"] = 0;
-                $res["Reserved_by_Doctor"] = 1;
-                $res->save();
-            }
-        }
+//        if($start->isPast()) {
+//            for ($date = clone $start; $date->diffInMinutes($datenow) >= "30"; $date->addMinutes(30)) {
+//                $check = Reservation::firstWhere("reservation At", $date->toDateTimeString());
+//                if ($check === null) {
+//                    $res = new Reservation();
+//                    $res["reservation At"] = $date;
+//                    $res["user_id"] = 0;
+//                    $res["Reserved_by_Doctor"] = 1;
+//                    $res->save();
+//                }
+//                $today = $date;
+//            }
+//            $end = clone $today;
+//            $check2 = Reservation::firstWhere("reservation At", $end->toDateTimeString());
+//            if($check2 === null ){
+//                $res = new Reservation();
+//                $res["reservation At"] = $end;
+//                $res["user_id"] = 0;
+//                $res["Reserved_by_Doctor"] = 1;
+//                $res->save();
+//            }
+//        }
         $reservedobj = Reservation::whereBetween('reservation At',[$dateTimeFrom->toDateTime(),$dateTimeTo->toDateTime()])->get();
 
         $reserved = array();

@@ -1,4 +1,4 @@
-@extends('components.app')
+    @extends('components.app')
 @section('content')
     <?php
     use Carbon\Carbon;
@@ -8,7 +8,7 @@
     </script>
     <div class="nurse-dashboard-style" style="min-height: 535px; padding-bottom: 0">
         <div class="container-fluid">
-            <table class="table table-striped">
+            <table id="table" class="table table-striped">
                 <thead>
                 <tr>
                     <th scope="col">#</th>
@@ -18,40 +18,144 @@
                     <th scope="col">Attend</th>
                 </tr>
                 </thead>
-                <tbody>
-                <input type="hidden" value="{{$i=1}}">
-                @foreach($reservation as $reservationsData)
-                    <tr <?php if ($i === 1){ ?> class="active" <?php } ?> >
-                        <th scope="row">{{$i++}}</th>
-                        <td>{{$reservationsData->user->name}}</td>
-                        <td>{{Carbon::parse($reservationsData["reservation At"])->format('g:i A')}}</td>
-                        <td>{{Carbon::parse($reservationsData["reservation At"])->addMinutes(30)->format('g:i A')}}</td>
-                        <td>
-                            <input type="hidden" value="$user">
-                            <button type="button" data-toggle="modal" data-target="{{ '#attend-pop-up-user-'.$reservationsData->user->id }}">
-                                <i class="fa fa-check"></i>
-                            </button>
-                            <form class="d-inline" id="{{ 'attend'.$reservationsData->user->id }}" method="get" action="/patient/attend/{{$reservationsData->user->id}}">
-                                @csrf
-                            </form>
-                            <button class="mr-0" type="button" data-toggle="modal" data-target="{{ '#did-not-attend-pop-up-user-'.$reservationsData->user->id }}">
-                                <i class="fa fa-times"></i>
-                            </button>
-                            <form class="d-inline" id="{{ 'did-not-attend'.$reservationsData->user->id }}" method="get" action="/patient/notattend/{{$reservationsData->user->id}}">
-                                @csrf
-                            </form>
-                        </td>
-                        <x-attend-pop-up :id="$reservationsData->user->id" />
-                        <x-did-not-attend-pop-up :id="$reservationsData->user->id" />
-                    </tr>
-                @endforeach
+                <tbody id="table-body">
+{{--                <input type="hidden" value="{{$i=1}}">--}}
+{{--                @foreach($reservation as $reservationsData)--}}
+{{--                    <tr <?php if ($i === 1){ ?> class="active" <?php } ?> >--}}
+{{--                        <th scope="row">{{$i++}}</th>--}}
+{{--                        <td>{{$reservationsData->user->name}}</td>--}}
+{{--                        <td>{{Carbon::parse($reservationsData["reservation At"])->format('g:i A')}}</td>--}}
+{{--                        <td>{{Carbon::parse($reservationsData["reservation At"])->addMinutes(30)->format('g:i A')}}</td>--}}
+{{--                        <td>--}}
+{{--                            <input type="hidden" value="$user">--}}
+{{--                            <button type="button" data-toggle="modal" data-target="{{ '#attend-pop-up-user-'.$reservationsData->user->id }}">--}}
+{{--                                <i class="fa fa-check"></i>--}}
+{{--                            </button>--}}
+{{--                            <form class="d-inline" id="{{ 'attend'.$reservationsData->user->id }}" method="get" action="/patient/attend/{{$reservationsData->user->id}}">--}}
+{{--                                @csrf--}}
+{{--                            </form>--}}
+{{--                            <button class="mr-0" type="button" data-toggle="modal" data-target="{{ '#did-not-attend-pop-up-user-'.$reservationsData->user->id }}">--}}
+{{--                                <i class="fa fa-times"></i>--}}
+{{--                            </button>--}}
+{{--                            <form class="d-inline" id="{{ 'did-not-attend'.$reservationsData->user->id }}" method="get" action="/patient/notattend/{{$reservationsData->user->id}}">--}}
+{{--                                @csrf--}}
+{{--                            </form>--}}
+{{--                        </td>--}}
+{{--                        <div>--}}
+{{--                            <x-attend-pop-up :id="$reservationsData->user->id" />--}}
+{{--                            <x-did-not-attend-pop-up :id="$reservationsData->user->id" />--}}
+{{--                        </div>--}}
+{{--                    </tr>--}}
+{{--                @endforeach--}}
                 </tbody>
             </table>
         </div>
     </div>
     <button id="ajax-btn" class="d-none" data-toggle="modal" data-target="#notification"></button>
     @include('components.nurse-dashboard.notification')
+
     <script>
+        Array.prototype.isEqualTo = function (target) {
+            if (this.length !== target.length)
+                return false
+            for (let i = 0; i < this.length; i++) {
+                if (this[i].length !== target[i].length)
+                    return false
+                for (let j = 0; j < this[i].length; j++)
+                    if (this[i][j] !== target[i][j])
+                        return false
+            }
+            return true
+        }
+
+
+        let table = []
+        let reservationTable = setInterval(function (){
+            $.ajax({
+                url: '/nurse/reservations',
+                type: 'get',
+                dataType: 'json',
+                success: function (response) {
+                    if (table.isEqualTo(response))
+                        return null
+                    console.log(response)
+                    for (let i = 0; i < response.length; i++) {
+                        let row = ''
+                        if (i === 0)
+                            row = '<tr class="active">'
+                        else
+                            row = '<tr>'
+                        row += '<th scope="row">' + (i + 1) + '</th>' +
+                                '<td>' + response[i]['name'] + '</td>' +
+                                '<td>' + response[i]['from'] + '</td>' +
+                                '<td>' + response[i]['to'] + '</td>' +
+                                '<td>' +
+                                '<input type="hidden" value="' + response[i]['user_id'] + '">' +
+                                '<button type="button" data-toggle="modal" data-target="#attend-pop-up-user-' + response[i]['user_id'] + '">' +
+                                '<i class="fa fa-check"></i>' +
+                                '</button>' +
+                                '<form class="d-inline" id="attend' + response[i]['user_id'] + '" method="get" action="/patient/attend/' + response[i]['user_id'] + '">' +
+                                '@csrf' +
+                                '</form>' +
+                                '<button class="mr-0" type="button" data-toggle="modal" data-target="#did-not-attend-pop-up-user-' + response[i]['user_id'] + '">' +
+                                '<i class="fa fa-times"></i>' +
+                                '</button>' +
+                                '<form class="d-inline" id="did-not-attend' + response[i]['user_id'] + '" method="get" action="/patient/notattend/' + response[i]['user_id'] + '">' +
+                                '@csrf' +
+                                '</form>' +
+                                '</td>' +
+                            '</tr>'
+                        $('#table-body').append(row)
+                        let attendPopup = '<div>' +
+                            '    <div class="modal fade" id="attend-pop-up-user-' + response[i]['user_id'] + '">' +
+                            '        <div class="modal-dialog">' +
+                            '            <div class="modal-content">' +
+                            '                <div class="modal-header">' +
+                            '                    <h5 class="modal-title">Attend</h5>' +
+                            '                    <button form="" type="button" class="close" data-dismiss="modal" aria-label="Close">' +
+                            '                        <span aria-hidden="true">&times;</span>' +
+                            '                    </button>' +
+                            '                </div>' +
+                            '                <div class="modal-body">' +
+                            '                    Patient Has Attend' +
+                            '                </div>' +
+                            '                <div class="modal-footer">' +
+                            '                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>' +
+                            '                    <button form="attend' + response[i]['user_id'] + '" name="attend" value="true" type="submit" class="btn btn-primary">Save changes</button>' +
+                            '                </div>' +
+                            '            </div>' +
+                            '        </div>' +
+                            '    </div>' +
+                            '</div>'
+                        let didNotAttendPopup = '<div>\n' +
+                            '    <div class="modal fade" id="did-not-attend-pop-up-user-'+response[i]['user_id'] + '">\n' +
+                            '        <div class="modal-dialog" role="document">\n' +
+                            '            <div class="modal-content">\n' +
+                            '                <div class="modal-header">\n' +
+                            '                    <h5 class="modal-title">Attend</h5>\n' +
+                            '                    <button form="" type="button" class="close" data-dismiss="modal" aria-label="Close">\n' +
+                            '                        <span aria-hidden="true">&times;</span>\n' +
+                            '                    </button>\n' +
+                            '                </div>\n' +
+                            '                <div class="modal-body">\n' +
+                            '                    Patient Has Not Attend\n' +
+                            '                </div>\n' +
+                            '                <div class="modal-footer">\n' +
+                            '                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>\n' +
+                            '                    <button form="did-not-attend' + response[i]['user_id'] + '" name="attend" value="false" type="submit" class="btn btn-primary">Save changes</button>\n' +
+                            '                </div>\n' +
+                            '            </div>\n' +
+                            '        </div>\n' +
+                            '    </div>\n' +
+                            '</div>\n'
+                        $('#table').append(attendPopup, didNotAttendPopup)
+                    }
+                    table = response
+                }
+            })
+        }, 500)
+
+
         function notify() {
             $.ajax({
                 url: '/notification',
