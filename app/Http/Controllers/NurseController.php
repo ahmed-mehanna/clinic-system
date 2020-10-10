@@ -151,6 +151,7 @@ class NurseController extends Controller
 
     public function update(Request $request)
     {
+        set_time_limit(500);
         $request->validate([
             "From_That_dayTime"=>"required",
             "To_that_Daytime"=>"required",
@@ -233,9 +234,10 @@ class NurseController extends Controller
         $user->patient->Attend =  $user->patient->Attend + 1 ;
         $patient_turn = new Patientturn();
         $patient_turn['user_id'] = $user->id;
-        $patient_turn->save();
         $reservation = Reservation::where("user_id",$user["id"])->whereBetween('reservation At',[Carbon::today()->toDateTime(),Carbon::today()->addHours(22)->toDateTime()])->get();
-        if(count($reservation)!=0) {
+        if(count($reservation)===0) {
+        }elseif(count($reservation)!=0){
+            $patient_turn->save();
             $reservation[0]->delete();
         }
         return redirect('/nurse');
