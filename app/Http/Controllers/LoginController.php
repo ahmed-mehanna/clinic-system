@@ -21,13 +21,12 @@ class LoginController extends Controller
         }
         if (auth::check()) {
             $user = User::find(auth()->user()->id);
-            Auth::login($user);
             if ($user->Role == 1) {
                 return PagesController::index();
             } elseif ($user->Role == 2) {
-                return redirect("/nurse");
+                return redirect()->intended('/nurse');;
             } elseif ($user->Role == 3) {
-                return redirect("/patient");
+                return redirect()->intended('/patient');
             }
         } else {
             return redirect()->back()->withErrors(['checkInvaliedLogin' => 'We couldnt verify your credentials']);

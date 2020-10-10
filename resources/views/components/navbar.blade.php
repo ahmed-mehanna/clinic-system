@@ -24,7 +24,7 @@ use Illuminate\Support\Facades\Auth;
                 <span></span>
             </li>
         </ul>
-        @if (Route::has('login'))
+        @auth
             <ul class="navbar-nav mr-auto">
                 @if(auth::check())
                     <input type="hidden" value="{{$user = User::find(auth()->user()->id)}}"/>
@@ -37,35 +37,36 @@ use Illuminate\Support\Facades\Auth;
                     @endif
                 @endif
             </ul>
-            <ul class="hidden fixed top-0 right-0 sm:block navbar-nav">
-                @auth
-                    @if(auth::check())
-                        <input type="hidden" value="{{$user = User::find(auth()->user()->id)}}"/>
-                        @if( $user->Role == 3)
-                            <li class="nav-item not-active" id="nurse-reserve">
-                                <a class="nav-link" href="/patient">Dashboard</a>
-                                <span></span>
-                            </li>
-                        @endif
-                    @endif
-                    <li class="nav-item not-active" id="dashboard">
-                        <a href="/Logout" class="nav-link">Logout</a>
-                        <span></span>
-                    </li>
-                @else
-                    <li class="nav-item not-active" id="login" style="padding-top: 8px; padding-bottom: 8px;">
-                        <a href="{{ route('login') }}" class="text-sm text-gray-700">Login</a>
-                        <span></span>
-                    </li>
-
-                    @if (Route::has('register'))
-                        <li class="nav-item not-active" id="registration" style="padding-top: 8px; padding-bottom: 8px;">
-                            <a href="{{ route('register') }}" class="text-sm text-gray-700">Register</a>
+        @endauth
+        <ul class="hidden fixed top-0 right-0 sm:block navbar-nav">
+            @auth
+                @if(auth::check())
+                    <input type="hidden" value="{{$user = User::find(auth()->user()->id)}}"/>
+                    @if( $user->Role == 3)
+                        <li class="nav-item not-active" id="nurse-reserve">
+                            <a class="nav-link" href="/patient">Dashboard</a>
                             <span></span>
                         </li>
                     @endif
                 @endif
-            </ul>
-        @endif
+                <li class="nav-item not-active" id="dashboard">
+                    <a href="/Logout" class="nav-link">Logout</a>
+                    <span></span>
+                </li>
+            @endauth
+            @guest
+                <li class="nav-item not-active" id="login" style="padding-top: 8px; padding-bottom: 8px;">
+                    <a href="{{ route('login') }}" class="text-sm text-gray-700">Login</a>
+                    <span></span>
+                </li>
+
+                @if (Route::has('register'))
+                    <li class="nav-item not-active" id="registration" style="padding-top: 8px; padding-bottom: 8px;">
+                        <a href="{{ route('register') }}" class="text-sm text-gray-700">Register</a>
+                        <span></span>
+                    </li>
+                @endif
+            @endguest
+        </ul>
     </div>
 </nav>
