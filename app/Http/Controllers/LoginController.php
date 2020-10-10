@@ -22,9 +22,9 @@ class LoginController extends Controller
         if (auth::check()) {
             $user = User::find(auth()->user()->id);
             if ($user->Role == 1) {
-                return PagesController::index();
+                return redirect()->intended('/');
             } elseif ($user->Role == 2) {
-                return redirect()->intended('/nurse');;
+                return redirect()->intended('/nurse');
             } elseif ($user->Role == 3) {
                 return redirect()->intended('/patient');
             }

@@ -200,7 +200,7 @@ class PatientController extends Controller
         $start->addHours(8);
         $today = clone $start;
         if($start->isPast()) {
-            for ($date = clone $start; $date->diffInMinutes($datenow) > "30"; $date->addMinutes(30)) {
+            for ($date = clone $start; $date->diffInMinutes($datenow) >= "30"; $date->addMinutes(30)) {
                 $check = Reservation::firstWhere("reservation At", $date->toDateTimeString());
                 if ($check === null) {
                     $res = new Reservation();
