@@ -236,7 +236,8 @@ class DoctorController extends Controller
             echo json_encode(true);
     }
 
-    public function manageAppointments() {
+    public function manageAppointments()
+    {
         return view('pages.doctor-show-appointments');
     }
 

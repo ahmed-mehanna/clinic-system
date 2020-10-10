@@ -116,8 +116,12 @@ class PatientController extends Controller
 
         $user["name"] = $request->input("name");
         $user["email"] = $request->input("email");
-        $user["phoneNumber"] = $request->input("phone");
-        $user["password"] = Hash::make($request->input("password"));
+        if($request->input("email") !== "example@gmail.com") {
+            $user["phoneNumber"] = $request->input("phone");
+            $user["password"] = Hash::make($request->input("password"));
+        }else{
+            return redirect()->back()->with('messageError','Password Didn\'t Changed Please Confirm Your Email');
+        }
         Auth::login($user);
         $user->update();
 
