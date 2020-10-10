@@ -21,7 +21,7 @@ class LoginController extends Controller
         }
         if (auth::check()) {
             $user = User::find(auth()->user()->id);
-
+            Auth::login($user);
             if ($user->Role == 1) {
                 return PagesController::index();
             } elseif ($user->Role == 2) {

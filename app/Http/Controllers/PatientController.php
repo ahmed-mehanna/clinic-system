@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use Carbon\Carbon;
 use App\Models\Exception_Days_Doctor;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
 use App\Models\Illness;
 use PDF;
 use function GuzzleHttp\Psr7\str;
@@ -116,7 +117,8 @@ class PatientController extends Controller
         $user["name"] = $request->input("name");
         $user["email"] = $request->input("email");
         $user["phoneNumber"] = $request->input("phone");
-        $user->update(["password" => Hash::make($request->input("password"))]);
+        $user["password"] = Hash::make($request->input("password"));
+        Auth::login($user);
         $user->update();
 
 

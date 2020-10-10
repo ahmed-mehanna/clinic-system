@@ -106,7 +106,7 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public function Emailcheck()
     {
-        if ($this->email === "mail@gmail.com") {
+        if ($this->email === "example@gmail.com") {
             return true;
         } else {
             return false;

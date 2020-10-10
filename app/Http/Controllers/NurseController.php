@@ -78,7 +78,7 @@ class NurseController extends Controller
         if($patient2 === null) {
             $user["name"] = $request["first-name"] . " " . $request["middle-name"] . " " . $request["last-name"];
             if($request->input("email") === null){
-                $user["email"] = null;
+                $user["email"] = "example@gmail.com";
             }else{
                 $user["email"] = $request->input("email");
             }
