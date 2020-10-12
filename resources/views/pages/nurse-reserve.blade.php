@@ -173,7 +173,6 @@
                 success: function (response) {
                     if (reservedAppointments.isEqualTo(response))
                         return null
-                    console.log(reservedAppointments)
                     for (let i = 0; i < reservedAppointments.length; i++) {
                         console.log(reservedAppointments[i], lastActiveAppointmentTime)
                         let btn = $('#btn-'+reservedAppointments[i]);
@@ -216,13 +215,8 @@
             selectMonth({{ date('m') }})
             selectDay({{ date('d') }})
             searchForAppointments()
-            searchAjax()
         });
         todayBtn.click();
-        let searchBtn = $('#search');
-        searchBtn.on('click', function () {
-            searchAjax()
-        });
         let updateAvailableAppointments = setInterval(function () {
             searchAjax()
         }, 500)

@@ -42,59 +42,55 @@
         </div>
     </div>
     <script>
+        let date = new Date()
         let lastMonthActive = {{ date('m') }}, lastDayActive = {{ date('d') }};
         $('#month-'+lastMonthActive).addClass('active')
         $('#day-'+lastDayActive).addClass('active');
         function selectMonth(monthId) {
-            let day = {{ date('d') }}
-            if (monthId !== {{ date('m') }} && $('#days-list > li').attr('id') !== 'day-1') {
+            monthId = parseInt(monthId)
+            if (lastMonthActive === monthId)
+                return
+            let date = new Date()
+            let day = date.getDate()
+            let year = date.getFullYear()
+            if (monthId != {{ date('m') }} && $('#days-list > li').attr('id') != 'day-1') {
                 for (let i = day - 1; i >= 1; i--)
                     $('#days-list').prepend('<li id="day-' + i + '" class="border-bottom m-auto pt-2" onclick="selectDay(' + i + ')">' + i + '</li>')
                 selectDay(1)
             }
-            else if ($('#days-list > li').attr('id') !== 'day-' + day) {
+            else if (monthId == {{ date('m') }} && $('#days-list > li').attr('id') != 'day-' + day) {
                 for (let i = 1; i < day; i++)
                     $('#day-' + i).remove()
                 selectDay(day)
             }
-
+            $('#month-'+lastMonthActive).removeClass('active')
+            $('#month-'+monthId).addClass('active')
             if (monthId === 2) {
-            }
-            else if (monthId <= 7 && monthId % 2 === 0) {
-                if (lastMonthActive !== null)
-                    $('#month-'+lastMonthActive).removeClass('active')
-                $('#month-'+monthId).addClass('active')
-                lastMonthActive = monthId
+                $('#day-30').remove();
                 $('#day-31').remove();
+                if (year % 4 !== 0)
+                    $('#day-29').remove();
             }
-            else if (monthId <= 7 && monthId % 2 === 1) {
-                if (lastMonthActive !== null)
-                    $('#month-'+lastMonthActive).removeClass('active')
-                $('#month-'+monthId).addClass('active')
-                lastMonthActive = monthId
+            if (monthId !== 2) {
+                if (!$('#days-list').find('#day-29').length)
+                    $('#days-list').append('<li id="day-29" class="border-bottom m-auto pt-2" onclick="selectDay(29)">29</li>');
+                if (!$('#days-list').find('#day-30').length)
+                    $('#days-list').append('<li id="day-30" class="border-bottom m-auto pt-2" onclick="selectDay(30)">30</li>');
+            }
+            if (monthId !== 2 && ((monthId <= 7 && monthId % 2 === 0) || (monthId > 7 && monthId % 2 === 1)))
+                $('#day-31').remove();
+            else if (monthId !== 2 && ((monthId <= 7 && monthId % 2 === 1) || (monthId > 7 && monthId % 2 === 0))) {
                 if (!$('#days-list').find('#day-31').length)
                     $('#days-list').append('<li id="day-31" class="border-bottom m-auto pt-2" onclick="selectDay(31)">31</li>');
             }
-            else if (monthId > 7 && monthId % 2 === 0) {
-                if (lastMonthActive !== null)
-                    $('#month-'+lastMonthActive).removeClass('active')
-                $('#month-'+monthId).addClass('active')
-                lastMonthActive = monthId
-                if (!$('#days-list').find('#day-31').length)
-                    $('#days-list').append('<li id="day-31" class="border-bottom m-auto pt-2" onclick="selectDay(31)">31</li>');
-            }
-            else if (monthId > 7 && monthId % 2 === 1) {
-                if (lastMonthActive !== null)
-                    $('#month-'+lastMonthActive).removeClass('active')
-                $('#month-'+monthId).addClass('active')
-                lastMonthActive = monthId
-                $('#day-31').remove();
-            }
+            lastMonthActive = monthId
             searchForAppointments()
         }
         function selectDay(dayId) {
-            if (lastDayActive !== null)
-                $('#day-'+lastDayActive).removeClass('active')
+            dayId = parseInt(dayId)
+            if (dayId === lastDayActive)
+                return
+            $('#day-'+lastDayActive).removeClass('active')
             $('#day-'+dayId).addClass('active');
             lastDayActive = dayId
             searchForAppointments()

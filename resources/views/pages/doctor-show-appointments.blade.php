@@ -113,7 +113,6 @@
                 type: 'get',
                 dataType: 'json',
                 success: function (response) {
-                    let canReserve = response[response.length - 1]
                     for (let i = 800; i < 2200; i += 30) {
                         if (i % 100 === 60)
                             i += 40
@@ -149,13 +148,8 @@
             selectMonth({{ date('m') }})
             selectDay({{ date('d') }})
             searchForAppointments()
-            searchAjax()
         });
         todayBtn.click();
-        let searchBtn = $('#search');
-        searchBtn.on('click', function () {
-            searchAjax()
-        });
         let updateAvailableAppointments = setInterval(function () {
             searchAjax()
         }, 500)

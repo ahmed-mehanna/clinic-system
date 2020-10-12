@@ -255,13 +255,8 @@
             selectMonth({{ date('m') }})
             selectDay({{ date('d') }})
             searchForAppointments()
-            searchAjax()
         });
         todayBtn.click();
-        let searchBtn = $('#search');
-        searchBtn.on('click', function () {
-            searchAjax()
-        });
         let updateAvailableAppointments = setInterval(function () {
             searchAjax()
         }, 500)
