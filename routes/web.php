@@ -50,8 +50,7 @@ Route::group(['middleware' => ['isDoctor']], function() {
 
     Route::get('/next-patient/{emptyTable}', [DoctorController::class, 'nextPatient']);
     Route::get('/doctor/show-appointments/{day}/{month}', [DoctorController::class, 'showAvailableAppointments']);
-    Route::get('/manage-appointments', [DoctorController::class, 'manageAppointments'])->name('manage_appointments');
-
+    Route::get('/doctor/manage-appointments', [DoctorController::class, 'manageAppointments'])->name('manage_appointments');
 });
 
 Route::group(['middleware' => ['isPatient']], function() {

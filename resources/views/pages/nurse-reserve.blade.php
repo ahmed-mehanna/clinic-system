@@ -147,10 +147,7 @@
         }
         let lastActiveAppointment = null;
         let lastActiveAppointmentTime = null;
-        let lastMonthActive = {{ date('m') }}, lastDayActive = {{ date('d') }};
         let months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-        $('#month-'+lastMonthActive).addClass('active')
-        $('#day-'+lastDayActive).addClass('active');
         function goBack () {
             window.history.back();
         }
@@ -166,59 +163,6 @@
             $('#btn-'+val).html('Booked <i class="fa fa-exclamation"></i>')
             lastActiveAppointment = 'btn-'+val
             lastActiveAppointmentTime = val
-        }
-        function selectMonth(monthId) {
-            if (monthId === 2) {
-
-            }
-            else if (monthId <= 7 && monthId % 2 === 0) {
-                if (lastMonthActive !== null)
-                    $('#month-'+lastMonthActive).removeClass('active')
-                $('#month-'+monthId).addClass('active')
-                lastMonthActive = monthId
-                $('#day-31').remove();
-            }
-            else if (monthId <= 7 && monthId % 2 === 1) {
-                if (lastMonthActive !== null)
-                    $('#month-'+lastMonthActive).removeClass('active')
-                $('#month-'+monthId).addClass('active')
-                lastMonthActive = monthId
-                if (!$('#days-list').find('#day-31').length)
-                    $('#days-list').append('<li id="day-31" class="border-bottom m-auto pt-2" onclick="selectDay(31)">31</li>');
-            }
-            else if (monthId > 7 && monthId % 2 === 0) {
-                if (lastMonthActive !== null)
-                    $('#month-'+lastMonthActive).removeClass('active')
-                $('#month-'+monthId).addClass('active')
-                lastMonthActive = monthId
-                if (!$('#days-list').find('#day-31').length)
-                    $('#days-list').append('<li id="day-31" class="border-bottom m-auto pt-2" onclick="selectDay(31)">31</li>');
-            }
-            else if (monthId > 7 && monthId % 2 === 1) {
-                if (lastMonthActive !== null)
-                    $('#month-'+lastMonthActive).removeClass('active')
-                $('#month-'+monthId).addClass('active')
-                lastMonthActive = monthId
-                $('#day-31').remove();
-            }
-            searchForAppointments()
-        }
-        function selectDay(dayId) {
-            if (lastDayActive !== null)
-                $('#day-'+lastDayActive).removeClass('active')
-            $('#day-'+dayId).addClass('active');
-            lastDayActive = dayId
-            searchForAppointments()
-        }
-
-        function searchForAppointments() {
-            let date = new Date()
-            let day = parseInt(lastDayActive)
-            let month = parseInt(lastMonthActive)
-            if (parseInt(day / 10) === 0)
-                day = '0' + day
-            $('#date-lg').html(months[month - 1] + ' ' + day + ', ' + date.getFullYear())
-            $('#date-sm').html(months[month - 1] + ' ' + day + ', ' + date.getFullYear())
         }
 
         let reservedAppointments = []
@@ -270,8 +214,9 @@
         }
         let todayBtn = $('.today');
         todayBtn.on('click', function () {
-            $('#date-lg').html('{{ date("F d, Y") }}')
-            $('#date-sm').html('{{ date("F d, Y") }}')
+            selectMonth({{ date('m') }})
+            selectDay({{ date('d') }})
+            searchForAppointments()
             searchAjax()
         });
         todayBtn.click();

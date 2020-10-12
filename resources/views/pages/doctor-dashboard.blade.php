@@ -1,5 +1,8 @@
 @extends('components.app')
 @section('content')
+    <script>
+        document.getElementById('dashboard').className = 'nav-item active'
+    </script>
     <div class="doctor-dashboard-style">
         <div class="container-fluid">
             <x-patient-data :name="$userTurn->user->name" :id="$userTurn->user->id" :age="$userTurn->user->patient->age" />

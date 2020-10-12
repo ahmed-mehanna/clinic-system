@@ -1,4 +1,4 @@
-    @extends('components.app')
+@extends('components.app')
 @section('content')
     <?php
     use Carbon\Carbon;
@@ -18,42 +18,12 @@
                     <th scope="col">Attend</th>
                 </tr>
                 </thead>
-                <tbody id="table-body">
-{{--                <input type="hidden" value="{{$i=1}}">--}}
-{{--                @foreach($reservation as $reservationsData)--}}
-{{--                    <tr <?php if ($i === 1){ ?> class="active" <?php } ?> >--}}
-{{--                        <th scope="row">{{$i++}}</th>--}}
-{{--                        <td>{{$reservationsData->user->name}}</td>--}}
-{{--                        <td>{{Carbon::parse($reservationsData["reservation At"])->format('g:i A')}}</td>--}}
-{{--                        <td>{{Carbon::parse($reservationsData["reservation At"])->addMinutes(30)->format('g:i A')}}</td>--}}
-{{--                        <td>--}}
-{{--                            <input type="hidden" value="$user">--}}
-{{--                            <button type="button" data-toggle="modal" data-target="{{ '#attend-pop-up-user-'.$reservationsData->user->id }}">--}}
-{{--                                <i class="fa fa-check"></i>--}}
-{{--                            </button>--}}
-{{--                            <form class="d-inline" id="{{ 'attend'.$reservationsData->user->id }}" method="get" action="/patient/attend/{{$reservationsData->user->id}}">--}}
-{{--                                @csrf--}}
-{{--                            </form>--}}
-{{--                            <button class="mr-0" type="button" data-toggle="modal" data-target="{{ '#did-not-attend-pop-up-user-'.$reservationsData->user->id }}">--}}
-{{--                                <i class="fa fa-times"></i>--}}
-{{--                            </button>--}}
-{{--                            <form class="d-inline" id="{{ 'did-not-attend'.$reservationsData->user->id }}" method="get" action="/patient/notattend/{{$reservationsData->user->id}}">--}}
-{{--                                @csrf--}}
-{{--                            </form>--}}
-{{--                        </td>--}}
-{{--                        <div>--}}
-{{--                            <x-attend-pop-up :id="$reservationsData->user->id" />--}}
-{{--                            <x-did-not-attend-pop-up :id="$reservationsData->user->id" />--}}
-{{--                        </div>--}}
-{{--                    </tr>--}}
-{{--                @endforeach--}}
-                </tbody>
+                <tbody id="table-body"></tbody>
             </table>
         </div>
     </div>
     <button id="ajax-btn" class="d-none" data-toggle="modal" data-target="#notification"></button>
     @include('components.nurse-dashboard.notification')
-
     <script>
         Array.prototype.isEqualTo = function (target) {
             if (this.length !== target.length)
@@ -78,7 +48,7 @@
                 success: function (response) {
                     if (table.isEqualTo(response))
                         return null
-                    console.log(response)
+                    $('#table-body').empty()
                     for (let i = 0; i < response.length; i++) {
                         let row = ''
                         if (i === 0)
@@ -90,19 +60,19 @@
                                 '<td>' + response[i]['from'] + '</td>' +
                                 '<td>' + response[i]['to'] + '</td>' +
                                 '<td>' +
-                                '<input type="hidden" value="' + response[i]['user_id'] + '">' +
                                 '<button type="button" data-toggle="modal" data-target="#attend-pop-up-user-' + response[i]['user_id'] + '">' +
                                 '<i class="fa fa-check"></i>' +
                                 '</button>' +
+                                '<input type="hidden" value="' + response[i]['user_id'] + '">' +
                                 '<form class="d-inline" id="attend' + response[i]['user_id'] + '" method="get" action="/patient/attend/' + response[i]['user_id'] + '">' +
+                                '@csrf' +
+                                '</form>' +
+                                '<form class="d-inline" id="did-not-attend' + response[i]['user_id'] + '" method="get" action="/patient/notattend/' + response[i]['user_id'] + '">' +
                                 '@csrf' +
                                 '</form>' +
                                 '<button class="mr-0" type="button" data-toggle="modal" data-target="#did-not-attend-pop-up-user-' + response[i]['user_id'] + '">' +
                                 '<i class="fa fa-times"></i>' +
                                 '</button>' +
-                                '<form class="d-inline" id="did-not-attend' + response[i]['user_id'] + '" method="get" action="/patient/notattend/' + response[i]['user_id'] + '">' +
-                                '@csrf' +
-                                '</form>' +
                                 '</td>' +
                             '</tr>'
                         $('#table-body').append(row)

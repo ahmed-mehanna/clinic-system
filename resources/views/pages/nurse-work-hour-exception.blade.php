@@ -6,7 +6,7 @@
     <script>
         document.getElementById('nurse-work-exception').className = 'nav-item active'
     </script>
-    <div class="nurse-work-hour-exception" style="min-height: 438px; padding-bottom: 0">
+    <div class="nurse-work-hour-exception" style="min-height: 367px; padding-bottom: 0">
         <div class="container">
             <form action="/update/schedule" method="get">
                 @csrf

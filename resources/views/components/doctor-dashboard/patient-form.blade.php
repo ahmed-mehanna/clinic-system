@@ -58,10 +58,9 @@
             return this;
         };
         function addDrug() {
-            if ($('#data-name-' + numberOfAnalysis[numberOfAnalysis.length - 1]).val() === ''
-                && $('#data-result-' + numberOfAnalysis[numberOfAnalysis.length - 1]).val() === '' )
+            if ($('#data-name-' + numberOfDrugs[numberOfDrugs.length - 1]).val() === ''
+                && $('#data-result-' + numberOfDrugs[numberOfDrugs.length - 1]).val() === '' )
                 return null;
-            console.log(numberOfDrugs)
             let id = numberOfDrugs[numberOfDrugs.length - 1] + 1;
             numberOfDrugs.push(id);
             $('#new-button-patient-form').remove()
@@ -74,10 +73,10 @@
                 '                        </select>\n' +
                 '                    </div>'+
                 '                    <div class="col-lg-3">\n' +
-                '                        <input id="data-name-'+id+'" type="text" class="form-control" name="name[]" form="patient-form" placeholder="Name">\n' +
+                '                        <input id="data-name-'+id+'" type="text" class="form-control" name="name[]" value="" form="patient-form" placeholder="Name">\n' +
                 '                    </div>\n' +
                 '                    <div class="col-lg-4">\n' +
-                '                        <input id="data-result-'+id+'" type="text" class="form-control" name="description[]" form="patient-form" placeholder="Description">\n' +
+                '                        <input id="data-result-'+id+'" type="text" class="form-control" name="description[]" value="" form="patient-form" placeholder="Description">\n' +
                 '                    </div>\n' +
                 '                    <div class="col-lg-3" id="buttons-container' + id + '">\n' +
                 '                        <i class="btn fa fa-plus" id="new-button-patient-form" onclick="addDrug()"></i>\n' +
