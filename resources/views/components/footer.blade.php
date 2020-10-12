@@ -1,5 +1,16 @@
 <footer>
     <div class="container">
+        <?php
+            $data = [
+                'facebook'  =>  '',
+                'twitter'   =>  '',
+                'linkedin'  =>  '',
+                'whatsapp'  =>  '',
+                'location'  =>  '143 Gordon Terrace Embarrassing NG33 0ZT United Kingdom',
+                'email-address' =>  'info@healthcare.com',
+                'phone' =>  '+1800 326 3264'
+            ]
+        ?>
         <div class="row">
             <div class="col-lg-5 col-sm-12">
                 <img src="{{asset('imgs/index-page/logo2.png')}}" alt="">
@@ -12,22 +23,22 @@
                 <ul>
                     <li>
                         <i class="fa fa-facebook-f">
-                            <a href="">&nbsp;Facebook</a>
+                            <a href="{{ $data['facebook'] }}">&nbsp;Facebook</a>
                         </i>
                     </li>
                     <li>
                         <i class="fa fa-twitter">
-                            <a href="">Twitter</a>
+                            <a href="{{ $data['twitter'] }}">Twitter</a>
                         </i>
                     </li>
                     <li>
                         <i class="fa fa-linkedin">
-                            <a href="">Linkedin</a>
+                            <a href="{{ $data['linkedin'] }}">Linkedin</a>
                         </i>
                     </li>
                     <li>
                         <i class="fa fa-whatsapp">
-                            <a href="">Whatsapp</a>
+                            <a href="{{ $data['whatsapp'] }}">Whatsapp</a>
                         </i>
                     </li>
                 </ul>
@@ -38,19 +49,19 @@
                     <li>
                         <i class="fa fa-home">
                             <span style="line-height: 1.2;">
-                                143 Gordon Terrace Embarrassing NG33 0ZT United Kingdom
+                                {{ $data['location'] }}
                             </span>
                         </i>
                     </li>
                     <li>
                         <i class="fa fa-envelope">
-                            <a href="">info@healthcare.com</a>
+                            <a>{{ $data['email-address'] }}</a>
                         </i>
                     </li>
                     <li>
                         <i class="fa fa-phone">
                             <span>
-                                +1800 326 3264
+                                {{ $data['phone'] }}
                             </span>
                         </i>
                     </li>
@@ -58,7 +69,7 @@
             </div>
         </div>
     </div>
-    <div class="copyright text-center">
+    <div class="copyright text-center d-none d-sm-block">
         <i class="fa fa-copyright">
             <span>
                 Copyright 2018, All Rights Reserved, <a href="">HEALTHCARE</a>

@@ -70,7 +70,7 @@
                 </script>
                 <div class="row mt-2" id="box1">
                     <div class="col-lg-2">
-                        <select form="patient-form" class="form-control" name="select-type2[]">
+                        <select id="patient-history-select1" form="patient-form" class="form-control" name="select-type2[]">
                             <option>Drugs</option>
                             <option>Analysis</option>
                             <option>Rumours</option>
@@ -112,7 +112,7 @@
             $('#new-button').remove();
             let newAnalysis = '<div class="row mt-2" id="box' + id + '">\n' +
                 '<div class="col-lg-2">\n' +
-                '                        <select id="select-' + id + '" form="patient-form" class="form-control" name="select-type2[]">\n' +
+                '                        <select id="patient-history-select' + id + '" form="patient-form" class="form-control" name="select-type2[]">\n' +
                 '                            <option>Drugs</option>\n' +
                 '                            <option>Analysis</option>\n' +
                 '                            <option>Rumours</option>\n' +

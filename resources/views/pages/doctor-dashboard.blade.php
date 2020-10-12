@@ -116,8 +116,25 @@
         }
         $('#ajax-btn').on('click', function () {
             validate()  //  To Fix Validate Issue
-            if (validate() === true)
+            if (validate() === true) {
+                $(window).bind('beforeunload', function(e){
+                    return "Do you really want to leave this page now?"
+                });
+                $('#summary').attr('readonly', true)
+                $('#illness').attr('readonly', true)
+                $('#illness-diagnose').attr('readonly', true)
+                for (let i = 0; i < numberOfAnalysis.length; i++) {
+                    $('#title-' + numberOfAnalysis[i]).attr('readonly', true)
+                    $('#result-' + numberOfAnalysis[i]).attr('readonly', true)
+                    $('#patient-history-select'+numberOfAnalysis[i]).attr('readonly', true)
+                }
+                for (let i = 0; i < numberOfDrugs.length; i++) {
+                    $('#data-name-' + numberOfDrugs[i]).attr('readonly', true)
+                    $('#data-result-' + numberOfDrugs[i]).attr('readonly', true)
+                    $('#patient-form-select'+numberOfAnalysis[i]).attr('readonly', true)
+                }
                 askForNextPatient = setInterval(getNextPatient, 500)
+            }
         })
 
 

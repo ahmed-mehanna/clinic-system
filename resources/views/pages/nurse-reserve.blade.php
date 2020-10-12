@@ -129,8 +129,7 @@
                         @endfor
                     </div>
                 </div>
-                <button id="validate-btn" type="submit" class="btn btn-primary mr-3">Submit</button>
-                <button id="submit-btn" type="submit" class="d-none"></button>
+                <button type="submit" class="btn btn-primary mr-3">Submit</button>
                 <span class="btn btn-danger" id="go-back" onclick="goBack()">Back</span>
             </form>
         </div>
@@ -227,14 +226,5 @@
         let updateAvailableAppointments = setInterval(function () {
             searchAjax()
         }, 500)
-        $('#validate-btn').on('click', function () {
-            console.log($('#time').val())
-            if ($('#time').val() !== '')
-                $('#submit-btn').click()
-            else {
-                $('#alert').removeClass('d-none')
-                window.location.href = '/nurse/reserve#alert'
-            }
-        })
     </script>
 @endsection

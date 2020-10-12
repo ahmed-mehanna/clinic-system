@@ -26,7 +26,7 @@
                 </script>
                 <div class="row mt-2" id="drug1">
                     <div class="col-lg-2">
-                        <select form="patient-form" class="form-control" name="select_type[]">
+                        <select id="patient-form-select1" form="patient-form" class="form-control" name="select_type[]">
                             <option>Drugs</option>
                             <option>Analysis</option>
                             <option>Rumours</option>
@@ -66,7 +66,7 @@
             $('#new-button-patient-form').remove()
             let newDrug = '<div class="row mt-2" id="drug' + id + '">\n' +
                 '<div class="col-lg-2">\n' +
-                '                        <select form="patient-form" class="form-control" name="select_type[]">\n' +
+                '                        <select id="patient-form-select'+id+'" form="patient-form" class="form-control" name="select_type[]">\n' +
                 '                            <option>Drugs</option>\n' +
                 '                            <option>Analysis</option>\n' +
                 '                            <option>Rumours</option>\n' +
