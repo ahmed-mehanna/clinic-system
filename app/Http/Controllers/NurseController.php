@@ -268,28 +268,28 @@ class NurseController extends Controller
         $start = clone Carbon::today();
         $start->addHours(8);
         $today = clone $start;
-//        if($start->isPast()) {
-//            for ($date = clone $start; $date->diffInMinutes($datenow) >= "30"; $date->addMinutes(30)) {
-//                $check = Reservation::firstWhere("reservation At", $date->toDateTimeString());
-//                if ($check === null) {
-//                    $res = new Reservation();
-//                    $res["reservation At"] = $date;
-//                    $res["user_id"] = 0;
-//                    $res["Reserved_by_Doctor"] = 1;
-//                    $res->save();
-//                }
-//                $today = $date;
-//            }
-//            $end = clone $today;
-//            $check2 = Reservation::firstWhere("reservation At", $end->toDateTimeString());
-//            if($check2 === null ){
-//                $res = new Reservation();
-//                $res["reservation At"] = $end;
-//                $res["user_id"] = 0;
-//                $res["Reserved_by_Doctor"] = 1;
-//                $res->save();
-//            }
-//        }
+        if($start->isPast()) {
+            for ($date = clone $start; $date->diffInMinutes($datenow) >= "30"; $date->addMinutes(30)) {
+                $check = Reservation::firstWhere("reservation At", $date->toDateTimeString());
+                if ($check === null) {
+                    $res = new Reservation();
+                    $res["reservation At"] = $date;
+                    $res["user_id"] = 0;
+                    $res["Reserved_by_Doctor"] = 1;
+                    $res->save();
+                }
+                $today = $date;
+            }
+            $end = clone $today;
+            $check2 = Reservation::firstWhere("reservation At", $end->toDateTimeString());
+            if($check2 === null ){
+                $res = new Reservation();
+                $res["reservation At"] = $end;
+                $res["user_id"] = 0;
+                $res["Reserved_by_Doctor"] = 1;
+                $res->save();
+            }
+        }
         $reservedobj = Reservation::whereBetween('reservation At',[$dateTimeFrom->toDateTime(),$dateTimeTo->toDateTime()])->get();
 
         $reserved = array();
